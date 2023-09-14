@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+:root {
+  --color-dark-primary: #121212;
+  --color-dark-secondary: #151515;
+  --color-blue-primary: #4169e1;
+  --color-blue-primary-shade-1: #3454b4;
+  --color-blue-primary-tint-1: #5478e4;
+  --color-metacritics: #6dc849;
+  --color-first-place: #e6c900;
+  --color-second-place: #adadad;
+  --color-third-place: #a46628;
+  --color-facebook: #4267b2;
+  --color-facebook-shade: #3b5da0;
+  --color-twitter: #00acee;
+  --color-twitter-shade: #009bd6;
+  --border-radius-default: 13px;
+  --border-radius-small: 9px;
+  --border-radius-smallest: 7px;
+  --transition-long: all 0.4s;
+  --transition-medium: all 0.3s;
+  --transition-fast: all 0.2s;
+}
+
+* {
+  &,
+  &::before,
+  &::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+canvas {
+  display: none;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 56.25%;
+  }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 50%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 43.75%;
+  }
+
+  @media only screen and (max-width: 400px) {
+    font-size: 37.5%;
+  }
+}
+
+body {
+  background-color: var(--color-dark-secondary);
+  color: #fff;
+  line-height: 1;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 4.8rem;
+  }
+
+  @media only screen and (max-width: 720px) {
+    font-size: 4.4rem;
+  }
+
+  @media only screen and (max-width: 500px) {
+    font-size: 4rem;
+    letter-spacing: 0.5px;
+  }
+
+  @media only screen and (max-width: 300px) {
+    font-size: 3.4rem;
+    margin-bottom: 1.6rem;
+  }
+}
+
+.drag {
+  user-select: none;
+}
+
+.animated {
+  transition: all 0.3s ease-out;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  width: 100%;
+  height: 100%;
+}

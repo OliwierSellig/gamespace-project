@@ -1,0 +1,66 @@
+.carousel {
+  padding: 3.2rem 4.8rem;
+
+  &__browse {
+    @media only screen and (max-width: 440px) {
+      padding: 3.2rem 1.6rem;
+    }
+
+    & .container {
+      @media only screen and (max-width: 1400px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media only screen and (max-width: 900px) {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &__games {
+    @media only screen and (max-width: 1200px) {
+      display: none;
+    }
+
+    & .heading {
+      margin-bottom: 2.4rem;
+      font-size: 3.2rem;
+      text-align: start;
+    }
+  }
+}
+
+.heading {
+  margin-bottom: 4.2rem;
+  font-weight: 300;
+  font-size: 3.8rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.box {
+  position: relative;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 70%;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 2px dashed #fff;
+  border-radius: var(--border-radius-default);
+  font-size: 3.2rem;
+  letter-spacing: 0.3px;
+}

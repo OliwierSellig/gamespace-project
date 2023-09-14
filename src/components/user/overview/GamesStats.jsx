@@ -1,0 +1,76 @@
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../contexts/UserContext";
+import styles from "./gamesStats.module.scss";
+
+function GamesStats({ type, amount }) {
+  const { activities } = useUser();
+  const navigate = useNavigate();
+  const curActivities =
+    activities[
+      type === "played"
+        ? "played"
+        : type === "review"
+        ? "reviewed"
+        : "collections"
+    ];
+
+  return (
+    <div className={styles.container}>
+      <h3 className={styles.heading}>
+        <span className={styles.amount}>{amount}</span>
+        <span
+          className={styles.description}
+          onClick={() =>
+            navigate(
+              type === "played"
+                ? "/user/library"
+                : type === "review"
+                ? "/user/reviews"
+                : "/user/collections"
+            )
+          }
+        >
+          &nbsp;{type === "played" && "Games Played"}
+          {type === "review" && "Reviews"}
+          {type === "collections" && "Collections"}
+        </span>
+      </h3>
+      <div
+        className={styles.line}
+        style={{
+          backgroundColor:
+            type === "played"
+              ? "#4169e1"
+              : type === "review"
+              ? "#FFDF00"
+              : "#29AB87",
+        }}
+      ></div>
+      <span className={styles.subheading}>Recent Activities:</span>
+      <ul className={styles.list}>
+        {[...curActivities]
+          .reverse()
+          .slice(0, 4)
+          .map((activity) => (
+            <li className={styles.item} key={crypto.randomUUID()}>
+              <span className={styles.item__date}>{activity.date}:</span>
+              &nbsp;{type === "played" && "played"}
+              {type === "review" && "reviewed"}
+              {type === "collections" && "added to collection"}&nbsp;
+              <span
+                className={styles.item__name}
+                onClick={() => navigate(`/games/${activity.id}`)}
+              >
+                {activity.name}
+              </span>
+            </li>
+          ))}
+        {!curActivities.length && (
+          <span className={styles.empty}>No activities yet</span>
+        )}
+      </ul>
+    </div>
+  );
+}
+
+export default GamesStats;
