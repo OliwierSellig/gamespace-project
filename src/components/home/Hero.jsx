@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./hero.module.scss";
 
+import BackgroundSwitcher from "./BackgroundSwitcher";
+
 function Hero() {
   return (
-    <section className={styles.container}>
+    <BackgroundSwitcher>
       <div className={styles.content}>
         <h1 className="heading-primary">Welcome to GameSpace</h1>
         <p className={styles.subheading}>
@@ -19,7 +21,7 @@ function Hero() {
           </Link>
         </div>
       </div>
-    </section>
+    </BackgroundSwitcher>
   );
 }
 

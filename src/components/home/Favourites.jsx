@@ -18,9 +18,9 @@ function Favourites({ title }) {
           >
             <img
               className={styles.item__img}
-              src={`${dev.img.large}`}
               srcSet={`${dev.img.small} 400w, ${dev.img.medium} 600w, ${dev.img.large} 800w `}
               sizes="(max-width: 600px) 46vw, (max-width: 900px) 45vw, 30vw"
+              src={`${dev.img.large}`}
               alt={`${dev.name} Cover`}
             />
             <span className={styles.item__title}>{dev.name}</span>
