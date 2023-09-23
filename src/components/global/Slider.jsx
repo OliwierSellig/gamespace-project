@@ -36,7 +36,7 @@ function Slider({
       box.classList.add("drag");
     }
 
-    function onMouseUp(e) {
+    function onMouseUp() {
       isClicked.current = false;
       coords.current.lastX = container.offsetLeft;
       if (isDragged.current) {
@@ -92,6 +92,7 @@ function Slider({
 
     if (!container.style.left) {
       container.style.left = `-${scrollAmount}px`;
+      coords.current.lastX = coords.current.lastX - scrollAmount;
     } else if (
       container.scrollWidth -
         (-parseInt(container.style.left) + container.offsetWidth) <
@@ -100,10 +101,13 @@ function Slider({
       container.style.left = `-${
         container.scrollWidth - container.offsetWidth
       }px`;
+
+      coords.current.lastX = -(container.scrollWidth - container.offsetWidth);
     } else {
       container.style.left = `${
         parseInt(container.style.left) - scrollAmount
       }px`;
+      coords.current.lastX = coords.current.lastX - scrollAmount;
     }
 
     setTimeout(() => container.classList.remove("animated"), 300);
@@ -123,10 +127,13 @@ function Slider({
       parseInt(container.style.left) > -scrollAmount
     ) {
       container.style.left = "0px";
+      coords.current.lastX = 0;
     } else {
       container.style.left = `${
         parseInt(container.style.left) + scrollAmount
       }px`;
+
+      coords.current.lastX = coords.current.lastX + scrollAmount;
     }
 
     setTimeout(() => container.classList.remove("animated"), 300);

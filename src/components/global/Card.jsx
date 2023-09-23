@@ -6,7 +6,7 @@ function Card({
   title,
   details,
   scale,
-  container,
+  container = "",
   handleClick,
 }) {
   return (
@@ -15,7 +15,8 @@ function Card({
         cardStyle ? styles[cardStyle] : ""
       }`}
       onClick={(e) => {
-        if (container?.classList.contains("drag")) return;
+        if (container === null || container?.classList?.contains("drag"))
+          return;
         handleClick();
       }}
     >

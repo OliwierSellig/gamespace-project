@@ -8,6 +8,7 @@ import { useUser } from "../../../contexts/UserContext";
 
 function UserOverview() {
   const { gamesPlayed, getFavourites } = useUser();
+  console.log(getFavourites());
 
   return (
     <>
@@ -21,11 +22,7 @@ function UserOverview() {
         list={getFavourites()}
       />
       <UserStats>
-        <GamesStats
-          type="played"
-          amount={gamesPlayed.length}
-          game="Red Dead Redemption 2"
-        />
+        <GamesStats type="played" amount={gamesPlayed.length} />
         <GamesStats type="review" amount={7} game="Assasins Creed Valhalla" />
         <GamesStats type="collections" amount={3} game="Terraria" />
       </UserStats>
