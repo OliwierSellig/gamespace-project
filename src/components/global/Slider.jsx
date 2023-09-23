@@ -118,9 +118,10 @@ function Slider({
 
     container.classList.add("animated");
 
-    if (!container.style.left) {
-      container.style.left = `${scrollAmount}px`;
-    } else if (parseInt(container.style.left) > -scrollAmount) {
+    if (
+      !container.style.left ||
+      parseInt(container.style.left) > -scrollAmount
+    ) {
       container.style.left = "0px";
     } else {
       container.style.left = `${
