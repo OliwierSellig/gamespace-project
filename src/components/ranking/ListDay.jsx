@@ -24,6 +24,8 @@ function ListDay() {
     <ul className={styles.list}>
       {dayList.map((day) => (
         <li
+          tabIndex={0}
+          role="button"
           className={styles.item}
           key={crypto.randomUUID()}
           onClick={() => {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Card from "./Card";
 import TurnBtn from "./TurnBtn";
 import styles from "./slider.module.scss";
@@ -19,6 +19,9 @@ function Slider({
   const isDragged = useRef(false);
   const coords = useRef({ startX: 0, lastX: 0 });
   const navigate = useNavigate();
+
+  console.log(boxRef.current);
+  console.log(containerRef.current);
 
   // --------------------------------------
   // Dragging Logic
@@ -81,6 +84,9 @@ function Slider({
     return cleanup;
   }, []);
 
+  console.log(boxRef.current);
+  console.log(containerRef.current);
+
   // --------------------------------------
   // Clicking Right Btn
   // --------------------------------------
@@ -141,7 +147,7 @@ function Slider({
 
   return (
     <section
-      style={{ overflow: `${user ? "hidden" : "visible"}` }}
+      style={{ overflow: `${user ? "clip" : "visible"}` }}
       className={`${styles.slider} ${sliderStyle ? styles[sliderStyle] : ""}`}
     >
       {title && <h2 className={styles.heading}>{title}</h2>}

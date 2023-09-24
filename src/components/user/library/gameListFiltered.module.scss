@@ -23,12 +23,16 @@
   border: none;
   border-radius: 50%;
   background: none;
-  cursor: pointer;
+  transition: var(--transition-fast);
 
   &__icon {
     width: 6rem;
     height: 6rem;
     transition: var(--transition-medium);
+  }
+
+  &__active {
+    cursor: pointer;
 
     &:hover {
       transform: scale(1.05);

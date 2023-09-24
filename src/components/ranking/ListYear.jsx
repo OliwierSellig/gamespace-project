@@ -40,6 +40,8 @@ function ListYear() {
           .slice(0 + 12 * currentPage, 12 + 12 * currentPage)
           .map((year) => (
             <li
+              tabIndex={0}
+              role="button"
               className={styles.item}
               key={crypto.randomUUID()}
               onClick={() => {

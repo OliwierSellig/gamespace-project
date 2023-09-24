@@ -12,6 +12,8 @@ function Favourites({ title }) {
       <ul className={styles.container}>
         {devList.map((dev) => (
           <li
+            tabIndex={0}
+            role="button"
             className={styles.item}
             key={crypto.randomUUID()}
             onClick={() => navigate(`/search?developers=${dev.slug}`)}

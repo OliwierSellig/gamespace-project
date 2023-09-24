@@ -8,7 +8,8 @@
   &__scale {
     transition: var(--transition-fast);
 
-    &:hover {
+    &:hover,
+    &:focus {
       transform: scale(1.05);
     }
   }
@@ -233,7 +234,8 @@
   transition: var(--transition-medium);
   opacity: 0;
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 1;
   }
 }

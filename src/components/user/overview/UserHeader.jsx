@@ -5,7 +5,7 @@ function UserHeader() {
   return (
     <header className={styles.container}>
       <div className={styles.account}>
-        <div className={styles.account__imgBox}>
+        <div tabIndex={0} role="button" className={styles.account__imgBox}>
           <img
             className={styles.account__img}
             src="/img/user.webp"
@@ -21,6 +21,8 @@ function UserHeader() {
           </span>
         </div>
         <img
+          tabIndex={0}
+          role="button"
           className={styles.account__settings}
           src="/svg/settings.svg"
           alt="Open Settings"

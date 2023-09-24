@@ -107,8 +107,8 @@
     background-color: rgba(#151515, 0.8);
     font-weight: 500;
     font-size: 1.6rem;
+    cursor: default;
     opacity: 0;
-    cursor: pointer;
     transition: var(--transition-fast);
 
     &:hover {

@@ -96,14 +96,16 @@
       width: 30%;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       transform: translate(-50%, -50%) scale(1.03);
     }
 
     &__fb {
       background-color: var(--color-facebook);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--color-facebook-shade);
       }
     }
@@ -111,7 +113,8 @@
     &__tt {
       background-color: var(--color-twitter);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--color-twitter-shade);
       }
     }

@@ -12,6 +12,8 @@ function PlatformsHome() {
       <ul className={styles.container}>
         {platforms.map((platform) => (
           <li
+            tabIndex={0}
+            role="button"
             className={styles.item}
             key={crypto.randomUUID()}
             onClick={() => navigate(`/search?platforms=${platform.id}`)}

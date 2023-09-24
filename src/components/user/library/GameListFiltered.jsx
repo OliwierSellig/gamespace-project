@@ -118,7 +118,10 @@ function GameListFiltered({ filterBy, searchQuery }) {
           ))}
       </ul>
       <div className={styles.btnBox}>
-        <button className={styles.btn} onClick={goPrev}>
+        <button
+          className={`${styles.btn} ${curPage ? styles.btn__active : ""}`}
+          onClick={goPrev}
+        >
           <img
             className={styles.btn__icon}
             src={
@@ -130,7 +133,10 @@ function GameListFiltered({ filterBy, searchQuery }) {
           />
         </button>
         <span className={styles.page}>{curPage + 1}</span>
-        <button className={styles.btn} onClick={goNext}>
+        <button
+          className={`${styles.btn} ${canGoNext() ? styles.btn__active : ""}`}
+          onClick={goNext}
+        >
           <img
             className={styles.btn__icon}
             src={

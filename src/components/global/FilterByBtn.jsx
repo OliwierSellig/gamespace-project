@@ -17,19 +17,44 @@ function FilterByBtn({ hanldeClick, filterBy }) {
       />
       {isOpen && (
         <ul className={styles.list}>
-          <li className={styles.item} onClick={() => hanldeClick("all")}>
+          <li
+            tabIndex={0}
+            role="'button"
+            className={styles.item}
+            onClick={() => hanldeClick("all")}
+          >
             All
           </li>
-          <li className={styles.item} onClick={() => hanldeClick("platforms")}>
+          <li
+            tabIndex={0}
+            role="'button"
+            className={styles.item}
+            onClick={() => hanldeClick("platforms")}
+          >
             Platform
           </li>
-          <li className={styles.item} onClick={() => hanldeClick("developers")}>
+          <li
+            tabIndex={0}
+            role="'button"
+            className={styles.item}
+            onClick={() => hanldeClick("developers")}
+          >
             Developer
           </li>
-          <li className={styles.item} onClick={() => hanldeClick("genres")}>
+          <li
+            tabIndex={0}
+            role="'button"
+            className={styles.item}
+            onClick={() => hanldeClick("genres")}
+          >
             Genre
           </li>
-          <li className={styles.item} onClick={() => hanldeClick("years")}>
+          <li
+            tabIndex={0}
+            role="'button"
+            className={styles.item}
+            onClick={() => hanldeClick("years")}
+          >
             Year
           </li>
         </ul>

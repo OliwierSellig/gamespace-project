@@ -6,17 +6,21 @@ function Card({
   title,
   details,
   scale,
-  container = "",
+  container,
   handleClick,
 }) {
+  console.log(container);
   return (
     <li
+      tabIndex={0}
+      role="button"
       className={`${styles.card} ${scale ? styles.card__scale : ""} ${
         cardStyle ? styles[cardStyle] : ""
       }`}
       onClick={(e) => {
-        if (container === null || container?.classList?.contains("drag"))
+        if (container?.classList?.contains("drag")) {
           return;
+        }
         handleClick();
       }}
     >

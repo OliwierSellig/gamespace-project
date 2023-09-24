@@ -13,6 +13,8 @@ function ListMonth() {
     <ul className={styles.list}>
       {Array.from({ length: monthsAmount }, (_, i) => (
         <li
+          tabIndex={0}
+          role="button"
           className={styles.item}
           key={crypto.randomUUID()}
           onClick={() => {

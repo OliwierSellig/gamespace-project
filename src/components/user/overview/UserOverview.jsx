@@ -5,10 +5,15 @@ import Slider from "../../global/Slider";
 import UserHeader from "./UserHeader";
 import UserStats from "./UserStats";
 import { useUser } from "../../../contexts/UserContext";
+import { useEffect, useState } from "react";
 
 function UserOverview() {
   const { gamesPlayed, getFavourites } = useUser();
-  console.log(getFavourites());
+  const [, updateState] = useState();
+
+  useEffect(() => {
+    updateState({});
+  }, []);
 
   return (
     <>
