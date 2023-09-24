@@ -3,6 +3,7 @@ import { useUser } from "../../../contexts/UserContext";
 import Slider from "../../global/Slider";
 import styles from "./gameListFiltered.module.scss";
 import { useUtility } from "../../../contexts/UtilityContext";
+import BtnNav from "../../global/BtnNav";
 
 function GameListFiltered({ filterBy, searchQuery }) {
   const { gamesPlayed } = useUser();
@@ -117,37 +118,13 @@ function GameListFiltered({ filterBy, searchQuery }) {
             </li>
           ))}
       </ul>
-      <div className={styles.btnBox}>
-        <button
-          className={`${styles.btn} ${curPage ? styles.btn__active : ""}`}
-          onClick={goPrev}
-        >
-          <img
-            className={styles.btn__icon}
-            src={
-              curPage
-                ? "/svg/round-arrow-left-able.svg"
-                : "/svg/round-arrow-left-disable.svg"
-            }
-            alt="Arrow left"
-          />
-        </button>
-        <span className={styles.page}>{curPage + 1}</span>
-        <button
-          className={`${styles.btn} ${canGoNext() ? styles.btn__active : ""}`}
-          onClick={goNext}
-        >
-          <img
-            className={styles.btn__icon}
-            src={
-              canGoNext()
-                ? "/svg/round-arrow-right-able.svg"
-                : "/svg/round-arrow-right-disable.svg"
-            }
-            alt="Arrow right"
-          />
-        </button>
-      </div>
+      <BtnNav
+        checkPrev={curPage}
+        checkNext={canGoNext}
+        onClickNext={goNext}
+        onCLickPrev={goPrev}
+        curPage={curPage}
+      />
     </>
   );
 }

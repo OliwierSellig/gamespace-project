@@ -107,7 +107,7 @@ function GameAction() {
           </span>
         </div>
       </div>
-      <button className={styles.btn__review}>
+      <button className={styles.btn__review} onClick={() => navigate("review")}>
         Write a review&nbsp;
         <img
           className={styles.reviewIcon}

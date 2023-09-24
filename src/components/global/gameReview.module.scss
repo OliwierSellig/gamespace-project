@@ -1,0 +1,156 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(
+    circle,
+    rgba(21, 21, 21, 0.6) 40%,
+    rgba(21, 21, 21, 0.9) 90%
+  );
+}
+
+.container {
+  width: 70vw;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius-default);
+  display: flex;
+  flex-direction: column;
+  padding: 6.4rem 4.8rem 4.8rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6.4rem;
+}
+
+.gameTitle {
+  font-size: 3.6rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.ratingTitle {
+  font-size: 3rem;
+  color: #ccc;
+  font-weight: 300;
+}
+
+.icon {
+  height: 6rem;
+  width: 6rem;
+}
+
+.review {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  width: 70%;
+  align-self: center;
+  align-items: center;
+  gap: 3.2rem;
+  margin-bottom: 5.4rem;
+}
+
+.input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border-radius: var(--border-radius-default);
+  overflow: hidden;
+  background: none;
+
+  &::-webkit-slider-runnable-track {
+    height: 16px;
+    background-color: rgba(34, 34, 34, 0.5);
+    border-radius: var(--border-radius-default);
+  }
+
+  &::-moz-range-track {
+    height: 16px;
+    background-color: rgba(34, 34, 34, 0.5);
+    border-radius: var(--border-radius-default);
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    background-color: #5478e4;
+    border-radius: 50%;
+    box-shadow: -407px 0 0 400px #4169e1;
+  }
+
+  &::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    background-color: #5478e4;
+    border-radius: 50%;
+    box-shadow: -407px 0 0 400px #4169e1;
+  }
+}
+
+.rating {
+  font-size: 2.8rem;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-self: center;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.6rem;
+    padding: 0 1.2rem;
+  }
+
+  &__heading {
+    font-size: 2.6rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  &__letters {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #aaa;
+  }
+
+  &__area {
+    position: relative;
+    border-radius: var(--border-radius-small);
+    height: 40rem;
+    background-color: rgba(21, 21, 21, 0.6);
+    border: none;
+    resize: none;
+    padding: 1.8rem;
+    color: #fff;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

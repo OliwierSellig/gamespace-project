@@ -20,6 +20,8 @@ import UserLibrary from "./components/user/library/UserLibrary";
 import Wishlist from "./components/user/wishlist/Wishlist";
 import { UserProvider } from "./contexts/UserContext";
 import GameAdd from "./components/game/GameAdd";
+import Reviews from "./components/user/reviews/Reviews";
+import WriteReview from "./components/game/WriteReview";
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
                 <Route path="overview" element={<UserOverview />} />
                 <Route path="library" element={<UserLibrary />} />
                 <Route path="wishlist" element={<Wishlist />} />
+                <Route path="reviews" element={<Reviews />} />
               </Route>
               <Route path="ranking" element={<Ranking />} />
               <Route path="ranking" element={<Ranking />}>
@@ -48,6 +51,7 @@ function App() {
                 <Route path="platforms" element={<BrowsePlatforms />} />
               </Route>
               <Route path="games/:id" element={<Game />}>
+                <Route path="review" element={<WriteReview />} />
                 <Route path="add" element={<GameAdd />} />
                 <Route path=":screenshot" element={<ScreenshotZoom />} />
               </Route>

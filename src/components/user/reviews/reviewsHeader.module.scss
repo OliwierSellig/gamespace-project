@@ -1,0 +1,12 @@
+.header {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  margin-bottom: 4.8rem;
+}
+
+.heading {
+  font-weight: 500;
+  font-size: 3.6rem;
+  letter-spacing: 0.3px;
+}

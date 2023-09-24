@@ -7,8 +7,6 @@ function WishlistHeader({ searchQuery, setSearchQuery }) {
       <h2 className={styles.heading}>Your Wishlist</h2>
       <SearchInput
         sizeFont={2.4}
-        padding={[0, 4.8, 0, 4.8]}
-        marginBottom={0}
         inputStyle="search__wishlist"
         inputValue={searchQuery}
         handleChange={setSearchQuery}
