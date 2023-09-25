@@ -6,7 +6,8 @@ import styles from "./gameAction.module.scss";
 function GameAction() {
   const { game, topYear, topGenre } = useGame();
   const gameYear = new Date(game.released)?.getFullYear();
-  const { checkGamePlayed, checkInWishlist, dispatch, gamesPlayed } = useUser();
+  const { checkGamePlayed, checkInWishlist, dispatch, checkReviewed } =
+    useUser();
   const navigate = useNavigate();
 
   return (
@@ -30,18 +31,25 @@ function GameAction() {
             else navigate(`add`);
           }}
         >
-          {checkGamePlayed(game.id)
-            ? "Remove from played "
-            : "Add to My Games "}
-          <img
-            className={styles.addIcon}
-            src={
-              checkGamePlayed(game.id)
-                ? "/svg/remove-games.svg"
-                : "/svg/add-games.svg"
-            }
-            alt="Add to my games"
-          />
+          {checkGamePlayed(game.id) ? (
+            <>
+              <span>Remove from played</span>
+              <img
+                className={styles.addIcon}
+                src="/svg/remove-games.svg"
+                alt="Add to wishlist"
+              />
+            </>
+          ) : (
+            <>
+              <span>Add to My Games</span>
+              <img
+                className={styles.addIcon}
+                src="/svg/add-games.svg"
+                alt="Add to wishlist"
+              />
+            </>
+          )}
         </button>
         <button
           className={styles.btn__wishlist}
@@ -57,18 +65,25 @@ function GameAction() {
             }
           }}
         >
-          {checkInWishlist(game.id)
-            ? `Remove from Wishlsit `
-            : `Add to Wishlist `}
-          <img
-            className={styles.addIcon}
-            src={
-              checkInWishlist(game.id)
-                ? "/svg/remove-wishlist.svg"
-                : "/svg/add-wishlist.svg"
-            }
-            alt="Add to wishlist"
-          />
+          {checkInWishlist(game.id) ? (
+            <>
+              <span>Remove from Wishlist</span>
+              <img
+                className={styles.addIcon}
+                src="/svg/remove-wishlist.svg"
+                alt="Add to wishlist"
+              />
+            </>
+          ) : (
+            <>
+              <span>Add to Wishlist</span>
+              <img
+                className={styles.addIcon}
+                src="/svg/add-wishlist.svg"
+                alt="Add to wishlist"
+              />
+            </>
+          )}
         </button>
         <button className={styles.btn__collections}>
           Save to Collection&nbsp;
@@ -108,12 +123,25 @@ function GameAction() {
         </div>
       </div>
       <button className={styles.btn__review} onClick={() => navigate("review")}>
-        Write a review&nbsp;
-        <img
-          className={styles.reviewIcon}
-          src="/svg/pen.svg"
-          alt="Write a review"
-        />
+        {!checkReviewed(game.id) ? (
+          <>
+            <span>Write a review</span>
+            <img
+              className={styles.reviewIcon}
+              src="/svg/pen.svg"
+              alt="Write a review"
+            />
+          </>
+        ) : (
+          <>
+            <span>Edit your review</span>
+            <img
+              className={styles.reviewIcon}
+              src="/svg/pen-edit.svg"
+              alt="Edit a review"
+            />
+          </>
+        )}
       </button>
       <div className={styles.buy}>
         <header className={styles.buy__header}>Where to buy:</header>

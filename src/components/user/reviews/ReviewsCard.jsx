@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./reviewsCard.module.scss";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../contexts/UserContext";
 
-function ReviewCard() {
+function ReviewCard({ review }) {
   const [wantsDelete, setWantsDelete] = useState(false);
   const containerRef = useRef(null);
+  const navigate = useNavigate();
+  const { deleteReview } = useUser();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -29,22 +33,24 @@ function ReviewCard() {
       180deg,
       rgba(34, 34, 34, 0.8),
       rgba(34, 34, 34, 0.8) 
-    ), url(/img/heroBg/hero-background-1-large.webp)`,
+    ), url(${review.game.background_image})`,
       }}
       tabIndex={0}
       role="button"
       className={styles.container}
     >
       <div className={styles.header}>
-        <span className={styles.gameName}>God of War: Ragnarok</span>
-        <div className={styles.rating}>4.7/5</div>
+        <span className={styles.gameName}>{review.game.name}</span>
+        <div className={styles.rating}>{`${review.rating}/5`}</div>
       </div>
-      <p className={styles.comment}>
-        Had a lot of fun playing the game, the world presented in Skyrim just
-        sunk me in and i could not stop playing. The immersion is such...
-      </p>
+      <p className={styles.comment}>{review.comment}</p>
       <div className={styles.options}>
-        <button className={styles.button}>Edit</button>
+        <button
+          className={styles.button}
+          onClick={() => navigate(`${review.game.id}`)}
+        >
+          Edit
+        </button>
         <button className={styles.button} onClick={() => setWantsDelete(true)}>
           Delete
         </button>
@@ -55,7 +61,10 @@ function ReviewCard() {
           Do you really want to delete this review?
         </p>
         <div className={styles.delete__options}>
-          <button className={`${styles.delete__btn} ${styles.delete__yes}`}>
+          <button
+            className={`${styles.delete__btn} ${styles.delete__yes}`}
+            onClick={() => deleteReview(review.game.id)}
+          >
             Yes
           </button>
           <button

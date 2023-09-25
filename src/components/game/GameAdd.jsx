@@ -8,7 +8,7 @@ import { useUser } from "../../contexts/UserContext";
 function GameAdd() {
   const { game } = useGame();
   const { addToPlayed, dispatch } = useUser();
-  const { API_KEY, dateTransform } = useUtility();
+  const { API_KEY } = useUtility();
   const navigate = useNavigate();
   const backgroundRef = useRef(null);
   const [isFav, setIsFav] = useState(false);
@@ -44,8 +44,7 @@ function GameAdd() {
       platform: selectedPlatform,
       isFavourite: isFav,
     };
-    const currentDate = dateTransform(new Date());
-    addToPlayed(selectedGame, currentDate, game);
+    addToPlayed(selectedGame);
     dispatch({ type: "removedFromWishlist", payload: game });
     navigate(-1);
   }

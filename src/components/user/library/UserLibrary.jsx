@@ -7,6 +7,8 @@ import TurnBtn from "../../global/TurnBtn";
 import { useUtility } from "../../../contexts/UtilityContext";
 import { useUser } from "../../../contexts/UserContext";
 
+const PAGE_AMOUNT = 20;
+
 function UserLibrary() {
   const { gamesPlayed } = useUser();
   const { loadingStyle } = useUtility();
@@ -49,7 +51,7 @@ function UserLibrary() {
       libraryGames.filter((game) =>
         game.slug.includes(searchQuery.toLowerCase().replaceAll(" ", "-"))
       ).length <
-      (curPage + 1) * 20
+      (curPage + 1) * PAGE_AMOUNT
     ) {
       return;
     }
@@ -86,7 +88,7 @@ function UserLibrary() {
             .filter((game) =>
               game.slug.includes(searchQuery.toLowerCase().replaceAll(" ", "-"))
             )
-            .slice(20 * curPage, 20 + 20 * curPage)}
+            .slice(PAGE_AMOUNT * curPage, PAGE_AMOUNT + PAGE_AMOUNT * curPage)}
           listStyle="list__library"
         >
           <TurnBtn next={false} handleClick={goPrev} size={5.2} />

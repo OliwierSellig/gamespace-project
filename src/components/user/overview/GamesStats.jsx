@@ -54,9 +54,7 @@ function GamesStats({ type, amount }) {
           .map((activity) => (
             <li className={styles.item} key={crypto.randomUUID()}>
               <span className={styles.item__date}>{activity.date}:</span>
-              &nbsp;{type === "played" && "played"}
-              {type === "review" && "reviewed"}
-              {type === "collections" && "added to collection"}&nbsp;
+              <span>{` ${activity.act} `}</span>
               <span
                 className={styles.item__name}
                 onClick={() => navigate(`/games/${activity.id}`)}

@@ -20,9 +20,6 @@ function Slider({
   const coords = useRef({ startX: 0, lastX: 0 });
   const navigate = useNavigate();
 
-  console.log(boxRef.current);
-  console.log(containerRef.current);
-
   // --------------------------------------
   // Dragging Logic
   // --------------------------------------
@@ -83,9 +80,6 @@ function Slider({
 
     return cleanup;
   }, []);
-
-  console.log(boxRef.current);
-  console.log(containerRef.current);
 
   // --------------------------------------
   // Clicking Right Btn

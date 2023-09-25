@@ -1,13 +1,51 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./gameReview.module.scss";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../contexts/UserContext";
 
 function GameReview({ game }) {
+  const { updateReviews, checkReviewed } = useUser();
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const backgroundRef = useRef(null);
+  const navigate = useNavigate();
   const COMMENT_LENGTH = 250;
 
+  function getReviewEmote() {
+    if (!rating)
+      return { name: "Game unrated", url: "/svg/danger-triangle.svg" };
+    if (rating < 1.5) return { name: "Skip", url: "/svg/skip.svg" };
+    if (rating >= 1.5 && rating < 3.5)
+      return { name: "Meh", url: "/svg/meh.svg" };
+    if (rating >= 3.5 && rating < 4.5)
+      return { name: "Recommended", url: "/svg/recommended.svg" };
+    if (rating >= 4.5)
+      return { name: "Exceptional", url: "/svg/exceptional.svg" };
+  }
+
+  function setReview() {
+    const reviewItem = { rating, comment, game };
+    updateReviews(reviewItem);
+  }
+
+  useEffect(() => {
+    const reviewedGame = checkReviewed(game.id);
+
+    if (!reviewedGame) return;
+
+    setRating(reviewedGame.rating);
+    setComment(reviewedGame.comment);
+  }, [checkReviewed, game]);
+
   return (
-    <div className={styles.background}>
+    <div
+      className={styles.background}
+      ref={backgroundRef}
+      onClick={(e) => {
+        if (e.target !== backgroundRef.current) return;
+        navigate(-1);
+      }}
+    >
       <div
         className={styles.container}
         style={{
@@ -15,13 +53,13 @@ function GameReview({ game }) {
         }}
       >
         <header className={styles.header}>
-          <h2 className={styles.gameTitle}>God of War: Ragnarok</h2>
+          <h2 className={styles.gameTitle}>{game.name}</h2>
           <p className={styles.info}>
-            <span className={styles.ratingTitle}>Exceptional</span>
+            <span className={styles.ratingTitle}>{getReviewEmote()?.name}</span>
             <img
               className={styles.icon}
-              src="/svg/exceptional.svg"
-              alt="Exceptional"
+              src={getReviewEmote()?.url}
+              alt={getReviewEmote()?.name}
             />
           </p>
         </header>
@@ -56,6 +94,16 @@ function GameReview({ game }) {
             onChange={(e) => setComment(e.target.value)}
           />
         </div>
+        <button
+          className={`${styles.submitBtn} ${!rating ? styles.disabled : ""}`}
+          onClick={() => {
+            if (!rating) return;
+            setReview();
+            navigate(-1);
+          }}
+        >
+          Submit Review
+        </button>
       </div>
     </div>
   );

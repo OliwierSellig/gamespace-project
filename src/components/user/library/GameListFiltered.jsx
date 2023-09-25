@@ -5,6 +5,8 @@ import styles from "./gameListFiltered.module.scss";
 import { useUtility } from "../../../contexts/UtilityContext";
 import BtnNav from "../../global/BtnNav";
 
+const PAGE_AMOUNT = 4;
+
 function GameListFiltered({ filterBy, searchQuery }) {
   const { gamesPlayed } = useUser();
   const { loadingStyle } = useUtility();
@@ -73,7 +75,7 @@ function GameListFiltered({ filterBy, searchQuery }) {
       filteredList.filter((item) =>
         String(item.at(0))?.toLowerCase().includes(searchQuery.toLowerCase())
       ).length <
-      4 * (curPage + 1)
+      PAGE_AMOUNT * (curPage + 1)
     )
       return;
     setCurPage((page) => page + 1);
@@ -88,7 +90,7 @@ function GameListFiltered({ filterBy, searchQuery }) {
       filteredList.filter((item) =>
         String(item.at(0))?.toLowerCase().includes(searchQuery.toLowerCase())
       ).length >
-      4 * (curPage + 1)
+      PAGE_AMOUNT * (curPage + 1)
     );
   }
 
@@ -104,7 +106,7 @@ function GameListFiltered({ filterBy, searchQuery }) {
               ?.toLowerCase()
               .includes(searchQuery.toLowerCase())
           )
-          .slice(4 * curPage, 4 + 4 * curPage)
+          .slice(PAGE_AMOUNT * curPage, PAGE_AMOUNT + PAGE_AMOUNT * curPage)
           .map((item) => (
             <li key={crypto.randomUUID()}>
               <Slider

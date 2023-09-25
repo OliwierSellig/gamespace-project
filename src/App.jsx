@@ -22,42 +22,43 @@ import { UserProvider } from "./contexts/UserContext";
 import GameAdd from "./components/game/GameAdd";
 import Reviews from "./components/user/reviews/Reviews";
 import WriteReview from "./components/game/WriteReview";
+import ReviewWindow from "./components/user/reviews/ReviewWindow";
 
 function App() {
   return (
     <UtilityProvider>
       <BrowserRouter>
         <UserProvider>
-          <SearchProvider>
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path="search" element={<Search />} />
-              <Route path="user" element={<User />}>
-                <Route path="overview" element={<UserOverview />} />
-                <Route path="library" element={<UserLibrary />} />
-                <Route path="wishlist" element={<Wishlist />} />
-                <Route path="reviews" element={<Reviews />} />
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="search" element={<Search />} />
+            <Route path="user" element={<User />}>
+              <Route path="overview" element={<UserOverview />} />
+              <Route path="library" element={<UserLibrary />} />
+              <Route path="wishlist" element={<Wishlist />} />
+              <Route path="reviews" element={<Reviews />}>
+                <Route path=":id" element={<ReviewWindow />} />
               </Route>
-              <Route path="ranking" element={<Ranking />} />
-              <Route path="ranking" element={<Ranking />}>
-                <Route path="" element={<Redirect />} />
-                <Route path=":filter" element={<RankingNav />}>
-                  <Route path=":id" element={<SelectRated />} />
-                </Route>
+            </Route>
+            <Route path="ranking" element={<Ranking />} />
+            <Route path="ranking" element={<Ranking />}>
+              <Route path="" element={<Redirect />} />
+              <Route path=":filter" element={<RankingNav />}>
+                <Route path=":id" element={<SelectRated />} />
               </Route>
-              <Route path="browse" element={<Browse />}>
-                <Route path="developers" element={<BrowseDevelopers />} />
-                <Route path="genres" element={<BrowseGenres />} />
-                <Route path="platforms" element={<BrowsePlatforms />} />
-              </Route>
-              <Route path="games/:id" element={<Game />}>
-                <Route path="review" element={<WriteReview />} />
-                <Route path="add" element={<GameAdd />} />
-                <Route path=":screenshot" element={<ScreenshotZoom />} />
-              </Route>
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
-          </SearchProvider>
+            </Route>
+            <Route path="browse" element={<Browse />}>
+              <Route path="developers" element={<BrowseDevelopers />} />
+              <Route path="genres" element={<BrowseGenres />} />
+              <Route path="platforms" element={<BrowsePlatforms />} />
+            </Route>
+            <Route path="games/:id" element={<Game />}>
+              <Route path="review" element={<WriteReview />} />
+              <Route path="add" element={<GameAdd />} />
+              <Route path=":screenshot" element={<ScreenshotZoom />} />
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
         </UserProvider>
       </BrowserRouter>
     </UtilityProvider>

@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
+import { useUtility } from "./UtilityContext";
 
 const UserContext = createContext();
 
@@ -9,11 +10,17 @@ const initialState = {
   wishlist: JSON.parse(localStorage.getItem("wishlist"))?.length
     ? JSON.parse(localStorage.getItem("wishlist"))
     : [],
+  reviews: JSON.parse(localStorage.getItem("reviews"))?.length
+    ? JSON.parse(localStorage.getItem("reviews"))
+    : [],
+
   activities: {
     played: JSON.parse(localStorage.getItem("activitiesPlayed"))?.length
       ? JSON.parse(localStorage.getItem("activitiesPlayed"))
       : [],
-    reviewed: [],
+    reviewed: JSON.parse(localStorage.getItem("activitiesReviewed"))?.length
+      ? JSON.parse(localStorage.getItem("activitiesReviewed"))
+      : [],
     collections: [],
   },
 };
@@ -34,6 +41,23 @@ function reducer(state, action) {
             ...state.activities.played,
             {
               date: action.payload.date,
+              act: action.payload.act,
+              name: action.payload.name,
+              id: action.payload.id,
+            },
+          ],
+        },
+      };
+    case "addedReviewedActivity":
+      return {
+        ...state,
+        activities: {
+          ...state.activities,
+          reviewed: [
+            ...state.activities.reviewed,
+            {
+              date: action.payload.date,
+              act: action.payload.act,
               name: action.payload.name,
               id: action.payload.id,
             },
@@ -56,6 +80,8 @@ function reducer(state, action) {
           (game) => game.id !== action.payload.id
         ),
       };
+    case "updatedReviews":
+      return { ...state, reviews: action.payload };
     case "setMostPlayedPlatforms":
       return { ...state, gamesPlayed: action.payload };
     default:
@@ -64,8 +90,9 @@ function reducer(state, action) {
 }
 
 function UserProvider({ children }) {
+  const { getCurrentDate } = useUtility();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { gamesPlayed, wishlist, activities } = state;
+  const { gamesPlayed, wishlist, activities, reviews } = state;
 
   useEffect(() => {
     localStorage.setItem("gamesPlayed", JSON.stringify(gamesPlayed));
@@ -79,12 +106,27 @@ function UserProvider({ children }) {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
+  useEffect(() => {
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+  }, [reviews]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "activitiesReviewed",
+      JSON.stringify(activities.reviewed)
+    );
+  }, [activities.reviewed]);
+
   function checkGamePlayed(id) {
     return gamesPlayed.find((game) => game.game.id === id);
   }
 
   function checkInWishlist(id) {
     return wishlist.find((game) => game.id === id);
+  }
+
+  function checkReviewed(id) {
+    return reviews.find((r) => r.game.id === id);
   }
 
   function getFavourites() {
@@ -94,12 +136,18 @@ function UserProvider({ children }) {
     );
   }
 
-  function addToPlayed(game, date) {
-    if (!game || !date) return;
+  function addToPlayed(game) {
+    if (!game) return;
+    const currentDate = getCurrentDate();
     dispatch({ type: "addedAsPlayed", payload: game });
     dispatch({
       type: "addedPlayedActivity",
-      payload: { date: date, name: game.game.name, id: game.game.id },
+      payload: {
+        date: currentDate,
+        act: "played",
+        name: game.game.name,
+        id: game.game.id,
+      },
     });
   }
 
@@ -114,6 +162,38 @@ function UserProvider({ children }) {
     );
   }
 
+  function updateReviews(review) {
+    const currentDate = getCurrentDate();
+    const filteredReviews = reviews.filter((r) => r.game.id !== review.game.id);
+    dispatch({
+      type: "addedReviewedActivity",
+      payload: {
+        date: currentDate,
+        act: filteredReviews.length === reviews.length ? "reviewed" : "updated",
+        name: review.game.name,
+        id: review.game.id,
+      },
+    });
+    dispatch({ type: "updatedReviews", payload: [...filteredReviews, review] });
+  }
+
+  function deleteReview(id) {
+    const currentDate = getCurrentDate();
+    const removedReview = checkReviewed(id);
+    const filteredReviews = reviews.filter((r) => r.game.id !== id);
+    if (!filteredReviews) return;
+    dispatch({
+      type: "addedReviewedActivity",
+      payload: {
+        date: currentDate,
+        act: "unreviewed",
+        name: removedReview.game.name,
+        id: removedReview.game.id,
+      },
+    });
+    dispatch({ type: "updatedReviews", payload: filteredReviews });
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -124,6 +204,9 @@ function UserProvider({ children }) {
         getFavourites,
         addToPlayed,
         rankList,
+        updateReviews,
+        deleteReview,
+        checkReviewed,
       }}
     >
       {children}

@@ -110,6 +110,10 @@ function UtilityProvider({ children }) {
     return number < 10 ? `0${number}` : number;
   }
 
+  function getCurrentDate() {
+    return dateTransform(new Date());
+  }
+
   dateTransform();
 
   return (
@@ -123,6 +127,7 @@ function UtilityProvider({ children }) {
         getPlatformIcon,
         setToDoubleDigit,
         dateTransform,
+        getCurrentDate,
       }}
     >
       {children}

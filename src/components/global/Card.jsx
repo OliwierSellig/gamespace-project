@@ -9,7 +9,6 @@ function Card({
   container,
   handleClick,
 }) {
-  console.log(container);
   return (
     <li
       tabIndex={0}

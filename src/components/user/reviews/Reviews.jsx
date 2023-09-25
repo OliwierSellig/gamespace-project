@@ -1,12 +1,19 @@
+import { Outlet } from "react-router-dom";
 import ReviewsContainer from "./ReviewsContainer";
 import ReviewsHeader from "./ReviewsHeader";
-import styles from "./reviews.module.scss";
+import { useState } from "react";
 
 function Reviews() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <>
-      <ReviewsHeader />
-      <ReviewsContainer />
+      <ReviewsHeader
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+      <ReviewsContainer searchQuery={searchQuery} />
+      <Outlet />
     </>
   );
 }
