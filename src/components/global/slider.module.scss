@@ -142,6 +142,10 @@
   gap: 2rem;
   width: 100%;
   list-style: none;
+
+  @media only screen and (hover: none) {
+    overflow: scroll;
+  }
 }
 
 .emptyItem {

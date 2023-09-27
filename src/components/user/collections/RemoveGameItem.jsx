@@ -3,6 +3,8 @@ import styles from "./removeGameItem.module.scss";
 function RemoveGameItem({ game, toggleGameDeletion, checkInGamesToDelete }) {
   return (
     <li
+      tabIndex={0}
+      role="button"
       className={`${styles.item} ${
         checkInGamesToDelete(game.id) ? styles.clicked : ""
       }`}

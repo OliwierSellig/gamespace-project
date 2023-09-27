@@ -19,6 +19,8 @@ function GamesStats({ type, amount }) {
       <h3 className={styles.heading}>
         <span className={styles.amount}>{amount}</span>
         <span
+          tabIndex={0}
+          role="button"
           className={styles.description}
           onClick={() =>
             navigate(
@@ -57,6 +59,8 @@ function GamesStats({ type, amount }) {
                 <span className={styles.item__date}>{activity.date}:</span>
                 <span>{` ${activity.act} `}</span>
                 <span
+                  tabIndex={0}
+                  role="button"
                   className={styles.item__name}
                   onClick={() =>
                     navigate(
@@ -78,6 +82,8 @@ function GamesStats({ type, amount }) {
                 <span className={styles.item__date}>{activity.date}:</span>
                 <span>{` ${activity.act.split(" ").at(0)} `}</span>
                 <span
+                  tabIndex={0}
+                  role="button"
                   className={styles.item__name}
                   onClick={() => navigate(`/games/${activity.gameID}`)}
                 >
@@ -85,6 +91,8 @@ function GamesStats({ type, amount }) {
                 </span>
                 <span>{` ${activity.act.split(" ").at(1)} `}</span>
                 <span
+                  tabIndex={0}
+                  role="button"
                   className={styles.item__name}
                   onClick={() =>
                     navigate(`/user/collections/${activity.collectionID}`)
