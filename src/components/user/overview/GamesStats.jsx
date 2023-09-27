@@ -51,18 +51,50 @@ function GamesStats({ type, amount }) {
         {[...curActivities]
           .reverse()
           .slice(0, 4)
-          .map((activity) => (
-            <li className={styles.item} key={crypto.randomUUID()}>
-              <span className={styles.item__date}>{activity.date}:</span>
-              <span>{` ${activity.act} `}</span>
-              <span
-                className={styles.item__name}
-                onClick={() => navigate(`/games/${activity.id}`)}
-              >
-                {activity.name}
-              </span>
-            </li>
-          ))}
+          .map((activity) =>
+            !activity?.gameName ? (
+              <li className={styles.item} key={crypto.randomUUID()}>
+                <span className={styles.item__date}>{activity.date}:</span>
+                <span>{` ${activity.act} `}</span>
+                <span
+                  className={styles.item__name}
+                  onClick={() =>
+                    navigate(
+                      activity?.collectionID
+                        ? `/user/collections/${
+                            activity.act === "deleted"
+                              ? ""
+                              : activity.collectionID
+                          }`
+                        : `/games/${activity.id}`
+                    )
+                  }
+                >
+                  {activity.name || activity.collectionName}
+                </span>
+              </li>
+            ) : (
+              <li className={styles.item} key={crypto.randomUUID()}>
+                <span className={styles.item__date}>{activity.date}:</span>
+                <span>{` ${activity.act.split(" ").at(0)} `}</span>
+                <span
+                  className={styles.item__name}
+                  onClick={() => navigate(`/games/${activity.gameID}`)}
+                >
+                  {activity.gameName}
+                </span>
+                <span>{` ${activity.act.split(" ").at(1)} `}</span>
+                <span
+                  className={styles.item__name}
+                  onClick={() =>
+                    navigate(`/user/collections/${activity.collectionID}`)
+                  }
+                >
+                  {activity.collectionName}
+                </span>
+              </li>
+            )
+          )}
         {!curActivities.length && (
           <span className={styles.empty}>No activities yet</span>
         )}

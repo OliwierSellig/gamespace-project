@@ -114,6 +114,11 @@ function UtilityProvider({ children }) {
     return dateTransform(new Date());
   }
 
+  function generateRandomID() {
+    const randomID = Math.ceil(Math.random() * 100000);
+    return randomID;
+  }
+
   dateTransform();
 
   return (
@@ -128,6 +133,7 @@ function UtilityProvider({ children }) {
         setToDoubleDigit,
         dateTransform,
         getCurrentDate,
+        generateRandomID,
       }}
     >
       {children}

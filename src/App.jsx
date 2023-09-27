@@ -14,7 +14,6 @@ import SelectRated from "./components/ranking/SelectRated";
 import Redirect from "./components/ranking/Redirect";
 import { UtilityProvider } from "./contexts/UtilityContext";
 import ScreenshotZoom from "./components/game/ScreenshotZoom";
-import { SearchProvider } from "./contexts/SearchContext";
 import UserOverview from "./components/user/overview/UserOverview";
 import UserLibrary from "./components/user/library/UserLibrary";
 import Wishlist from "./components/user/wishlist/Wishlist";
@@ -23,6 +22,12 @@ import GameAdd from "./components/game/GameAdd";
 import Reviews from "./components/user/reviews/Reviews";
 import WriteReview from "./components/game/WriteReview";
 import ReviewWindow from "./components/user/reviews/ReviewWindow";
+import Collections from "./components/user/collections/Collections";
+import CollectionView from "./components/user/collections/CollectionView";
+import UpdateCollection from "./components/global/UpdateCollection";
+import CreateCollection from "./components/game/CreateCollection";
+import EditCollections from "./components/user/collections/EditCollections";
+import RemoveGames from "./components/user/collections/RemoveGames";
 
 function App() {
   return (
@@ -39,6 +44,11 @@ function App() {
               <Route path="reviews" element={<Reviews />}>
                 <Route path=":id" element={<ReviewWindow />} />
               </Route>
+              <Route path="collections" element={<Collections />} />
+              <Route path="collections/:id" element={<CollectionView />}>
+                <Route path="update" element={<EditCollections />} />
+                <Route path="remove" element={<RemoveGames />} />
+              </Route>
             </Route>
             <Route path="ranking" element={<Ranking />} />
             <Route path="ranking" element={<Ranking />}>
@@ -53,8 +63,9 @@ function App() {
               <Route path="platforms" element={<BrowsePlatforms />} />
             </Route>
             <Route path="games/:id" element={<Game />}>
-              <Route path="review" element={<WriteReview />} />
               <Route path="add" element={<GameAdd />} />
+              <Route path="create-collection" element={<CreateCollection />} />
+              <Route path="review" element={<WriteReview />} />
               <Route path=":screenshot" element={<ScreenshotZoom />} />
             </Route>
             <Route path="*" element={<PageNotFound />} />

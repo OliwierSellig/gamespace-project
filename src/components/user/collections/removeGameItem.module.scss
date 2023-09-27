@@ -1,0 +1,31 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  transition: var(--transition-medium);
+  border-radius: var(--border-radius-smallest);
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: #333;
+  }
+}
+
+.name {
+  font-size: 1.6rem;
+}
+
+.icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.clicked {
+  background-color: #333;
+  border-radius: 0;
+}

@@ -8,7 +8,7 @@ import { useUser } from "../../../contexts/UserContext";
 import { useEffect, useState } from "react";
 
 function UserOverview() {
-  const { gamesPlayed, getFavourites, reviews } = useUser();
+  const { gamesPlayed, getFavourites, reviews, collections } = useUser();
   const [, updateState] = useState();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function UserOverview() {
       <UserStats>
         <GamesStats type="played" amount={gamesPlayed.length} />
         <GamesStats type="review" amount={reviews.length} />
-        <GamesStats type="collections" amount={3} />
+        <GamesStats type="collections" amount={collections.length} />
       </UserStats>
       <UserStats>
         <FiltersStats type="developer" />

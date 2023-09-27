@@ -35,13 +35,26 @@
     }
   }
 
-  &__wishlist,
-  &__reviews {
+  &__user {
     margin-bottom: 0;
     padding: 0 4.8rem;
 
     & .input {
       font-size: 2.4rem;
+    }
+  }
+
+  &__collection {
+    @media only screen and (max-width: 460px) {
+      padding: 3.6rem 3.6rem 0;
+    }
+    & .input {
+      font-size: 2.4rem;
+    }
+
+    & .close {
+      width: 2.4rem;
+      height: 2.4rem;
     }
   }
 

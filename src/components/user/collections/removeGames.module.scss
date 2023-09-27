@@ -1,0 +1,109 @@
+.background {
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(
+    circle,
+    rgba(21, 21, 21, 0.6) 40%,
+    rgba(21, 21, 21, 0.9) 90%
+  );
+}
+
+.container {
+  position: relative;
+  width: 80vw;
+  max-width: 100rem;
+  background-color: rgba(#222, 0.95);
+  padding: 3.2rem;
+  border-radius: var(--border-radius-default);
+
+  @media only screen and (max-width: 600px) {
+    width: 90vw;
+  }
+}
+
+.heading {
+  font-size: 2.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  margin-bottom: 2.4rem;
+}
+
+.alert {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: 1.4rem;
+  justify-content: center;
+  background-color: var(--color-delete);
+  padding: 1rem 1.6rem;
+  border-radius: var(--border-radius-small);
+  transform: translateY(85%);
+  &__text {
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.list {
+  background-color: #151515;
+  border-radius: var(--border-radius-smallest);
+  list-style: none;
+  height: 30rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 2rem;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(#444, 0.8);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: var(--border-radius-smallest);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+  }
+}
+
+.btn {
+  width: 100%;
+  border: 2px solid #fff;
+  background-color: transparent;
+  border-radius: var(--border-radius-default);
+  padding: 1.2rem 3.6rem;
+  color: #fff;
+  font-size: 2rem;
+  transition: var(--transition-long);
+  cursor: pointer;
+  box-shadow: 1rem 0 4rem rgba(0, 0, 0, 0.05);
+
+  &:hover,
+  &:focus {
+    background-color: #fff;
+    color: #111;
+    outline: none;
+  }
+}

@@ -4,6 +4,8 @@ import BtnNav from "../../global/BtnNav";
 import ReviewCard from "./ReviewsCard";
 import styles from "./reviewsContainer.module.scss";
 import { useNavigate } from "react-router-dom";
+import NoSearchResults from "../../global/NoSearchResults";
+import EmptyList from "../../global/EmptyList";
 
 const AMOUNT_PER_PAGE = 8;
 
@@ -25,7 +27,7 @@ function ReviewsContainer({ searchQuery }) {
   }
 
   function goNext() {
-    if ((curPage + 1) * AMOUNT_PER_PAGE > filteredReviews.length) return;
+    if ((curPage + 1) * AMOUNT_PER_PAGE >= filteredReviews.length) return;
     setCurPage((page) => page + 1);
   }
 
@@ -36,20 +38,12 @@ function ReviewsContainer({ searchQuery }) {
   return (
     <section className={styles.container}>
       {!filteredReviews.length &&
-        (!reviews.length ? (
-          <div className={styles.reviewsEmpty}>
-            <p className={styles.reviewsEmpty__text}>
-              No reviews yet, starty by reviewing a game
-            </p>
-            <button
-              className={styles.reviewsEmpty__btn}
-              onClick={() => navigate(`/search`)}
-            >
-              Search games
-            </button>
-          </div>
+        (reviews.length ? (
+          <NoSearchResults />
         ) : (
-          <p className={styles.noKeyword}>No reviews for your keyword</p>
+          <EmptyList navigateTo="/search">
+            You have not reviewed any game yet.
+          </EmptyList>
         ))}
       {filteredReviews.length > 0 && (
         <>

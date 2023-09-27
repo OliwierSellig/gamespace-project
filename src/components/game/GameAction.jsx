@@ -1,7 +1,9 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useGame } from "../../contexts/GameContext";
 import { useUser } from "../../contexts/UserContext";
 import styles from "./gameAction.module.scss";
+import { useRef, useState } from "react";
+import CollectionsPopup from "./CollectionsPopup";
 
 function GameAction() {
   const { game, topYear, topGenre } = useGame();
@@ -9,6 +11,7 @@ function GameAction() {
   const { checkGamePlayed, checkInWishlist, dispatch, checkReviewed } =
     useUser();
   const navigate = useNavigate();
+  const [openCollections, setOpenCollections] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -85,12 +88,19 @@ function GameAction() {
             </>
           )}
         </button>
-        <button className={styles.btn__collections}>
+        <button
+          className={styles.btn__collections}
+          onClick={() => setOpenCollections(true)}
+        >
           Save to Collection&nbsp;
           <img
             className={styles.addIcon}
             src="/svg/add-collection.svg"
             alt="Add to collection"
+          />
+          <CollectionsPopup
+            openCollections={openCollections}
+            setOpenCollections={setOpenCollections}
           />
         </button>
       </div>
