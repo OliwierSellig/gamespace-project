@@ -1,14 +1,18 @@
-import styles from "./browseGenres.module.scss";
-import GameList from "../global/GameList";
-import TurnBtn from "../global/TurnBtn";
 import { useEffect, useState } from "react";
 import { useUtility } from "../../contexts/UtilityContext";
+import GameList from "../global/GameList";
+import TurnBtn from "../global/TurnBtn";
+import styles from "./browseGenres.module.scss";
 
 function BrowseGenres() {
+  const { API_KEY } = useUtility();
   const [genresList, setGenresList] = useState([]);
   const [genresAmount, setGenresAmount] = useState(0);
   const [iterator, setIterator] = useState(0);
-  const { API_KEY } = useUtility();
+
+  // ------------------------------------
+  // Fetching Genres
+  // ------------------------------------
 
   useEffect(() => {
     async function fetchGenres() {
@@ -26,6 +30,10 @@ function BrowseGenres() {
 
     fetchGenres();
   }, [API_KEY]);
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function increaseIterator() {
     if (9 * iterator > genresAmount) return;

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import styles from "./hero.module.scss";
-
 import BackgroundSwitcher from "./BackgroundSwitcher";
+import styles from "./hero.module.scss";
 
 function Hero() {
   return (

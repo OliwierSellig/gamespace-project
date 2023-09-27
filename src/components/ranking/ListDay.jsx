@@ -1,13 +1,17 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
-import styles from "./listDay.module.scss";
 import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useRanking } from "../../contexts/RankingContext";
+import styles from "./listDay.module.scss";
 
 function ListDay() {
-  const [searchParams] = useSearchParams();
-  const [dayList, setDayList] = useState([]);
-  const navigate = useNavigate();
   const { dispatch, dateFrom, dateTo } = useRanking();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const [dayList, setDayList] = useState([]);
+
+  // --------------------------------------------------
+  // Getting exact number of days for the chosen month
+  // --------------------------------------------------
 
   useEffect(() => {
     const selectedDate =
@@ -20,6 +24,7 @@ function ListDay() {
     const listArray = Array.from({ length: daysAmount }, (_, i) => i + 1);
     setDayList(listArray);
   }, [dateFrom, dateTo, searchParams]);
+
   return (
     <ul className={styles.list}>
       {dayList.map((day) => (

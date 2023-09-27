@@ -2,16 +2,18 @@ import { useState } from "react";
 import { useUser } from "../../../contexts/UserContext";
 import GameList from "../../global/GameList";
 import TurnBtn from "../../global/TurnBtn";
-import { useUtility } from "../../../contexts/UtilityContext";
 import UserSearchHeader from "../UserSearchHeader";
 import NoSearchResults from "../../global/NoSearchResults";
 import EmptyList from "../../global/EmptyList";
 
 function Wishlist() {
   const { wishlist } = useUser();
-  const { loadingStyle } = useUtility();
   const [searchQuery, setSearchQuery] = useState("");
   const [curPage, setCurPage] = useState(0);
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function goNext() {
     if (

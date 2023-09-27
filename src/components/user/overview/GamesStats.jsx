@@ -5,6 +5,11 @@ import styles from "./gamesStats.module.scss";
 function GamesStats({ type, amount }) {
   const { activities } = useUser();
   const navigate = useNavigate();
+
+  // -------------------------------------------------
+  // Selecting an Activity Type Base on Given Prop
+  // -------------------------------------------------
+
   const curActivities =
     activities[
       type === "played"

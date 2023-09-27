@@ -1,13 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./reviewsCard.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../contexts/UserContext";
+import styles from "./reviewsCard.module.scss";
 
 function ReviewCard({ review }) {
-  const [wantsDelete, setWantsDelete] = useState(false);
+  const { deleteReview } = useUser();
   const containerRef = useRef(null);
   const navigate = useNavigate();
-  const { deleteReview } = useUser();
+  const [wantsDelete, setWantsDelete] = useState(false);
+
+  // ---------------------------------------------
+  // Hiding The Delete Window on Mouseleave
+  // ---------------------------------------------
 
   useEffect(() => {
     if (!containerRef.current) return;

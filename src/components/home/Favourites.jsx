@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./favourites.module.scss";
 import { useUtility } from "../../contexts/UtilityContext";
+import styles from "./favourites.module.scss";
 
-function Favourites({ title }) {
-  const navigate = useNavigate();
+function Favourites() {
   const { devList } = useUtility();
+  const navigate = useNavigate();
 
   return (
     <section className={styles.fav}>

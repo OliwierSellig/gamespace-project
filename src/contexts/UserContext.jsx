@@ -136,6 +136,10 @@ function UserProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { gamesPlayed, wishlist, activities, reviews, collections } = state;
 
+  // ---------------------------------------
+  // Saving User Data to Local Storage
+  // ---------------------------------------
+
   useEffect(() => {
     localStorage.setItem("gamesPlayed", JSON.stringify(gamesPlayed));
   }, [gamesPlayed]);
@@ -182,12 +186,20 @@ function UserProvider({ children }) {
     return reviews.find((r) => r.game.id === id);
   }
 
+  // ---------------------------------------------------------
+  // Getting Favourite Games Only
+  // ---------------------------------------------------------
+
   function getFavourites() {
     return (
       gamesPlayed.filter((game) => game.isFavourite).map((game) => game.game) ||
       []
     );
   }
+
+  // ---------------------------------------------------------
+  // Games Logic
+  // ---------------------------------------------------------
 
   function addToPlayed(game) {
     if (!game) return;
@@ -214,7 +226,11 @@ function UserProvider({ children }) {
     );
   }
 
-  console.log(activities.collections);
+  // ---------------------------------------------------------
+
+  // ---------------------------------------------------------
+  // Reviews Logic
+  // ---------------------------------------------------------
 
   function updateReviews(review) {
     const filteredReviews = reviews.filter((r) => r.game.id !== review.game.id);
@@ -245,6 +261,12 @@ function UserProvider({ children }) {
     });
     dispatch({ type: "updatedReviews", payload: filteredReviews });
   }
+
+  // ---------------------------------------------------------
+
+  // ---------------------------------------------------------
+  // Collections Logic
+  // ---------------------------------------------------------
 
   function createCollection(name, description, game) {
     const currentDate = getCurrentDate();
@@ -387,6 +409,8 @@ function UserProvider({ children }) {
 
     return selectedCollection;
   }
+
+  // ---------------------------------------------------------
 
   return (
     <UserContext.Provider

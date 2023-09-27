@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
+import { useUtility } from "../../../contexts/UtilityContext";
 import { useUser } from "../../../contexts/UserContext";
 import Slider from "../../global/Slider";
-import styles from "./gameListFiltered.module.scss";
-import { useUtility } from "../../../contexts/UtilityContext";
 import BtnNav from "../../global/BtnNav";
+import styles from "./gameListFiltered.module.scss";
 
 const PAGE_AMOUNT = 4;
 
 function GameListFiltered({ filterBy, searchQuery }) {
-  const { gamesPlayed } = useUser();
   const { loadingStyle } = useUtility();
+  const { gamesPlayed } = useUser();
   const [filteredList, setFilteredList] = useState([]);
   const [curPage, setCurPage] = useState(0);
+
+  // ------------------------------------
+  // Filtering Listy by Platform
+  // ------------------------------------
 
   useEffect(() => {
     function filterByPlatform() {
@@ -25,6 +29,10 @@ function GameListFiltered({ filterBy, searchQuery }) {
       ]);
       return filteredPlatforms;
     }
+
+    // ------------------------------------
+    // Filtering list by other values
+    // ------------------------------------
 
     function filterListBy(type) {
       const uniqueList = [
@@ -69,6 +77,10 @@ function GameListFiltered({ filterBy, searchQuery }) {
         throw new Error("Filter out of scope");
     }
   }, [gamesPlayed, filterBy]);
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function goNext() {
     if (

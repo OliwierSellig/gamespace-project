@@ -4,9 +4,13 @@ import { useUtility } from "../../contexts/UtilityContext";
 import styles from "./browseNav.module.scss";
 
 function BrowseNav() {
+  const { API_KEY } = useUtility();
   const [platformsShown, setPlatformsShown] = useState(false);
   const [parentsList, setParentsList] = useState([]);
-  const { API_KEY } = useUtility();
+
+  // ------------------------------------
+  // Fetching Parent Platforms
+  // ------------------------------------
 
   useEffect(() => {
     async function fetchParents() {
@@ -54,7 +58,6 @@ function BrowseNav() {
               alt="Browse Platforms"
             />
           </button>
-
           <nav
             className={`${styles.platformsList} ${
               platformsShown ? styles.platformsList__visible : ""

@@ -1,8 +1,8 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
-import styles from "./removeGames.module.scss";
-import RemoveGameItem from "./RemoveGameItem";
 import { useRef, useState } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { useUser } from "../../../contexts/UserContext";
+import RemoveGameItem from "./RemoveGameItem";
+import styles from "./removeGames.module.scss";
 
 function RemoveGames() {
   const { removeFromCollection, deleteCollection } = useUser();
@@ -10,11 +10,20 @@ function RemoveGames() {
   const backgroundRef = useRef();
   const navigate = useNavigate();
   const [gamesToDelete, setGamesToDelete] = useState([]);
+
   const deletingAll = selectedCollection.games.length === gamesToDelete.length;
+
+  // ----------------------------------------------
+  // Checking Whether The Game is to be Deleted
+  // ----------------------------------------------
 
   function checkInGamesToDelete(id) {
     return gamesToDelete.map((g) => g.id).includes(id);
   }
+
+  // --------------------------------
+  // Adding Game to Deletion List
+  // --------------------------------
 
   function toggleGameDeletion(game) {
     if (!checkInGamesToDelete(game.id))
@@ -24,6 +33,10 @@ function RemoveGames() {
       setGamesToDelete(filteredGames);
     }
   }
+
+  // -------------------------------------------------------------------------------
+  // Function That Either Call for Deletion of Certain Games or Whole Collection
+  // -------------------------------------------------------------------------------
 
   function saveCollectionChanges() {
     if (deletingAll) {

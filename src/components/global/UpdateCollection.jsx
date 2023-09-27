@@ -1,20 +1,24 @@
-import { useNavigate } from "react-router-dom";
-import styles from "./updateCollection.module.scss";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
+import styles from "./updateCollection.module.scss";
 
 const TITLE_LENGTH = 30;
 const DESCRIPTION_LENGTH = 250;
 
 function UpdateCollection({ game, collection }) {
-  const backgroundRef = useRef(null);
-  const navigate = useNavigate();
   const { createCollection, updateCollectionInfo, deleteCollection } =
     useUser();
+  const backgroundRef = useRef(null);
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [savedChanges, setSavedChanges] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+
+  // -------------------------------------------------------------
+  // Checking Where you are Creating or Editing This Collection
+  // -------------------------------------------------------------
 
   useEffect(() => {
     if (game?.id) return;
@@ -22,6 +26,10 @@ function UpdateCollection({ game, collection }) {
     setName(collection.name);
     setDescription(collection.description);
   }, [game, collection]);
+
+  // --------------------------------------
+  // Saving Collection Changes
+  // --------------------------------------
 
   function saveCollection() {
     if (!name) return;
@@ -38,6 +46,10 @@ function UpdateCollection({ game, collection }) {
       500
     );
   }
+
+  // --------------------------------------
+  // Deleting The Collection
+  // --------------------------------------
 
   function onDeleteCollection() {
     setSavedChanges(true);

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import TurnBtn from "../global/TurnBtn";
-import styles from "./listYear.module.scss";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useRanking } from "../../contexts/RankingContext";
+import TurnBtn from "../global/TurnBtn";
+import styles from "./listYear.module.scss";
 
 const initialYear = 1990;
 
 function ListYear() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const { dispatch } = useRanking();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { dispatch } = useRanking();
+  const [currentPage, setCurrentPage] = useState(0);
 
   const yearsAmount = new Date().getFullYear() - (initialYear - 1);
   const yearList = Array.from(
@@ -18,10 +18,18 @@ function ListYear() {
     (_, i) => initialYear + i
   );
 
+  // ------------------------------------
+  // Setting The Current Page
+  // ------------------------------------
+
   useEffect(() => {
     const totalReps = Math.ceil(yearList.length / 12) - 1;
     setCurrentPage(totalReps);
   }, [yearList.length]);
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function goNext() {
     if ((currentPage + 1) * 12 > yearList.length) return;

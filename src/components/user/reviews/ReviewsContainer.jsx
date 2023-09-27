@@ -2,24 +2,31 @@ import { useEffect, useState } from "react";
 import { useUser } from "../../../contexts/UserContext";
 import BtnNav from "../../global/BtnNav";
 import ReviewCard from "./ReviewsCard";
-import styles from "./reviewsContainer.module.scss";
-import { useNavigate } from "react-router-dom";
 import NoSearchResults from "../../global/NoSearchResults";
 import EmptyList from "../../global/EmptyList";
+import styles from "./reviewsContainer.module.scss";
 
 const AMOUNT_PER_PAGE = 8;
 
 function ReviewsContainer({ searchQuery }) {
   const { reviews } = useUser();
   const [curPage, setCurPage] = useState(0);
-  const navigate = useNavigate();
+
   const filteredReviews = reviews.filter((r) =>
     r.game.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // ---------------------------------------------
+  // Setting Current Page to 0 on Query Change
+  // ---------------------------------------------
+
   useEffect(() => {
     setCurPage(0);
   }, [searchQuery]);
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function goPrev() {
     if (!curPage) return;

@@ -1,7 +1,7 @@
+import { useState } from "react";
+import { useUser } from "../../../contexts/UserContext";
 import UserSearchHeader from "../UserSearchHeader";
 import CollectionsContainer from "./CollectionsContainer";
-import { useUser } from "../../../contexts/UserContext";
-import { useState } from "react";
 
 function Collections() {
   const { collections } = useUser();

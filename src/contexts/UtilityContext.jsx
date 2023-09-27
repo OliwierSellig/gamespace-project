@@ -4,6 +4,7 @@ const UtilityContext = createContext();
 
 function UtilityProvider({ children }) {
   const API_KEY = "041a371c18934671bc7c7df826093657";
+
   const devList = [
     {
       name: "Bethesda Softworks",
@@ -60,6 +61,7 @@ function UtilityProvider({ children }) {
       slug: "cd-projekt-red",
     },
   ];
+
   const platforms = [
     { name: "Windows", img: "svg/windows.svg", id: "4" },
     { name: "PlayStation", img: "svg/playstation.svg", id: "187" },
@@ -85,6 +87,7 @@ function UtilityProvider({ children }) {
     { id: 13, icon: "/svg/neogeo.svg" },
     { id: 14, icon: "/svg/web.svg" },
   ];
+
   const loadingStyle = {
     display: "flex",
     alignItems: "center",
@@ -106,20 +109,18 @@ function UtilityProvider({ children }) {
     return transformed;
   }
 
-  function setToDoubleDigit(number) {
-    return number < 10 ? `0${number}` : number;
-  }
-
   function getCurrentDate() {
     return dateTransform(new Date());
+  }
+
+  function setToDoubleDigit(number) {
+    return number < 10 ? `0${number}` : number;
   }
 
   function generateRandomID() {
     const randomID = Math.ceil(Math.random() * 100000);
     return randomID;
   }
-
-  dateTransform();
 
   return (
     <UtilityContext.Provider

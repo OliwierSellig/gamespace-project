@@ -10,6 +10,10 @@ function Card({
   handleClick,
 }) {
   return (
+    // ----------------------------------------------------------
+    // Checking Whether on Click the Card has Been also Dragged
+    // ----------------------------------------------------------
+
     <li
       tabIndex={0}
       role="button"

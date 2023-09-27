@@ -1,7 +1,7 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import styles from "./header.module.scss";
-import { useEffect, useRef, useState } from "react";
 
 function Header({ isFixed = true }) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);

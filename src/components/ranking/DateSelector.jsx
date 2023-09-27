@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useRanking } from "../../contexts/RankingContext";
-import styles from "./dateSelector.module.scss";
 import { useUtility } from "../../contexts/UtilityContext";
+import styles from "./dateSelector.module.scss";
 
 function DateSelector() {
-  const navigate = useNavigate();
-  const { dateFrom, dateTo } = useRanking();
   const { setToDoubleDigit } = useUtility();
+  const { dateFrom, dateTo } = useRanking();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.selector}>

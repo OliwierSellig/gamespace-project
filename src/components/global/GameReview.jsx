@@ -1,15 +1,20 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./gameReview.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
+import styles from "./gameReview.module.scss";
+
+const COMMENT_LENGTH = 250;
 
 function GameReview({ game }) {
   const { updateReviews, checkReviewed } = useUser();
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
   const backgroundRef = useRef(null);
   const navigate = useNavigate();
-  const COMMENT_LENGTH = 250;
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+
+  // --------------------------------------
+  // Getting an Emote for Certain Review
+  // --------------------------------------
 
   function getReviewEmote() {
     if (!rating)
@@ -23,10 +28,18 @@ function GameReview({ game }) {
       return { name: "Exceptional", url: "/svg/exceptional.svg" };
   }
 
+  // --------------------------------------
+  // Saving The Review
+  // --------------------------------------
+
   function setReview() {
     const reviewItem = { rating, comment, game };
     updateReviews(reviewItem);
   }
+
+  // -----------------------------------------------------
+  // Checking Whether The Game Has Already Been Reviewed
+  // -----------------------------------------------------
 
   useEffect(() => {
     const reviewedGame = checkReviewed(game.id);

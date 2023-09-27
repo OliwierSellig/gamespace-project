@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import GameCarousel from "../global/GameCarousel";
-import styles from "./browsePlatforms.module.scss";
 import { useSearchParams } from "react-router-dom";
 import { useUtility } from "../../contexts/UtilityContext";
+import GameCarousel from "../global/GameCarousel";
+import styles from "./browsePlatforms.module.scss";
 
 function BrowsePlatforms() {
+  const { API_KEY } = useUtility();
+  const [searchParams] = useSearchParams();
   const [platformsList, setPlatformsList] = useState([]);
   const [parentName, setParenName] = useState("");
-  const [searchParams] = useSearchParams();
-  const { API_KEY } = useUtility();
+
+  // ------------------------------------------------
+  // Fetching Children Platforms For Paren Platform
+  // ------------------------------------------------
 
   useEffect(() => {
     const id = Number(searchParams.get("parent"));

@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
+import { useUtility } from "../../contexts/UtilityContext";
 import GameList from "../global/GameList";
 import SearchInput from "../global/SearchInput";
-import styles from "./browseDevelopers.module.scss";
 import TurnBtn from "../global/TurnBtn";
-import { useUtility } from "../../contexts/UtilityContext";
+import styles from "./browseDevelopers.module.scss";
 
 function BrowseDevelopers() {
+  const { API_KEY, loadingStyle } = useUtility();
   const [developersList, setDevelopersList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [totalDevs, setTotalDevs] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const { API_KEY, loadingStyle } = useUtility();
+
+  // ------------------------------------
+  // Fetching Developers
+  // ------------------------------------
 
   useEffect(() => {
     const controller = new AbortController();
@@ -37,6 +41,10 @@ function BrowseDevelopers() {
       controller.abort();
     };
   }, [currentPage, searchQuery, API_KEY, setIsLoading]);
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function goNext() {
     if (currentPage * 20 > totalDevs) return;

@@ -1,12 +1,6 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-import { useUtility } from "./UtilityContext";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+import { useUtility } from "./UtilityContext";
 
 const RankingContext = createContext();
 
@@ -66,11 +60,15 @@ function reducer(state, action) {
 }
 
 function RankingProvider({ children }) {
+  const { API_KEY, setToDoubleDigit } = useUtility();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [searchParams] = useSearchParams();
-  const { API_KEY, setToDoubleDigit } = useUtility();
   const { filter } = useParams();
   const { dateTo, dateFrom } = state;
+
+  // --------------------------------------
+  // Fetching The Ranked Games
+  // --------------------------------------
 
   useEffect(() => {
     async function fetchRanking() {
@@ -94,6 +92,10 @@ function RankingProvider({ children }) {
     }
     fetchRanking();
   }, [dateFrom, dateTo, API_KEY, filter, setToDoubleDigit]);
+
+  // --------------------------------------
+  // Checking For The Search Type
+  // --------------------------------------
 
   function checkForSearch() {
     const getSet =

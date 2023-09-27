@@ -1,22 +1,28 @@
+import { useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
-import SingleCollectionHeader from "./SingleCollectionHeader";
 import { useUser } from "../../../contexts/UserContext";
+import SingleCollectionHeader from "./SingleCollectionHeader";
 import GameList from "../../global/GameList";
 import TurnBtn from "../../global/TurnBtn";
-import { useState } from "react";
 import NoSearchResults from "../../global/NoSearchResults";
 
 const AMOUNT_PER_PAGE = 9;
 
 function CollectionView() {
-  const { id } = useParams();
   const { getCollectionByID } = useUser();
-  const selectedCollection = getCollectionByID(id);
+  const { id } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [curPage, setCurPage] = useState(0);
+
+  const selectedCollection = getCollectionByID(id);
+
   const filteredCollectionGames = selectedCollection.games.filter((game) =>
     game.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function goNext() {
     if ((curPage + 1) * AMOUNT_PER_PAGE >= filteredCollectionGames.length)

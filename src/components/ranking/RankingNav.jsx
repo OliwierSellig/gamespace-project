@@ -1,14 +1,14 @@
-import styles from "./rankingNav.module.scss";
-import Slider from "../global/Slider";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import ListDate from "./ListDate";
 import { useRanking } from "../../contexts/RankingContext";
+import Slider from "../global/Slider";
+import ListDate from "./ListDate";
 import DateSelector from "./DateSelector";
+import styles from "./rankingNav.module.scss";
 
 function RankingNav() {
+  const { rankedGamesList, checkForSearch } = useRanking();
   const { filter } = useParams();
   const navigate = useNavigate();
-  const { rankedGamesList, checkForSearch } = useRanking();
 
   return (
     <main className={styles.container}>

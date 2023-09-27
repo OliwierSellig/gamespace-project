@@ -56,10 +56,15 @@ function reducer(state, action) {
 }
 
 function GameProvider({ children }) {
-  const { id } = useParams();
   const { API_KEY } = useUtility();
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { id } = useParams();
   const { game } = state;
+
+  // --------------------------------------
+  // Fetching The Selected Game Info
+  // --------------------------------------
+
   useEffect(() => {
     async function findGame() {
       try {
@@ -80,6 +85,10 @@ function GameProvider({ children }) {
 
     findGame();
   }, [id, API_KEY]);
+
+  // -------------------------------------------------------------------
+  // Finding Where The Game Has Ranked In The Year of It's Publishemnt
+  // -------------------------------------------------------------------
 
   useEffect(() => {
     async function findTopYear() {
@@ -111,6 +120,10 @@ function GameProvider({ children }) {
 
     findTopYear();
   }, [game.released, game.id, API_KEY]);
+
+  // ---------------------------------------------------------
+  // Finding Where The Game Has Ranked In It's Main Genre
+  // ---------------------------------------------------------
 
   useEffect(() => {
     async function findTopGenre() {
@@ -144,6 +157,10 @@ function GameProvider({ children }) {
     findTopGenre();
   }, [game.genres, game.id, API_KEY]);
 
+  // ---------------------------------------------------------
+  // Fetching The Games That Are Part of The Same Series
+  // ---------------------------------------------------------
+
   useEffect(() => {
     async function findSameSeries() {
       try {
@@ -160,6 +177,10 @@ function GameProvider({ children }) {
 
     findSameSeries();
   }, [id, API_KEY]);
+
+  // -------------------------------------
+  // Finding Screenshoots from The Game
+  // -------------------------------------
 
   useEffect(() => {
     async function fetchScreenshots() {

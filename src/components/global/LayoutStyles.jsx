@@ -3,6 +3,7 @@ import styles from "./layoutStyles.module.scss";
 
 function LayoutStyles() {
   const { unSetSingleItemLayout, setSingleItemLayout } = useSearch();
+
   return (
     <div className={styles.container}>
       <span className={styles.text}>Layout Style:</span>

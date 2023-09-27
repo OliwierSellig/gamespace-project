@@ -7,6 +7,10 @@ function FiltersStats({ type = "developer" }) {
   const [topList, setTopList] = useState([]);
   const [barFilled, setBarFilled] = useState(0);
 
+  // -----------------------------------------------
+  // Getting The Ranked List and Filling The Bar
+  // -----------------------------------------------
+
   useEffect(() => {
     const topFilters = gamesPlayed.map((game) =>
       type === "developer"

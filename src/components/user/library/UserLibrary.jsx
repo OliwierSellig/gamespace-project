@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { useUtility } from "../../../contexts/UtilityContext";
+import { useUser } from "../../../contexts/UserContext";
 import GameList from "../../global/GameList";
 import GameListFiltered from "./GameListFiltered";
 import LibraryHeader from "./LibraryHeader";
 import SearchInput from "../../global/SearchInput";
 import TurnBtn from "../../global/TurnBtn";
-import { useUtility } from "../../../contexts/UtilityContext";
-import { useUser } from "../../../contexts/UserContext";
 
 const PAGE_AMOUNT = 20;
 
@@ -17,6 +17,10 @@ function UserLibrary() {
   const [orderBy, setOrderBy] = useState("relevance");
   const [searchQuery, setSearchQuery] = useState("");
   const [curPage, setCurPage] = useState(0);
+
+  // ------------------------------------
+  // Switching The Order
+  // ------------------------------------
 
   useEffect(() => {
     function getGameList() {
@@ -45,6 +49,10 @@ function UserLibrary() {
         throw new Error("Unknown order filter");
     }
   }, [orderBy, gamesPlayed, searchQuery]);
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function goNext() {
     if (

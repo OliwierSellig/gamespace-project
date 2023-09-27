@@ -1,17 +1,17 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
-import styles from "./listMonth.module.scss";
 import { useRanking } from "../../contexts/RankingContext";
+import styles from "./listMonth.module.scss";
 
-const monthsAmount = 12;
+const MONTHS_AMOUNT = 12;
 
 function ListMonth() {
+  const { dispatch } = useRanking();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { dispatch } = useRanking();
 
   return (
     <ul className={styles.list}>
-      {Array.from({ length: monthsAmount }, (_, i) => (
+      {Array.from({ length: MONTHS_AMOUNT }, (_, i) => (
         <li
           tabIndex={0}
           role="button"

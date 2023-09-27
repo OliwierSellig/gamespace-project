@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import ReviewsContainer from "./ReviewsContainer";
-import { useState } from "react";
 import UserSearchHeader from "../UserSearchHeader";
 
 function Reviews() {

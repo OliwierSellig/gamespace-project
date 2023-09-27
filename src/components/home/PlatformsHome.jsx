@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./platformsHome.module.scss";
 import { useUtility } from "../../contexts/UtilityContext";
+import styles from "./platformsHome.module.scss";
 
 function PlatformsHome() {
-  const navigate = useNavigate();
   const { platforms } = useUtility();
+  const navigate = useNavigate();
 
   return (
     <section className={styles.platforms}>

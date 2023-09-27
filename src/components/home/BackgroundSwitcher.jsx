@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "./backgroundSwitcher.module.scss";
 
+const BACKGROUND_IMAGES_AMOUNT = 5;
+const BACKGROUND_CHANGE_PERIOD = 8000;
+
 function BackgroundSwitcher({ children }) {
   const [currentBackground, setCurrentBackground] = useState(0);
-  const backgroundImagesAmount = 5;
+
+  // ---------------------------------------
+  // Switching Beetwen Background Images
+  // ---------------------------------------
 
   useEffect(() => {
     function switchBackground(length) {
@@ -12,8 +18,8 @@ function BackgroundSwitcher({ children }) {
     }
 
     const switchBackgroundInterval = setTimeout(
-      () => switchBackground(5),
-      8000
+      () => switchBackground(BACKGROUND_IMAGES_AMOUNT),
+      BACKGROUND_CHANGE_PERIOD
     );
 
     function clearSwitch() {
@@ -25,7 +31,7 @@ function BackgroundSwitcher({ children }) {
 
   return (
     <section className={styles.container}>
-      {Array.from({ length: backgroundImagesAmount }, (_, i) => (
+      {Array.from({ length: BACKGROUND_IMAGES_AMOUNT }, (_, i) => (
         <img
           className={`${styles.backgroundCover} ${
             currentBackground === i ? styles.visible : styles.hidden
@@ -39,7 +45,7 @@ function BackgroundSwitcher({ children }) {
         />
       ))}
       <div className={styles.navBox}>
-        {Array.from({ length: backgroundImagesAmount }, (_, i) => (
+        {Array.from({ length: BACKGROUND_IMAGES_AMOUNT }, (_, i) => (
           <button
             onClick={() => setCurrentBackground(i)}
             className={`${styles.navDot} ${

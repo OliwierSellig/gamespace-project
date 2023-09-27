@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./collectionsCard.module.scss";
 
+const BACKGROUND_IMAGES_LIMIT = 4;
+
 function CollectionsCard({ collection }) {
   const navigate = useNavigate();
 
@@ -20,7 +22,7 @@ function CollectionsCard({ collection }) {
         <span className={styles.games__text}>games</span>
       </p>
       <div className={styles.background}>
-        {collection.games.slice(0, 4).map((game) => (
+        {collection.games.slice(0, BACKGROUND_IMAGES_LIMIT).map((game) => (
           <img
             className={styles.background__img}
             src={game.background_image}

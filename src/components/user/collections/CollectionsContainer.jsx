@@ -5,17 +5,26 @@ import NoSearchResults from "../../global/NoSearchResults";
 import CollectionsCard from "./CollectionsCard";
 import styles from "./collectionsContainer.module.scss";
 
-const AMOUNT_PER_PAGE = 9;
+const AMOUNT_PER_PAGE = 3;
 
 function CollectionsContainer({ collections, query }) {
   const [curPage, setCurPage] = useState(0);
+
   const filteredCollections = collections.filter((c) =>
     c.name.toLowerCase().includes(query.toLowerCase())
   );
 
+  // ---------------------------------------------
+  // Setting Current Page to 0 on Query Change
+  // ---------------------------------------------
+
   useEffect(() => {
     setCurPage(0);
   }, [query]);
+
+  // ------------------------------------
+  // List Navigation Functions
+  // ------------------------------------
 
   function goPrev() {
     if (!curPage) return;

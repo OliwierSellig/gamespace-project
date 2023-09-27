@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import TurnBtn from "./TurnBtn";
 import styles from "./slider.module.scss";
-import { useNavigate } from "react-router-dom";
+
+const SCROLL_AMOUNT = 1000;
 
 function Slider({
   title = null,
@@ -252,8 +254,8 @@ function Slider({
             ))}
         </ul>
 
-        <TurnBtn next={false} handleClick={() => onScrollLeft(1000)} />
-        <TurnBtn next={true} handleClick={() => onScrollRight(1000)} />
+        <TurnBtn next={false} handleClick={() => onScrollLeft(SCROLL_AMOUNT)} />
+        <TurnBtn next={true} handleClick={() => onScrollRight(SCROLL_AMOUNT)} />
       </div>
     </section>
   );

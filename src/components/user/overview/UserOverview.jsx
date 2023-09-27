@@ -1,15 +1,19 @@
+import { useEffect, useState } from "react";
+import { useUser } from "../../../contexts/UserContext";
 import FiltersStats from "./FiltersStats";
 import GamesStats from "./GamesStats";
 import ShareAccount from "./ShareAccount";
 import Slider from "../../global/Slider";
 import UserHeader from "./UserHeader";
 import UserStats from "./UserStats";
-import { useUser } from "../../../contexts/UserContext";
-import { useEffect, useState } from "react";
 
 function UserOverview() {
   const { gamesPlayed, getFavourites, reviews, collections } = useUser();
   const [, updateState] = useState();
+
+  // ------------------------------------
+  // Forcing a Reload
+  // ------------------------------------
 
   useEffect(() => {
     updateState({});

@@ -1,15 +1,19 @@
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useUtility } from "../../contexts/UtilityContext";
 import GameBox from "../global/GameBox";
 import styles from "./selectRated.module.scss";
-import { useEffect, useRef, useState } from "react";
-import { useUtility } from "../../contexts/UtilityContext";
 
 function SelectRated() {
+  const { API_KEY } = useUtility();
   const { id } = useParams();
-  const [ratedGame, setRatedGame] = useState({});
   const navigate = useNavigate();
   const backgroundRef = useRef();
-  const { API_KEY } = useUtility();
+  const [ratedGame, setRatedGame] = useState({});
+
+  // ------------------------------------
+  // Fetching The Selected Game Details
+  // ------------------------------------
 
   useEffect(() => {
     async function fetchRated() {

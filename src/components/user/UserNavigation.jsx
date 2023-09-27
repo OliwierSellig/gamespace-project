@@ -5,6 +5,10 @@ import styles from "./userNavigation.module.scss";
 function UserNavigation({ children }) {
   const { getFavourites } = useUser();
 
+  // -----------------------------------------------------
+  // Setting a Random Background Image For The User Page
+  // -----------------------------------------------------
+
   function getFavouriteBackground(list) {
     if (!list || !list.length) return `/img/user-background.jpg`;
     const random = Math.ceil(Math.random() * list.length) - 1;

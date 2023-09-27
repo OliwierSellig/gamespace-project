@@ -3,11 +3,16 @@ import { useUser } from "../../../contexts/UserContext";
 import { useUtility } from "../../../contexts/UtilityContext";
 import styles from "./userTopPlatforms.module.scss";
 
+const TOP_PLATFORMS_AMOUNT = 3;
+
 function UserTopPlatforms() {
-  const { gamesPlayed, rankList } = useUser();
   const { getPlatformIcon } = useUtility();
+  const { gamesPlayed, rankList } = useUser();
   const [platformsRanked, setPlatformsRanked] = useState([]);
-  const platformsTopAmount = 3;
+
+  // ------------------------------------
+  // Getting the ranked platforms
+  // ------------------------------------
 
   useEffect(() => {
     setPlatformsRanked(rankList(gamesPlayed.map((game) => game.platform.id)));
@@ -15,7 +20,7 @@ function UserTopPlatforms() {
 
   return (
     <ul className={styles.platforms}>
-      {platformsRanked.slice(0, platformsTopAmount).map((platform, i) => (
+      {platformsRanked.slice(0, TOP_PLATFORMS_AMOUNT).map((platform, i) => (
         <li
           className={`${styles.platforms__item} ${
             styles[`platforms__item__${i + 1}`]
@@ -32,7 +37,7 @@ function UserTopPlatforms() {
       ))}
       {platformsRanked.length < 3 &&
         Array.from(
-          { length: platformsTopAmount - platformsRanked.length },
+          { length: TOP_PLATFORMS_AMOUNT - platformsRanked.length },
           () => (
             <li className={styles.empty} key={crypto.randomUUID()}>
               No Platform

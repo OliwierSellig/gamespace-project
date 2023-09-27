@@ -3,98 +3,106 @@ import { useSearchParams } from "react-router-dom";
 import { useUtility } from "./UtilityContext";
 
 const SearchContext = createContext();
+
 const possibleDestinatios = ["genres", "platforms", "developers"];
 
+const initialState = {
+  searchList: [],
+  searchQuery: "",
+  isLoading: false,
+  currentPage: 1,
+  gameCount: 0,
+  orderBy: "relevance",
+  inSingleItemLayout: false,
+  searchingBy: false,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "querySet":
+      return {
+        ...state,
+        searchQuery: action.payload,
+      };
+    case "gameListSet":
+      return {
+        ...state,
+        searchList: action.payload,
+      };
+    case "gameListClear":
+      return {
+        ...state,
+        searchList: 0,
+      };
+    case "gameCountSet":
+      return {
+        ...state,
+        gameCount: action.payload,
+      };
+    case "loadingStarted":
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case "loadingFinished":
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case "singleItemLayoutSet":
+      return {
+        ...state,
+        inSingleItemLayout: true,
+      };
+    case "singleItemLayoutUnset":
+      return {
+        ...state,
+        inSingleItemLayout: false,
+      };
+    case "pageForward":
+      return {
+        ...state,
+        currentPage: state.currentPage + 1,
+      };
+    case "pageBack":
+      return {
+        ...state,
+        currentPage: state.currentPage - 1,
+      };
+    case "setOrder":
+      return {
+        ...state,
+        orderBy: action.payload,
+      };
+    case "searchBy":
+      return {
+        ...state,
+        searchingBy: true,
+      };
+    case "stopSearchBy":
+      return {
+        ...state,
+        searchingBy: false,
+      };
+
+    default:
+      throw new Error("Unknown Action");
+  }
+}
+
 function SearchProvider({ children }) {
-  const [searchParams] = useSearchParams();
   const { API_KEY } = useUtility();
-  const initialState = {
-    searchList: [],
-    searchQuery: "",
-    isLoading: false,
-    currentPage: 1,
-    gameCount: 0,
-    orderBy: "relevance",
-    inSingleItemLayout: false,
-    searchingBy: false,
-  };
+  const [searchParams] = useSearchParams();
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
   const { currentPage, gameCount, orderBy, inSingleItemLayout, searchQuery } =
     state;
 
-  function reducer(state, action) {
-    switch (action.type) {
-      case "querySet":
-        return {
-          ...state,
-          searchQuery: action.payload,
-        };
-      case "gameListSet":
-        return {
-          ...state,
-          searchList: action.payload,
-        };
-      case "gameListClear":
-        return {
-          ...state,
-          searchList: 0,
-        };
-      case "gameCountSet":
-        return {
-          ...state,
-          gameCount: action.payload,
-        };
-      case "loadingStarted":
-        return {
-          ...state,
-          isLoading: true,
-        };
-      case "loadingFinished":
-        return {
-          ...state,
-          isLoading: false,
-        };
-      case "singleItemLayoutSet":
-        return {
-          ...state,
-          inSingleItemLayout: true,
-        };
-      case "singleItemLayoutUnset":
-        return {
-          ...state,
-          inSingleItemLayout: false,
-        };
-      case "pageForward":
-        return {
-          ...state,
-          currentPage: state.currentPage + 1,
-        };
-      case "pageBack":
-        return {
-          ...state,
-          currentPage: state.currentPage - 1,
-        };
-      case "setOrder":
-        return {
-          ...state,
-          orderBy: action.payload,
-        };
-      case "searchBy":
-        return {
-          ...state,
-          searchingBy: true,
-        };
-      case "stopSearchBy":
-        return {
-          ...state,
-          searchingBy: false,
-        };
+  // --------------------------------------------------
+  // Fetching The Games That Match The Search Query
+  // --------------------------------------------------
 
-      default:
-        throw new Error("Unknown Action");
-    }
-  }
   useEffect(() => {
     const controller = new AbortController();
 
@@ -145,6 +153,10 @@ function SearchProvider({ children }) {
       controller.abort();
     };
   }, [searchQuery, currentPage, orderBy, dispatch, searchParams, API_KEY]);
+
+  // ---------------------------------------------------
+  // Changing The Layout Style At a Specific Width
+  // ---------------------------------------------------
 
   useEffect(() => {
     function setLayout() {

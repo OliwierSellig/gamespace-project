@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import TurnBtn from "./TurnBtn";
 import styles from "./gameCarousel.module.scss";
-import { useState } from "react";
 
 function GameCarousel({
   heading = null,
@@ -12,8 +12,8 @@ function GameCarousel({
   carouselStyle,
   cardStyle,
 }) {
-  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
 
   function nextPage() {
     if (amount * currentPage >= list.length) return;
