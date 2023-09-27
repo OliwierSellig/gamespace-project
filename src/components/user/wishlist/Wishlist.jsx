@@ -40,7 +40,7 @@ function Wishlist() {
       {!wishlist.filter((game) =>
         game.name.toLowerCase().includes(searchQuery.toLowerCase())
       ).length &&
-        (wishlist.length ? (
+        (wishlist.length > 0 ? (
           <NoSearchResults />
         ) : (
           <EmptyList navigateTo="/search">

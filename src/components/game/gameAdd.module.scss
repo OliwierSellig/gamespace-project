@@ -23,6 +23,15 @@
   padding: 4.8rem;
   border-radius: var(--border-radius-default);
   background-color: rgba(#222, 0.95);
+
+  @media only screen and (max-width: 670px) {
+    width: 95%;
+    min-width: auto;
+  }
+
+  @media only screen and (max-width: 480px) {
+    padding: 3.6rem 2.4rem;
+  }
 }
 
 .heading {
@@ -91,6 +100,10 @@
   &:hover {
     background-color: #444;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 65%;
+  }
 }
 
 .played {
@@ -108,5 +121,9 @@
   &:hover {
     background-color: var(--color-blue-primary-shade-1);
     transform: scale(1.03);
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 85%;
   }
 }

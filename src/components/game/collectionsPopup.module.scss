@@ -1,19 +1,19 @@
 .container {
-  z-index: 20;
   position: absolute;
   top: 0;
   left: 0;
-  width: 140%;
-  border-radius: var(--border-radius-smallest);
-  overflow: hidden;
-  height: 14rem;
-  background-color: #222;
+  z-index: 20;
   display: grid;
   grid-template-rows: 2fr 1fr;
+  width: 140%;
+  height: 14rem;
+  border-radius: var(--border-radius-smallest);
+  background-color: #222;
+  overflow: hidden;
 
   @media only screen and (max-width: 900px) {
-    height: 18rem;
     grid-template-rows: 2.5fr 1fr;
+    height: 18rem;
   }
 
   @media only screen and (max-width: 340px) {
@@ -23,23 +23,22 @@
 
 .empty {
   padding: 10px;
-  font-size: 1.8rem;
   font-weight: 300;
-  cursor: default;
+  font-size: 1.8rem;
   color: #aaa;
+  cursor: default;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  list-style: none;
   grid-row: 1/2;
   background-color: inherit;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  overflow-x: hidden;
   color: #ccc;
+  list-style: none;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -50,8 +49,8 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #555;
     border-radius: var(--border-radius-smallest);
+    background: #555;
   }
 
   &::-webkit-scrollbar-thumb:hover {
@@ -61,8 +60,8 @@
 
 .item {
   padding: 6px 0;
-  cursor: pointer;
   transition: var(--transition-fast);
+  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -71,17 +70,17 @@
 }
 
 .btnCreate {
+  grid-row: 2/3;
   display: flex;
   align-items: center;
-  text-decoration: none;
   justify-content: center;
+  width: 100%;
+  border: none;
   background-color: #333;
   box-shadow: -2rem 0 4rem rgba(#000, 0.2);
-  border: none;
-  width: 100%;
-  grid-row: 2/3;
-  color: #fff;
   font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
   transition: var(--transition-fast);
   cursor: pointer;
 
