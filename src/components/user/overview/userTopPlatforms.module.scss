@@ -111,7 +111,8 @@
     opacity: 0;
     transition: var(--transition-fast);
 
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
   }

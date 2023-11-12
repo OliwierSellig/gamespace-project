@@ -5,7 +5,7 @@ import NoSearchResults from "../../global/NoSearchResults";
 import CollectionsCard from "./CollectionsCard";
 import styles from "./collectionsContainer.module.scss";
 
-const AMOUNT_PER_PAGE = 3;
+const AMOUNT_PER_PAGE = 4;
 
 function CollectionsContainer({ collections, query }) {
   const [curPage, setCurPage] = useState(0);

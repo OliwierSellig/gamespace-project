@@ -44,7 +44,8 @@
     background-color: var(--color-blue-primary);
     color: #fff;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: var(--color-blue-primary-shade-1);
       transform: scale(1.03);
     }
@@ -54,7 +55,8 @@
     background-color: #555;
     color: #eee;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: #444;
     }
   }

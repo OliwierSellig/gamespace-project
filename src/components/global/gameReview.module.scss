@@ -137,6 +137,26 @@
     background-color: #5478e4;
     box-shadow: -1207px 0 0 1200px #4169e1;
   }
+
+  &:hover,
+  &:focus {
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #6586e7;
+      box-shadow: -1207px 0 0 1200px #5478e4;
+    }
+    &::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #6586e7;
+      box-shadow: -1207px 0 0 1200px #5478e4;
+    }
+  }
 }
 
 .rating {

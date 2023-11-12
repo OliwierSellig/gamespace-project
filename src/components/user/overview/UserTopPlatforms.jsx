@@ -32,7 +32,9 @@ function UserTopPlatforms() {
             src={getPlatformIcon(platform.at(0))}
             alt="First Ranked Platform"
           />
-          <span className={styles.platforms__info}>{platform.at(1)} Games</span>
+          <span className={styles.platforms__info} tabIndex={0}>
+            {platform.at(1)} Games
+          </span>
         </li>
       ))}
       {platformsRanked.length < 3 &&

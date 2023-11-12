@@ -69,7 +69,8 @@
     opacity: 0;
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
   }
@@ -111,7 +112,8 @@
       display: none;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: #333;
     }
   }

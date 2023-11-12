@@ -71,6 +71,7 @@ function GameAdd() {
             )
             .map((platform) => (
               <li
+                tabIndex={0}
                 className={`${styles.item} ${
                   selectedPlatform?.id === platform?.id ? styles.selected : ""
                 }`}

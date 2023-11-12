@@ -74,7 +74,8 @@
   background-color: transparent;
   border: 2px solid #aaa;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #aaa;
   }
 

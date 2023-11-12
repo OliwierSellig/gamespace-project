@@ -14,7 +14,8 @@
   overflow: hidden;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     transform: scale(1.03);
 
     & .options {
@@ -82,7 +83,8 @@
   transition: var(--transition-medium);
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     border: 2px solid #aaa;
     color: #aaa;
     transform: scale(1.06);

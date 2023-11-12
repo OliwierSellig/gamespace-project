@@ -61,7 +61,8 @@
   transition: var(--transition-medium);
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #aaa;
   }
 

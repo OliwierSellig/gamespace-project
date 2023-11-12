@@ -6,9 +6,15 @@
   color: #fff;
   position: relative;
   letter-spacing: 1px;
+  transition: var(--transition-fast);
 
   &__footer {
     margin-bottom: 1.8rem;
+  }
+
+  &:hover,
+  &:focus {
+    color: #ccc;
   }
 }
 

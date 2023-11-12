@@ -114,7 +114,8 @@
     border: 2px solid #fff;
     background-color: transparent;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: #fff;
       color: #222;
     }
@@ -124,7 +125,8 @@
     margin-top: 1rem;
     background-color: var(--color-delete);
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: var(--color-delete-shade);
     }
   }

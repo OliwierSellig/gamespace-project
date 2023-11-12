@@ -15,7 +15,6 @@ function Card({
     // ----------------------------------------------------------
 
     <li
-      tabIndex={0}
       role="button"
       className={`${styles.card} ${scale ? styles.card__scale : ""} ${
         cardStyle ? styles[cardStyle] : ""
@@ -28,7 +27,7 @@ function Card({
       }}
     >
       <img className={styles.img} src={rsc} alt={`${title} cover`} />
-      <div className={styles.container}>
+      <div className={styles.container} tabIndex={0}>
         <span className={styles.title}>{title}</span>
         <span className={styles.details}>{details}</span>
       </div>

@@ -31,7 +31,8 @@
   text-decoration: none;
   transition: var(--transition-fast);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #ccc;
   }
 }
@@ -74,7 +75,8 @@
   background-color: #555;
   transition: var(--transition-fast);
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #aaa;
   }
 

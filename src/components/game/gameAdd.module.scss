@@ -61,7 +61,8 @@
   transition: var(--transition-fast);
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #444;
   }
 }
@@ -97,7 +98,8 @@
     height: 2.8rem;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #444;
   }
 
@@ -118,7 +120,8 @@
   transition: var(--transition-fast);
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--color-blue-primary-shade-1);
     transform: scale(1.03);
   }

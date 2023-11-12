@@ -87,7 +87,8 @@
     font-weight: 500;
     font-size: 2rem;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: var(--color-blue-primary-shade-1);
       transform: scale(1.03);
     }
@@ -103,7 +104,8 @@
     font-weight: 500;
     font-size: 2rem;
 
-    &:hover {
+    &:hover,
+    &:focus {
       border: 1px #aaa solid;
       color: #aaa;
     }
@@ -119,7 +121,8 @@
     font-weight: 300;
     font-size: 1.8rem;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: #666;
     }
   }
@@ -140,7 +143,8 @@
     transition: var(--transition-medium);
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: #222;
       transform: scale(1.02);
     }
@@ -233,7 +237,8 @@
     text-decoration: none;
     transition: var(--transition-fast);
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: #222;
       color: #ccc;
     }

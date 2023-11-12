@@ -5,13 +5,15 @@ function UserHeader() {
   return (
     <header className={styles.container}>
       <div className={styles.account}>
-        <div tabIndex={0} role="button" className={styles.account__imgBox}>
+        <div role="button" className={styles.account__imgBox}>
           <img
             className={styles.account__img}
             src="/img/user.webp"
             alt="User Avatar"
           />
-          <span className={styles.account__imgText}>Change Avatar</span>
+          <span tabIndex={0} className={styles.account__imgText}>
+            Change Avatar
+          </span>
         </div>
         <div className={styles.account__content}>
           <span className={styles.account__name}>John Sanderson</span>

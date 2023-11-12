@@ -27,7 +27,8 @@
   transition: var(--transition-fast);
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #333;
   }
 }

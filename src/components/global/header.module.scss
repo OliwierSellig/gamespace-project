@@ -59,7 +59,8 @@
   text-decoration: none;
   transition: var(--transition-fast);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #999;
   }
 
@@ -83,6 +84,12 @@
   overflow: hidden;
 
   &:hover {
+    background-color: #333;
+  }
+
+  &:focus {
+    outline: 2px solid #fff;
+    outline-offset: 5px;
     background-color: #333;
   }
 

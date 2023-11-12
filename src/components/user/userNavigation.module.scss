@@ -78,7 +78,8 @@
   transition: var(--transition-medium);
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #222;
     transform: translateY(-15%);
   }
