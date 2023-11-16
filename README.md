@@ -2,6 +2,24 @@
 
 Game Space is my first more-advanced project that I decided to share with the world. It's a video game library built using the RAWG API. I failed a lot and learned a ton of lessons from creating this app. Below, I list the most important information about everything I used during the development.
 
+### Instalation
+
+```
+npm i
+```
+
+### Local Development
+
+```
+npm run dev
+```
+
+### Build
+
+```
+npm run build
+```
+
 ## Technologies I used
 
 #### Framework: React
