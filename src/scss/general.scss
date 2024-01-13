@@ -1,0 +1,197 @@
+// -----------------------------------------
+// Custom Colors
+// -----------------------------------------
+
+:root {
+  --color-dark-primary: #121212;
+  --color-dark-secondary: #151515;
+  --color-blue-primary: #4169e1;
+  --color-blue-primary-shade-1: #3454b4;
+  --color-blue-primary-tint-1: #5478e4;
+  --color-metacritics: #6dc849;
+  --color-first-place: #e6c900;
+  --color-second-place: #adadad;
+  --color-third-place: #a46628;
+  --color-facebook: #4267b2;
+  --color-facebook-shade: #3b5da0;
+  --color-twitter: #00acee;
+  --color-twitter-shade: #009bd6;
+  --color-delete: #dc143c;
+  --color-delete-shade: #b01030;
+  --border-radius-default: 13px;
+  --border-radius-small: 9px;
+  --border-radius-smallest: 7px;
+  --transition-long: all 0.4s;
+  --transition-medium: all 0.3s;
+  --transition-fast: all 0.2s;
+}
+
+// ---
+
+// -----------------------------------------
+// Global Reset
+// -----------------------------------------
+
+*:where(
+    :not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)
+  ) {
+  all: unset;
+  display: revert;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a,
+button {
+  cursor: revert;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+textarea {
+  white-space: revert;
+}
+
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+:where(pre) {
+  all: revert;
+}
+
+::placeholder {
+  color: unset;
+}
+
+::marker {
+  content: initial;
+}
+
+:where([hidden]) {
+  display: none;
+}
+
+:where([contenteditable]:not([contenteditable="false"])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+:where(dialog:modal) {
+  all: revert;
+}
+
+canvas {
+  display: none;
+}
+
+// ---
+
+// -----------------------------------------
+// Custom Global Styles
+// -----------------------------------------
+
+html {
+  font-size: 62.5%;
+  overflow-x: clip;
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 56.25%;
+  }
+
+  @media only screen and (max-width: 900px) {
+    font-size: 50%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 43.75%;
+  }
+
+  @media only screen and (max-width: 400px) {
+    font-size: 37.5%;
+  }
+}
+
+body {
+  background-color: var(--color-dark-secondary);
+  color: #fff;
+  line-height: 1;
+  overflow-x: clip;
+}
+
+.heading-primary {
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 5.2rem;
+  line-height: 1.2;
+  letter-spacing: 1px;
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 4.8rem;
+  }
+
+  @media only screen and (max-width: 720px) {
+    font-size: 4.4rem;
+  }
+
+  @media only screen and (max-width: 500px) {
+    font-size: 4rem;
+    letter-spacing: 0.5px;
+  }
+
+  @media only screen and (max-width: 300px) {
+    margin-bottom: 1.6rem;
+    font-size: 3.4rem;
+  }
+}
+
+.drag {
+  user-select: none;
+}
+
+.animated {
+  transition: all 0.3s ease-out;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 500;
+  font-size: 4rem;
+  letter-spacing: 0.5px;
+}
+
+// ---
