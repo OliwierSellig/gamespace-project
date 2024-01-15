@@ -55,7 +55,6 @@ function Home() {
 
   return (
     <>
-      <Header />
       <Hero />
       <Slider
         title="Trending in 2023"
@@ -71,7 +70,6 @@ function Home() {
         list={genresList}
       />
       <PlatformsHome />
-      <Footer />
     </>
   );
 }

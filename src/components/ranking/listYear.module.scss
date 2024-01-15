@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  list-style: none;
+
+  @media only screen and (max-width: 360px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14rem;
+  height: 14rem;
+  border-radius: var(--border-radius-default);
+  font-size: 2.4rem;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(#222, 0.9);
+  }
+}

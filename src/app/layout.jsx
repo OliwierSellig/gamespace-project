@@ -1,4 +1,7 @@
 import { poppins } from "@/utils/fonts";
+import "../scss/general.scss";
+import Header from "@/components/global/Header";
+import Footer from "@/components/global/Footer";
 
 export const metadata = {
   title: "GameSpace | Web's most advanced games library",
@@ -9,7 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.className}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -11,6 +11,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/ranking",
+        destination: "/ranking/trending",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

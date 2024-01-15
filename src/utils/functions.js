@@ -1,3 +1,5 @@
+import { platformsIcons } from "./data";
+
 export function getPlatformIcon(id) {
   return platformsIcons.find((platform) => platform.id === id).icon;
 }
@@ -14,7 +16,7 @@ export function getCurrentDate() {
 }
 
 export function setToDoubleDigit(number) {
-  return number < 10 ? `0${number}` : number;
+  return number >= 0 && String(number).length < 2 ? `0${number}` : number;
 }
 
 export function generateRandomID() {
