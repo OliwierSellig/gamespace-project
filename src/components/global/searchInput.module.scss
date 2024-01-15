@@ -1,0 +1,130 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 3.6rem;
+  padding: 3.6rem 8.6rem 0;
+
+  &__all {
+    @media only screen and (max-width: 460px) {
+      padding: 3.2rem 4.8rem 0;
+    }
+
+    & .input {
+      @media only screen and (max-width: 600px) {
+        font-size: 3.2rem;
+      }
+
+      @media only screen and (max-width: 360px) {
+        font-size: 2.8rem;
+      }
+    }
+  }
+
+  &__library {
+    @media only screen and (max-width: 700px) {
+      padding: 3.2rem 4.8rem 0;
+    }
+
+    @media only screen and (max-width: 500px) {
+      padding: 3.2rem 2.4rem 0;
+    }
+
+    & .input {
+      font-size: 2.8rem;
+    }
+  }
+
+  &__user {
+    margin-bottom: 0;
+    padding: 0 4.8rem;
+
+    & .input {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__collection {
+    @media only screen and (max-width: 460px) {
+      padding: 3.6rem 3.6rem 0;
+    }
+    & .input {
+      font-size: 2.4rem;
+    }
+
+    & .close {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+
+  &__browse {
+    margin-bottom: 0rem;
+    padding: 0 4.8rem;
+
+    @media only screen and (max-width: 1300px) {
+      padding: 0 4.8rem 0 0;
+    }
+
+    @media only screen and (max-width: 400px) {
+      padding: 0 2.4rem 0 0;
+    }
+
+    @media only screen and (max-width: 400px) {
+      padding: 0;
+    }
+
+    & .input {
+      padding: 0.2rem 0;
+      color: #aaa;
+      font-size: 3rem;
+
+      &::placeholder {
+        color: #888;
+      }
+    }
+
+    & .line {
+      background-color: #888;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1 0;
+  padding: 0.6rem 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 3.6rem;
+  letter-spacing: 0.5px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.close {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  &__icon {
+    width: 100%;
+    line-height: 1;
+  }
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+}

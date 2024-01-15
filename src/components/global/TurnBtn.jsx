@@ -1,5 +1,4 @@
 import styles from "./turnBtn.module.scss";
-import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/20/solid";
 import { HiMiniChevronRight, HiMiniChevronLeft } from "react-icons/hi2";
 
 function TurnBtn({ next = false, size = 4, user = false, handleClick }) {

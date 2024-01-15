@@ -18,6 +18,11 @@ const nextConfig = {
         destination: "/ranking/trending",
         permanent: true,
       },
+      {
+        source: "/browse",
+        destination: "/browse/developers",
+        permanent: true,
+      },
     ];
   },
 };
