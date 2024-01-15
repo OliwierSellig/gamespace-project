@@ -1,0 +1,41 @@
+.btn {
+  position: absolute;
+  top: 50%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #222;
+  transition: var(--transition-fast);
+  opacity: 0.8;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: #333;
+    opacity: 1;
+  }
+}
+
+.next {
+  right: 0;
+  transform: translate(50%, -50%);
+
+  &__user {
+    right: 0;
+    transform: translate(10%, 15%);
+  }
+}
+
+.prev {
+  left: 0;
+  transform: translate(-50%, -50%);
+
+  &__user {
+    left: 0;
+    transform: translate(-10%, 15%);
+  }
+}
