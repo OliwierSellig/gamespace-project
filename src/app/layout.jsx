@@ -1,7 +1,6 @@
 import { poppins } from "@/utils/fonts";
 import "../scss/general.scss";
-import Header from "@/components/global/Header";
-import Footer from "@/components/global/Footer";
+import { UserProvider } from "@/contexts/UserContext";
 
 export const metadata = {
   title: "GameSpace | Web's most advanced games library",
@@ -13,9 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.className}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <UserProvider>{children}</UserProvider>
       </body>
     </html>
   );

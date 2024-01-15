@@ -1,0 +1,246 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-15%);
+}
+
+.cover {
+  width: 70%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  align-self: center;
+  margin-bottom: 2.4rem;
+  border-radius: var(--border-radius-smallest);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+  }
+  @media only screen and (max-width: 530px) {
+    width: 90%;
+  }
+}
+
+.smallDetails {
+  margin-bottom: 0.6rem;
+  font-weight: 300;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.title {
+  margin-bottom: 3.2rem;
+  font-weight: 600;
+  font-size: 5.2rem;
+  line-height: 1.2;
+
+  @media only screen and (max-width: 530px) {
+    font-size: 4.6rem;
+  }
+
+  @media only screen and (max-width: 380px) {
+    font-size: 4.2rem;
+  }
+}
+
+.actionBtns {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  width: 100%;
+  margin-bottom: 3.6rem;
+
+  @media only screen and (max-width: 1540px) {
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 2.4rem;
+  }
+
+  @media only screen and (max-width: 340px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+.btn {
+  &__add,
+  &__wishlist,
+  &__collections {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    transition: var(--transition-medium);
+    cursor: pointer;
+    @media only screen and (max-width: 340px) {
+      justify-content: center;
+      width: 90%;
+    }
+  }
+
+  &__add {
+    padding: 1.6rem 3.6rem;
+    border-radius: var(--border-radius-default);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    background-color: var(--color-blue-primary);
+    color: #fff;
+    font-weight: 500;
+    font-size: 2rem;
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-blue-primary-shade-1);
+      transform: scale(1.03);
+    }
+  }
+
+  &__wishlist {
+    padding: 1.6rem 3.2rem;
+    border-radius: var(--border-radius-default);
+    border: 1px #fff solid;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+    color: #fff;
+    font-weight: 500;
+    font-size: 2rem;
+
+    &:hover,
+    &:focus {
+      border: 1px #aaa solid;
+      color: #aaa;
+    }
+  }
+
+  &__collections {
+    position: relative;
+    padding-bottom: 3px;
+    border: none;
+    border-bottom: 1px solid currentColor;
+    background: none;
+    color: #888;
+    font-weight: 300;
+    font-size: 1.8rem;
+
+    &:hover,
+    &:focus {
+      color: #666;
+    }
+  }
+
+  &__review {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 2.4rem;
+    padding: 1.6rem 6.4rem;
+    border: none;
+    border-radius: var(--border-radius-default);
+    background-color: #333;
+    color: #fff;
+    font-weight: 300;
+    font-size: 2.2rem;
+    transition: var(--transition-medium);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: #222;
+      transform: scale(1.02);
+    }
+  }
+}
+
+.addIcon,
+.reviewIcon {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.rating {
+  display: flex;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+
+  @media only screen and (max-width: 440px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  &__chart {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0.6rem 3.2rem;
+
+    &:first-child {
+      padding-left: 0;
+      @media only screen and (max-width: 440px) {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        gap: 1.4rem;
+      }
+    }
+
+    &:last-child {
+      @media only screen and (max-width: 440px) {
+      }
+    }
+
+    &:not(:last-child) {
+      border-right: 2px #444 solid;
+
+      @media only screen and (max-width: 440px) {
+        border: none;
+      }
+    }
+
+    &__upper {
+      font-weight: 600;
+      font-size: 3rem;
+    }
+
+    &__lower {
+      color: #888;
+      font-weight: 400;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.buy {
+  &__header {
+    margin-bottom: 1.6rem;
+    color: #aaa;
+    font-size: 2rem;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 30%));
+    gap: 1.6rem;
+    list-style: none;
+
+    @media only screen and (max-width: 530px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 1.2rem 2.4rem;
+    border-radius: var(--border-radius-default);
+    background-color: #333;
+    color: #aaa;
+    font-size: 1.8rem;
+    text-align: center;
+    text-decoration: none;
+    transition: var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      background-color: #222;
+      color: #ccc;
+    }
+  }
+}

@@ -1,0 +1,120 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.2rem;
+  max-width: 140rem;
+  margin: 0 auto;
+  padding-bottom: 6.4rem;
+
+  @media only screen and (max-width: 1000px) {
+    gap: 1.6rem;
+  }
+
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: 1.5fr 1fr;
+  }
+
+  @media only screen and (max-width: 660px) {
+    grid-template-columns: 1fr;
+    gap: 4.2rem;
+  }
+
+  @media only screen and (max-width: 460px) {
+    padding-top: 3.2rem;
+  }
+}
+.account {
+  justify-self: center;
+  position: relative;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 2fr;
+  gap: 2.4rem;
+  width: 100%;
+
+  @media only screen and (max-width: 1000px) {
+    gap: 0.8rem;
+  }
+
+  &__imgBox {
+    justify-self: center;
+    position: relative;
+    width: 85%;
+    border-radius: 50%;
+    overflow: hidden;
+
+    @media only screen and (max-width: 660px) {
+      width: 70%;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__imgText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#111, 0.8);
+    font-size: 1.6rem;
+    transition: var(--transition-fast);
+    opacity: 0;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 3.4rem;
+  }
+
+  &__since {
+    color: #888;
+    font-weight: 300;
+    font-size: 1.8rem;
+  }
+
+  &__date {
+    font-weight: 400;
+  }
+
+  &__settings {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    padding: 0.6rem;
+    border-radius: 50%;
+    background-color: #444;
+    transition: var(--transition-fast);
+    cursor: pointer;
+
+    @media only screen and (max-width: 400px) {
+      display: none;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: #333;
+    }
+  }
+}

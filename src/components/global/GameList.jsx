@@ -2,6 +2,7 @@ import Card from "./Card";
 import styles from "./gameList.module.scss";
 
 function GameList({ gameList = [], listStyle = "", children }) {
+  console.log(gameList);
   return (
     <div className={styles.container}>
       <ul className={`${styles.list} ${listStyle ? styles[listStyle] : ""}`}>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./card.module.scss";
+import noImgFound from "../../../public/img/hero-background-0.webp";
 
 function Card({
   cardStyle,
@@ -23,7 +24,12 @@ function Card({
         handleClick();
       }}
     >
-      <Image src={rsc} className={styles.img} fill alt={`${title} cover`} />
+      <Image
+        src={rsc || noImgFound}
+        className={styles.img}
+        fill
+        alt={`${title} cover`}
+      />
 
       <div className={styles.container} tabIndex={0}>
         <span className={styles.title}>{title}</span>

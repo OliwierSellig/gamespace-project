@@ -1,0 +1,132 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(
+    circle,
+    rgba(21, 21, 21, 0.6) 40%,
+    rgba(21, 21, 21, 0.9) 90%
+  );
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 80rem;
+  width: 60%;
+  padding: 4.8rem;
+  border-radius: var(--border-radius-default);
+  background-color: rgba(#222, 0.95);
+
+  @media only screen and (max-width: 670px) {
+    width: 95%;
+    min-width: auto;
+  }
+
+  @media only screen and (max-width: 480px) {
+    padding: 3.6rem 2.4rem;
+  }
+}
+
+.heading {
+  margin-bottom: 3.2rem;
+  font-weight: 400;
+  font-size: 2.8rem;
+  letter-spacing: 0.3px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1.2rem;
+  column-gap: 0.8rem;
+  margin-bottom: 2.2rem;
+  list-style: none;
+}
+
+.item {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: var(--border-radius-small);
+  background-color: #333;
+  color: #ddd;
+  font-size: 2rem;
+  text-align: center;
+  transition: var(--transition-fast);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: #444;
+  }
+}
+
+.selected {
+  background-color: #444;
+  color: #fff;
+}
+
+.fav {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  width: 50%;
+  margin-bottom: 3.2rem;
+  padding: 1.4rem;
+  border: none;
+  border-radius: var(--border-radius-small);
+  background-color: #333;
+  color: #aaa;
+  transition: var(--transition-medium);
+  cursor: pointer;
+
+  &__text {
+    font-weight: 300;
+    font-size: 2.2rem;
+  }
+
+  &__icon {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #444;
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 65%;
+  }
+}
+
+.played {
+  align-self: center;
+  width: 70%;
+  padding: 1.4rem;
+  border: none;
+  border-radius: var(--border-radius-smallest);
+  background-color: var(--color-blue-primary);
+  color: #fff;
+  font-size: 2.6rem;
+  transition: var(--transition-fast);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-blue-primary-shade-1);
+    transform: scale(1.03);
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 85%;
+  }
+}
