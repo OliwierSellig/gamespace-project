@@ -1,5 +1,6 @@
+"use client";
+
 import { useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
 import { useUser } from "../../../contexts/UserContext";
 import SingleCollectionHeader from "./SingleCollectionHeader";
 import GameList from "../../global/GameList";

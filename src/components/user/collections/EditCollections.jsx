@@ -1,3 +1,5 @@
+"use client";
+
 import { useOutletContext } from "react-router-dom";
 import UpdateCollection from "../../global/UpdateCollection";
 

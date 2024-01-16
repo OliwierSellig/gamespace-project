@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../contexts/UserContext";
 import styles from "./reviewsCard.module.scss";
+import Link from "next/link";
 
 function ReviewCard({ review }) {
   const { deleteReview } = useUser();
   const containerRef = useRef(null);
-  const navigate = useNavigate();
   const [wantsDelete, setWantsDelete] = useState(false);
 
   // ---------------------------------------------
@@ -49,12 +48,9 @@ function ReviewCard({ review }) {
       </div>
       <p className={styles.comment}>{review.comment}</p>
       <div className={styles.options}>
-        <button
-          className={styles.button}
-          onClick={() => navigate(`${review.game.id}`)}
-        >
+        <Link className={styles.button} href={review.game.id}>
           Edit
-        </button>
+        </Link>
         <button className={styles.button} onClick={() => setWantsDelete(true)}>
           Delete
         </button>

@@ -1,4 +1,6 @@
-import { NavLink } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { useUser } from "../../contexts/UserContext";
 import styles from "./userNavigation.module.scss";
 
@@ -10,7 +12,7 @@ function UserNavigation({ children }) {
   // -----------------------------------------------------
 
   function getFavouriteBackground(list) {
-    if (!list || !list.length) return `/img/user-background.jpg`;
+    if (!list || !list.length) return `/img/user-background.webp`;
     const random = Math.ceil(Math.random() * list.length) - 1;
     const favGame = list.at(random);
     return favGame?.background_image;
@@ -31,21 +33,21 @@ function UserNavigation({ children }) {
         className={styles.background}
       >
         <nav className={styles.navigation}>
-          <NavLink to="overview" className={styles.btn}>
+          <Link href="overview" className={styles.btn}>
             Overview
-          </NavLink>
-          <NavLink to="library" className={styles.btn}>
+          </Link>
+          <Link href="library" className={styles.btn}>
             Library
-          </NavLink>
-          <NavLink to="wishlist" className={styles.btn}>
+          </Link>
+          <Link href="wishlist" className={styles.btn}>
             Wishlist
-          </NavLink>
-          <NavLink to="reviews" className={styles.btn}>
+          </Link>
+          <Link href="reviews" className={styles.btn}>
             Reviews
-          </NavLink>
-          <NavLink to="collections" className={styles.btn}>
+          </Link>
+          <Link href="collections" className={styles.btn}>
             Collections
-          </NavLink>
+          </Link>
         </nav>
       </div>
       <main className={styles.container}>{children}</main>

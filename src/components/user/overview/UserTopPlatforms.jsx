@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../../../contexts/UserContext";
-import { useUtility } from "../../../contexts/UtilityContext";
 import styles from "./userTopPlatforms.module.scss";
+import { getPlatformIcon } from "@/utils/functions";
 
 const TOP_PLATFORMS_AMOUNT = 3;
 
 function UserTopPlatforms() {
-  const { getPlatformIcon } = useUtility();
   const { gamesPlayed, rankList } = useUser();
   const [platformsRanked, setPlatformsRanked] = useState([]);
 

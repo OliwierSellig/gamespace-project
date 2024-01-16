@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { useUser } from "../../../contexts/UserContext";
 import UserSearchHeader from "../UserSearchHeader";

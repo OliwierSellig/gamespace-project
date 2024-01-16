@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { useUser } from "../../../contexts/UserContext";
 import GameList from "../../global/GameList";
@@ -51,7 +53,7 @@ function Wishlist() {
         ))}
       {wishlist.filter((game) =>
         game.name.toLowerCase().includes(searchQuery.toLowerCase())
-      ).length && (
+      ).length > 0 && (
         <GameList
           gameList={wishlist
             .filter((game) =>

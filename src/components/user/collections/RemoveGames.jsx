@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { useUser } from "../../../contexts/UserContext";

@@ -1,5 +1,6 @@
+"use client";
+
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
 import ReviewsContainer from "./ReviewsContainer";
 import UserSearchHeader from "../UserSearchHeader";
 
@@ -15,7 +16,6 @@ function Reviews() {
         title="Your Reviews"
       />
       <ReviewsContainer searchQuery={searchQuery} />
-      <Outlet />
     </>
   );
 }

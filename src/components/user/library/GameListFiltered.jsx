@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { useUtility } from "../../../contexts/UtilityContext";
 import { useUser } from "../../../contexts/UserContext";
 import Slider from "../../global/Slider";
 import BtnNav from "../../global/BtnNav";
 import styles from "./gameListFiltered.module.scss";
+import { loadingStyle } from "@/utils/data";
 
 const PAGE_AMOUNT = 4;
 
 function GameListFiltered({ filterBy, searchQuery }) {
-  const { loadingStyle } = useUtility();
   const { gamesPlayed } = useUser();
   const [filteredList, setFilteredList] = useState([]);
   const [curPage, setCurPage] = useState(0);

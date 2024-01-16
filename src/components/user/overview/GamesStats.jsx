@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import Link from "next/link";
 import { useUser } from "../../../contexts/UserContext";
 import styles from "./gamesStats.module.scss";
 
 function GamesStats({ type, amount }) {
   const { activities } = useUser();
-  const navigate = useNavigate();
 
   // -------------------------------------------------
   // Selecting an Activity Type Base on Given Prop
@@ -23,24 +22,22 @@ function GamesStats({ type, amount }) {
     <div className={styles.container}>
       <h3 className={styles.heading}>
         <span className={styles.amount}>{amount}</span>
-        <span
+        <Link
           tabIndex={0}
           role="button"
-          className={styles.description}
-          onClick={() =>
-            navigate(
-              type === "played"
-                ? "/user/library"
-                : type === "review"
-                ? "/user/reviews"
-                : "/user/collections"
-            )
+          href={
+            type === "played"
+              ? "/user/library"
+              : type === "review"
+              ? "/user/reviews"
+              : "/user/collections"
           }
+          className={styles.description}
         >
           &nbsp;{type === "played" && "Games Played"}
           {type === "review" && "Reviews"}
           {type === "collections" && "Collections"}
-        </span>
+        </Link>
       </h3>
       <div
         className={styles.line}

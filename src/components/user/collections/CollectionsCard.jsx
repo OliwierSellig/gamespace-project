@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import styles from "./collectionsCard.module.scss";
 
 const BACKGROUND_IMAGES_LIMIT = 4;
@@ -11,7 +10,7 @@ function CollectionsCard({ collection }) {
       role="button"
       tabIndex={0}
       className={styles.container}
-      onClick={() => navigate(`${collection.id}`)}
+      onClick={() => {}}
     >
       <h2 className={styles.listName}>{collection.name}</h2>
       <p className={styles.author}>

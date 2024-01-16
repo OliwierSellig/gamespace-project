@@ -1,17 +1,18 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { useUtility } from "../../../contexts/UtilityContext";
 import { useUser } from "../../../contexts/UserContext";
 import GameList from "../../global/GameList";
 import GameListFiltered from "./GameListFiltered";
 import LibraryHeader from "./LibraryHeader";
 import SearchInput from "../../global/SearchInput";
 import TurnBtn from "../../global/TurnBtn";
+import { loadingStyle } from "@/utils/data";
 
 const PAGE_AMOUNT = 20;
 
 function UserLibrary() {
   const { gamesPlayed } = useUser();
-  const { loadingStyle } = useUtility();
   const [libraryGames, setLibraryGames] = useState([]);
   const [filterBy, setFilterBy] = useState("all");
   const [orderBy, setOrderBy] = useState("relevance");
