@@ -6,7 +6,7 @@ function Hero() {
   return (
     <BackgroundSwitcher>
       <div className={styles.content}>
-        <h1 className="heading-primary">Welcome to GameSpace</h1>
+        <h1 className={styles.heading}>Welcome to GameSpace</h1>
         <p className={styles.subheading}>
           A place where you can find any game you&apos;ve ever played, or will
           play. Find your game of choice and share your opinion with the world!

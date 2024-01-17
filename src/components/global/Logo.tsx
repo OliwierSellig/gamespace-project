@@ -1,11 +1,13 @@
 import styles from "./logo.module.scss";
 import Link from "next/link";
 
-function Logo({ additionalClass }) {
+type LogoProps = { pos?: "header" | "footer" };
+
+function Logo({ pos = "header" }: LogoProps) {
   return (
     <Link
       className={`${styles.logo} ${
-        additionalClass ? styles[additionalClass] : ""
+        pos === "footer" ? styles.logo__footer : ""
       }`}
       href="/"
     >

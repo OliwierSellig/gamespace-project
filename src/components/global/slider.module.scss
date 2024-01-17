@@ -1,163 +1,48 @@
-.slider {
-  padding: 3.2rem 6.4rem;
-  width: 100%;
-  &__trending,
-  &__genre {
-    @media only screen and (max-width: 700px) {
-      padding: 3.2rem;
-    }
-  }
-
-  &__ranking {
-    &__trending,
-    &__rated {
-      padding: 0 1.6rem;
-    }
-  }
-
-  &__games {
-    padding: 3.6rem 3.2rem 2.4rem;
-
-    @media only screen and (max-width: 1400px) {
-      padding: 2.4rem 3.2rem 2.4rem;
-    }
-
-    @media only screen and (max-width: 1400px) {
-      padding: 1.2rem 3.2rem 2.4rem;
-    }
-
-    @media only screen and (max-width: 1400px) {
-      padding: 0 3.2rem 2.4rem;
-    }
-
-    @media only screen and (max-width: 1400px) {
-      padding: 0 2.4rem 2.4rem;
-    }
-  }
-
-  &__fav,
-  &__library {
-    & .heading {
-      font-weight: 500;
-      font-size: 3.4rem;
-    }
-  }
-
-  &__library {
-    padding: 0 3.2rem;
-
-    & .emptyItem {
-      flex: 0 0 35%;
-
-      @media only screen and (max-width: 1200px) {
-        flex: 0 0 45%;
-      }
-
-      @media only screen and (max-width: 1000px) {
-        flex: 0 0 50%;
-      }
-
-      @media only screen and (max-width: 800px) {
-        flex: 0 0 60%;
-      }
-
-      @media only screen and (max-width: 700px) {
-        flex: 0 0 65%;
-      }
-
-      @media only screen and (max-width: 600px) {
-        flex: 0 0 75%;
-      }
-
-      @media only screen and (max-width: 500px) {
-        flex: 0 0 80%;
-      }
-
-      @media only screen and (max-width: 500px) {
-        flex: 0 0 85%;
-      }
-
-      @media only screen and (max-width: 500px) {
-        flex: 0 0 90%;
-      }
-    }
-  }
-
-  &__fav {
-    padding: 2.4rem 3.2rem 4.8rem;
-
-    @media only screen and (max-width: 660px) {
-      padding: 0rem 2.4rem 3.6rem;
-    }
-
-    @media only screen and (max-width: 460px) {
-      padding: 0rem 1.2rem 3.2rem;
-    }
-
-    & .emptyItem {
-      flex: 0 0 32.5%;
-
-      @media only screen and (max-width: 1400px) {
-        flex: 0 0 40%;
-      }
-
-      @media only screen and (max-width: 1200px) {
-        flex: 0 0 45%;
-      }
-
-      @media only screen and (max-width: 900px) {
-        flex: 0 0 55%;
-      }
-
-      @media only screen and (max-width: 660px) {
-        flex: 0 0 70%;
-      }
-
-      @media only screen and (max-width: 460px) {
-        flex: 0 0 80%;
-      }
-
-      @media only screen and (max-width: 400px) {
-        flex: 0 0 90%;
-      }
-    }
-  }
-}
-
-.heading {
-  margin-bottom: 2.4rem;
-  font-weight: 400;
-  font-size: 3rem;
-}
-
-.box {
-  position: relative;
-  width: 100%;
-}
-
 .container {
   position: relative;
-  top: 0;
-  left: 0;
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  list-style: none;
-
-  @media only screen and (hover: none) {
-    overflow: scroll;
-  }
 }
 
-.emptyItem {
-  flex: 0 0 30%;
+.slider {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16/9;
-  border: 2px dashed #aaa;
-  border-radius: var(--border-radius-default);
-  color: #aaa;
-  font-size: 2.6rem;
-  letter-spacing: 0.3px;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  border-radius: 100%;
+  padding: 1.2rem;
+  background-color: var(--color-dark-tertiary);
+  z-index: 30;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: var(--transition-fast);
+
+  &__prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  &__next {
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  &__disabled {
+    opacity: 0;
+    cursor: auto;
+  }
+
+  & svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    stroke: var(--color-light-primary);
+    transition: var(--transition-fast);
+  }
+
+  &:hover,
+  &:focus {
+    svg {
+      stroke: #999;
+    }
+  }
 }

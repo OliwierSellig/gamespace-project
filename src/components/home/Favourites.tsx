@@ -1,18 +1,18 @@
-import Image from "next/image";
-import styles from "./favourites.module.scss";
-import Link from "next/link";
 import { devList } from "../../utils/data";
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./favourites.module.scss";
 
 function Favourites() {
   return (
     <section className={styles.fav}>
       <h2 className={styles.heading}>Favourite Developer?</h2>
       <nav className={styles.container}>
-        {devList.map((dev) => (
+        {devList.map((dev, i) => (
           <Link
             aria-label={`Search ${dev.name}`}
             className={styles.item}
-            key={crypto.randomUUID()}
+            key={i}
             href={`/searcg?developers=${dev.slug}`}
           >
             <div className={styles.item__img}>

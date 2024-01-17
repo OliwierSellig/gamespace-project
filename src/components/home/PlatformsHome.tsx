@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from "./platformsHome.module.scss";
-import Image from "next/image";
-import { platforms } from "@/utils/data";
+import { platforms } from "../../utils/data";
 
 function PlatformsHome() {
   return (

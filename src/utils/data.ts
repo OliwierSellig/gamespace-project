@@ -4,6 +4,11 @@ import ubisoftDev from "../../public/img/ubisoft-dev.webp";
 import sonyDev from "../../public/img/sony-dev.webp";
 import eaDev from "../../public/img/ea-dev.webp";
 import cdpDev from "../../public/img/cdp-dev.webp";
+import heroBg0 from "../../public/img/hero-background-0.webp";
+import heroBg1 from "../../public/img/hero-background-1.webp";
+import heroBg2 from "../../public/img/hero-background-2.webp";
+import heroBg3 from "../../public/img/hero-background-3.webp";
+import heroBg4 from "../../public/img/hero-background-4.webp";
 import {
   SiAndroid,
   SiNintendoswitch,
@@ -14,6 +19,10 @@ import {
 } from "react-icons/si";
 
 export const API_KEY = "041a371c18934671bc7c7df826093657";
+
+export const currentDate = new Date();
+
+export const heroImages = [heroBg0, heroBg1, heroBg2, heroBg3, heroBg4];
 
 export const devList = [
   {

@@ -1,6 +1,6 @@
-import { poppins } from "@/utils/fonts";
+import { poppins } from "../utils/fonts";
 import "../scss/general.scss";
-import { UserProvider } from "@/contexts/UserContext";
+import { UserProvider } from "../contexts/UserContext";
 
 export const metadata = {
   title: "GameSpace | Web's most advanced games library",

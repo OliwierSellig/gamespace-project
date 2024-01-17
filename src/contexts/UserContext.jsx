@@ -1,36 +1,21 @@
 "use client";
 
-import { generateRandomID, getCurrentDate } from "@/utils/functions";
+import { generateRandomID, getCurrentDate } from "../utils/functions.ts";
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 const UserContext = createContext();
 
 const initialState = {
-  gamesPlayed: JSON.parse(localStorage.getItem("gamesPlayed"))?.length
-    ? JSON.parse(localStorage.getItem("gamesPlayed"))
-    : [],
-  wishlist: JSON.parse(localStorage.getItem("wishlist"))?.length
-    ? JSON.parse(localStorage.getItem("wishlist"))
-    : [],
-  reviews: JSON.parse(localStorage.getItem("reviews"))?.length
-    ? JSON.parse(localStorage.getItem("reviews"))
-    : [],
+  gamesPlayed: [],
+  wishlist: [],
+  reviews: [],
 
-  collections: JSON.parse(localStorage.getItem("collections"))?.length
-    ? JSON.parse(localStorage.getItem("collections"))
-    : [],
+  collections: [],
 
   activities: {
-    played: JSON.parse(localStorage.getItem("activitiesPlayed"))?.length
-      ? JSON.parse(localStorage.getItem("activitiesPlayed"))
-      : [],
-    reviewed: JSON.parse(localStorage.getItem("activitiesReviewed"))?.length
-      ? JSON.parse(localStorage.getItem("activitiesReviewed"))
-      : [],
-    collections: JSON.parse(localStorage.getItem("activitiesCollections"))
-      ?.length
-      ? JSON.parse(localStorage.getItem("activitiesCollections"))
-      : [],
+    played: [],
+    reviewed: [],
+    collections: [],
   },
 };
 

@@ -1,7 +1,8 @@
+import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import Link from "next/link";
 import Logo from "./Logo";
 import styles from "./footer.module.scss";
-import { FaInstagram, FaFacebookF, FaYoutube, FaTwitter } from "react-icons/fa";
-import Link from "next/link";
 
 function Footer() {
   return (
@@ -51,38 +52,46 @@ function Footer() {
         </li>
       </ul>
       <nav className={styles.additional}>
-        <Logo additionalClass="logo__footer" />
+        <Logo pos="footer" />
         <p className={styles.copyright}>
           &copy; GameSpace {new Date().getFullYear()}
         </p>
         <ul className={styles.socials}>
           <li>
-            <Link
+            <a
               className={styles.icon}
-              href="/"
-              aria-label="See our Facebook"
+              href="https://www.facebook.com/profile.php?id=100014860652231&locale=pl_PL"
+              aria-label="Check our Facebook"
             >
               <FaFacebookF />
-            </Link>
+            </a>
           </li>
           <li>
-            <Link
+            <a
               className={styles.icon}
-              href="/"
-              aria-label="See out Instagram"
+              href="https://www.instagram.com/oliwier_sellig/"
+              aria-label="Check our Instagram"
             >
               <FaInstagram />
-            </Link>
+            </a>
           </li>
           <li>
-            <Link className={styles.icon} href="/" aria-label="See our Youtube">
+            <a
+              className={styles.icon}
+              href="https://www.youtube.com/"
+              aria-label="See our Youtube"
+            >
               <FaYoutube />
-            </Link>
+            </a>
           </li>
           <li>
-            <Link className={styles.icon} href="/" aria-label="See our Twitter">
-              <FaTwitter />
-            </Link>
+            <a
+              className={styles.icon}
+              href="https://twitter.com/home?lang=pl"
+              aria-label="See our Twitter"
+            >
+              <FaXTwitter />
+            </a>
           </li>
         </ul>
       </nav>

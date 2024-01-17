@@ -1,3 +1,5 @@
+@import "../../scss/animations.scss";
+
 .header {
   display: flex;
   align-items: center;
@@ -5,6 +7,7 @@
   width: 100%;
   padding: 1.8rem 3.2rem;
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent);
+  position: absolute;
 
   &__fixed {
     position: fixed;
@@ -67,36 +70,35 @@
   &__mobile {
     font-size: 3.6rem;
     letter-spacing: 0.3px;
+
+    &:hover,
+    &:focus {
+      transform: translateX(10px);
+    }
   }
 }
 
 .icon {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4.5rem;
-  height: 4.5rem;
-  padding: 0.4rem;
-  border: none;
+  padding: 0.9rem;
   border-radius: 50%;
   background-color: #444;
   transition: var(--transition-fast);
-  overflow: hidden;
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
 
-  &:hover {
-    background-color: #333;
-  }
-
+  &:hover,
   &:focus {
-    outline: 2px solid #fff;
-    outline-offset: 5px;
     background-color: #333;
+
+    svg {
+      stroke: var(--color-light-primary);
+    }
   }
 
   svg {
-    width: 90%;
-    height: 90%;
+    width: 2.8rem;
+    height: 2.8rem;
+    transition: var(--transition-fast);
+    stroke: var(--color-light-primary-shade-1);
   }
 
   &__settings {
@@ -107,9 +109,58 @@
 
   &__menu {
     display: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      svg {
+        fill: var(--color-light-primary);
+      }
+    }
+
+    svg {
+      fill: var(--color-light-primary-shade-1);
+    }
 
     @media only screen and (max-width: 660px) {
       display: flex;
+    }
+  }
+}
+
+.user {
+  width: 4.6rem;
+  height: 4.6rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+
+  &:focus,
+  &:hover {
+    .user__box {
+      opacity: 1;
+    }
+  }
+
+  &__box {
+    opacity: 0;
+    position: absolute;
+    z-index: 1200;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(#333, 0.8);
+    transition: var(--transition-fast);
+
+    svg {
+      fill: var(--color-light-primary-shade-1);
+      width: 2.4rem;
+      height: 2.4rem;
     }
   }
 }
@@ -126,4 +177,5 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(#121212, 0.7);
+  animation: mobileNavOpen 0.4s;
 }
