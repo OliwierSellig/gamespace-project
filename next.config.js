@@ -1,3 +1,5 @@
+vid = require("next-videos");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -9,8 +11,15 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "next-videos",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
+
   async redirects() {
     return [
       {
@@ -26,5 +35,6 @@ const nextConfig = {
     ];
   },
 };
+const withVideos = vid;
 
-module.exports = nextConfig;
+module.exports = withVideos(nextConfig);

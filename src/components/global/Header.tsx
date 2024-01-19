@@ -12,6 +12,7 @@ import Logo from "./Logo";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { API_KEY } from "../../utils/data";
 
 type HeaderProps = {
   isFixed?: boolean;
@@ -24,6 +25,18 @@ function Header({ isFixed = true }: HeaderProps) {
   // ---------------------------------------------
   // Changing Background Color on Scroll
   // ---------------------------------------------
+
+  useEffect(() => {
+    async function getGames() {
+      const res = await fetch(
+        `https://api.rawg.io/api/games?metacritic=95,100&key=${API_KEY}`
+      );
+      const data = await res.json();
+      console.log(data);
+    }
+
+    getGames();
+  }, []);
 
   useEffect(() => {
     function setHeaderBackground() {
@@ -88,7 +101,7 @@ function Header({ isFixed = true }: HeaderProps) {
           href="/user/overview"
           aria-label="Go to user profile"
         >
-          <Image fill src={user} alt="User Avatar" />
+          <Image fill src={user} alt="User Avatar" sizes="46px" />
           <div className={styles.user__box}>
             <FaRegUser />
           </div>

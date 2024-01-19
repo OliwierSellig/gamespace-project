@@ -72,3 +72,8 @@ export type GenreItem = {
   games_count: number;
   image_background: string;
 };
+
+export type ImageSizesType = {
+  defalult: { number: number; unit: "px" | "vw" };
+  sizes?: { maxWidth: number; size: { number: number; unit: "px" | "vw" } }[];
+};

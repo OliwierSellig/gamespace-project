@@ -4,14 +4,14 @@ import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import styles from "./slider.module.scss";
-import { getCurrentItemSize } from "../../utils/functions";
 
 type SliderProps = {
-  children: ReactElement;
+  children: ReactElement[];
   gap?: number;
   itemSizes?: {
+    minWidth: number;
+    maxWidth: number;
     default: number;
-    sizes: { itemSize: number; windowWidth: number }[];
   };
 };
 
@@ -19,9 +19,6 @@ function Slider({ children, gap = 1, itemSizes }: SliderProps) {
   const x = useMotionValue(0);
   const [width, setWidth] = useState<number>(0);
   const [dragX, setDragX] = useState<number>(0);
-  const [itemWidth, setItemWidth] = useState<number>(
-    getCurrentItemSize(itemSizes) || 0
-  );
   const [disabledButtons, setDisabledButtons] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -30,10 +27,6 @@ function Slider({ children, gap = 1, itemSizes }: SliderProps) {
     : 0;
 
   useEffect(() => {
-    function setItemSize() {
-      setItemWidth(getCurrentItemSize(itemSizes));
-    }
-
     function setSliderWidth() {
       if (containerRef.current !== null && sliderRef.current !== null) {
         setWidth(
@@ -47,11 +40,8 @@ function Slider({ children, gap = 1, itemSizes }: SliderProps) {
     }
 
     setSliderWidth();
-    addEventListener("resize", () => {
-      setItemSize();
-      setSliderWidth();
-    });
-  }, [itemSizes]);
+    addEventListener("resize", setSliderWidth);
+  }, []);
 
   useEffect(() => {
     x.on("animationComplete", () => {
@@ -121,11 +111,17 @@ function Slider({ children, gap = 1, itemSizes }: SliderProps) {
     }
   }
 
-  const updatedChildren = React.Children.map(children, (child) =>
-    React.cloneElement(child, {
-      style: { flex: itemSizes.default ? `0 0 ${itemWidth}%` : "" },
-    })
-  );
+  const updatedChildren = itemSizes
+    ? React.Children.map(children, (child) =>
+        React.cloneElement(child, {
+          style: {
+            flex: `0 0 ${itemSizes.default}%`,
+            minWidth: `${itemSizes.minWidth}rem`,
+            maxWidth: `${itemSizes.maxWidth}rem`,
+          },
+        })
+      )
+    : children;
 
   return (
     <motion.div ref={containerRef} className={styles.container}>

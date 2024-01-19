@@ -30,13 +30,13 @@ export function getCurrentItemSize(itemSizes: {
 }) {
   const sorted = itemSizes.sizes.sort((a, b) => b.windowWidth - a.windowWidth);
 
-  if (window.innerWidth > sorted[0]?.windowWidth) {
+  if (window.screen.width > sorted[0]?.windowWidth) {
     return itemSizes.default;
   } else {
     const size = sorted.find((item, i) => {
       return (
-        window.innerWidth <= sorted[i].windowWidth &&
-        window.innerWidth > (sorted[i + 1]?.windowWidth || 0)
+        window.screen.width <= sorted[i].windowWidth &&
+        window.screen.width > (sorted[i + 1]?.windowWidth || 0)
       );
     })?.itemSize;
 

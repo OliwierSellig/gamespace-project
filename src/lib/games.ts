@@ -69,13 +69,9 @@ export async function fetchGames(options: fetchGamesProps) {
     paramList.length > 0 ? `${paramList.join("&")}&` : ""
   }key=${API_KEY}`;
 
-  console.log(`https://api.rawg.io/api/games?${query}`);
-
   try {
     const res = await fetch(`https://api.rawg.io/api/games?${query}`);
     const data = await res.json();
-
-    console.log(data);
 
     const resutls: FetchedGameItem[] = data.results;
 

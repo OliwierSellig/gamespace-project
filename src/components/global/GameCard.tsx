@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./gameCard.module.scss";
 import Image from "next/image";
-import { ChildrenProp } from "../../utils/types";
+import { ChildrenProp, ImageSizesType } from "../../utils/types";
 import { ReactNode } from "react";
 
 type GameCardProps = {
@@ -10,6 +10,7 @@ type GameCardProps = {
   image: string;
   alt?: string;
   scales?: boolean;
+  imageSizes?: ImageSizesType;
 };
 
 function GameCard({
@@ -18,14 +19,35 @@ function GameCard({
   image,
   alt = "",
   scales = true,
+  imageSizes,
 }: GameCardProps) {
+  const sizes =
+    imageSizes?.sizes && imageSizes.sizes.length > 0
+      ? imageSizes.sizes
+          .map(
+            (item) =>
+              `(max-width: ${item.size.number}${item.size.unit} ${item.maxWidth})`
+          )
+          .join(", ")
+          .concat(
+            ", ",
+            `${imageSizes.defalult.number}${imageSizes.defalult.unit}`
+          )
+      : `${imageSizes.defalult.number}${imageSizes.defalult.unit}`;
+
   return (
     <Link
       draggable={false}
       className={`${styles.container} ${scales ? styles.container__scale : ""}`}
       href={href}
     >
-      <Image className={styles.background} src={image} alt={alt} fill />
+      <Image
+        className={styles.background}
+        sizes={sizes}
+        src={image}
+        alt={alt}
+        fill
+      />
       {Boolean(children) && <div className={styles.box}>{children}</div>}
     </Link>
   );

@@ -1,32 +1,22 @@
-.fav {
-  padding: 4.8rem 6.4rem;
-
-  @media only screen and (max-width: 900px) {
-    padding: 3.6rem 4.8rem;
-  }
-}
-.heading {
-  margin-bottom: 2.4rem;
-  font-weight: 400;
-  font-size: 3rem;
-
-  @media only screen and (max-width: 600px) {
-    margin-bottom: 3.6rem;
-  }
-
-  @media only screen and (max-width: 400px) {
-    margin-bottom: 2.8rem;
-  }
-}
+@import "../../scss/animations.scss";
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 2rem;
-  column-gap: 1.8rem;
-  list-style: none;
+  padding: 4.8rem 4.2rem;
 
   @media only screen and (max-width: 900px) {
+    padding: 3.6rem 4.2rem;
+  }
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 2.2rem;
+  column-gap: 1.8rem;
+  list-style: none;
+  padding: 0 2.4rem;
+
+  @media only screen and (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
   }
   @media only screen and (max-width: 600px) {
@@ -35,34 +25,106 @@
 }
 
 .item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  border-radius: var(--border-radius-default);
-  background-color: #111;
-  box-shadow: 0 2rem 8rem rgba(#000, 0.7);
-  transition: var(--transition-medium);
+  position: relative;
+  border-radius: 13px;
+  aspect-ratio: 16/9;
+  box-shadow: 0 2rem 4rem rgba(#000, 0.2);
+  transition: var(--transition-fast);
   overflow: hidden;
-  cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: var(--color-dark-primary);
-    box-shadow: 0 1rem 4rem rgba(#000, 0.3);
-    transform: scale(1.02);
-  }
+    transform: scale(1.03);
 
-  &__img {
-    width: 100%;
-    aspect-ratio: 16/9;
+    .logo {
+      opacity: 0;
+    }
+
+    .video {
+      display: flex;
+    }
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-long);
+  background-image: radial-gradient(
+    circle,
+    rgba(18, 18, 18, 0.2) 0%,
+    rgba(18, 18, 18, 0.5) 100%
+  );
+  background-color: var(--color-dark-400);
+
+  &__icon {
+    width: 25%;
     position: relative;
+    aspect-ratio: 1/1;
+  }
+}
+
+.video {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+  display: none;
+  padding: 4%;
+  display: none;
+  z-index: 20;
+  animation: fadeIn 0.4s;
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+      circle,
+      rgba(18, 18, 18, 0.2) 0%,
+      rgba(18, 18, 18, 0.6) 100%
+    );
+    z-index: 100;
   }
 
-  &__title {
-    display: block;
-    text-align: center;
-    padding: 2rem;
-    font-size: 2rem;
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -20;
   }
+}
+
+.name {
+  font-size: 2.8rem;
+  font-weight: 500;
+  z-index: 150;
+  margin-bottom: 0.6rem;
+  animation: fadeLeft 0.8s;
+}
+
+.games {
+  font-size: 1.6rem;
+  z-index: 150;
+  font-weight: 500;
+  color: var(--color-light-300);
+  animation: fadeLeft 1.2s;
 }

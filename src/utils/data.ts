@@ -1,9 +1,3 @@
-import bethesdaDev from "../../public/img/bethesda-dev.webp";
-import wbDev from "../../public/img/wb-dev.webp";
-import ubisoftDev from "../../public/img/ubisoft-dev.webp";
-import sonyDev from "../../public/img/sony-dev.webp";
-import eaDev from "../../public/img/ea-dev.webp";
-import cdpDev from "../../public/img/cdp-dev.webp";
 import heroBg0 from "../../public/img/hero-background-0.webp";
 import heroBg1 from "../../public/img/hero-background-1.webp";
 import heroBg2 from "../../public/img/hero-background-2.webp";
@@ -17,6 +11,18 @@ import {
   SiXbox,
   SiApple,
 } from "react-icons/si";
+import warner from "../../public/svg/warner.svg";
+import rockstar from "../../public/svg/rockstar.svg";
+import ea from "../../public/svg/ea.svg";
+import cdp from "../../public/svg/cdp.svg";
+import sony from "../../public/svg/sony.svg";
+import ubisoft from "../../public/svg/ubisoft.svg";
+import rockstarVid from "../../public/videos/rockstar-vid.mp4";
+import warnerVid from "../../public/videos/wb-vid.mp4";
+import eaVid from "../../public/videos/ea-vid.mp4";
+import sonyVid from "../../public/videos/sony-vid.mp4";
+import cdpVid from "../../public/videos/cdp-vid.mp4";
+import ubisoftVid from "../../public/videos/ubisoft-vid.mp4";
 
 export const API_KEY = "041a371c18934671bc7c7df826093657";
 
@@ -26,34 +32,46 @@ export const heroImages = [heroBg0, heroBg1, heroBg2, heroBg3, heroBg4];
 
 export const devList = [
   {
-    name: "Bethesda Softworks",
-    img: bethesdaDev,
-    slug: "bethesda-softworks",
+    name: "Rockstar Games",
+    video: rockstarVid,
+    slug: "rockstar-games",
+    logo: rockstar,
+    gameSeries: ["Grand Theft Auto", "Red Dead Redemption"],
   },
   {
     name: "Warner Bros Interactive",
-    img: wbDev,
+    video: warnerVid,
     slug: "warner-bros-interactive",
+    logo: warner,
+    gameSeries: ["Hogwarts Legacy", "Middle Earth"],
   },
   {
     name: "Ubisoft",
-    img: ubisoftDev,
+    video: ubisoftVid,
     slug: "ubisoft",
+    logo: ubisoft,
+    gameSeries: ["Assasin's Creed", "Far Cry"],
   },
   {
     name: "Sony Interactive Entertainment",
-    img: sonyDev,
+    video: sonyVid,
     slug: "sony-interactive-entertainment",
+    logo: sony,
+    gameSeries: ["God of War", "Uncharted"],
   },
   {
     name: "Electronic Arts",
-    img: eaDev,
+    video: eaVid,
     slug: "electronic-arts",
+    logo: ea,
+    gameSeries: ["Battlefied", "Dragon Age"],
   },
   {
     name: "CD Projekt Red",
-    img: cdpDev,
+    video: cdpVid,
     slug: "cd-projekt-red",
+    logo: cdp,
+    gameSeries: ["The Witcher", "Cyberpunk 2077"],
   },
 ];
 

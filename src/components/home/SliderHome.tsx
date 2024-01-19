@@ -1,24 +1,23 @@
 import { ReactElement } from "react";
 import Slider from "../global/Slider";
 import styles from "./siderHome.module.scss";
+import SectionHeading from "./SectionHeading";
 
 type SliderHomeProps = {
-  children: ReactElement;
+  children: ReactElement[];
   heading: string;
 };
 
 function SliderHome({ children, heading }: SliderHomeProps) {
   return (
     <div className={styles.container}>
-      <h2 className={styles.heading}>{heading}</h2>
+      <SectionHeading>{heading}</SectionHeading>
       <Slider
         gap={2}
         itemSizes={{
           default: 35,
-          sizes: [
-            { itemSize: 30, windowWidth: 1400 },
-            { itemSize: 60, windowWidth: 800 },
-          ],
+          minWidth: 48,
+          maxWidth: 65,
         }}
       >
         {children}
