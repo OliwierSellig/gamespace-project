@@ -6,7 +6,7 @@ import SectionHeading from "./SectionHeading";
 function PlatformsHome() {
   return (
     <section className={styles.platforms}>
-      <SectionHeading>So, what type of person are you?</SectionHeading>
+      <SectionHeading>What type of person are you?</SectionHeading>
       <nav className={styles.container}>
         {platforms.map((platform) => (
           <Link

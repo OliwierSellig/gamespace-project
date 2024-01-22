@@ -28,7 +28,19 @@ async function Home() {
     ordering: { orderBy: "added", reversed: true },
   });
 
-  const genres = await fetchGenres();
+  const rpg = await fetchGames({
+    genres: [5],
+    ordering: { orderBy: "added", reversed: true },
+  });
+
+  const strategy = await fetchGames({
+    genres: [10],
+    ordering: { orderBy: "added", reversed: true },
+  });
+  const indie = await fetchGames({
+    genres: [51],
+    ordering: { orderBy: "added", reversed: true },
+  });
 
   const homeImageSizes: ImageSizesType = {
     defalult: { number: 25, unit: "vw" },
@@ -76,16 +88,48 @@ async function Home() {
         ))}
       </SliderHome>
       <Favourites />
-      <SliderHome heading="Something specific?">
-        {genres.map((genre) => (
+      <SliderHome heading={`RGP's greates hits`}>
+        {rpg.map((game) => (
           <GameCard
-            href={`/search`}
-            image={genre.image_background}
-            key={genre.id}
+            href={`/games/${game.id}`}
+            image={game.background_image}
+            key={game.id}
             imageSizes={homeImageSizes}
           >
-            <GameCard.Title>{genre.name}</GameCard.Title>
-            <GameCard.Details>{`${genre.games_count} games`}</GameCard.Details>
+            <GameCard.Title>{game.name}</GameCard.Title>
+            <GameCard.Details>{`${game.genres?.at(0)?.name} ${
+              game.released
+            }`}</GameCard.Details>
+          </GameCard>
+        ))}
+      </SliderHome>
+      <SliderHome heading={`Most popular strategies`}>
+        {strategy.map((game) => (
+          <GameCard
+            href={`/games/${game.id}`}
+            image={game.background_image}
+            key={game.id}
+            imageSizes={homeImageSizes}
+          >
+            <GameCard.Title>{game.name}</GameCard.Title>
+            <GameCard.Details>{`${game.genres?.at(0)?.name} ${
+              game.released
+            }`}</GameCard.Details>
+          </GameCard>
+        ))}
+      </SliderHome>
+      <SliderHome heading={`Well know Indie games`}>
+        {indie.map((game) => (
+          <GameCard
+            href={`/games/${game.id}`}
+            image={game.background_image}
+            key={game.id}
+            imageSizes={homeImageSizes}
+          >
+            <GameCard.Title>{game.name}</GameCard.Title>
+            <GameCard.Details>{`${game.genres?.at(0)?.name} ${
+              game.released
+            }`}</GameCard.Details>
           </GameCard>
         ))}
       </SliderHome>

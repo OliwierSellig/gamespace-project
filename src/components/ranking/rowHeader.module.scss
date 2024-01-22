@@ -1,0 +1,66 @@
+.open {
+  padding: 2.4rem 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.15);
+
+  &:hover,
+  &:focus {
+    background-color: #1d1d1d;
+
+    .row.text.name {
+      color: var(--color-light-100);
+    }
+  }
+
+  svg {
+    width: 3.6rem;
+    height: 3.6rem;
+    fill: var(--color-light-300);
+    transition: var(--transition-medium);
+  }
+
+  &__active {
+    svg {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.pos {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-light-300);
+}
+
+.name {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: var(--color-light-200);
+}
+
+.played {
+  padding: 1.6rem 3.2rem;
+  color: var(--color-dark-secondary);
+  background-color: var(--color-light-100);
+  border-radius: 1300px;
+  font-size: 1.6rem;
+  font-weight: 500;
+}

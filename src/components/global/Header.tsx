@@ -27,15 +27,17 @@ function Header({ isFixed = true }: HeaderProps) {
   // ---------------------------------------------
 
   useEffect(() => {
-    async function getGames() {
+    async function getElden() {
       const res = await fetch(
-        `https://api.rawg.io/api/games?metacritic=95,100&key=${API_KEY}`
+        `https://api.rawg.io/api/games?search=elden&key=${API_KEY}`
       );
+
       const data = await res.json();
+
       console.log(data);
     }
 
-    getGames();
+    getElden();
   }, []);
 
   useEffect(() => {

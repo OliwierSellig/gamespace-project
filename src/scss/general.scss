@@ -152,6 +152,24 @@ body {
   color: #fff;
   line-height: 1;
   overflow-x: clip;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-dark-400);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-light-300);
+    border-radius: 1000px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-light-200);
+  }
 }
 
 .slider-swipe {

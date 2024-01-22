@@ -1,0 +1,143 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  box-shadow: 0px 8px 24px 0px rgba(18, 18, 18, 0.1);
+  background-color: #181818;
+  overflow: hidden;
+  position: relative;
+}
+
+.cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    background-image: linear-gradient(
+      rgba(24, 24, 24, 0) 0%,
+      rgba(24, 24, 24, 1) 95%
+    );
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 5.2rem 2.4rem 4.2rem;
+}
+
+.medal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.1);
+
+  svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  &__1 {
+    background-color: #ffd700;
+
+    svg {
+      stroke: #b39700;
+    }
+  }
+
+  &__2 {
+    background-color: #c0c0c0;
+
+    svg {
+      stroke: #868686;
+    }
+  }
+
+  &__3 {
+    background-color: #cd7f32;
+
+    svg {
+      stroke: #905923;
+    }
+  }
+}
+
+.name {
+  font-size: 2.8rem;
+  font-weight: 500;
+  margin-bottom: 2.8rem;
+}
+
+.played {
+  color: var(--color-dark-secondary);
+  background-color: var(--color-light-100);
+  border-radius: 1300px;
+  padding: 1.6rem 4.6rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  border-top: 1.5px solid #333;
+}
+
+.btn {
+  padding: 2.8rem 1.2rem;
+  width: 50%;
+  font-weight: 500;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    stroke: var(--color-light-100);
+    transition: var(--transition-fast);
+  }
+
+  &__ext {
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 -4.25em 0 0 var(--color-light-100);
+      color: var(--color-dark-secondary);
+
+      svg {
+        stroke: var(--color-dark-secondary);
+      }
+    }
+  }
+
+  &__add {
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 -4.25em 0 0 var(--color-blue-primary-shade-1);
+    }
+  }
+}

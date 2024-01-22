@@ -1,0 +1,15 @@
+.genres {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.genre {
+  padding: 1.6rem 3.6rem;
+  border-radius: var(--border-radius-smallest);
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: var(--color-light-300);
+  background-color: #444;
+}

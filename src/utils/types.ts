@@ -51,7 +51,7 @@ export type FetchedGameItem = {
   };
   genres?: GameGenreItem[];
   id?: number;
-  metacritics?: number;
+  metacritic?: number;
   name: string;
   slug: string;
   parent_platforms?: GamePlatformItem[];
@@ -63,6 +63,7 @@ export type FetchedGameItem = {
   short_screenshots?: GameShortScreenshotItem[];
   stores?: GameStoreItem[];
   tags?: GameTagItem[];
+  playtime?: number;
 };
 
 export type GenreItem = {

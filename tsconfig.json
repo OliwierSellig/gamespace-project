@@ -119,7 +119,8 @@
     ".next/types/**/*.ts",
     "src/utils/data.ts",
     "src/app/layout.jsx",
-    "src/components/global/Slider.jsx"
+    "src/components/global/Slider.jsx",
+    "src/app/(headerFixed)/ranking/layout.tsx"
   ],
   "exclude": ["node_modules"]
 }
