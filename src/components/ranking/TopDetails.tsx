@@ -1,32 +1,36 @@
-import { LiaMedalSolid } from "react-icons/lia";
+import { IoClose } from "react-icons/io5";
 import { FetchedGameItem } from "../../utils/types";
 import styles from "./topDetails.module.scss";
 import Link from "next/link";
 import { HiOutlineDocumentDuplicate, HiOutlinePlus } from "react-icons/hi2";
 import MetacriticScore from "./MetacriticScore";
-import Rating from "./Rating";
+
 import GenreList from "./GenreList";
 
 type TopDetailsProps = {
   game: FetchedGameItem;
+  closeDetails: () => void;
 };
 
-function TopDetails({ game }: TopDetailsProps) {
+function TopDetails({ game, closeDetails }: TopDetailsProps) {
   return (
     <div className={styles.container}>
-      <p className={styles.released}>
-        <span className={styles.released__info}>Released: </span>
+      <button className={styles.close} onClick={closeDetails}>
+        <IoClose />
+      </button>
+      <p className={`${styles.data} ${styles.data__released}`}>
+        <span className={styles.data__info}>Released: </span>
         <span>{game.released}</span>
       </p>
-      <p className={styles.playtime}>
-        <span className={styles.playtime__info}>Average Playtime: </span>
+      <p className={`${styles.data} ${styles.data__playtime}`}>
+        <span className={styles.data__info}>Average Playtime: </span>
         <span>{`${game.playtime} hours`}</span>
       </p>
       <GenreList game={game} />
-      <Rating game={game} />
-      <MetacriticScore game={game} />
+      <div className={styles.box}>
+        <MetacriticScore score={game.metacritic} />
+      </div>
       <nav className={styles.btns}>
-        {" "}
         <Link
           href={`/games/${game.id}`}
           className={`${styles.btn} ${styles.btn__details}`}
@@ -34,6 +38,7 @@ function TopDetails({ game }: TopDetailsProps) {
           <span>Details</span>
           <HiOutlineDocumentDuplicate />
         </Link>
+
         <button className={`${styles.btn} ${styles.btn__add}`}>
           <span>Add Game</span>
           <HiOutlinePlus />

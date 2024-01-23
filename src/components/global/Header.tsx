@@ -12,7 +12,6 @@ import Logo from "./Logo";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { API_KEY } from "../../utils/data";
 
 type HeaderProps = {
   isFixed?: boolean;
@@ -26,19 +25,19 @@ function Header({ isFixed = true }: HeaderProps) {
   // Changing Background Color on Scroll
   // ---------------------------------------------
 
-  useEffect(() => {
-    async function getElden() {
-      const res = await fetch(
-        `https://api.rawg.io/api/games?search=elden&key=${API_KEY}`
-      );
+  // useEffect(() => {
+  //   async function getElden() {
+  //     const res = await fetch(
+  //       `https://api.rawg.io/api/games?search=elden&key=${API_KEY}`
+  //     );
 
-      const data = await res.json();
+  //     const data = await res.json();
 
-      console.log(data);
-    }
+  //     console.log(data);
+  //   }
 
-    getElden();
-  }, []);
+  //   getElden();
+  // }, []);
 
   useEffect(() => {
     function setHeaderBackground() {

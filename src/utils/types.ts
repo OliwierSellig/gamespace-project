@@ -51,13 +51,13 @@ export type FetchedGameItem = {
   };
   genres?: GameGenreItem[];
   id?: number;
-  metacritic?: number;
+  metacritic?: number | null;
   name: string;
   slug: string;
   parent_platforms?: GamePlatformItem[];
   platforms?: GamePlatformItem[];
   rating?: number;
-  ratings?: GameRatingItem[];
+  ratings?: GameRatingItem[] | undefined;
   ratings_count?: number;
   released?: string;
   short_screenshots?: GameShortScreenshotItem[];

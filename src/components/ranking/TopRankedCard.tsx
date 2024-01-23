@@ -2,8 +2,8 @@ import Image from "next/image";
 import { FetchedGameItem } from "../../utils/types";
 import {
   HiOutlinePlus,
-  HiOutlineDocumentDuplicate,
   HiOutlineTrophy,
+  HiOutlineArrowUpOnSquare,
 } from "react-icons/hi2";
 import styles from "./topRankedCard.module.scss";
 import { useState } from "react";
@@ -34,15 +34,17 @@ function TopRankedCard({ game, place }: TopRankedCardProps) {
           className={`${styles.btn} ${styles.btn__ext}`}
           onClick={() => setOpenDetails(true)}
         >
-          <span>Details</span>
-          <HiOutlineDocumentDuplicate />
+          <span>More Info</span>
+          <HiOutlineArrowUpOnSquare />
         </button>
         <button className={`${styles.btn} ${styles.btn__add}`}>
           <span>Add Game</span>
           <HiOutlinePlus />
         </button>
       </nav>
-      {openDetails && <TopDetails game={game} />}
+      {openDetails && (
+        <TopDetails game={game} closeDetails={() => setOpenDetails(false)} />
+      )}
     </li>
   );
 }

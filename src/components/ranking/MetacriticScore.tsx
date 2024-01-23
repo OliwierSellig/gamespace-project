@@ -1,30 +1,25 @@
-import { FetchedGameItem } from "../../utils/types";
 import styles from "./metacriticScore.module.scss";
 
 type MetacriticScoreProps = {
-  game: FetchedGameItem;
+  score: number | null;
 };
 
-function MetacriticScore({ game }: MetacriticScoreProps) {
+function MetacriticScore({ score }: MetacriticScoreProps) {
   return (
     <p className={styles.meta}>
-      {game.metacritic ? (
+      {score !== null ? (
         <>
           <span className={styles.meta__text}>Metacritic score:</span>
           <span
             className={`${styles.meta__score} ${
               styles[
                 `meta__score_${
-                  game.metacritic >= 75
-                    ? "green"
-                    : game.metacritic >= 50
-                    ? "yellow"
-                    : "red"
+                  score >= 75 ? "green" : score >= 50 ? "yellow" : "red"
                 }`
               ]
             }`}
           >
-            {game.metacritic}
+            {score}
           </span>
         </>
       ) : (

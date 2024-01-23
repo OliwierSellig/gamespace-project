@@ -17,11 +17,23 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr;
+
+  @media only screen and (max-width: 1440px) {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cover {
   position: relative;
-  aspect-ratio: 16/9;
+  min-height: 36rem;
 
   &::after {
     content: "";
@@ -38,14 +50,41 @@
         rgba(34, 34, 34, 1) 95%
       ),
       linear-gradient(90deg, rgba(24, 24, 24, 0) 0%, rgba(34, 34, 34, 1) 90%);
+
+    @media only screen and (max-width: 768px) {
+      background-image: radial-gradient(
+          circle,
+          rgba(24, 24, 24, 0) 0%,
+          rgba(34, 34, 34, 1) 95%
+        ),
+        linear-gradient(180deg, rgba(24, 24, 24, 0) 0%, rgba(34, 34, 34, 1) 95%);
+    }
+  }
+
+  img {
+    object-fit: cover;
   }
 }
 
 .box {
   display: flex;
   align-items: center;
-  padding: 4.8rem 6.4rem;
+  gap: 1.2rem;
+  padding: 4.8rem 3.2rem;
   justify-content: space-between;
+
+  @media only screen and (max-width: 1440px) {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    row-gap: 2.4rem;
+    padding: 4.8rem 2.4rem;
+  }
+
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 3.6rem;
+  }
 }
 
 .col {
@@ -54,30 +93,37 @@
   align-items: start;
 }
 
-.released {
-  font-size: 2rem;
+.data {
   font-weight: 500;
-  margin-bottom: 2rem;
+
+  &__released {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__playtime {
+    font-size: 1.8rem;
+    margin-bottom: 3.2rem;
+  }
 
   &__info {
     color: var(--color-light-300);
   }
 }
 
-.playtime {
-  font-size: 1.8rem;
-  font-weight: 500;
-  margin-bottom: 3.2rem;
-
-  &__info {
-    color: var(--color-light-300);
-  }
+.meta {
 }
 
 .btns {
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+
+  @media only screen and (max-width: 1440px) {
+    grid-column: 1/-1;
+    justify-self: center;
+    flex-direction: row;
+  }
 }
 
 .btn {

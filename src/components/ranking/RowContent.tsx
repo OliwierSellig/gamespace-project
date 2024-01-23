@@ -1,11 +1,10 @@
 import { HiOutlineDocumentDuplicate, HiOutlinePlus } from "react-icons/hi2";
-import { LiaMedalSolid } from "react-icons/lia";
 import styles from "./rowContent.module.scss";
 import Image from "next/image";
 import { FetchedGameItem } from "../../utils/types";
 import Link from "next/link";
 import MetacriticScore from "./MetacriticScore";
-import Rating from "./Rating";
+
 import GenreList from "./GenreList";
 
 type RowContentProps = {
@@ -31,21 +30,18 @@ function RowContent({ isActive, game }: RowContentProps) {
           </div>
           <div className={styles.box}>
             <div className={styles.col}>
-              <p className={styles.released}>
-                <span className={styles.released__info}>Released: </span>
+              <p className={`${styles.data} ${styles.data__released}`}>
+                <span className={styles.data__info}>Released: </span>
                 <span>{game.released}</span>
               </p>
-              <p className={styles.playtime}>
-                <span className={styles.playtime__info}>
-                  Average Playtime:{" "}
-                </span>
+              <p className={`${styles.data} ${styles.data__playtime}`}>
+                <span className={styles.data__info}>Average Playtime: </span>
                 <span>{`${game.playtime} hours`}</span>
               </p>
               <GenreList game={game} />
             </div>
-            <div className={styles.col}>
-              <Rating game={game} />
-              <MetacriticScore game={game} />
+            <div className={styles.meta}>
+              <MetacriticScore score={game.metacritic} />
             </div>
             <nav className={styles.btns}>
               <Link
