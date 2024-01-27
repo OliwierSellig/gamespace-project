@@ -1,25 +1,24 @@
 import { ReactNode } from "react";
-
 import styles from "./dateSetter.module.scss";
 
 type DateSetterProps = {
   children: ReactNode;
-  date: { day: number; month: string; year: number };
+  heading: string;
 };
 
-function DateSetter({ children, date }: DateSetterProps) {
+function DateSetter({ children, heading }: DateSetterProps) {
   return (
     <div className={styles.container}>
-      <p className={styles.header}>{children}</p>
-      <nav className={styles.row}>
-        <button className={styles.button}>{date.month}</button>
-        <div className={styles.sep}>/</div>
-        <button className={styles.button}>{date.day}</button>
-        <div className={styles.sep}>/</div>
-        <button className={styles.button}>{date.year}</button>
-      </nav>
+      <p className={styles.header}>{heading}</p>
+      <nav className={styles.row}>{children}</nav>
     </div>
   );
+}
+
+DateSetter.Separator = DateSetterSeparator;
+
+function DateSetterSeparator() {
+  return <div className={styles.sep}>/</div>;
 }
 
 export default DateSetter;

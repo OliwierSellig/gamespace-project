@@ -4,8 +4,18 @@
   grid-template-rows: 0fr;
   transition: var(--transition-medium);
 
+  & a,
+  & button {
+    display: none;
+  }
+
   &__open {
     grid-template-rows: 1fr;
+
+    & a,
+    & button {
+      display: block;
+    }
   }
 
   &__inside {
@@ -109,9 +119,6 @@
   &__info {
     color: var(--color-light-300);
   }
-}
-
-.meta {
 }
 
 .btns {

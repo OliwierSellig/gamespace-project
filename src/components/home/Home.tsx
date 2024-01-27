@@ -88,7 +88,7 @@ async function Home() {
         ))}
       </SliderHome>
       <Favourites />
-      <SliderHome heading={`RGP's greates hits`}>
+      <SliderHome heading={`RPG's greates hits`}>
         {rpg.map((game) => (
           <GameCard
             href={`/games/${game.id}`}

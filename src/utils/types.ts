@@ -78,3 +78,39 @@ export type ImageSizesType = {
   defalult: { number: number; unit: "px" | "vw" };
   sizes?: { maxWidth: number; size: { number: number; unit: "px" | "vw" } }[];
 };
+
+export type fetchGamesProps = {
+  page?: number;
+  pageSize?: number;
+  search?: string;
+  parentPlatforms?: number[];
+  platforms?: number[];
+  developers?: number[];
+  genres?: number[];
+  tags?: number[];
+  dates?: {
+    fromDay: number;
+    fromMonth: number;
+    fromYear: number;
+    toDay: number;
+    toMonth: number;
+    toYear: number;
+  };
+  ordering?: {
+    orderBy:
+      | "name"
+      | "released"
+      | "added"
+      | "created"
+      | "updated"
+      | "rating"
+      | "metacritics";
+    reversed?: boolean;
+  };
+};
+
+export type dateType = {
+  year: number;
+  month: number;
+  day: number;
+};

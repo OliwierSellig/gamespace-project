@@ -1,7 +1,7 @@
-// import { RankingProvider } from "@/contexts/RankingContext";
+import { RankingProvider } from "../../../contexts/RankingContext";
 
 function layout({ children }) {
-  return <div>{children}</div>;
+  return <RankingProvider>{children}</RankingProvider>;
 }
 
 export default layout;

@@ -8,6 +8,7 @@ type RowHeaderProps = {
   unSetActive: () => void;
   setActive: () => void;
   game: FetchedGameItem;
+  highlight: string;
 };
 
 function RowHeader({
@@ -16,6 +17,7 @@ function RowHeader({
   setActive,
   game,
   index,
+  highlight,
 }: RowHeaderProps) {
   return (
     <button
@@ -30,7 +32,7 @@ function RowHeader({
           <span className={styles.pos}>{index + 4}th</span>
           <h2 className={styles.name}>{game.name}</h2>
         </div>
-        <span className={styles.played}>{`${game.added} played`}</span>
+        <span className={styles.played}>{highlight}</span>
       </div>
       <HiMiniChevronLeft />
     </button>

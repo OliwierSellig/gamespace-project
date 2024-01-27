@@ -6,14 +6,21 @@ import styles from "./topRanked.module.scss";
 
 type TopRankedProps = {
   games: FetchedGameItem[];
+  order: string;
 };
 
-function TopRanked({ games }: TopRankedProps) {
+function TopRanked({ games, order }: TopRankedProps) {
   return (
     <ul className={styles.container}>
-      <TopRankedCard game={games[0]} place={1} />
-      <TopRankedCard game={games[1]} place={2} />
-      <TopRankedCard game={games[2]} place={3} />
+      {games.map((game, i) => (
+        <TopRankedCard
+          order={order}
+          key={game.id}
+          game={game}
+          place={i + 1}
+          animTime={i}
+        />
+      ))}
     </ul>
   );
 }

@@ -26,6 +26,7 @@ function RowContent({ isActive, game }: RowContentProps) {
               src={game.background_image}
               alt={`${game.name} cover`}
               fill
+              sizes="(max-width: 768px) 95vw, (max-width: 900px) 45vw, (max-width: 1440px) 35vw, (max-width: 1800px) 30vw, 560px"
             />
           </div>
           <div className={styles.box}>

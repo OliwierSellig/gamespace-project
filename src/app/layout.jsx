@@ -1,6 +1,7 @@
 import { poppins } from "../utils/fonts";
 import "../scss/general.scss";
 import { UserProvider } from "../contexts/UserContext";
+import Providers from "../lib/QueryProvider";
 
 export const metadata = {
   title: "GameSpace | Web's most advanced games library",
@@ -12,7 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.className}>
       <body>
-        <UserProvider>{children}</UserProvider>
+        <Providers>
+          <UserProvider>{children}</UserProvider>
+        </Providers>
       </body>
     </html>
   );

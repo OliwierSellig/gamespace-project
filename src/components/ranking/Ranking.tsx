@@ -1,29 +1,61 @@
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from "@tanstack/react-query";
 import { fetchGames } from "../../lib/games";
 import Configurator from "./Configurator";
 import RankedList from "./RankedList";
+import { currentDate } from "../../utils/data";
 
 type RankingProps = {
   order: string;
 };
 
 async function Ranking({ order }: RankingProps) {
-  const games = await fetchGames({
-    ordering: { orderBy: "added", reversed: true },
-    dates: {
-      fromDay: 1,
-      fromMonth: 1,
-      fromYear: 2023,
-      toDay: 1,
-      toMonth: 12,
-      toYear: 2023,
-    },
-    pageSize: 10,
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: [
+      "games",
+      {
+        dates: {
+          fromYear: currentDate.getFullYear() - 1,
+          fromMonth: currentDate.getMonth() + 1,
+          fromDay: currentDate.getDate(),
+          toYear: currentDate.getFullYear(),
+          toMonth: currentDate.getMonth() + 1,
+          toDay: currentDate.getDate(),
+        },
+        ordering: {
+          orderBy: order === "trending" ? "added" : "rating",
+          reversed: true,
+        },
+      },
+    ],
+    queryFn: () =>
+      fetchGames({
+        dates: {
+          fromYear: currentDate.getFullYear() - 1,
+          fromMonth: currentDate.getMonth() + 1,
+          fromDay: currentDate.getDate(),
+          toYear: currentDate.getFullYear(),
+          toMonth: currentDate.getMonth() + 1,
+          toDay: currentDate.getDate(),
+        },
+        ordering: {
+          orderBy: order === "trending" ? "added" : "rating",
+          reversed: true,
+        },
+      }),
   });
 
   return (
     <>
-      <Configurator />
-      <RankedList games={games} />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <Configurator order={order} />
+        <RankedList order={order} />
+      </HydrationBoundary>
     </>
   );
 }

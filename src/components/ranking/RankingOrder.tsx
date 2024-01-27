@@ -5,7 +5,11 @@ import styles from "./rankingOrder.module.scss";
 import { HiChevronDown } from "react-icons/hi";
 import { useEffect, useRef, useState } from "react";
 
-function RankingOrder() {
+type RankingOrderProps = {
+  order: string;
+};
+
+function RankingOrder({ order }: RankingOrderProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const orderRef = useRef<HTMLButtonElement>(null);
 
@@ -15,9 +19,9 @@ function RankingOrder() {
         setIsOpen(false);
     }
 
-    addEventListener("mousedown", (e: MouseEvent) => clickOutside(e));
+    addEventListener("mouseup", (e: MouseEvent) => clickOutside(e));
     return () =>
-      removeEventListener("mousedown", (e: MouseEvent) => clickOutside(e));
+      removeEventListener("mouseup", (e: MouseEvent) => clickOutside(e));
   }, []);
 
   return (
@@ -28,7 +32,9 @@ function RankingOrder() {
         onClick={() => setIsOpen((prev) => !prev)}
         className={styles.open}
       >
-        <p className={styles.open__text}>Trending</p>
+        <p className={styles.open__text}>
+          {order === "trending" ? "Trending" : " Top Rated"}
+        </p>
         <HiChevronDown />
       </button>
       <div className={`${styles.box} ${isOpen ? styles.box__open : ""}`}>

@@ -1,36 +1,6 @@
 import { API_KEY } from "../utils/data";
 import { setToDoubleDigit } from "../utils/functions";
-import { FetchedGameItem } from "../utils/types";
-
-type fetchGamesProps = {
-  page?: number;
-  pageSize?: number;
-  search?: string;
-  parentPlatforms?: number[];
-  platforms?: number[];
-  developers?: number[];
-  genres?: number[];
-  tags?: number[];
-  dates?: {
-    fromDay: number;
-    fromMonth: number;
-    fromYear: number;
-    toDay: number;
-    toMonth: number;
-    toYear: number;
-  };
-  ordering?: {
-    orderBy:
-      | "name"
-      | "released"
-      | "added"
-      | "created"
-      | "updated"
-      | "rating"
-      | "metacritics";
-    reversed?: boolean;
-  };
-};
+import { FetchedGameItem, fetchGamesProps } from "../utils/types";
 
 export async function fetchGames(options: fetchGamesProps) {
   const paramList = [];

@@ -2,8 +2,8 @@
   display: flex;
   align-items: start;
   flex-direction: column;
-
   position: relative;
+  z-index: 2000;
 }
 
 .header {
@@ -18,13 +18,13 @@
   align-items: center;
   gap: 4.8rem;
   padding: 1.6rem 2.8rem;
+  min-width: 24rem;
   cursor: pointer;
   background-color: #444;
   transition: var(--transition-fast);
   border-radius: var(--border-radius-small);
   box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.1);
   position: relative;
-  z-index: 200;
 
   &:hover,
   &:focus {
@@ -63,6 +63,7 @@
   top: 107%;
   transition: var(--transition-fast);
   overflow: clip;
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.1);
 
   &__open {
     grid-template-rows: 1fr;

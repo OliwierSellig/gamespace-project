@@ -7,9 +7,10 @@ import styles from "./rowList.module.scss";
 
 type RowListProps = {
   games: FetchedGameItem[];
+  order: string;
 };
 
-function RowList({ games }: RowListProps) {
+function RowList({ games, order }: RowListProps) {
   const [active, setActive] = useState<number | null>(null);
 
   return (
@@ -22,6 +23,12 @@ function RowList({ games }: RowListProps) {
           key={game.id}
           game={game}
           index={i}
+          fadeSide={i % 2 === 0 ? "left" : "right"}
+          highlight={
+            order === "trending"
+              ? `${game.added} played`
+              : `${game.rating} rating`
+          }
         />
       ))}
     </ul>
