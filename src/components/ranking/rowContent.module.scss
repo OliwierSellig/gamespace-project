@@ -4,18 +4,8 @@
   grid-template-rows: 0fr;
   transition: var(--transition-medium);
 
-  & a,
-  & button {
-    display: none;
-  }
-
   &__open {
     grid-template-rows: 1fr;
-
-    & a,
-    & button {
-      display: block;
-    }
   }
 
   &__inside {
@@ -155,16 +145,16 @@
     &:hover,
     &:focus {
       box-shadow: inset 12em 0 0 0 var(--color-light-100);
-      color: var(--color-dark-secondary);
+      color: var(--color-dark-200);
     }
   }
 
   &__add {
     &:focus,
     &:hover {
-      box-shadow: inset -8em 0 0 0 var(--color-blue-primary-shade-1),
-        inset 8em 0 0 0 var(--color-blue-primary-shade-1);
-      border: 2px solid var(--color-blue-primary-shade-1);
+      box-shadow: inset -8em 0 0 0 var(--color-blue-300),
+        inset 8em 0 0 0 var(--color-blue-300);
+      border: 2px solid var(--color-blue-300);
     }
   }
 }

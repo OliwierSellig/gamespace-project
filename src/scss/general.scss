@@ -3,32 +3,46 @@
 // -----------------------------------------
 
 :root {
+  // --- Colors ---
+
   --color-dark-primary: #121212;
   --color-dark-secondary: #151515;
   --color-dark-tertiary: #2c2c2c;
-  --color-dark-400: #414141;
+  --color-dark-100: #121212;
+  --color-dark-200: #151515;
+  --color-dark-300: #2c2c2c;
+  --color-dark-400: #333333;
+  --color-dark-500: #444444;
   --color-light-100: #ffffff;
   --color-light-200: #e6e6e6;
   --color-light-300: #b3b3b3;
   --color-blue-primary: #4169e1;
   --color-blue-primary-shade-1: #3454b4;
   --color-blue-primary-tint-1: #5478e4;
-  --color-metacritics: #6dc849;
-  --color-first-place: #e6c900;
-  --color-second-place: #adadad;
-  --color-third-place: #a46628;
+  --color-blue-100: #5478e4;
+  --color-blue-200: #4169e1;
+  --color-blue-300: #3454b4;
+
+  // --- Border Radius ---
+
+  --border-radius-default: 13px;
+  --border-radius-small: 9px;
+  --border-radius-smallest: 7px;
+
+  // --- Transitions ---
+
+  --transition-long: all 0.4s;
+  --transition-medium: all 0.3s;
+  --transition-fast: all 0.2s;
+
+  // To use
+
   --color-facebook: #4267b2;
   --color-facebook-shade: #3b5da0;
   --color-twitter: #00acee;
   --color-twitter-shade: #009bd6;
   --color-delete: #dc143c;
   --color-delete-shade: #b01030;
-  --border-radius-default: 13px;
-  --border-radius-small: 9px;
-  --border-radius-smallest: 7px;
-  --transition-long: all 0.4s;
-  --transition-medium: all 0.3s;
-  --transition-fast: all 0.2s;
 }
 
 // ---

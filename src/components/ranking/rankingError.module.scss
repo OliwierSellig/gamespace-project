@@ -19,7 +19,7 @@
   padding: 2rem 3.2rem;
   font-size: 1.8rem;
   font-weight: 500;
-  background-color: var(--color-blue-primary);
+  background-color: var(--color-blue-200);
   border-radius: var(--border-radius-default);
   cursor: pointer;
   transition: var(--transition-fast);
@@ -27,6 +27,6 @@
   &:hover,
   &:focus {
     transform: scale(1.05);
-    background-color: var(--color-blue-primary-shade-1);
+    background-color: var(--color-blue-300);
   }
 }

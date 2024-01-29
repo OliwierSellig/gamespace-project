@@ -67,12 +67,12 @@
   transition: var(--transition-fast);
 
   &__search {
-    background-color: var(--color-blue-primary);
+    background-color: var(--color-blue-200);
     color: #fff;
 
     &:hover,
     &:focus {
-      background-color: var(--color-blue-primary-shade-1);
+      background-color: var(--color-blue-300);
       transform: scale(1.03);
     }
   }
@@ -83,7 +83,7 @@
 
     &:hover,
     &:focus {
-      background-color: #444;
+      background-color: var(--color-dark-500);
     }
   }
 }

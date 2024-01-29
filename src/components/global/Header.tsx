@@ -25,20 +25,6 @@ function Header({ isFixed = true }: HeaderProps) {
   // Changing Background Color on Scroll
   // ---------------------------------------------
 
-  // useEffect(() => {
-  //   async function getElden() {
-  //     const res = await fetch(
-  //       `https://api.rawg.io/api/games?search=elden&key=${API_KEY}`
-  //     );
-
-  //     const data = await res.json();
-
-  //     console.log(data);
-  //   }
-
-  //   getElden();
-  // }, []);
-
   useEffect(() => {
     function setHeaderBackground() {
       if (

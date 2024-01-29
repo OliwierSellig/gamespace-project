@@ -118,7 +118,7 @@
     "src/**/*.js",
     ".next/types/**/*.ts",
     "src/utils/data.ts",
-    "src/app/layout.jsx",
+    "src/app/layout.tsx",
     "src/components/global/Slider.jsx",
     "src/app/(headerFixed)/ranking/layout.tsx"
   ],

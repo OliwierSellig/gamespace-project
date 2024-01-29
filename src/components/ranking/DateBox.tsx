@@ -29,6 +29,7 @@ function DateBox({
   return (
     <div tabIndex={0} className={styles.container}>
       <button
+        aria-label="Previous Date"
         disabled={!canGoPrev()}
         className={`${styles.btn} ${styles.btn__up}  ${
           canGoPrev() ? styles.btn__active : ""
@@ -51,6 +52,7 @@ function DateBox({
         ))}
       </ul>
       <button
+        aria-label="Next Date"
         disabled={!canGoNext()}
         className={`${styles.btn} ${styles.btn__down} ${
           canGoNext() ? styles.btn__active : ""

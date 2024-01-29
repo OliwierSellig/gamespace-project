@@ -8,14 +8,14 @@
   gap: 0.6rem;
   color: var(--color-light-300);
   cursor: pointer;
-  background-color: #444;
+  background-color: var(--color-dark-500);
   padding: 1.6rem 3.2rem;
   border-radius: var(--border-radius-small);
   transition: var(--transition-fast);
 
   &:hover,
   &:focus {
-    background-color: #333;
+    background-color: var(--color-dark-400);
     color: var(--color-light-100);
   }
 
@@ -26,7 +26,7 @@
     &:hover,
     &:focus {
       color: var(--color-light-300);
-      background-color: #444;
+      background-color: var(--color-dark-500);
     }
   }
 
