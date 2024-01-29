@@ -1,7 +1,7 @@
-import ScreenshotZoom from "@/components/games/ScreenshotZoom";
+// import ScreenshotZoom from "@/components/games/ScreenshotZoom";
 
 function page() {
-  return <ScreenshotZoom />;
+  return <div></div>;
 }
 
 export default page;

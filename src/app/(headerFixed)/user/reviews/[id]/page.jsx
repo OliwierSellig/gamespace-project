@@ -1,7 +1,7 @@
-import ReviewWindow from "@/components/user/reviews/ReviewWindow";
+// import ReviewWindow from "@/components/user/reviews/ReviewWindow";
 
 function page() {
-  return <ReviewWindow />;
+  return <div></div>;
 }
 
 export default page;

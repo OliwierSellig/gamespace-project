@@ -1,7 +1,7 @@
-import GameAdd from "@/components/games/GameAdd";
+// import GameAdd from "@/components/games/GameAdd";
 
 function page() {
-  return <GameAdd />;
+  return <div></div>;
 }
 
 export default page;

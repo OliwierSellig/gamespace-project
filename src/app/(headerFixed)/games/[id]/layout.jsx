@@ -1,12 +1,13 @@
-import GameView from "@/components/games/GameView";
-import { GameProvider } from "@/contexts/GameContext";
+// import GameView from "@/components/games/GameView";
+// import { GameProvider } from "@/contexts/GameContext";
 
-function layout({ children }) {
+function layout() {
   return (
-    <GameProvider>
-      <GameView />
-      {children}
-    </GameProvider>
+    <div></div>
+    // <GameProvider>
+    //   <GameView />
+    //   {children}
+    // </GameProvider>
   );
 }
 

@@ -1,7 +1,7 @@
-import RemoveGames from "@/components/user/collections/RemoveGames";
+// import RemoveGames from "@/components/user/collections/RemoveGames";
 
 function page() {
-  return <RemoveGames />;
+  return <div></div>;
 }
 
 export default page;

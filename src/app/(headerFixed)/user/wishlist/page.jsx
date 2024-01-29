@@ -1,7 +1,7 @@
-import Wishlist from "@/components/user/wishlist/Wishlist";
+// import Wishlist from "@/components/user/wishlist/Wishlist";
 
 function page() {
-  return <Wishlist />;
+  return <div></div>;
 }
 
 export default page;

@@ -1,7 +1,7 @@
-import EditCollections from "@/components/user/collections/EditCollections";
+// import EditCollections from "@/components/user/collections/EditCollections";
 
 function page() {
-  return <EditCollections />;
+  return <div></div>;
 }
 
 export default page;

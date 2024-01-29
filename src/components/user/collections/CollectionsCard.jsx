@@ -3,8 +3,6 @@ import styles from "./collectionsCard.module.scss";
 const BACKGROUND_IMAGES_LIMIT = 4;
 
 function CollectionsCard({ collection }) {
-  const navigate = useNavigate();
-
   return (
     <li
       role="button"

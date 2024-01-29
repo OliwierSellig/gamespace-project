@@ -56,7 +56,6 @@ function CollectionView() {
         </GameList>
       )}
       {!filteredCollectionGames.length && <NoSearchResults />}
-      <Outlet context={selectedCollection} />
     </>
   );
 }

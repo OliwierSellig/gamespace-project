@@ -1,6 +1,5 @@
 import { fetchGames } from "../../lib/games";
 import { currentDate } from "../../utils/data";
-import { fetchGenres } from "../../lib/genres";
 import Favourites from "./Favourites";
 import Hero from "./Hero";
 import PlatformsHome from "./PlatformsHome";

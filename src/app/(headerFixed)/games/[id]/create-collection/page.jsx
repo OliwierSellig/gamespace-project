@@ -1,7 +1,7 @@
-import CreateCollection from "@/components/games/CreateCollection";
+// import CreateCollection from "@/components/games/CreateCollection";
 
 function page() {
-  return <CreateCollection />;
+  return <div></div>;
 }
 
 export default page;

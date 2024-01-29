@@ -1,7 +1,7 @@
-import UserOverview from "@/components/user/overview/UserOverview";
+// import UserOverview from "@/components/user/overview/UserOverview";
 
 function page() {
-  return <UserOverview />;
+  return <div></div>;
 }
 
 export default page;

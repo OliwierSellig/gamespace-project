@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useUser } from "../../../contexts/UserContext";
 import FiltersStats from "./FiltersStats";
 import GamesStats from "./GamesStats";
@@ -11,15 +10,10 @@ import UserStats from "./UserStats";
 
 function UserOverview() {
   const { gamesPlayed, getFavourites, reviews, collections } = useUser();
-  const [_, updateState] = useState();
 
   // ------------------------------------
   // Forcing a Reload
   // ------------------------------------
-
-  useEffect(() => {
-    updateState({});
-  }, []);
 
   return (
     <>

@@ -1,7 +1,7 @@
-import WriteReview from "@/components/games/WriteReview";
+// import WriteReview from "@/components/games/WriteReview";
 
 function page() {
-  return <WriteReview />;
+  return <div></div>;
 }
 
 export default page;

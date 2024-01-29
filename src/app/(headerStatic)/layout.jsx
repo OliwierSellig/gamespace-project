@@ -1,12 +1,10 @@
-import Footer from "@/components/global/Footer";
-import Header from "@/components/global/Header";
+// import Footer from "@/components/global/Footer";
+// import Header from "@/components/global/Header";
 
-function layout({ children }) {
+function layout() {
   return (
     <>
-      <Header isFixed={false} />
-      {children}
-      <Footer />
+      <div></div>
     </>
   );
 }

@@ -1,7 +1,7 @@
-import UserLibrary from "@/components/user/library/UserLibrary";
+// import UserLibrary from "@/components/user/library/UserLibrary";
 
 function page() {
-  return <UserLibrary />;
+  return <div></div>;
 }
 
 export default page;

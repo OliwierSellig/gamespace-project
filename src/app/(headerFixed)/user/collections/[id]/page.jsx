@@ -1,7 +1,7 @@
-import CollectionView from "@/components/user/collections/CollectionView";
+// import CollectionView from "@/components/user/collections/CollectionView";
 
 function page() {
-  return <CollectionView />;
+  return <div></div>;
 }
 
 export default page;

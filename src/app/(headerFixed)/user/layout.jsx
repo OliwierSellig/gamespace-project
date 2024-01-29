@@ -1,7 +1,7 @@
-import UserNavigation from "@/components/user/UserNavigation";
+// import UserNavigation from "@/components/user/UserNavigation";
 
-function layout({ children }) {
-  return <UserNavigation>{children}</UserNavigation>;
+function layout() {
+  return <div></div>;
 }
 
 export default layout;

@@ -1,7 +1,12 @@
 import Ranking from "../../../../components/ranking/Ranking";
 
 function page({ params }: { params: { order: string } }) {
-  return <Ranking order={params.order} />;
+  return (
+    <>
+      {/* @ts-expect-error Async Server Component */}
+      <Ranking order={params.order} />
+    </>
+  );
 }
 
 export default page;

@@ -1,12 +1,7 @@
-import Reviews from "@/components/user/reviews/Reviews";
+// import Reviews from "@/components/user/reviews/Reviews";
 
-function layout({ children }) {
-  return (
-    <>
-      <Reviews />
-      {children}
-    </>
-  );
+function layout() {
+  return <></>;
 }
 
 export default layout;
