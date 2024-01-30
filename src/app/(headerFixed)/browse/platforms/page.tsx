@@ -1,5 +1,7 @@
+import Platforms from "../../../../components/browse/Platforms";
+
 function page() {
-  return <div>Platforms</div>;
+  return <Platforms />;
 }
 
 export default page;

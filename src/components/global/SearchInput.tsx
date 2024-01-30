@@ -1,14 +1,19 @@
-import { IoClose } from "react-icons/io5";
 import styles from "./searchInput.module.scss";
+import { IoClose } from "react-icons/io5";
+
+type SearchInputProps = {
+  handleChange: (e: string) => void;
+  inputValue: string;
+  placeholder?: string;
+};
 
 function SearchInput({
-  inputStyle = "",
   handleChange,
   inputValue,
-  placeholder = "Search for games",
-}) {
+  placeholder = "",
+}: SearchInputProps) {
   return (
-    <div className={`${styles.search} ${inputStyle ? styles[inputStyle] : ""}`}>
+    <div className={styles.search}>
       <div className={styles.container}>
         <input
           type="text"
@@ -22,10 +27,10 @@ function SearchInput({
           onClick={() => handleChange("")}
           aria-label="Empty Query"
         >
-          <IoClose className={styles.close__icon} />
-        </button>
+          <IoClose />
+        </button>{" "}
+        <div className={styles.line}></div>
       </div>
-      <div className={styles.line}></div>
     </div>
   );
 }

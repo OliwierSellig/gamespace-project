@@ -1,7 +1,12 @@
 import BrowseLayout from "../../../components/browse/BrowseLayout";
+import { BrowseProvider } from "../../../contexts/BrowseContext";
 
 function layout({ children }) {
-  return <BrowseLayout>{children}</BrowseLayout>;
+  return (
+    <BrowseProvider>
+      <BrowseLayout>{children}</BrowseLayout>
+    </BrowseProvider>
+  );
 }
 
 export default layout;

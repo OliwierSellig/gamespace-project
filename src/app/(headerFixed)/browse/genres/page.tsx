@@ -1,5 +1,7 @@
+import Genres from "../../../../components/browse/Genres";
+
 function page() {
-  return <div>Genres</div>;
+  return <Genres />;
 }
 
 export default page;

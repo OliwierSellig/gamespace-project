@@ -1,5 +1,7 @@
+import Developers from "../../../../components/browse/Developers";
+
 function page() {
-  return <div>Developers</div>;
+  return <Developers />;
 }
 
 export default page;
