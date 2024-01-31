@@ -2,7 +2,16 @@
   padding: 6.4rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 4.2rem;
+  gap: 3.2rem;
   margin: 0 auto;
   max-width: 200rem;
+
+  @media only screen and (max-width: 1800px) {
+    grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  }
+
+  @media only screen and (max-width: 1024px) {
+    padding: 3.2rem;
+    gap: 2.4rem;
+  }
 }

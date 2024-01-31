@@ -7,8 +7,6 @@ import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
 type PaginationProps = {
   currentPage: number;
   maxPage: number;
-  canGoPrev: boolean;
-  canGoNext: boolean;
   length?: number;
 };
 
