@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import styles from "./browseBy.module.scss";
-import { useBrowse } from "../../contexts/BrowseContext";
+import { usePathname } from "next/navigation";
 
 function BrowseBy() {
-  const { currentPath } = useBrowse();
+  const pathname = usePathname();
+  const currentPath = pathname.split("/").at(-1);
 
   return (
     <div className={styles.container}>

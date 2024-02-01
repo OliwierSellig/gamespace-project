@@ -17,6 +17,16 @@
   &:focus {
     color: var(--color-light-100);
   }
+
+  &__disabled {
+    opacity: 0.2;
+    cursor: default;
+
+    &:hover,
+    &:focus {
+      color: var(--color-light-300);
+    }
+  }
 }
 
 .box {
@@ -52,6 +62,21 @@
     height: 2.4rem;
     transition: var(--transition-fast);
   }
+
+  &__disabled {
+    opacity: 0.2;
+    cursor: default;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      border-color: var(--color-dark-500);
+
+      svg {
+        fill: var(--color-light-100);
+      }
+    }
+  }
 }
 
 .number {
@@ -62,4 +87,11 @@
     background-color: var(--color-blue-200);
     border-color: var(--color-blue-200);
   }
+
+  &__active {
+    background-color: var(--color-blue-300);
+    border-color: var(--color-blue-300);
+    cursor: default;
+  }
+
 }

@@ -27,20 +27,6 @@ function Header({ isFixed = true }: HeaderProps) {
   // ---------------------------------------------
 
   useEffect(() => {
-    async function g() {
-      const res = await fetch(
-        `https://api.rawg.io/api/developers?key=${API_KEY}`
-      );
-
-      const data = await res.json();
-
-      console.log(data);
-    }
-
-    g();
-  });
-
-  useEffect(() => {
     function setHeaderBackground() {
       if (
         (isActive && window.scrollY >= 80) ||

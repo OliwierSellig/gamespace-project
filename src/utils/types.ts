@@ -114,3 +114,27 @@ export type dateType = {
   month: number;
   day: number;
 };
+
+export type fetchedParentProps = {
+  pageSize: number;
+  page: number;
+};
+
+export type fetchedParentType = {
+  count: number;
+  results: fetchedParentResult[];
+};
+
+export type fetchedParentResult = {
+  games: {
+    added: number;
+    id: number;
+    name: string;
+    slug: string;
+  }[];
+  games_count: number;
+  id: number;
+  image_background: string;
+  name: string;
+  slug: string;
+};
