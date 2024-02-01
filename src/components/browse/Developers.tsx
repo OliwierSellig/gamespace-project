@@ -1,18 +1,25 @@
-"use client";
-
-import { useDevelopers } from "../../hooks/useDevelopers";
+import { fetchDevelopers } from "../../lib/developers";
 import BrowseList from "./BrowseList";
 
+type DevelopersProps = {
+  params: { [key: string]: string };
+};
 
-function Developers() {
-  const { developers, isLoading } = useDevelopers({
-    pageSize: 20,
-    page: 1,
-  });
+async function Developers({ params }: DevelopersProps) {
+  const target =
+    !parseInt(params["page"]) || parseInt(params["page"]) < 1
+      ? 1
+      : parseInt(params["page"]);
+
+  const developers = await fetchDevelopers({ page: target, pageSize: 20 });
 
   return (
     <>
-      <BrowseList data={developers} isLoading={isLoading} />
+      <BrowseList
+        list={developers.results}
+        count={developers.count}
+        page={target}
+      />
     </>
   );
 }

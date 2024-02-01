@@ -1,15 +1,25 @@
-"use client";
-
-import { usePlatforms } from "../../hooks/usePlatforms";
+import { fetchPlatforms } from "../../lib/platfroms";
 import BrowseList from "./BrowseList";
 
-function Platforms() {
-  const { platforms, isLoading } = usePlatforms({
-    pageSize: 20,
-    page: 1,
-  });
+type PlatfromsProps = {
+  params: { [key: string]: string };
+};
 
-  return <BrowseList isLoading={isLoading} data={platforms} />;
+async function Platforms({ params }: PlatfromsProps) {
+  const target =
+    !parseInt(params["page"]) || parseInt(params["page"]) < 1
+      ? 1
+      : parseInt(params["page"]);
+
+  const query = params["search"] || "";
+
+  const platforms = await fetchPlatforms();
+
+  const activeList = platforms.results
+    .filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))
+    .slice(0 + (target - 1) * 20, 20 + (target - 1) * 20);
+
+  return <BrowseList list={activeList} count={platforms.count} page={target} />;
 }
 
 export default Platforms;

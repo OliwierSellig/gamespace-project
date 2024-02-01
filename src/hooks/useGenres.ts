@@ -1,15 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchedParentProps } from "../utils/types";
 import { fetchGenres } from "../lib/genres";
 
-export function useGenres(props: fetchedParentProps) {
+export function useGenres() {
   const {
     isLoading,
     data: genres,
     error,
   } = useQuery({
-    queryKey: ["genres", props],
-    queryFn: () => fetchGenres({ ...props }),
+    queryKey: ["genres"],
+    queryFn: fetchGenres,
   });
 
   return { isLoading, genres, error };
