@@ -11,15 +11,11 @@ async function Genres({ params }: GenresProps) {
       ? 1
       : parseInt(params["page"]);
 
-  const query = params["search"] || "";
+  const genres = await fetchGenres({ page: target, pageSize: 20 });
 
-  const genres = await fetchGenres();
-
-  const activeList = genres.results
-    .filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))
-    .slice(0 + (target - 1) * 20, 20 + (target - 1) * 20);
-
-  return <BrowseList list={activeList} count={genres.count} page={target} />;
+  return (
+    <BrowseList list={genres.results} count={genres.count} page={target} />
+  );
 }
 
 export default Genres;

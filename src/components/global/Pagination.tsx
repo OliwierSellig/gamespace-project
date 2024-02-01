@@ -8,9 +8,15 @@ type PaginationProps = {
   currentPage: number;
   maxPage: number;
   length?: number;
+  games: any;
 };
 
-function Pagination({ currentPage, maxPage, length = 5 }: PaginationProps) {
+function Pagination({
+  currentPage,
+  maxPage,
+  length = 5,
+  games,
+}: PaginationProps) {
   const pathname = usePathname();
   const router = useRouter();
   const params = useSearchParams();

@@ -126,11 +126,14 @@ export type fetchedParentType = {
 };
 
 export type fetchedParentResult = {
-  games: {
+  games?: {
     added: number;
     id: number;
     name: string;
     slug: string;
+  }[];
+  top_games?: {
+    id: number;
   }[];
   games_count: number;
   id: number;

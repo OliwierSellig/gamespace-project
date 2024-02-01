@@ -9,7 +9,7 @@ function BrowseBy() {
   const currentPath = pathname.split("/").at(-1);
 
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <p className={styles.browse}>Browse By:</p>
       <nav className={styles.row}>
         <Link
@@ -50,7 +50,7 @@ function BrowseBy() {
           }`}
         />
       </nav>
-    </div>
+    </header>
   );
 }
 

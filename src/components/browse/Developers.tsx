@@ -11,7 +11,10 @@ async function Developers({ params }: DevelopersProps) {
       ? 1
       : parseInt(params["page"]);
 
-  const developers = await fetchDevelopers({ page: target, pageSize: 20 });
+  const developers = await fetchDevelopers({
+    page: target,
+    pageSize: 20,
+  });
 
   return (
     <>
