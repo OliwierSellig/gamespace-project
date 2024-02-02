@@ -12,7 +12,6 @@ import Logo from "./Logo";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { API_KEY } from "../../utils/data";
 
 type HeaderProps = {
   isFixed?: boolean;

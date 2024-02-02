@@ -1,6 +1,6 @@
 import { API_KEY } from "../utils/data";
 import { setToDoubleDigit } from "../utils/functions";
-import { FetchedGameItem, fetchGamesProps } from "../utils/types";
+import { FetchedGameData, fetchGamesProps } from "../utils/types";
 
 export async function fetchGames(options: fetchGamesProps) {
   const paramList = [];
@@ -8,15 +8,35 @@ export async function fetchGames(options: fetchGamesProps) {
   if (options.search) paramList.push(`search=${options.search}`);
   if (options.page) paramList.push(`page=${options.page}`);
   if (options.pageSize) paramList.push(`page_size=${options.pageSize}`);
-  if (options.parentPlatforms && options.parentPlatforms.length > 0)
+  if (
+    options.parentPlatforms &&
+    options.parentPlatforms.length > 0 &&
+    options.parentPlatforms.every((p) => Boolean(p))
+  )
     paramList.push(`parent_platforms=${options.parentPlatforms.join(",")}`);
-  if (options.platforms && options.platforms.length > 0)
+  if (
+    options.platforms &&
+    options.platforms.length > 0 &&
+    options.platforms.every((p) => Boolean(p))
+  )
     paramList.push(`platforms=${options.platforms.join(",")}`);
-  if (options.developers && options.developers.length > 0)
+  if (
+    options.developers &&
+    options.developers.length > 0 &&
+    options.developers.every((d) => Boolean(d))
+  )
     paramList.push(`developers=${options.developers.join(",")}`);
-  if (options.genres && options.genres.length > 0)
+  if (
+    options.genres &&
+    options.genres.length > 0 &&
+    options.genres.every((g) => Boolean(g))
+  )
     paramList.push(`genres=${options.genres.join(",")}`);
-  if (options.tags && options.tags.length > 0)
+  if (
+    options.tags &&
+    options.tags.length > 0 &&
+    options.tags.every((t) => Boolean(t))
+  )
     paramList.push(`tags=${options.tags.join(",")}`);
   if (options.dates)
     paramList.push(
@@ -41,11 +61,9 @@ export async function fetchGames(options: fetchGamesProps) {
 
   try {
     const res = await fetch(`https://api.rawg.io/api/games?${query}`);
-    const data = await res.json();
+    const data: FetchedGameData = await res.json();
 
-    const resutls: FetchedGameItem[] = data.results;
-
-    return resutls;
+    return data;
   } catch (error) {
     console.error(error.message);
   }

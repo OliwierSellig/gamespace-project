@@ -10,7 +10,7 @@ type GameCardProps = {
   image: string;
   alt?: string;
   scales?: boolean;
-  imageSizes?: ImageSizesType;
+  imageSizes: ImageSizesType;
 };
 
 function GameCard({

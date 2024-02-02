@@ -33,12 +33,12 @@ function RankingOrder({ order }: RankingOrderProps) {
         className={styles.open}
       >
         <p className={styles.open__text}>
-          {order === "trending" ? "Trending" : " Top Rated"}
+          {order === "trending" ? "Trending" : "Top Rated"}
         </p>
         <HiChevronDown />
       </button>
       <div className={`${styles.box} ${isOpen ? styles.box__open : ""}`}>
-        <nav className={`${styles.nav} ${styles.nav__open}`}>
+        <nav className={styles.nav}>
           <Link href="/ranking/trending" className={styles.pick}>
             Trending
           </Link>

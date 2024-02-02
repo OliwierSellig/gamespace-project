@@ -9,9 +9,7 @@ const initialState = {
   gamesPlayed: [],
   wishlist: [],
   reviews: [],
-
   collections: [],
-
   activities: {
     played: [],
     reviewed: [],

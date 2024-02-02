@@ -41,6 +41,11 @@ type GameTagItem = {
   image_background: string;
 };
 
+export type FetchedGameData = {
+  count: number;
+  results: FetchedGameItem[];
+};
+
 export type FetchedGameItem = {
   added?: number;
   background_image?: string;

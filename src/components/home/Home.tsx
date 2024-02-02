@@ -57,7 +57,7 @@ async function Home() {
     <>
       <Hero />
       <SliderHome heading={`Trending in ${currentDate.getFullYear()}`}>
-        {trending.map((game) => (
+        {trending.results.map((game) => (
           <GameCard
             href={`/games/${game.id}`}
             image={game.background_image}
@@ -72,7 +72,7 @@ async function Home() {
         ))}
       </SliderHome>
       <SliderHome heading={`Modern Classics`}>
-        {classics.map((game) => (
+        {classics.results.map((game) => (
           <GameCard
             href={`/games/${game.id}`}
             image={game.background_image}
@@ -88,7 +88,7 @@ async function Home() {
       </SliderHome>
       <Favourites />
       <SliderHome heading={`RPG's greates hits`}>
-        {rpg.map((game) => (
+        {rpg.results.map((game) => (
           <GameCard
             href={`/games/${game.id}`}
             image={game.background_image}
@@ -103,7 +103,7 @@ async function Home() {
         ))}
       </SliderHome>
       <SliderHome heading={`Most popular strategies`}>
-        {strategy.map((game) => (
+        {strategy.results.map((game) => (
           <GameCard
             href={`/games/${game.id}`}
             image={game.background_image}
@@ -118,7 +118,7 @@ async function Home() {
         ))}
       </SliderHome>
       <SliderHome heading={`Well know Indie games`}>
-        {indie.map((game) => (
+        {indie.results.map((game) => (
           <GameCard
             href={`/games/${game.id}`}
             image={game.background_image}

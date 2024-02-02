@@ -11,6 +11,8 @@ export async function fetchDevelopers({ pageSize, page }: fetchedParentProps) {
     const data = await res.json();
     const results: fetchedParentType = data;
 
+    console.log(results);
+
     return results;
   } catch (error) {
     console.error(error.message);

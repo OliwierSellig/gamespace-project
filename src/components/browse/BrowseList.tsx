@@ -27,11 +27,7 @@ function BrowseList({ list, count, page }: BrowseListProps) {
           ))}
         </ul>
         <div className={styles.pagination}>
-          <Pagination
-            games={list}
-            currentPage={page}
-            maxPage={Math.ceil(count / 20)}
-          />
+          <Pagination currentPage={page} maxPage={Math.ceil(count / 20)} />
         </div>
       </>
     );
