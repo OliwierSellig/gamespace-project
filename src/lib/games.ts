@@ -60,8 +60,12 @@ export async function fetchGames(options: fetchGamesProps) {
   }key=${API_KEY}`;
 
   try {
-    const res = await fetch(`https://api.rawg.io/api/games?${query}`);
+    const res = await fetch(`https://api.rawg.io/api/games?${query}`, {
+      signal: options.signal,
+    });
     const data: FetchedGameData = await res.json();
+
+    console.log(`https://api.rawg.io/api/games?${query}`);
 
     return data;
   } catch (error) {

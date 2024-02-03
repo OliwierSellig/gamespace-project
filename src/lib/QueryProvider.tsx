@@ -10,7 +10,7 @@ function Providers({ children }: ChildrenProp) {
     () =>
       new QueryClient({
         defaultOptions: {
-          queries: { staleTime: 5 * 1000, refetchInterval: 5 * 1000 },
+          queries: { staleTime: 20 * 1000, refetchInterval: 20 * 1000 },
         },
       })
   );

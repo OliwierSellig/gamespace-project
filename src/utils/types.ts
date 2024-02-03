@@ -112,6 +112,7 @@ export type fetchGamesProps = {
       | "metacritics";
     reversed?: boolean;
   };
+  signal?: AbortSignal;
 };
 
 export type dateType = {
@@ -146,3 +147,16 @@ export type fetchedParentResult = {
   name: string;
   slug: string;
 };
+
+type DetailedType = {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  image_background: string;
+  games_count: number;
+};
+
+export type SingleDevType = DetailedType;
+export type SingleGenreType = DetailedType;
+export type SinglePlatformType = DetailedType;

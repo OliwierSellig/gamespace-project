@@ -130,7 +130,7 @@ function RankingProvider({ children }: ChildrenProp) {
 function useRanking() {
   const value = useContext(RankingContext);
   if (value === undefined)
-    throw new Error("Search context was used outside of a provider");
+    throw new Error("Ranking context was used outside of a provider");
   return value;
 }
 

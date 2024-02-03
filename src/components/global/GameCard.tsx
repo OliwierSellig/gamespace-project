@@ -3,6 +3,7 @@ import styles from "./gameCard.module.scss";
 import Image from "next/image";
 import { ChildrenProp, ImageSizesType } from "../../utils/types";
 import { ReactNode } from "react";
+import noImage from "../../../public/img/not-found.png";
 
 type GameCardProps = {
   children?: ReactNode;
@@ -44,8 +45,8 @@ function GameCard({
       <Image
         className={styles.background}
         sizes={sizes}
-        src={image}
-        alt={alt}
+        src={image || noImage}
+        alt={alt || ""}
         fill
       />
       {Boolean(children) && <div className={styles.box}>{children}</div>}

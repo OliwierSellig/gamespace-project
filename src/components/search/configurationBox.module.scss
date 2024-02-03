@@ -1,0 +1,52 @@
+.item {
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-light-300);
+  background-color: var(--color-dark-500);
+  padding: 1.4rem 3.2rem;
+  border-radius: var(--border-radius-default);
+  transition: var(--transition-medium);
+  overflow: hidden;
+  user-select: none;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    .box {
+      transform: translateX(0);
+    }
+  }
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  background-color: rgba(#dc143c, 0.8);
+  transition: var(--transition-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  &:hover,
+  &:focus {
+    svg {
+      transform: scale(1.15);
+      stroke: var(--color-light-100);
+    }
+  }
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    stroke: var(--color-light-300);
+  }
+}

@@ -2,22 +2,29 @@
 
 import { useEffect, useRef, useState } from "react";
 import { HiChevronDown } from "react-icons/hi";
-import { useSearchParams } from "next/navigation";
 import styles from "./orderByBtn.module.scss";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-function OrderByBtn() {
+type OrderByBtnProps = {
+  order: string;
+};
+
+function OrderByBtn({ order: o }: OrderByBtnProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const orderRef = useRef<HTMLButtonElement>(null);
-  const params = useSearchParams();
   const orderTypes = [
     { name: "Relevance", slug: "relevance" },
     { name: "Rating", slug: "rating" },
     { name: "Popularity", slug: "popularity" },
     { name: "Released", slug: "released" },
   ];
-  const currentOrder = orderTypes.find(
-    (order) => order.slug === params["order"]
-  ) || { name: "Relevance", slug: "relevance" };
+  const currentOrder = orderTypes.find((order) => order.slug === o) || {
+    name: "Relevance",
+    slug: "relevance",
+  };
+  const pathname = usePathname();
+  const router = useRouter();
+  const params = useSearchParams();
 
   useEffect(() => {
     function clickOutside(e: MouseEvent) {
@@ -29,6 +36,14 @@ function OrderByBtn() {
     return () =>
       removeEventListener("mouseup", (e: MouseEvent) => clickOutside(e));
   }, []);
+
+  function setOrder(o: string) {
+    const current = new URLSearchParams(Array.from(params.entries()));
+    current.set("order", o);
+    const order = current.toString();
+    const query = order ? `?${order}` : "";
+    router.push(`${pathname}${query}`);
+  }
 
   return (
     <div className={styles.container}>
@@ -44,7 +59,11 @@ function OrderByBtn() {
       <div className={`${styles.box} ${isOpen ? styles.box__open : ""}`}>
         <nav className={styles.nav}>
           {orderTypes.map((order, i) => (
-            <button className={styles.pick} key={i}>
+            <button
+              onClick={() => setOrder(order.slug)}
+              className={styles.pick}
+              key={i}
+            >
               {order.name}
             </button>
           ))}

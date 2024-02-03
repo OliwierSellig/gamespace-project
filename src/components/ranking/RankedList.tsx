@@ -37,8 +37,8 @@ function RankedList({ order }: RankedListProps) {
   if (!isLoading && isSuccess)
     return (
       <div className={styles.container}>
-        <TopRanked games={games.slice(0, 3)} order={order} />
-        <RowList games={games.slice(3)} order={order} />
+        <TopRanked games={games.results.slice(0, 3)} order={order} />
+        <RowList games={games.results.slice(3)} order={order} />
       </div>
     );
 }

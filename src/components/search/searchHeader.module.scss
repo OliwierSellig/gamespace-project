@@ -1,7 +1,11 @@
 .header {
+  padding: 20rem 3.2rem 1.2rem;
+}
+
+.row {
   display: grid;
   align-items: center;
-  padding: 20rem 3.2rem 4.2rem;
   gap: 4.8rem;
   grid-template-columns: max-content 1fr;
+  margin-bottom: 8.2rem;
 }

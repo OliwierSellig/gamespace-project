@@ -10,7 +10,7 @@ export function useGames(props: fetchGamesProps) {
     error,
   } = useQuery({
     queryKey: ["games", props],
-    queryFn: () => fetchGames({ ...props }),
+    queryFn: ({ signal }) => fetchGames({ ...props, signal: signal }),
   });
 
   return { isLoading, games, error, isSuccess };

@@ -1,17 +1,20 @@
-"use client";
-
 import OrderByBtn from "../global/OrderByBtn";
-import SearchInput from "../global/SearchInput";
+import Keyword from "./Keyword";
+import SearchQuery from "./SearchQuery";
 import styles from "./searchHeader.module.scss";
-import { useState } from "react";
 
-function SearchHeader() {
-  const [query, setQuery] = useState<string>("");
+type SearchHeaderProps = {
+  params: { [key: string]: string };
+};
 
+function SearchHeader({ params }: SearchHeaderProps) {
   return (
     <header className={styles.header}>
-      <OrderByBtn />
-      <SearchInput inputValue={query} handleChange={setQuery} />
+      <nav className={styles.row}>
+        <OrderByBtn order={params["order"] || ""} />
+        <SearchQuery />
+      </nav>
+      <Keyword params={params} />
     </header>
   );
 }

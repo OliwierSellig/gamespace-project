@@ -120,7 +120,8 @@
     "src/utils/data.ts",
     "src/app/layout.tsx",
     "src/components/global/Slider.jsx",
-    "src/app/(headerFixed)/ranking/layout.tsx"
+    "src/app/(headerFixed)/ranking/layout.tsx",
+    "src/contexts/SearchContex.tss"
   ],
   "exclude": ["node_modules"]
 }

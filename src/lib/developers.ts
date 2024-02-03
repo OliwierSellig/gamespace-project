@@ -1,5 +1,9 @@
 import { API_KEY } from "../utils/data";
-import { fetchedParentProps, fetchedParentType } from "../utils/types";
+import {
+  SingleDevType,
+  fetchedParentProps,
+  fetchedParentType,
+} from "../utils/types";
 
 export async function fetchDevelopers({ pageSize, page }: fetchedParentProps) {
   const query = `?${pageSize ? `page_size=${pageSize}&` : ""}${
@@ -11,7 +15,19 @@ export async function fetchDevelopers({ pageSize, page }: fetchedParentProps) {
     const data = await res.json();
     const results: fetchedParentType = data;
 
-    console.log(results);
+    return results;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export async function fetchDevById(id: number) {
+  try {
+    const res = await fetch(
+      `https://api.rawg.io/api/developers/${id}?key=${API_KEY}`
+    );
+    const data = await res.json();
+    const results: SingleDevType = data;
 
     return results;
   } catch (error) {
