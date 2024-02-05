@@ -60,6 +60,7 @@ function OrderByBtn({ order: o }: OrderByBtnProps) {
         <nav className={styles.nav}>
           {orderTypes.map((order, i) => (
             <button
+              tabIndex={isOpen ? 0 : -1}
               onClick={() => setOrder(order.slug)}
               className={styles.pick}
               key={i}

@@ -14,9 +14,16 @@ type BrowseItemProps = {
     name: string;
     slug: string;
   }[];
+  href: string;
 };
 
-function BrowseItem({ cover, name, gameCount, popularGames }: BrowseItemProps) {
+function BrowseItem({
+  cover,
+  name,
+  gameCount,
+  popularGames,
+  href,
+}: BrowseItemProps) {
   return (
     <li className={styles.container}>
       <Image
@@ -28,7 +35,7 @@ function BrowseItem({ cover, name, gameCount, popularGames }: BrowseItemProps) {
       />
       <div className={styles.content}>
         <h2 className={styles.name}>{name || "Undefined"}</h2>
-        <Link className={styles.link} href="/">
+        <Link className={styles.link} href={href}>
           View Games
         </Link>
 

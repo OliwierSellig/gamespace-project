@@ -1,6 +1,5 @@
 import { FetchedGameItem } from "../../utils/types";
 import GameCard from "../global/GameCard";
-
 import Pagination from "../global/Pagination";
 import styles from "./searchList.module.scss";
 
@@ -20,7 +19,14 @@ function SearchList({ list, count, currentPage }: SearchListProps) {
               image={game.background_image}
               key={game.id}
               alt={`${game.name} cover`}
-              imageSizes={{ defalult: { number: 30, unit: "vw" } }}
+              imageSizes={{
+                defalult: { number: 25, unit: "vw" },
+                sizes: [
+                  { maxWidth: 1600, size: { unit: "vw", number: 33 } },
+                  { maxWidth: 1100, size: { unit: "vw", number: 50 } },
+                  { maxWidth: 650, size: { unit: "vw", number: 95 } },
+                ],
+              }}
             >
               <GameCard.Title>{game.name}</GameCard.Title>
               <GameCard.Details>{`${game.genres?.at(0)?.name} ${

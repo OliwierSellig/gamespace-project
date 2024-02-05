@@ -39,6 +39,7 @@ function Pagination({ currentPage, maxPage, length = 5 }: PaginationProps) {
       </button>
       <div className={styles.box}>
         <button
+          aria-label="Previous page"
           disabled={!canGoPrev}
           onClick={() => setPage(page - 1)}
           className={`${styles.icon} ${
@@ -116,6 +117,7 @@ function Pagination({ currentPage, maxPage, length = 5 }: PaginationProps) {
         )}
 
         <button
+          aria-label="Next page"
           disabled={!canGoNext}
           onClick={() => setPage(page + 1)}
           className={`${styles.icon} ${

@@ -14,7 +14,12 @@ async function Genres({ params }: GenresProps) {
   const genres = await fetchGenres({ page: target, pageSize: 20 });
 
   return (
-    <BrowseList list={genres.results} count={genres.count} page={target} />
+    <BrowseList
+      type="genre"
+      list={genres.results}
+      count={genres.count}
+      page={target}
+    />
   );
 }
 

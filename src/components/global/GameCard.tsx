@@ -25,9 +25,10 @@ function GameCard({
   const sizes =
     imageSizes?.sizes && imageSizes.sizes.length > 0
       ? imageSizes.sizes
+          .sort((a, b) => a.maxWidth - b.maxWidth)
           .map(
             (item) =>
-              `(max-width: ${item.size.number}${item.size.unit} ${item.maxWidth})`
+              `(max-width: ${item.maxWidth}px) ${item.size.number}${item.size.unit}`
           )
           .join(", ")
           .concat(
@@ -57,11 +58,11 @@ function GameCard({
 export default GameCard;
 
 function GameCardTitle({ children }: ChildrenProp) {
-  return <p className={styles.title}>{children}</p>;
+  return <p className={styles.title}>{children || ""}</p>;
 }
 
 function GameCardDetails({ children }: ChildrenProp) {
-  return <p className={styles.details}>{children}</p>;
+  return <p className={styles.details}>{children || ""}</p>;
 }
 
 GameCard.Title = GameCardTitle;

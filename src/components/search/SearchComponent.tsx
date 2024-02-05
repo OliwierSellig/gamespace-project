@@ -3,6 +3,7 @@ import { useGames } from "../../hooks/useGames";
 import SearchList from "./SearchList";
 import LoaderWindow from "../global/LoaderWindow";
 import { useSearch } from "../../contexts/SearchContex";
+import NoGamesFound from "./NoGamesFound";
 
 type SearchComponentProps = {
   params: { [key: string]: string };
@@ -34,11 +35,15 @@ function SearchComponent({ params }: SearchComponentProps) {
     developers: [dev],
     genres: [genre],
     platforms: [platform],
-    search: query.toLocaleLowerCase().replaceAll(" ", "+"),
+    search:
+      query.length > 2 ? query.toLocaleLowerCase().replaceAll(" ", "+") : "",
     ordering: { orderBy: setOrder(), reversed: true },
   });
 
   if (isLoading) return <LoaderWindow height="80vh" />;
+
+  if (!isLoading && (!games?.results || !games?.results?.length))
+    return <NoGamesFound />;
 
   return (
     <>

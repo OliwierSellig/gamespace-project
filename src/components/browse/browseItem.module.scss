@@ -1,7 +1,10 @@
+@import "../../scss/animations.scss";
+
 .container {
   position: relative;
   border-radius: var(--border-radius-default);
   overflow: hidden;
+  animation: fadeIn 0.3s;
 
   &::after {
     position: absolute;

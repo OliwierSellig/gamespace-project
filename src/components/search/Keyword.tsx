@@ -17,9 +17,11 @@ async function Keyword({ params }: KeywordProps) {
     <div className={styles.container}>
       <h1 className={styles.heading}>Games for you keyword</h1>
       <ul className={styles.row}>
-        {dev?.id && <ConfigurationBox name={dev.name} />}
-        {genre?.id && <ConfigurationBox name={genre.name} />}
-        {platform?.id && <ConfigurationBox name={platform.name} />}
+        {dev?.id && <ConfigurationBox type="dev" name={dev.name} />}
+        {genre?.id && <ConfigurationBox type="genre" name={genre.name} />}
+        {platform?.id && (
+          <ConfigurationBox type="platform" name={platform.name} />
+        )}
       </ul>
     </div>
   );

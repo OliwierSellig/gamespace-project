@@ -8,9 +8,10 @@ type BrowseListProps = {
   list: fetchedParentResult[];
   count: number;
   page: number;
+  type: "genre" | "platform" | "dev";
 };
 
-function BrowseList({ list, count, page }: BrowseListProps) {
+function BrowseList({ list, count, page, type }: BrowseListProps) {
   if (!list || list.length < 1) return <FetchPageNotFound />;
   if (list.length > 0)
     return (
@@ -23,6 +24,7 @@ function BrowseList({ list, count, page }: BrowseListProps) {
               gameCount={item.games_count}
               popularGames={item.games}
               key={item.id}
+              href={`/search?${type}=${item.id}`}
             />
           ))}
         </ul>

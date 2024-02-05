@@ -48,7 +48,7 @@ export async function fetchGames(options: fetchGamesProps) {
         options.dates.toDay
       )}`
     );
-  if (options.ordering)
+  if (options.ordering && options.ordering.orderBy)
     paramList.push(
       `ordering=${options.ordering.reversed ? "-" : ""}${
         options.ordering.orderBy
@@ -65,10 +65,6 @@ export async function fetchGames(options: fetchGamesProps) {
     });
     const data: FetchedGameData = await res.json();
 
-    console.log(`https://api.rawg.io/api/games?${query}`);
-
     return data;
-  } catch (error) {
-    console.error(error.message);
-  }
+  } catch (error) {}
 }

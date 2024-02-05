@@ -15,6 +15,7 @@ async function Platforms({ params }: PlatfromsProps) {
 
   return (
     <BrowseList
+      type="platform"
       list={platforms.results}
       count={platforms.count}
       page={target}

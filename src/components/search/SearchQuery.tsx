@@ -21,6 +21,7 @@ function SearchQuery() {
   return (
     <SearchInput
       inputValue={query}
+      placeholder="Search for games"
       handleChange={(e: string) => {
         setQuery(e);
         if (params.get("page") && parseInt(params.get("page")) !== 1) {
