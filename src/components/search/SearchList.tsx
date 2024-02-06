@@ -29,8 +29,8 @@ function SearchList({ list, count, currentPage }: SearchListProps) {
               }}
             >
               <GameCard.Title>{game.name}</GameCard.Title>
-              <GameCard.Details>{`${game.genres?.at(0)?.name} ${
-                game.released
+              <GameCard.Details>{`${game.genres?.at(0)?.name || ""} ${
+                game.released || ""
               }`}</GameCard.Details>
             </GameCard>
           ))}

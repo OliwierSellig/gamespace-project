@@ -1,10 +1,13 @@
-import { useGame } from "../../contexts/GameContext";
+import { FetchedGameItem, SingleGameItem } from "../../utils/types";
 import GameCarousel from "../global/GameCarousel";
 import styles from "./gameInfo.module.scss";
 
-function GameInfo() {
-  const { game, sameSeriesList } = useGame();
+type GameInfoProps = {
+  game: SingleGameItem;
+  games: FetchedGameItem[];
+};
 
+function GameInfo({ game, games }: GameInfoProps) {
   return (
     <div className={styles.container}>
       <div className={styles.about}>
@@ -44,7 +47,7 @@ function GameInfo() {
         <li className={styles.details__item}>
           <span className={styles.details__heading}>Release Date</span>
           <span className={styles.details__content}>
-            {game.released?.replaceAll("-", " ") || "Unknown Released Date"}
+            {game.released || "Unknown Released Date"}
           </span>
         </li>
         <li className={styles.details__item}>
@@ -60,13 +63,7 @@ function GameInfo() {
           </span>
         </li>
       </ul>
-      <GameCarousel
-        heading="Other games from the series"
-        list={sameSeriesList}
-        amount={2}
-        carouselStyle="carousel__games"
-        cardStyle="carousel__games"
-      />
+      <GameCarousel list={games} amount={2} />
     </div>
   );
 }

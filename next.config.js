@@ -29,7 +29,12 @@ const nextConfig = {
       },
       {
         source: "/browse",
-        destination: "/browse/developers",
+        destination: "/browse/genres",
+        permanent: true,
+      },
+      {
+        source: "/games",
+        destination: "/",
         permanent: true,
       },
     ];

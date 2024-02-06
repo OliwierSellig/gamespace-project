@@ -49,6 +49,7 @@ function GameCard({
         src={image || noImage}
         alt={alt || ""}
         fill
+        draggable={false}
       />
       {Boolean(children) && <div className={styles.box}>{children}</div>}
     </Link>
@@ -62,7 +63,7 @@ function GameCardTitle({ children }: ChildrenProp) {
 }
 
 function GameCardDetails({ children }: ChildrenProp) {
-  return <p className={styles.details}>{children || ""}</p>;
+  return <p className={styles.details}>{children}</p>;
 }
 
 GameCard.Title = GameCardTitle;

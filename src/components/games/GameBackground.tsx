@@ -1,20 +1,20 @@
-import { useGame } from "../../contexts/GameContext";
 import styles from "./gameBackground.module.scss";
+import noGameFound from "../../../public/img/not-found.png";
 
-function GameBackground() {
-  const { game } = useGame();
+type GameBackgroundProps = {
+  cover: string;
+};
 
+function GameBackground({ cover }: GameBackgroundProps) {
   return (
     <section
       style={{
-        backgroundImage: game.background_image_additional
-          ? `linear-gradient(
+        backgroundImage: `linear-gradient(
       0deg,
       rgba(21, 21, 21, 1) 10%,
       rgba(21, 21, 21, 0.6) 100%
     ),
-    url("${game.background_image_additional}")`
-          : "",
+    url("${cover || noGameFound}")`,
       }}
       className={styles.container}
     />

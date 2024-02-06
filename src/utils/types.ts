@@ -6,6 +6,8 @@ type GameGenreItem = {
   id: number;
   name: string;
   slug: string;
+  games_count: number;
+  image_background: string;
 };
 
 type GamePlatformItem = {
@@ -115,6 +117,61 @@ export type fetchGamesProps = {
   signal?: AbortSignal;
 };
 
+export type SingleGameItem = {
+  id: number;
+  name: string;
+  slug: string;
+  added: number;
+  background_image: string;
+  background_image_additional: string;
+  esrb_rating: {
+    id?: number;
+    name?: string;
+    slug?: string;
+  };
+  released: string;
+  playtime: number;
+  ratings: GameRatingItem[] | undefined;
+  reviews_count: number;
+  genres: GameGenreItem[];
+  stores: {
+    id: number;
+    url: string;
+    store: {
+      id: number;
+      name: string;
+      slug: string;
+      domain: string;
+      games_count: number;
+      image_background: string;
+    };
+  }[];
+  description: string;
+  description_raw: string;
+  platforms: {
+    released_at: string;
+    requirements: object;
+    platform: {
+      games_count: number;
+      id: number;
+      image: string;
+      image_background: string;
+      name: string;
+      slug: string;
+      year_end: number;
+      year_start: number;
+    };
+  }[];
+  developers: {
+    games_count: number;
+    id: number;
+    image_background: number;
+    name: number;
+    slug: number;
+  }[];
+  metacritic: number;
+};
+
 export type dateType = {
   year: number;
   month: number;
@@ -160,3 +217,27 @@ type DetailedType = {
 export type SingleDevType = DetailedType;
 export type SingleGenreType = DetailedType;
 export type SinglePlatformType = DetailedType;
+
+export type FetchedScreenshotItem = {
+  count: number;
+  results: {
+    id: number;
+    image: string;
+    height: number;
+    width: number;
+    is_deleted: boolean;
+  }[];
+};
+
+export type FetchedAchievementsItem = {
+  count: number;
+  results: AchievementResult[];
+};
+
+export type AchievementResult = {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  percent: string;
+};

@@ -1,6 +1,12 @@
 import { API_KEY } from "../utils/data";
 import { setToDoubleDigit } from "../utils/functions";
-import { FetchedGameData, fetchGamesProps } from "../utils/types";
+import {
+  FetchedAchievementsItem,
+  FetchedGameData,
+  FetchedScreenshotItem,
+  SingleGameItem,
+  fetchGamesProps,
+} from "../utils/types";
 
 export async function fetchGames(options: fetchGamesProps) {
   const paramList = [];
@@ -67,4 +73,91 @@ export async function fetchGames(options: fetchGamesProps) {
 
     return data;
   } catch (error) {}
+}
+
+export async function fetchGameByID(id: number) {
+  try {
+    const res = await fetch(
+      `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
+    );
+    const data: SingleGameItem = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function findIsTopGenre({
+  id,
+  genre,
+}: {
+  id: number;
+  genre: number;
+}) {
+  try {
+    const res = await fetch(
+      `https://api.rawg.io/api/games?key=${API_KEY}&genres=${genre}&page_size=40&ordering=-added`
+    );
+
+    const data: FetchedGameData = await res.json();
+
+    const filteredGame = data.results.find((item) => item.id === id);
+    return filteredGame
+      ? (data.results.indexOf(filteredGame) + 1).toString()
+      : "40+";
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export async function findIsTopYear({
+  id,
+  year,
+}: {
+  id: number;
+  year: number;
+}) {
+  try {
+    const res = await fetch(
+      `https://api.rawg.io/api/games?key=${API_KEY}&dates=${year}-01-01,${year}-12-31&page_size=40&ordering=-added`
+    );
+
+    const data: FetchedGameData = await res.json();
+
+    const filteredGame = data.results.find((item) => item.id === id);
+    return filteredGame
+      ? (data.results.indexOf(filteredGame) + 1).toString()
+      : "40+";
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export async function fetchGameScreenshots(id: number) {
+  try {
+    const res = await fetch(
+      `https://api.rawg.io/api/games/${id}/screenshots?key=${API_KEY}`
+    );
+
+    const data: FetchedScreenshotItem = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export async function fetchGameAchievements(id: number) {
+  try {
+    const res = await fetch(
+      `https://api.rawg.io/api/games/${id}/achievements?key=${API_KEY}`
+    );
+
+    const data: FetchedAchievementsItem = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
 }
