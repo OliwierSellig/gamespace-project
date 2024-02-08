@@ -1,9 +1,14 @@
-// import { useGame } from "../../contexts/GameContext";
-// import { useUser } from "../../contexts/UserContext";
-// import CollectionsPopup from "./CollectionsPopup";
-import { SingleGameItem } from "../../utils/types";
+import {
+  HiOutlinePlusCircle,
+  HiOutlineBookmark,
+  HiOutlineFolderPlus,
+  HiOutlinePencilSquare,
+} from "react-icons/hi2";
 import Link from "next/link";
 import styles from "./gameAction.module.scss";
+import Image from "next/image";
+import notFound from "./../../../public/img/not-found.png";
+import { SingleGameItem } from "../../utils/types";
 
 type GameActionProps = {
   game: SingleGameItem;
@@ -12,49 +17,33 @@ type GameActionProps = {
 };
 
 function GameAction({ game, topGenre, topYear }: GameActionProps) {
-  // const { game, topYear, topGenre } = useGame();
-  // const { checkGamePlayed, checkInWishlist, dispatch, checkReviewed } =
-  //   useUser();
-  const gameYear = new Date(game.released)?.getFullYear();
-  console.log(topGenre);
-  console.log(topYear);
-
   return (
     <div className={styles.container}>
-      <img
-        className={styles.cover}
-        src={`${game?.background_image}`}
-        alt={`${game?.name} Cover`}
-      />
-      <span className={styles.smallDetails}>
-        {game.released || "Realed date not defined"} - Average Playtime:{" "}
+      <div className={styles.cover}>
+        <Image
+          src={`${game?.background_image}` || notFound}
+          alt={`${game?.name || "Untitled Game"} Cover`}
+          fill
+          sizes="40vw"
+        />
+      </div>
+      <p className={styles.smallDetails}>
+        {game.released || "Unknown Release Date"} - Average Playtime:{" "}
         {game.playtime ? `${game.playtime} hours` : "Not defined"}
-      </span>
-      <h3 className={styles.title}>{game?.name}</h3>
+      </p>
+      <h1 className={styles.title}>{game?.name || "Untitled Game"}</h1>
       <div className={styles.actionBtns}>
-        <button className={styles.btn__add}>
+        <button className={`${styles.btn__add} ${styles.btn}`}>
           <span>Add to My Games</span>
-          <img
-            className={styles.addIcon}
-            src="/svg/add-games.svg"
-            alt="Add to wishlist"
-          />
+          <HiOutlinePlusCircle />
         </button>
-        <button className={styles.btn__wishlist}>
+        <button className={`${styles.btn__wishlist} ${styles.btn}`}>
           <span>Add to Wishlist</span>
-          <img
-            className={styles.addIcon}
-            src="/svg/add-wishlist.svg"
-            alt="Add to wishlist"
-          />
+          <HiOutlineBookmark />
         </button>
-        <button className={styles.btn__collections}>
-          Save to Collection&nbsp;
-          <img
-            className={styles.addIcon}
-            src="/svg/add-collection.svg"
-            alt="Add to collection"
-          />
+        <button className={`${styles.btn__collections} ${styles.btn}`}>
+          Save to Collection
+          <HiOutlineFolderPlus />
           {/* <CollectionsPopup
             openCollections={openCollections}
             setOpenCollections={setOpenCollections}
@@ -85,30 +74,28 @@ function GameAction({ game, topGenre, topYear }: GameActionProps) {
         <div className={styles.rating__chart}>
           <span className={styles.rating__chart__upper}>#{topYear || "0"}</span>
           <span className={styles.rating__chart__lower}>
-            Top {gameYear || "Year"}
+            Top {new Date(game.released)?.getFullYear() || "Year"}
           </span>
         </div>
       </div>
-      <Link className={styles.btn__review} href={`reviews`}>
+      <Link className={`${styles.btn__review} ${styles.btn}`} href={`reviews`}>
         <span>Write a review</span>
-        <img
-          className={styles.reviewIcon}
-          src="/svg/pen.svg"
-          alt="Write a review"
-        />
+        <HiOutlinePencilSquare />
       </Link>
       <div className={styles.buy}>
         <header className={styles.buy__header}>Where to buy:</header>
-        <ul className={styles.buy__list}>
+        <nav className={styles.buy__list}>
           {game.stores &&
-            game.stores.map((stores) => (
-              <li key={crypto.randomUUID()}>
-                <Link className={styles.buy__link} href="/platforms">
-                  {stores.store.name}
-                </Link>
-              </li>
+            game.stores.map((item) => (
+              <Link
+                href={item.store?.domain || ""}
+                key={item.id}
+                className={styles.buy__link}
+              >
+                {item.store.name}
+              </Link>
             ))}
-        </ul>
+        </nav>
       </div>
     </div>
   );

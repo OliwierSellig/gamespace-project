@@ -36,7 +36,7 @@ async function GameView({ id }: GameViewProps) {
 
   return (
     <>
-      <Pop game={achievements.results} />
+      <Pop game={game} />
       <GameBackground
         cover={game.background_image_additional || game.background_image}
       />

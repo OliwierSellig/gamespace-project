@@ -17,18 +17,37 @@
     display: inline;
     font-weight: 300;
     font-size: 1.8rem;
-    line-height: 1.2;
+    line-height: 1.3;
   }
 
   &__more {
     margin-left: 6px;
     border: none;
     background: none;
-    color: #888;
-    font-weight: 500;
+    color: var(--color-light-300);
     font-size: 1.8rem;
     letter-spacing: 0.5px;
     cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: var(--color-light-500);
+    }
+  }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 4.8rem 3.2rem;
+    font-size: 2rem;
+    color: var(--color-light-300);
+
+    svg {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
   }
 }
 
@@ -38,31 +57,57 @@
   row-gap: 2.4rem;
   column-gap: 3.2rem;
   margin-bottom: 4.2rem;
-  list-style: none;
 
   &__item {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 0.8rem;
+    gap: 0.4rem;
     line-height: 1.2;
   }
 
   &__heading {
-    color: #888;
-    font-size: 1.4rem;
+    color: var(--color-light-500);
+    font-size: 1.6rem;
   }
 
   &__content {
-    padding: 0.8rem 0;
+    padding: 0.4rem 0;
     font-size: 2rem;
   }
 
   &__meta {
-    padding: 0.8rem;
-    border: 1px solid #6dc849;
+    font-size: 2rem;
     border-radius: 5px;
-    color: #6dc849;
-    font-weight: 700;
+    font-weight: 600;
+    padding: 0.8rem;
+
+    &_green {
+      background-color: #04ca7b;
+      color: #242826;
+    }
+
+    &_yellow {
+      background-color: #fbbb3c;
+      color: #242826;
+    }
+
+    &_red {
+      background-color: #fb6c73;
+      color: #f2f2f2;
+    }
+  }
+
+  &__empty {
+    color: var(--color-light-300);
+  }
+
+  &__link {
+    transition: var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      color: var(--color-light-300);
+    }
   }
 }
