@@ -1,0 +1,14 @@
+.btn {
+  margin-left: 6px;
+  border: none;
+  background: none;
+  color: var(--color-light-300);
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--color-light-500);
+  }
+}
