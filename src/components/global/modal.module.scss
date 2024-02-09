@@ -14,3 +14,24 @@
   backdrop-filter: blur(5px);
   animation: fadeIn 0.3s;
 }
+
+.close {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  cursor: pointer;
+  animation: fadeRight 0.4s;
+
+  &:hover,
+  &:focus {
+    svg {
+      fill: var(--color-light-300);
+    }
+  }
+
+  svg {
+    width: 3.6rem;
+    height: 3.6rem;
+    transition: var(--transition-fast);
+  }
+}

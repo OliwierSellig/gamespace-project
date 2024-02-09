@@ -13,6 +13,7 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
+import { IoClose } from "react-icons/io5";
 import React from "react";
 import styles from "./modal.module.scss";
 
@@ -81,7 +82,14 @@ function Window({ name, children }: WindowProps) {
         if (e.target === backgroundRef.current) close();
       }}
     >
-      <div>{cloneElement(children, { onCloseModal: close })}</div>
+      <div>
+        <>
+          <button onClick={close} className={styles.close}>
+            <IoClose />
+          </button>
+          {cloneElement(children, { onCloseModal: close })}
+        </>
+      </div>
     </div>,
     document.body
   );
