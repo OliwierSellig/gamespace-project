@@ -17,12 +17,12 @@ import ea from "../../public/svg/ea.svg";
 import cdp from "../../public/svg/cdp.svg";
 import sony from "../../public/svg/sony.svg";
 import ubisoft from "../../public/svg/ubisoft.svg";
-import rockstarVid from "../../public/videos/rockstar-vid.mp4";
-import warnerVid from "../../public/videos/wb-vid.mp4";
-import eaVid from "../../public/videos/ea-vid.mp4";
-import sonyVid from "../../public/videos/sony-vid.mp4";
-import cdpVid from "../../public/videos/cdp-vid.mp4";
-import ubisoftVid from "../../public/videos/ubisoft-vid.mp4";
+import rockstarVid from "../../public/video/rockstar.mp4";
+import warnerVid from "../../public/video/wb.mp4";
+import eaVid from "../../public/video/ea.mp4";
+import sonyVid from "../../public/video/sony.mp4";
+import cdpVid from "../../public/video/cdp.mp4";
+import ubisoftVid from "../../public/video/ubisoft.mp4";
 
 export const API_KEY = "041a371c18934671bc7c7df826093657";
 
