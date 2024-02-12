@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { FetchedGameItem, SingleGameItem } from "../../utils/types";
-import GameCarousel from "../global/GameCarousel";
 import styles from "./gameInfo.module.scss";
 import { HiOutlineFaceFrown } from "react-icons/hi2";
 import ReadMore from "./ReadMore";
+import SameSeriesSlider from "./SameSeriesSlider";
 
 type GameInfoProps = {
   game: SingleGameItem;
@@ -176,7 +176,7 @@ function GameInfo({ game, games }: GameInfoProps) {
           )}
         </li>
       </ul>
-      <GameCarousel list={games} amount={2} />
+      {/* <SameSeriesSlider list={games} /> */}
     </div>
   );
 }

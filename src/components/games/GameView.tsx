@@ -15,6 +15,7 @@ import GameCard from "../global/GameCard";
 import ScreenshotsSlider from "./ScreenshotsSlider";
 import GameContainer from "./GameContainer";
 import GameAchievements from "./GameAchievements";
+import SameSeriesSlider from "./SameSeriesSlider";
 
 type GameViewProps = {
   id: string;
@@ -67,6 +68,8 @@ async function GameView({ id }: GameViewProps) {
       {achievements.results && (
         <GameAchievements name={game.name} list={achievements.results} />
       )}
+
+      <SameSeriesSlider list={games.results} />
     </>
   );
 }

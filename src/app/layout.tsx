@@ -3,6 +3,7 @@ import "../scss/general.scss";
 import { UserProvider } from "../contexts/UserContext";
 import Providers from "../lib/QueryProvider";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
 
 export const metadata = {
   title: "GameSpace | Web's most advanced games library",
@@ -13,6 +14,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.className}>
+      <head>
+        <Script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></Script>
+      </head>
       <body>
         <Providers>
           <UserProvider>{children}</UserProvider>

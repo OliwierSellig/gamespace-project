@@ -1,3 +1,7 @@
+@import "swiper/css";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 // -----------------------------------------
 // Custom Colors
 // -----------------------------------------
@@ -145,6 +149,7 @@ canvas {
 html {
   font-size: 62.5%;
   overflow-x: clip;
+  font-family: "Poppins", sans-serif;
 
   @media only screen and (max-width: 1200px) {
     font-size: 56.25%;
@@ -192,7 +197,7 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
-.locked {
+.modal {
   overflow: clip;
 }
 
