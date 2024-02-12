@@ -10,7 +10,7 @@ type SameSeriesCard = {
 
 function SameSeriesCard({ game }: SameSeriesCard) {
   return (
-    <li className={styles.container}>
+    <div className={styles.container}>
       <Image
         src={game.background_image || notFound}
         fill
@@ -20,7 +20,7 @@ function SameSeriesCard({ game }: SameSeriesCard) {
       <Link className={styles.link} href={`/games/${game.id}`}>
         View Game
       </Link>
-    </li>
+    </div>
   );
 }
 

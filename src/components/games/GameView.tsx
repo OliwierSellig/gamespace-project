@@ -5,6 +5,7 @@ import {
   fetchGameByID,
   fetchGameScreenshots,
   fetchGames,
+  fetchSameSeriesGames,
   findIsTopGenre,
   findIsTopYear,
 } from "../../lib/games";
@@ -15,15 +16,17 @@ import GameCard from "../global/GameCard";
 import ScreenshotsSlider from "./ScreenshotsSlider";
 import GameContainer from "./GameContainer";
 import GameAchievements from "./GameAchievements";
-import SameSeriesSlider from "./SameSeriesSlider";
 
 type GameViewProps = {
   id: string;
 };
 
 async function GameView({ id }: GameViewProps) {
-  const games = await fetchGames({});
   const game = await fetchGameByID(parseInt(id));
+  const topGames = await fetchGames({
+    genres: [game.genres?.at(0)?.id || null],
+  });
+  const sameSeries = await fetchSameSeriesGames(game?.slug);
   const topYear = await findIsTopYear({
     id: game.id,
     year: new Date(game.released).getFullYear(),
@@ -35,15 +38,21 @@ async function GameView({ id }: GameViewProps) {
   const screenshots = await fetchGameScreenshots(game.id);
   const achievements = await fetchGameAchievements(game.id);
 
+  console.log(sameSeries);
+
   return (
     <>
-      <Pop game={game} />
+      <Pop game={sameSeries} />
       <GameBackground
         cover={game.background_image_additional || game.background_image}
       />
       <GameContainer>
         <GameAction game={game} topYear={topYear} topGenre={topGenre} />
-        <GameInfo games={games.results} game={game} />
+        <GameInfo
+          topGames={topGames.results}
+          sameSeriesGames={sameSeries?.results}
+          game={game}
+        />
       </GameContainer>
       {screenshots.results && (
         <ScreenshotsSlider>
@@ -68,8 +77,6 @@ async function GameView({ id }: GameViewProps) {
       {achievements.results && (
         <GameAchievements name={game.name} list={achievements.results} />
       )}
-
-      <SameSeriesSlider list={games.results} />
     </>
   );
 }

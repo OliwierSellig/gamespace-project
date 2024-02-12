@@ -161,3 +161,17 @@ export async function fetchGameAchievements(id: number) {
     console.error(error.message);
   }
 }
+
+export async function fetchSameSeriesGames(pk: string) {
+  try {
+    const res = await fetch(
+      `https://api.rawg.io/api/games/${pk}/game-series?key=${API_KEY}`
+    );
+
+    const data: FetchedGameData = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
