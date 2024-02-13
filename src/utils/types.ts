@@ -170,6 +170,14 @@ export type SingleGameItem = {
     slug: number;
   }[];
   metacritic: number;
+  tags: {
+    games_count: number;
+    id: number;
+    image_background: string;
+    name: string;
+    slug: string;
+    language: string;
+  }[];
 };
 
 export type dateType = {

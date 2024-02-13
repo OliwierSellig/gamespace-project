@@ -43,7 +43,7 @@
 }
 
 .pagination {
-  padding: 1.2rem;
+  padding: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,6 +55,8 @@
   transition: var(--transition-fast);
   opacity: 0;
   z-index: 100;
+  background-color: rgba(#333, 0.6);
+  border-radius: 1300px;
 
   &__btn {
     width: 1.2rem;

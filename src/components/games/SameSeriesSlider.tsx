@@ -22,6 +22,11 @@ function SameSeriesSlider({
       <h3 className={styles.heading}>
         {isSameSeries ? "Other games from the series" : "You may also like"}
       </h3>
+      {/* {(list || !list.length) && (
+        <p className={styles.empty}>
+          We couldn&apos;t find any games, sorry...
+        </p>
+      )} */}
       {list.length === 1 && (
         <div className={styles.singleContainer}>
           <SameSeriesCard game={list.at(0)} />

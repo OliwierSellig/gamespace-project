@@ -19,6 +19,7 @@ function SearchList({ list, count, currentPage }: SearchListProps) {
               image={game.background_image}
               key={game.id}
               alt={`${game.name} cover`}
+              href={`/games/${game.id}`}
               imageSizes={{
                 defalult: { number: 25, unit: "vw" },
                 sizes: [

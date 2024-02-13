@@ -45,18 +45,20 @@ function SameSeriesNavigation() {
       >
         <HiMiniChevronRight />
       </button>
-      <nav className={styles.pagination}>
-        {Array.from({ length: swiper.slides.length - 1 }, (_, i) => (
-          <button
-            onClick={() => swiper.slideTo(i)}
-            key={i}
-            aria-label={`Set slide to ${i}`}
-            className={`${styles.pagination__btn} ${
-              currentIndex === i ? styles.pagination__active : ""
-            }`}
-          />
-        ))}
-      </nav>
+      {swiper.slides.length > 2 && (
+        <nav className={styles.pagination}>
+          {Array.from({ length: swiper.slides.length - 1 }, (_, i) => (
+            <button
+              onClick={() => swiper.slideTo(i)}
+              key={i}
+              aria-label={`Set slide to ${i}`}
+              className={`${styles.pagination__btn} ${
+                currentIndex === i ? styles.pagination__active : ""
+              }`}
+            />
+          ))}
+        </nav>
+      )}
     </>
   );
 }

@@ -7,13 +7,13 @@ import SameSeriesSlider from "./SameSeriesSlider";
 
 type GameInfoProps = {
   game: SingleGameItem;
-  topGames: FetchedGameItem[];
+  fetchedSameSeries: boolean;
   sameSeriesGames: FetchedGameItem[];
 };
 
 const DESC_LENGHT = 450;
 
-function GameInfo({ game, sameSeriesGames, topGames }: GameInfoProps) {
+function GameInfo({ game, sameSeriesGames, fetchedSameSeries }: GameInfoProps) {
   const text = game.description.replace(/<(?:.|\n)*?>/gm, "");
 
   return (
@@ -178,8 +178,8 @@ function GameInfo({ game, sameSeriesGames, topGames }: GameInfoProps) {
         </li>
       </ul>
       <SameSeriesSlider
-        list={sameSeriesGames.length > 0 ? sameSeriesGames : topGames}
-        isSameSeries={sameSeriesGames.length > 0}
+        list={sameSeriesGames}
+        isSameSeries={fetchedSameSeries}
       />
     </div>
   );

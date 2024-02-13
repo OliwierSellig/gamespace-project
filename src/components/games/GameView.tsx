@@ -25,6 +25,15 @@ async function GameView({ id }: GameViewProps) {
   const game = await fetchGameByID(parseInt(id));
   const topGames = await fetchGames({
     genres: [game.genres?.at(0)?.id || null],
+    tags: [game.tags?.at(0)?.id || null],
+    dates: {
+      fromYear: new Date(game?.released).getFullYear() - 1,
+      fromMonth: 1,
+      fromDay: 1,
+      toYear: new Date(game?.released).getFullYear(),
+      toMonth: 1,
+      toDay: 1,
+    },
   });
   const sameSeries = await fetchSameSeriesGames(game?.slug);
   const topYear = await findIsTopYear({
@@ -38,19 +47,17 @@ async function GameView({ id }: GameViewProps) {
   const screenshots = await fetchGameScreenshots(game.id);
   const achievements = await fetchGameAchievements(game.id);
 
-  console.log(sameSeries);
-
   return (
     <>
-      <Pop game={sameSeries} />
+      <Pop game={topGames} />
       <GameBackground
         cover={game.background_image_additional || game.background_image}
       />
       <GameContainer>
         <GameAction game={game} topYear={topYear} topGenre={topGenre} />
         <GameInfo
-          topGames={topGames.results}
-          sameSeriesGames={sameSeries?.results}
+          fetchedSameSeries={Boolean(sameSeries?.results)}
+          sameSeriesGames={sameSeries?.results || topGames.results.slice(0, 10)}
           game={game}
         />
       </GameContainer>
