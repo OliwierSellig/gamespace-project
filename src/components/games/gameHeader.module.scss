@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.cover {
+  position: relative;
+  width: 70%;
+  aspect-ratio: 16/9;
+  align-self: center;
+  margin-bottom: 2.8rem;
+  border-radius: var(--border-radius-smallest);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+
+  @media only screen and (max-width: 1200px) {
+    width: 90%;
+    max-width: 80rem;
+  }
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.smallDetails {
+  margin-bottom: 0.6rem;
+  font-weight: 300;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  color: var(--color-light-200);
+}
+
+.title {
+  margin-bottom: 3.2rem;
+  font-weight: 600;
+  font-size: 5.2rem;
+  line-height: 1.2;
+
+  @media only screen and (max-width: 530px) {
+    font-size: 4.6rem;
+  }
+}

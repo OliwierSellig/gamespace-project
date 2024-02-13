@@ -1,0 +1,60 @@
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 2.4rem;
+  column-gap: 3.2rem;
+  margin-bottom: 4.2rem;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.4rem;
+    line-height: 1.2;
+  }
+
+  &__heading {
+    color: var(--color-light-500);
+    font-size: 1.6rem;
+  }
+
+  &__content {
+    padding: 0.4rem 0;
+    font-size: 2rem;
+  }
+
+  &__meta {
+    font-size: 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    padding: 0.8rem;
+
+    &_green {
+      background-color: #04ca7b;
+      color: #242826;
+    }
+
+    &_yellow {
+      background-color: #fbbb3c;
+      color: #242826;
+    }
+
+    &_red {
+      background-color: #fb6c73;
+      color: #f2f2f2;
+    }
+  }
+
+  &__empty {
+    color: var(--color-light-300);
+  }
+
+  &__link {
+    transition: var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      color: var(--color-light-300);
+    }
+  }
+}
