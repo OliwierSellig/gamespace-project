@@ -48,26 +48,27 @@ async function GameView({ id }: GameViewProps) {
   const achievements = await fetchGameAchievements(game.id);
 
   return (
-    <>
-      <Pop game={topGames} />
-      <GameBackground
-        cover={game.background_image_additional || game.background_image}
-      />
+    <GameBackground cover={game.background_image_additional}>
+      <Pop game={sameSeries.results?.length || topGames.results.slice(0, 10)} />
       <GameContainer>
         <GameAction game={game} topYear={topYear} topGenre={topGenre} />
         <GameInfo
-          fetchedSameSeries={Boolean(sameSeries?.results)}
-          sameSeriesGames={sameSeries?.results || topGames.results.slice(0, 10)}
+          fetchedSameSeries={Boolean(sameSeries.results?.length)}
+          sameSeriesGames={
+            sameSeries.results?.length
+              ? sameSeries.results
+              : topGames.results.slice(0, 10)
+          }
           game={game}
         />
       </GameContainer>
-      {screenshots.results && (
+      {/* {screenshots.results && (
         <ScreenshotsSlider>
           <Slider
             itemSizes={{
               default: 40,
               minWidth: 48,
-              maxWidth: 70,
+              maxWidth: 90,
             }}
             gap={2.4}
           >
@@ -83,8 +84,8 @@ async function GameView({ id }: GameViewProps) {
       )}
       {achievements.results && (
         <GameAchievements name={game.name} list={achievements.results} />
-      )}
-    </>
+      )} */}
+    </GameBackground>
   );
 }
 

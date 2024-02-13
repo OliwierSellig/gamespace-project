@@ -179,12 +179,6 @@
   display: flex;
   gap: 1.6rem;
   margin-bottom: 4.2rem;
-
-  @media only screen and (max-width: 440px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-  }
   &__chart {
     display: flex;
     flex-direction: column;
@@ -193,24 +187,10 @@
 
     &:first-child {
       padding-left: 0;
-      @media only screen and (max-width: 440px) {
-        grid-row: 2/3;
-        grid-column: 1/-1;
-        gap: 1.4rem;
-      }
-    }
-
-    &:last-child {
-      @media only screen and (max-width: 440px) {
-      }
     }
 
     &:not(:last-child) {
       border-right: 2px #444 solid;
-
-      @media only screen and (max-width: 440px) {
-        border: none;
-      }
     }
 
     &__upper {
@@ -235,11 +215,11 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 30%));
+    grid-template-columns: repeat(auto-fill, minmax(24rem, 30%));
     gap: 1.4rem;
 
-    @media only screen and (max-width: 530px) {
-      grid-template-columns: 1fr;
+    @media only screen and (max-width: 1200px) {
+      grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
     }
   }
 

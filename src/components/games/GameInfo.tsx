@@ -11,7 +11,7 @@ type GameInfoProps = {
   sameSeriesGames: FetchedGameItem[];
 };
 
-const DESC_LENGHT = 450;
+const DESC_LENGHT = 600;
 
 function GameInfo({ game, sameSeriesGames, fetchedSameSeries }: GameInfoProps) {
   const text = game.description.replace(/<(?:.|\n)*?>/gm, "");
