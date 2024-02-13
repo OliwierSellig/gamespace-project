@@ -27,6 +27,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  max-height: max-content;
 
   @media only screen and (max-width: 1200px) {
     grid-template-columns: 1fr;

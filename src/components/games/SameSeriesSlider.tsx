@@ -22,20 +22,29 @@ function SameSeriesSlider({
       <h3 className={styles.heading}>
         {isSameSeries ? "Other games from the series" : "You may also like"}
       </h3>
-      {/* {(list || !list.length) && (
+      {(!list || !list.length) && (
         <p className={styles.empty}>
           We couldn&apos;t find any games, sorry...
         </p>
-      )} */}
+      )}
       {list.length === 1 && (
         <div className={styles.singleContainer}>
           <SameSeriesCard game={list.at(0)} />
         </div>
       )}
       {list.length >= 2 && (
-        <Swiper slidesPerView={amount} navigation spaceBetween={24}>
-          {list.map((item) => (
-            <SwiperSlide key={item.id}>
+        <Swiper
+          slidesPerView={1}
+          navigation
+          spaceBetween={24}
+          breakpoints={{
+            480: {
+              slidesPerView: amount,
+            },
+          }}
+        >
+          {list.map((item, i) => (
+            <SwiperSlide key={i}>
               <SameSeriesCard game={item} />
             </SwiperSlide>
           ))}

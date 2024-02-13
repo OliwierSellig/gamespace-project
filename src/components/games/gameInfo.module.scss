@@ -3,6 +3,11 @@
   flex-direction: column;
   align-items: start;
   min-width: 0;
+  padding-top: 12rem;
+
+  @media only screen and (max-width: 1200px) {
+    padding-top: 6.4rem;
+  }
 }
 
 .about {
