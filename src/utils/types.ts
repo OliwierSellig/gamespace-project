@@ -226,15 +226,17 @@ export type SingleDevType = DetailedType;
 export type SingleGenreType = DetailedType;
 export type SinglePlatformType = DetailedType;
 
+export type SingleScreenshotItem = {
+  id: number;
+  image: string;
+  height: number;
+  width: number;
+  is_deleted: boolean;
+};
+
 export type FetchedScreenshotItem = {
   count: number;
-  results: {
-    id: number;
-    image: string;
-    height: number;
-    width: number;
-    is_deleted: boolean;
-  }[];
+  results: SingleScreenshotItem[];
 };
 
 export type FetchedAchievementsItem = {

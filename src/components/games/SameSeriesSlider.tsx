@@ -3,8 +3,7 @@
 import { FetchedGameItem } from "../../utils/types";
 import styles from "./sameSeriesSlider.module.scss";
 import SameSeriesCard from "./SameSeriesCard";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SameSeriesNavigation from "./SameSeriesNavigation";
+import SwiperComponent from "../global/SwiperComponent";
 
 type SameSeriesSliderProps = {
   list: FetchedGameItem[];
@@ -12,11 +11,7 @@ type SameSeriesSliderProps = {
   isSameSeries: boolean;
 };
 
-function SameSeriesSlider({
-  list,
-  amount = 2,
-  isSameSeries,
-}: SameSeriesSliderProps) {
+function SameSeriesSlider({ list, isSameSeries }: SameSeriesSliderProps) {
   return (
     <div className={styles.carousel}>
       <h3 className={styles.heading}>
@@ -33,23 +28,21 @@ function SameSeriesSlider({
         </div>
       )}
       {list.length >= 2 && (
-        <Swiper
-          slidesPerView={1}
-          navigation
-          spaceBetween={24}
-          breakpoints={{
-            480: {
-              slidesPerView: amount,
+        <SwiperComponent
+          props={{
+            default: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+              navigation: true,
+              pagination: true,
             },
+            breakpoints: [{ minWidth: 480, slidesPerView: 2 }],
           }}
         >
-          {list.map((item, i) => (
-            <SwiperSlide key={i}>
-              <SameSeriesCard game={item} />
-            </SwiperSlide>
+          {list.map((item) => (
+            <SameSeriesCard key={item.id} game={item} />
           ))}
-          <SameSeriesNavigation />
-        </Swiper>
+        </SwiperComponent>
       )}
     </div>
   );

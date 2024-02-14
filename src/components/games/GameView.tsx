@@ -62,27 +62,8 @@ async function GameView({ id }: GameViewProps) {
           game={game}
         />
       </GameContainer>
-      {/* {screenshots.results && (
-        <ScreenshotsSlider>
-          <Slider
-            itemSizes={{
-              default: 40,
-              minWidth: 48,
-              maxWidth: 90,
-            }}
-            gap={2.4}
-          >
-            {screenshots.results.map((item) => (
-              <GameCard
-                key={item.id}
-                image={item.image}
-                imageSizes={{ defalult: { unit: "vw", number: 45 } }}
-              />
-            ))}
-          </Slider>
-        </ScreenshotsSlider>
-      )}
-      {achievements.results && (
+      {screenshots.results && <ScreenshotsSlider list={screenshots.results} />}
+      {/* {achievements.results && (
         <GameAchievements name={game.name} list={achievements.results} />
       )} */}
     </GameBackground>
