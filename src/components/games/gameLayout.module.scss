@@ -32,8 +32,8 @@
         ),
         linear-gradient(
           0deg,
-          rgba(21, 21, 21, 0.6) 100%,
-          rgba(21, 21, 21, 0.6) 100%
+          rgba(21, 21, 21, 0.5) 100%,
+          rgba(21, 21, 21, 0.5) 100%
         );
     }
   }
@@ -41,4 +41,11 @@
   &__box {
     flex-grow: 1;
   }
+}
+
+.box {
+  min-height: 56.25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }

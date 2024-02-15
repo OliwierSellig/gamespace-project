@@ -11,8 +11,6 @@ import {
 } from "../../lib/games";
 import Pop from "./Pop";
 import GameInfo from "./GameInfo";
-import Slider from "../global/Slider";
-import GameCard from "../global/GameCard";
 import ScreenshotsSlider from "./ScreenshotsSlider";
 import GameContainer from "./GameContainer";
 import GameAchievements from "./GameAchievements";
@@ -45,11 +43,15 @@ async function GameView({ id }: GameViewProps) {
     genre: game.genres[0]?.id,
   });
   const screenshots = await fetchGameScreenshots(game.id);
-  const achievements = await fetchGameAchievements(game.id);
+  const achievements = await fetchGameAchievements({
+    id: game.id,
+    page: 1,
+    pageSize: 5,
+  });
 
   return (
-    <GameBackground cover={game.background_image_additional}>
-      <Pop game={sameSeries.results?.length || topGames.results.slice(0, 10)} />
+    <>
+      <Pop game={achievements} />
       <GameContainer>
         <GameAction game={game} topYear={topYear} topGenre={topGenre} />
         <GameInfo
@@ -63,10 +65,15 @@ async function GameView({ id }: GameViewProps) {
         />
       </GameContainer>
       {screenshots.results && <ScreenshotsSlider list={screenshots.results} />}
-      {/* {achievements.results && (
-        <GameAchievements name={game.name} list={achievements.results} />
-      )} */}
-    </GameBackground>
+      {achievements.results && (
+        <GameAchievements
+          name={game.name}
+          list={achievements.results}
+          count={achievements.count}
+          id={id}
+        />
+      )}
+    </>
   );
 }
 

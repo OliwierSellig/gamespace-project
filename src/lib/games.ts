@@ -148,10 +148,20 @@ export async function fetchGameScreenshots(id: number) {
   }
 }
 
-export async function fetchGameAchievements(id: number) {
+type FetchGameAchievementsProps = {
+  id: number;
+  page?: number;
+  pageSize?: number;
+};
+
+export async function fetchGameAchievements({
+  id,
+  page = 1,
+  pageSize = 10,
+}: FetchGameAchievementsProps) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/games/${id}/achievements?key=${API_KEY}`
+      `https://api.rawg.io/api/games/${id}/achievements?page=${page}&page_size=${pageSize}&key=${API_KEY}`
     );
 
     const data: FetchedAchievementsItem = await res.json();

@@ -8,18 +8,18 @@
 }
 
 .heading {
-  font-size: 4.2rem;
+  font-size: 3.6rem;
   margin-bottom: 2.4rem;
 }
 
 .text {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   margin-bottom: 3.2rem;
   color: var(--color-light-300);
 }
 
 .link {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
   padding: 1.6rem 3.6rem;
   border-radius: var(--border-radius-small);
@@ -29,7 +29,7 @@
 
   &:hover,
   &:focus {
-    box-shadow: inset 8em 0 0 0 var(--color-light-100);
+    box-shadow: inset 10em 0 0 0 var(--color-light-100);
     color: var(--color-dark-200);
   }
 }

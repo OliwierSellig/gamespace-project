@@ -1,0 +1,44 @@
+.item {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: start;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.cover {
+  width: 100%;
+  position: relative;
+  border-radius: var(--border-radius-small);
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  width: 10rem;
+
+  & img {
+    object-fit: cover;
+  }
+}
+
+.content {
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.percentage {
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 0.3px;
+}
+
+.description {
+  color: var(--color-light-300);
+  font-size: 1.6rem;
+  line-height: 1.2;
+}

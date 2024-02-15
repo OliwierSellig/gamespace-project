@@ -76,7 +76,6 @@
 
 .box {
   display: flex;
-
   overflow-y: scroll;
   scroll-behavior: smooth;
 
@@ -95,10 +94,6 @@
 
   &::-webkit-scrollbar-thumb:hover {
     background: var(--color-light-200);
-  }
-
-  @media only screen and (max-width: 1200px) {
-    overflow-y: visible;
   }
 }
 
