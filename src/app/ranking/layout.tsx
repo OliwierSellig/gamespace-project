@@ -1,4 +1,4 @@
-import { RankingProvider } from "../../../contexts/RankingContext";
+import { RankingProvider } from "../../contexts/RankingContext";
 
 function layout({ children }) {
   return <RankingProvider>{children}</RankingProvider>;

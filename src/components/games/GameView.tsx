@@ -1,4 +1,3 @@
-import GameBackground from "./GameBackground";
 import GameAction from "./GameAction";
 import {
   fetchGameAchievements,
@@ -9,7 +8,6 @@ import {
   findIsTopGenre,
   findIsTopYear,
 } from "../../lib/games";
-import Pop from "./Pop";
 import GameInfo from "./GameInfo";
 import ScreenshotsSlider from "./ScreenshotsSlider";
 import GameContainer from "./GameContainer";
@@ -51,7 +49,6 @@ async function GameView({ id }: GameViewProps) {
 
   return (
     <>
-      <Pop game={achievements} />
       <GameContainer>
         <GameAction game={game} topYear={topYear} topGenre={topGenre} />
         <GameInfo
@@ -64,8 +61,10 @@ async function GameView({ id }: GameViewProps) {
           game={game}
         />
       </GameContainer>
-      {screenshots.results && <ScreenshotsSlider list={screenshots.results} />}
-      {achievements.results && (
+      {screenshots?.results && screenshots.results.length && (
+        <ScreenshotsSlider list={screenshots.results} />
+      )}
+      {achievements?.results && achievements.results.length > 0 && (
         <GameAchievements
           name={game.name}
           list={achievements.results}

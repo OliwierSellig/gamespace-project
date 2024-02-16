@@ -126,13 +126,13 @@ function SwiperNavigation({
         <nav className={styles.pagination}>
           {Array.from({ length: paginationLength }, (_, i) => (
             <button
-              onClick={() => swiper.slideTo(i)}
+              onClick={() => (loop ? swiper.slideToLoop(i) : swiper.slideTo(i))}
               key={i}
               aria-label={`Set slide to ${i}`}
               className={`${styles.pagination__btn} ${
                 currentIndex === i ? styles.pagination__active : ""
               }`}
-            />
+            ></button>
           ))}
         </nav>
       )}

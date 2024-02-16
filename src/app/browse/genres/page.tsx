@@ -1,4 +1,4 @@
-import Genres from "../../../../components/browse/Genres";
+import Genres from "../../../components/browse/Genres";
 
 function page({ searchParams }: { searchParams: { [key: string]: string } }) {
   return <Genres params={searchParams} />;

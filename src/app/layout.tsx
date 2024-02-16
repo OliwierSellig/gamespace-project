@@ -4,6 +4,7 @@ import { UserProvider } from "../contexts/UserContext";
 import Providers from "../lib/QueryProvider";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
+import GlobalLayout from "../components/global/GlobalLayout";
 
 export const metadata = {
   title: "GameSpace | Web's most advanced games library",
@@ -19,7 +20,9 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Providers>
-          <UserProvider>{children}</UserProvider>
+          <UserProvider>
+            <GlobalLayout>{children}</GlobalLayout>
+          </UserProvider>
         </Providers>
         <Toaster
           position="top-center"
@@ -44,8 +47,6 @@ export default function RootLayout({ children }) {
             style: {
               fontSize: "1.6rem",
               fontFamily: poppins.style.fontFamily,
-              // maxWidth: "500px",
-              // widows: "70%",
               padding: "1.6rem 3.6rem",
               backgroundColor: "var(--color-dark-300)",
               color: "var(--color-light-100)",
