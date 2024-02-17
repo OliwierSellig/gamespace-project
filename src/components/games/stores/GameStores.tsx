@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { SingleGameItem } from "../../../utils/types";
 import styles from "./gameStores.module.scss";
+import Button from "../../global/Button";
 
 type GameStoresProps = {
   game: SingleGameItem;
@@ -13,13 +13,16 @@ function GameStores({ game }: GameStoresProps) {
       <nav className={styles.buy__list}>
         {game.stores &&
           game.stores.map((item) => (
-            <Link
-              href={item.store?.domain || ""}
+            <Button
+              sizeY="md"
+              sizeX="md"
               key={item.id}
-              className={styles.buy__link}
+              href={item.store?.domain || ""}
+              fontWeight={400}
+              borderRadius="md"
             >
               {item.store.name}
-            </Link>
+            </Button>
           ))}
       </nav>
     </div>

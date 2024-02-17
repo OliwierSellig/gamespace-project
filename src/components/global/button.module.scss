@@ -1,0 +1,204 @@
+.btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  justify-content: center;
+}
+
+.borderRadius {
+  &__sm {
+    border-radius: var(--border-radius-smallest);
+  }
+
+  &__md {
+    border-radius: var(--border-radius-small);
+  }
+
+  &__lg {
+    border-radius: var(--border-radius-default);
+  }
+}
+
+.style {
+  &__default {
+    background-color: var(--color-dark-400);
+    color: var(--color-light-300);
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-dark-300);
+      color: var(--color-light-100);
+    }
+  }
+
+  &__fill {
+    border: 1px solid var(--color-light-100);
+    color: var(--color-light-100);
+
+    &:hover,
+    &:focus {
+      color: var(--color-dark-200);
+      box-shadow: inset 16em 0 0 0 var(--color-light-100);
+    }
+
+    &.sizeX__sm {
+      padding-right: 2.7rem;
+      padding-left: 2.7rem;
+    }
+
+    &.sizeX__md {
+      padding-right: 3.1rem;
+      padding-left: 3.1rem;
+    }
+
+    &.sizeX__lg {
+      padding-right: 4.1rem;
+      padding-left: 4.1rem;
+    }
+
+    &.sizeX__xl {
+      padding-right: 6.1rem;
+      padding-left: 6.1rem;
+    }
+
+    &.sizeY__sm {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    &.sizeY__md {
+      padding-top: 1.7rem;
+      padding-bottom: 1.7rem;
+    }
+
+    &.sizeY__lg {
+      padding-top: 1.9rem;
+      padding-bottom: 1.9rem;
+    }
+  }
+
+  &__scale {
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    background-color: var(--color-blue-300);
+    color: var(--color-light-100);
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-blue-200);
+      transform: scale(1.03);
+    }
+  }
+}
+
+.sizeX {
+  &__sm {
+    padding-left: 2.8rem;
+    padding-right: 2.8rem;
+  }
+
+  &__md {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+
+  &__lg {
+    padding-left: 4.2rem;
+    padding-right: 4.2rem;
+  }
+
+  &__xl {
+    padding-left: 6.2rem;
+    padding-right: 6.2rem;
+  }
+}
+
+.sizeY {
+  &__sm {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+  }
+
+  &__md {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+  }
+
+  &__lg {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.iconSize {
+  &__sm svg {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  &__md svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  &__lg svg {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}
+
+.transition {
+  &__fast {
+    transition: var(--transition-fast);
+  }
+
+  &__medium {
+    transition: var(--transition-medium);
+  }
+
+  &__long {
+    transition: var(--transition-long);
+  }
+}
+
+.align {
+  &__start {
+    align-self: start;
+  }
+
+  &__center {
+    align-self: center;
+  }
+
+  &__end {
+    align-self: end;
+  }
+}
+
+.justify {
+  &__start {
+    justify-self: start;
+  }
+
+  &__center {
+    justify-self: center;
+  }
+
+  &__end {
+    justify-self: end;
+  }
+}
+
+.fontSize {
+  &__sm {
+    font-size: 1.6rem;
+  }
+
+  &__md {
+    font-size: 1.8rem;
+  }
+
+  &__lg {
+    font-size: 2rem;
+  }
+}

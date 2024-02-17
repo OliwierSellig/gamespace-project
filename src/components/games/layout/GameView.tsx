@@ -19,8 +19,6 @@ type GameViewProps = {
 
 async function GameView({ id }: GameViewProps) {
   const game = await fetchGameByID(parseInt(id));
-  if (!game?.id) return null;
-
   const topGames = await fetchGames({
     genres: [game.genres?.at(0)?.id || null],
     tags: [game.tags?.at(0)?.id || null],
