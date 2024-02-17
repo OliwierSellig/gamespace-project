@@ -28,7 +28,7 @@ async function GameLayout({ id, children }: GameLayoutProps) {
         </div>
         <div className={styles.background__box} />
       </div>
-      <main className={styles.box}>{children}</main>
+      <div className={styles.box}>{children}</div>
     </div>
   );
 }
