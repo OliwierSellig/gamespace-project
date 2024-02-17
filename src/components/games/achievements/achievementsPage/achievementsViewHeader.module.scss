@@ -1,14 +1,4 @@
 @import "../../scss/animations.scss";
-.container {
-  padding: 24rem 4.8rem 6.4rem;
-  max-width: 140rem;
-  margin: 0 auto;
-  height: 100%;
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
 
 .header {
   display: flex;
@@ -45,31 +35,4 @@
   font-weight: 600;
   font-size: 4.2rem;
   text-align: center;
-}
-
-.box {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  animation: fadeIn 0.4s;
-
-  & nav {
-    margin-top: auto;
-  }
-}
-
-.list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-  row-gap: 4.2rem;
-  column-gap: 3.2rem;
-  margin-bottom: 4.2rem;
-  padding: 0 2.4rem;
-
-  & > li {
-    padding-bottom: 1.2rem;
-    border-bottom: 2px solid rgba(#555, 0.6);
-  }
 }

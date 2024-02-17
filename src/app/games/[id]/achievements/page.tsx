@@ -1,4 +1,4 @@
-import AchievementsView from "../../../../components/games/achievements/AchievementsView";
+import AchievementsView from "../../../../components/games/achievements/achievementsPage/AchievementsView";
 
 function page({
   params,

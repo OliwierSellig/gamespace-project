@@ -11,7 +11,7 @@ import {
 import GameInfo from "./GameInfo";
 import ScreenshotsSlider from "../screenshots/ScreenshotsSlider";
 import GameContainer from "./GameContainer";
-import GameAchievements from "../achievements/GameAchievements";
+import GameAchievements from "../achievements/gamePage/GameAchievements";
 
 type GameViewProps = {
   id: string;
