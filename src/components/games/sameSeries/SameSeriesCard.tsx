@@ -15,6 +15,7 @@ function SameSeriesCard({ game }: SameSeriesCard) {
         src={game.background_image || notFound}
         fill
         alt={`${game.name || "Undefined"} Cover`}
+        sizes="(max-width: 480px) 90vw (max-width: 1200px) 45vw, 22vw"
       />
       <h3 className={styles.heading}>{game.name || "Undefined Game"}</h3>
       <Link className={styles.link} href={`/games/${game.id}`}>
