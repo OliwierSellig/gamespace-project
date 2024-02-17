@@ -5,7 +5,7 @@ import { SingleScreenshotItem } from "../../../utils/types";
 import Modal from "../../global/Modal";
 import ScreenshotView from "./ScreenshotView";
 import styles from "./screenshotCard.module.scss";
-import notFound from "../../../public/img/not-found.png";
+import notFound from "../../../../public/img/not-found.png";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
 type ScreenshotCardProps = { index: number; list: SingleScreenshotItem[] };

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./sameSeriesCard.module.scss";
 import Link from "next/link";
-import notFound from "../../../public/img/not-found.png";
+import notFound from "../../../../public/img/not-found.png";
 import { FetchedGameItem } from "../../../utils/types";
 
 type SameSeriesCard = {

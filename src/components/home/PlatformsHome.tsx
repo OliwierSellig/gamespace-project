@@ -8,11 +8,11 @@ function PlatformsHome() {
     <section className={styles.platforms}>
       <SectionHeading>What type of person are you?</SectionHeading>
       <nav className={styles.container}>
-        {platforms.map((platform) => (
+        {platforms.map((platform, i) => (
           <Link
             href={`/search?platforms=${platform.id}`}
             className={styles.item}
-            key={platform.id}
+            key={i}
             aria-label={`Search ${platform.name}`}
           >
             <platform.icon />
