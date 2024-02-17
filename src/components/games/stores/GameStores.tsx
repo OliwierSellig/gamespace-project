@@ -9,7 +9,7 @@ type GameStoresProps = {
 function GameStores({ game }: GameStoresProps) {
   return (
     <div className={styles.buy}>
-      <header className={styles.buy__header}>Where to buy:</header>
+      <h3 className={styles.buy__header}>Where to buy:</h3>
       <nav className={styles.buy__list}>
         {game.stores &&
           game.stores.map((item) => (

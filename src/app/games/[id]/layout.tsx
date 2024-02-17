@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import GameLayout from "../../../components/games/overview/GameLayout";
+import GameLayout from "../../../components/games/layout/GameLayout";
 
 function layout({
   params,

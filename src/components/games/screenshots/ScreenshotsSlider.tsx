@@ -1,5 +1,6 @@
 import { SingleScreenshotItem } from "../../../utils/types";
 import Slider from "../../global/Slider";
+import GameSectionHeading from "../utils/GameSectionHeading";
 import ScreenshotCard from "./ScreenshotCard";
 import styles from "./screenshotsSlider.module.scss";
 
@@ -10,7 +11,7 @@ type ScreenshotSliderProps = {
 function ScreenshotsSlider({ list }: ScreenshotSliderProps) {
   return (
     <div className={styles.container}>
-      <h2 className={styles.heading}>Game Screenshots</h2>
+      <GameSectionHeading>Game Screenshots</GameSectionHeading>
       <Slider
         itemSizes={{
           default: 40,

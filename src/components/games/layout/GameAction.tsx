@@ -1,9 +1,9 @@
 import styles from "./gameAction.module.scss";
 import { SingleGameItem } from "../../../utils/types";
-import GameHeader from "./GameHeader";
-import GameActionButtons from "./GameActionButtons";
-import GameRating from "./GameRating";
-import GameStores from "./GameStores";
+import GameHeader from "../header/GameHeader";
+import GameActionButtons from "../actions/GameActionButtons";
+import GameStores from "../stores/GameStores";
+import GameRating from "../rating/GameRating";
 
 type GameActionProps = {
   game: SingleGameItem;

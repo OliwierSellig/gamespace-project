@@ -1,4 +1,3 @@
-import GameAction from "./GameAction";
 import {
   fetchGameAchievements,
   fetchGameByID,
@@ -12,6 +11,7 @@ import GameInfo from "./GameInfo";
 import ScreenshotsSlider from "../screenshots/ScreenshotsSlider";
 import GameContainer from "./GameContainer";
 import GameAchievements from "../achievements/gamePage/GameAchievements";
+import GameAction from "./GameAction";
 
 type GameViewProps = {
   id: string;

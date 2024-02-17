@@ -1,7 +1,7 @@
 import { FetchedGameItem, SingleGameItem } from "../../../utils/types";
 import styles from "./gameInfo.module.scss";
 import SameSeriesSlider from "../sameSeries/SameSeriesSlider";
-import GameDetails from "./GameDetails";
+import GameDetails from "../details/GameDetails";
 import GameAbout from "../about/GameAbout";
 
 type GameInfoProps = {
