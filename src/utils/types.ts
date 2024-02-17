@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export type ChildrenProp = { children: ReactNode };
 
-type GameGenreItem = {
+export type GameGenreItem = {
   id: number;
   name: string;
   slug: string;
@@ -124,11 +124,7 @@ export type SingleGameItem = {
   added: number;
   background_image: string;
   background_image_additional: string;
-  esrb_rating: {
-    id?: number;
-    name?: string;
-    slug?: string;
-  };
+  esrb_rating: EsrbRatingType;
   released: string;
   playtime: number;
   ratings: GameRatingItem[] | undefined;
@@ -148,27 +144,8 @@ export type SingleGameItem = {
   }[];
   description: string;
   description_raw: string;
-  platforms: {
-    released_at: string;
-    requirements: object;
-    platform: {
-      games_count: number;
-      id: number;
-      image: string;
-      image_background: string;
-      name: string;
-      slug: string;
-      year_end: number;
-      year_start: number;
-    };
-  }[];
-  developers: {
-    games_count: number;
-    id: number;
-    image_background: number;
-    name: number;
-    slug: number;
-  }[];
+  platforms: PlatformType[];
+  developers: GameDeveloperType[];
   metacritic: number;
   tags: {
     games_count: number;
@@ -178,6 +155,35 @@ export type SingleGameItem = {
     slug: string;
     language: string;
   }[];
+};
+
+export type PlatformType = {
+  released_at: string;
+  requirements: object;
+  platform: {
+    games_count: number;
+    id: number;
+    image: string;
+    image_background: string;
+    name: string;
+    slug: string;
+    year_end: number;
+    year_start: number;
+  };
+};
+
+export type EsrbRatingType = {
+  id?: number;
+  name?: string;
+  slug?: string;
+};
+
+export type GameDeveloperType = {
+  games_count: number;
+  id: number;
+  image_background: number;
+  name: number;
+  slug: number;
 };
 
 export type dateType = {

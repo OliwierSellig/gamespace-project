@@ -1,0 +1,21 @@
+.meta {
+    font-size: 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    padding: 0.8rem;
+
+    &__green {
+      background-color: #04ca7b;
+      color: #242826;
+    }
+
+    &__yellow {
+      background-color: #fbbb3c;
+      color: #242826;
+    }
+
+    &__red {
+      background-color: #fb6c73;
+      color: #f2f2f2;
+    }
+  }
