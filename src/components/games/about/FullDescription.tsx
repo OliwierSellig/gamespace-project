@@ -3,6 +3,7 @@ import styles from "./fullDescription.module.scss";
 import notFound from "./../../../../public/img/not-found.png";
 import { HiOutlineBookmark, HiOutlinePlusCircle } from "react-icons/hi2";
 import { SingleGameItem } from "../../../utils/types";
+import Button from "../../global/Button";
 
 type FullDescriptionProps = {
   game: SingleGameItem;
@@ -27,14 +28,14 @@ function FullDescription({ game }: FullDescriptionProps) {
             className={styles.description}
           />
           <nav className={styles.btns}>
-            <button className={`${styles.btn__add} ${styles.btn}`}>
-              <span>Add to My Games</span>
+            <Button style="scale">
+              <span>Add to my games</span>
               <HiOutlinePlusCircle />
-            </button>
-            <button className={`${styles.btn__wishlist} ${styles.btn}`}>
+            </Button>
+            <Button transition="long" style="fill">
               <span>Add to Wishlist</span>
               <HiOutlineBookmark />
-            </button>
+            </Button>
           </nav>
         </div>
       </div>

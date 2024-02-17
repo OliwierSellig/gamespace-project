@@ -15,111 +15,11 @@
     flex-direction: column;
     gap: 2rem;
   }
-}
 
-.btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-
-  &__add,
-  &__wishlist,
-  &__collections {
+  & button {
     @media only screen and (max-width: 440px) {
       justify-content: center;
       width: 90%;
-    }
-  }
-
-  &__add {
-    border-radius: var(--border-radius-default);
-    padding: 1.6rem 3.2rem;
-    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
-    background-color: var(--color-blue-300);
-    color: #fff;
-    font-weight: 500;
-    font-size: 1.8rem;
-    transition: var(--transition-fast);
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-blue-200);
-      transform: scale(1.03);
-    }
-
-    svg {
-      width: 2.4rem;
-      height: 2.4rem;
-    }
-  }
-
-  &__wishlist {
-    border-radius: var(--border-radius-default);
-    padding: 1.5rem 3.2rem;
-    border: 1px solid var(--color-light-100);
-    color: #fff;
-    font-weight: 500;
-    font-size: 1.8rem;
-    transition: var(--transition-long);
-
-    &:hover,
-    &:focus {
-      color: var(--color-dark-200);
-      box-shadow: inset 16em 0 0 0 var(--color-light-100);
-    }
-
-    svg {
-      width: 2.4rem;
-      height: 2.4rem;
-    }
-  }
-
-  &__collections {
-    position: relative;
-    padding: 0 2px 3px;
-    border: none;
-    border-bottom: 1px solid currentColor;
-    background: none;
-    color: var(--color-light-300);
-    font-size: 1.8rem;
-    transition: var(--transition-fast);
-
-    &:hover,
-    &:focus {
-      color: var(--color-dark-700);
-    }
-
-    svg {
-      width: 2.4rem;
-      height: 2.4rem;
-    }
-  }
-
-  &__review {
-    border-radius: var(--border-radius-default);
-    align-self: center;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 3.2rem;
-    padding: 1.8rem 6.4rem;
-    background-color: var(--color-dark-400);
-    color: var(--color-light-300);
-    font-weight: 400;
-    font-size: 2rem;
-    transition: var(--transition-fast);
-    cursor: pointer;
-
-    &:hover,
-    &:focus {
-      background-color: var(--color-dark-300);
-      color: var(--color-light-100);
-    }
-
-    svg {
-      width: 2.6rem;
-      height: 2.6rem;
     }
   }
 }

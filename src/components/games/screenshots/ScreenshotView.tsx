@@ -37,6 +37,7 @@ function ScreenshotView({ currentScreenshot, list }: ScreenshotViewProps) {
               src={item.image || notFound}
               alt={`Screenshot ${item.id}`}
               fill
+              sizes="95vw"
             />
           </div>
         ))}

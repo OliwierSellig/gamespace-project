@@ -9,7 +9,7 @@ type GameStoresProps = {
 function GameStores({ game }: GameStoresProps) {
   return (
     <div className={styles.buy}>
-      <h3 className={styles.buy__header}>Where to buy:</h3>
+      <p className={styles.buy__header}>Where to buy:</p>
       <nav className={styles.buy__list}>
         {game.stores &&
           game.stores.map((item) => (
@@ -17,7 +17,10 @@ function GameStores({ game }: GameStoresProps) {
               sizeY="md"
               sizeX="md"
               key={item.id}
-              href={item.store?.domain || ""}
+              href={{
+                newPage: true,
+                url: `https://${item.store?.domain}` || "",
+              }}
               fontWeight={400}
               borderRadius="md"
             >

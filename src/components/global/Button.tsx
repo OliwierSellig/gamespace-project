@@ -11,11 +11,12 @@ type ButtonProps = {
   sizeY?: "sm" | "md" | "lg";
   sizeX?: "sm" | "md" | "lg" | "xl";
   gap?: number;
-  href?: string;
+  href?: { url: string; newPage?: boolean };
   positionSelf?: { type: "align" | "justify"; pos: "start" | "center" | "end" };
   fontWeight?: 400 | 500 | 600;
   iconSize?: "sm" | "md" | "lg";
   fontSize?: "sm" | "md" | "lg";
+  additionalStyle?: object;
 };
 
 function Button({
@@ -32,8 +33,13 @@ function Button({
   fontWeight = 500,
   iconSize = "md",
   fontSize = "md",
+  additionalStyle = {},
 }: ButtonProps) {
-  const styleList = { gap: `${gap}px`, fontWeight: `${fontWeight}` };
+  const styleList = {
+    gap: `${gap}px`,
+    fontWeight: `${fontWeight}`,
+    ...additionalStyle,
+  };
 
   const classList = `${styles.btn} ${styles[`borderRadius__${borderRadius}`]} ${
     styles[`sizeX__${sizeX}`]
@@ -47,7 +53,12 @@ function Button({
 
   if (href)
     return (
-      <Link style={styleList} className={classList} href={href}>
+      <Link
+        style={styleList}
+        className={classList}
+        href={href.url}
+        target={href.newPage ? "_blank" : ""}
+      >
         {children}
       </Link>
     );

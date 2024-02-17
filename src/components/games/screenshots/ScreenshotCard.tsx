@@ -21,6 +21,7 @@ function ScreenshotCard({ index, list }: ScreenshotCardProps) {
             draggable={false}
             src={screenshot.image || notFound}
             alt={`Screenshot ${screenshot.id}`}
+            sizes="(max-width: 1480px) 56rem, 40vw"
             fill
           />
           <div className={styles.box__open}>

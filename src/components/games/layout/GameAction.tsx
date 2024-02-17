@@ -23,9 +23,10 @@ function GameAction({ game, topGenre, topYear }: GameActionProps) {
         positionSelf={{ type: "align", pos: "center" }}
         sizeX="xl"
         sizeY="md"
-        href="/reviews"
+        href={{ url: "/reviews" }}
         fontWeight={400}
         borderRadius="md"
+        additionalStyle={{ marginBottom: "4.2rem" }}
       >
         <span>Write a review</span>
         <HiOutlinePencilSquare />
