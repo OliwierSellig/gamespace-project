@@ -24,6 +24,11 @@ export function setToDoubleDigit(item: number | string) {
     : item;
 }
 
+export function upperCaseFirstLetter(text: string) {
+  if (!text || typeof text !== "string") return text;
+  return `${text.at(0).toUpperCase()}${text.slice(1)}`;
+}
+
 export function generateRandomID() {
   const randomID = Math.ceil(Math.random() * 100000);
   return randomID;

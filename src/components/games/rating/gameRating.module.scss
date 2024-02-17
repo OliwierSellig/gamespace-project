@@ -2,29 +2,4 @@
   display: flex;
   gap: 1.6rem;
   margin-bottom: 4.2rem;
-  &__chart {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0.6rem 3.2rem;
-
-    &:first-child {
-      padding-left: 0;
-    }
-
-    &:not(:last-child) {
-      border-right: 2px #444 solid;
-    }
-
-    &__upper {
-      font-weight: 600;
-      font-size: 3rem;
-    }
-
-    &__lower {
-      color: #888;
-      font-weight: 400;
-      font-size: 1.6rem;
-    }
-  }
 }
