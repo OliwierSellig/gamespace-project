@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { SingleScreenshotItem } from "../../utils/types";
-import Modal from "../global/Modal";
+import { SingleScreenshotItem } from "../../../utils/types";
+import Modal from "../../global/Modal";
 import ScreenshotView from "./ScreenshotView";
 import styles from "./screenshotCard.module.scss";
 import notFound from "../../../public/img/not-found.png";

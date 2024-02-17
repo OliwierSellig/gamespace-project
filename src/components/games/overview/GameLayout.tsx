@@ -2,8 +2,8 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import styles from "./gameLayout.module.scss";
 import notFound from "../../../public/img/not-found.png";
-import { fetchGameByID } from "../../lib/games";
-import PageNotFound from "../global/PageNotFound";
+import { fetchGameByID } from "../../../lib/games";
+import PageNotFound from "../../global/PageNotFound";
 
 type GameLayoutProps = {
   id: string;

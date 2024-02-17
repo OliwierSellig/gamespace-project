@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./gameDetails.module.scss";
-import { SingleGameItem } from "../../utils/types";
+import { SingleGameItem } from "../../../utils/types";
 
 type GameDetailsProps = {
   game: SingleGameItem;

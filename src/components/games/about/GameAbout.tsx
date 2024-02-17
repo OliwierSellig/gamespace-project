@@ -1,5 +1,5 @@
 import { HiOutlineFaceFrown } from "react-icons/hi2";
-import { SingleGameItem } from "../../utils/types";
+import { SingleGameItem } from "../../../utils/types";
 import ReadMore from "./ReadMore";
 import styles from "./gameAbout.module.scss";
 

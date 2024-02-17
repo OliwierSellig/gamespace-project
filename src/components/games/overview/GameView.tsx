@@ -7,11 +7,11 @@ import {
   fetchSameSeriesGames,
   findIsTopGenre,
   findIsTopYear,
-} from "../../lib/games";
+} from "../../../lib/games";
 import GameInfo from "./GameInfo";
-import ScreenshotsSlider from "./ScreenshotsSlider";
+import ScreenshotsSlider from "../screenshots/ScreenshotsSlider";
 import GameContainer from "./GameContainer";
-import GameAchievements from "./GameAchievements";
+import GameAchievements from "../achievements/GameAchievements";
 
 type GameViewProps = {
   id: string;

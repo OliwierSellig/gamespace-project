@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SingleGameItem } from "../../utils/types";
+import { SingleGameItem } from "../../../utils/types";
 import styles from "./gameStores.module.scss";
 
 type GameStoresProps = {

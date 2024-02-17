@@ -1,8 +1,8 @@
-import { fetchGameAchievements, fetchGameByID } from "../../lib/games";
+import { fetchGameAchievements, fetchGameByID } from "../../../lib/games";
 import { HiMiniArrowSmallLeft } from "react-icons/hi2";
 import styles from "./achievementsView.module.scss";
-import Pagination from "../global/Pagination";
-import FetchPageNotFound from "../global/FetchPageNotFound";
+import Pagination from "../../global/Pagination";
+import FetchPageNotFound from "../../global/FetchPageNotFound";
 import Link from "next/link";
 import AchievementsItem from "./AchievementsItem";
 

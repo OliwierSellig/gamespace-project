@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { SingleGameItem } from "../../utils/types";
-import Modal from "../global/Modal";
+import { SingleGameItem } from "../../../utils/types";
+import Modal from "../../global/Modal";
 import styles from "./readMore.module.scss";
 import notFound from "./../../../public/img/not-found.png";
 import { HiOutlineBookmark, HiOutlinePlusCircle } from "react-icons/hi2";

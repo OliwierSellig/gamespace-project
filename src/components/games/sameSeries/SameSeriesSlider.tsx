@@ -1,9 +1,9 @@
 "use client";
 
-import { FetchedGameItem } from "../../utils/types";
+import { FetchedGameItem } from "../../../utils/types";
 import styles from "./sameSeriesSlider.module.scss";
 import SameSeriesCard from "./SameSeriesCard";
-import SwiperComponent from "../global/SwiperComponent";
+import SwiperComponent from "../../global/SwiperComponent";
 
 type SameSeriesSliderProps = {
   list: FetchedGameItem[];

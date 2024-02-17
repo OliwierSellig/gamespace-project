@@ -1,5 +1,5 @@
-import { SingleScreenshotItem } from "../../utils/types";
-import Slider from "../global/Slider";
+import { SingleScreenshotItem } from "../../../utils/types";
+import Slider from "../../global/Slider";
 import ScreenshotCard from "./ScreenshotCard";
 import styles from "./screenshotsSlider.module.scss";
 

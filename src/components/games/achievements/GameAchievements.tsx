@@ -1,4 +1,4 @@
-import { AchievementResult } from "../../utils/types";
+import { AchievementResult } from "../../../utils/types";
 import styles from "./gameAchievements.module.scss";
 import AchievementsItem from "./AchievementsItem";
 import Link from "next/link";

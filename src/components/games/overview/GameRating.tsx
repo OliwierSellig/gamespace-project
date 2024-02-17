@@ -1,4 +1,4 @@
-import { SingleGameItem } from "../../utils/types";
+import { SingleGameItem } from "../../../utils/types";
 import styles from "./gameRating.module.scss";
 
 type GameRatingProps = {
