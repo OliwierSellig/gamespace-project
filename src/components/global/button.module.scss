@@ -4,6 +4,12 @@
   cursor: pointer;
   transition: var(--transition-fast);
   justify-content: center;
+
+  &.disabled {
+    cursor: auto;
+    pointer-events: none;
+    opacity: 0.6;
+  }
 }
 
 .borderRadius {
@@ -22,13 +28,28 @@
 
 .style {
   &__default {
-    background-color: var(--color-dark-400);
-    color: var(--color-light-300);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
 
-    &:hover,
-    &:focus {
-      background-color: var(--color-dark-300);
-      color: var(--color-light-100);
+    &.shade__light {
+      background-color: var(--color-dark-500);
+      color: var(--color-light-300);
+
+      &:hover,
+      &:focus {
+        background-color: var(--color-dark-400);
+        color: var(--color-light-100);
+      }
+    }
+
+    &.shade__dark {
+      background-color: var(--color-dark-400);
+      color: var(--color-light-300);
+
+      &:hover,
+      &:focus {
+        background-color: var(--color-dark-300);
+        color: var(--color-light-100);
+      }
     }
   }
 
@@ -36,10 +57,21 @@
     border: 1px solid var(--color-light-100);
     color: var(--color-light-100);
 
-    &:hover,
-    &:focus {
-      color: var(--color-dark-200);
-      box-shadow: inset 16em 0 0 0 var(--color-light-100);
+    &.shade__blue {
+      &:hover,
+      &:focus {
+        box-shadow: inset -8em 0 0 0 var(--color-blue-300),
+          inset 8em 0 0 0 var(--color-blue-300);
+        border: 1px solid var(--color-blue-300);
+      }
+    }
+
+    &.shade__white {
+      &:hover,
+      &:focus {
+        box-shadow: inset 14em 0 0 0 var(--color-light-100);
+        color: var(--color-dark-200);
+      }
     }
 
     &.sizeX__sm {
@@ -80,13 +112,27 @@
 
   &__scale {
     box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
-    background-color: var(--color-blue-300);
-    color: var(--color-light-100);
 
-    &:hover,
-    &:focus {
+    &.shade__light {
       background-color: var(--color-blue-200);
-      transform: scale(1.03);
+      color: var(--color-light-100);
+
+      &:hover,
+      &:focus {
+        background-color: var(--color-blue-300);
+        transform: scale(1.03);
+      }
+    }
+
+    &.shade__dark {
+      background-color: var(--color-blue-300);
+      color: var(--color-light-100);
+
+      &:hover,
+      &:focus {
+        background-color: var(--color-blue-200);
+        transform: scale(1.03);
+      }
     }
   }
 }

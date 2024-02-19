@@ -1,6 +1,6 @@
-import Link from "next/link";
 import BackgroundSwitcher from "./BackgroundSwitcher";
 import styles from "./hero.module.scss";
+import Button from "../global/Button";
 
 function Hero() {
   return (
@@ -12,12 +12,22 @@ function Hero() {
           play. Find your game of choice and share your opinion with the world!
         </p>
         <div className={styles.btnContainer}>
-          <Link href="search" className={`${styles.btn} ${styles.btn__search}`}>
+          <Button
+            style={{ name: "scale", shade: "light" }}
+            borderRadius="sm"
+            href={{ url: "search" }}
+            sizeX="lg"
+          >
             Search Games
-          </Link>
-          <Link href="browse" className={`${styles.btn} ${styles.btn__browse}`}>
+          </Button>
+          <Button
+            style={{ name: "default", shade: "light" }}
+            href={{ url: "browse" }}
+            borderRadius="sm"
+            sizeX="lg"
+          >
             Browse
-          </Link>
+          </Button>
         </div>
       </div>
     </BackgroundSwitcher>

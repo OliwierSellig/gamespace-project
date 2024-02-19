@@ -6,7 +6,10 @@ type ButtonProps = {
   children: ReactNode;
   handleClick?: () => void;
   borderRadius?: "none" | "sm" | "md" | "lg";
-  style?: "fill" | "scale" | "default";
+  style?:
+    | { name: "default" | "scale"; shade: "dark" | "light" }
+    | { name: "fill"; shade: "white" | "blue" };
+  shade?: "light" | "dark";
   transition?: "fast" | "medium" | "long";
   sizeY?: "sm" | "md" | "lg";
   sizeX?: "sm" | "md" | "lg" | "xl";
@@ -17,6 +20,7 @@ type ButtonProps = {
   iconSize?: "sm" | "md" | "lg";
   fontSize?: "sm" | "md" | "lg";
   additionalStyle?: object;
+  disabled?: boolean;
 };
 
 function Button({
@@ -24,7 +28,7 @@ function Button({
   handleClick,
   href,
   borderRadius = "lg",
-  style = "default",
+  style = { name: "default", shade: "dark" },
   sizeX = "md",
   sizeY = "sm",
   gap = 8,
@@ -34,6 +38,7 @@ function Button({
   iconSize = "md",
   fontSize = "md",
   additionalStyle = {},
+  disabled = false,
 }: ButtonProps) {
   const styleList = {
     gap: `${gap}px`,
@@ -44,16 +49,21 @@ function Button({
   const classList = `${styles.btn} ${styles[`borderRadius__${borderRadius}`]} ${
     styles[`sizeX__${sizeX}`]
   }  ${styles[`sizeY__${sizeY}`]} ${styles[`iconSize__${iconSize}`]} ${
-    styles[`style__${style}`]
-  } ${styles[`transition__${transition}`]} ${styles[`fontSize__${fontSize}`]} ${
+    styles[`style__${style.name}`]
+  } ${styles[`transition__${transition}`]} ${
+    styles[`transition__${transition}`]
+  } ${styles[`shade__${style.shade}`]} ${disabled ? styles.disabled : ""}  ${
+    styles[`fontSize__${fontSize}`]
+  } ${
     positionSelf?.type
       ? styles[`${positionSelf.type}__${positionSelf.pos}`]
       : ""
   }`;
 
-  if (href)
+  if (href?.url)
     return (
       <Link
+        tabIndex={disabled ? -1 : 0}
         style={styleList}
         className={classList}
         href={href.url}
@@ -64,7 +74,12 @@ function Button({
     );
 
   return (
-    <button style={styleList} onClick={handleClick} className={classList}>
+    <button
+      disabled={disabled}
+      style={styleList}
+      onClick={handleClick}
+      className={classList}
+    >
       {children}
     </button>
   );

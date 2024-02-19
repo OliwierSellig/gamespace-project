@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import styles from "./saveButton.module.scss";
-import { FaCheck } from "react-icons/fa6";
 import { dateType } from "../../utils/types";
 import { useRanking } from "../../contexts/RankingContext";
+import Button from "../global/Button";
+import toast from "react-hot-toast";
 
 type SaveButtonProps = {
   tempFrom: dateType;
@@ -21,6 +21,7 @@ function SaveButton({ tempFrom, tempTo }: SaveButtonProps) {
     });
     setDateTo({ year: tempTo.year, month: tempTo.month, day: tempTo.day });
     setSaved(true);
+    toast.success("Saved changes!");
   }
 
   function equalDates(dateFrom: dateType, dateTo: dateType) {
@@ -53,22 +54,14 @@ function SaveButton({ tempFrom, tempTo }: SaveButtonProps) {
   }, [saved, disabled]);
 
   return (
-    <button
+    <Button
+      borderRadius="md"
+      style={{ name: "default", shade: "light" }}
       disabled={disabled}
-      onClick={updateDates}
-      className={`${styles.btn} ${saved ? styles.btn__saved : ""} ${
-        disabled ? styles.btn__disabled : ""
-      }`}
+      handleClick={updateDates}
     >
-      {saved ? (
-        <span className={styles.btn__box}>
-          <FaCheck />
-          Saved
-        </span>
-      ) : (
-        <span>Save Changes</span>
-      )}
-    </button>
+      {saved ? "Saved" : "Save Changes"}
+    </Button>
   );
 }
 

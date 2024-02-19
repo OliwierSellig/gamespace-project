@@ -6,11 +6,11 @@ import SaveToCollectionButton from "../utils/SaveToCollectionButton";
 function GameActionButtons() {
   return (
     <nav className={styles.actionBtns}>
-      <Button style="scale">
+      <Button style={{ name: "scale", shade: "dark" }}>
         <span>Add to my games</span>
         <HiOutlinePlusCircle />
       </Button>
-      <Button transition="long" style="fill">
+      <Button transition="medium" style={{ name: "fill", shade: "white" }}>
         <span>Add to Wishlist</span>
         <HiOutlineBookmark />
       </Button>
