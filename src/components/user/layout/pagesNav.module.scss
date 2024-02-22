@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20%;
+  height: 2px;
+  border-radius: 1300px;
+  z-index: 200;
+  background-color: var(--color-light-100);
+  transition: var(--transition-fast);
+}
