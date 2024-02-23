@@ -1,0 +1,20 @@
+.bar {
+  height: 8px;
+  width: 100%;
+  border-radius: 1300px;
+  &__pink {
+    background-image: linear-gradient(
+      to left,
+      rgb(201, 36, 144),
+      rgb(255, 141, 220)
+    );
+  }
+
+  &__blue {
+    background-image: linear-gradient(
+      to left,
+      rgb(100, 155, 255),
+      rgb(67, 84, 186)
+    );
+  }
+}

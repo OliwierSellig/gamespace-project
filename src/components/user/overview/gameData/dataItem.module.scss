@@ -1,0 +1,37 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid rgba(#ccc, 0.4);
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.pos {
+  font-size: 1.6rem;
+  color: var(--color-light-500);
+  font-weight: 600;
+}
+
+.name {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.games {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-light-300);
+}
