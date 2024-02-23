@@ -8,8 +8,8 @@ type ButtonProps = {
   borderRadius?: "none" | "sm" | "md" | "lg";
   style?:
     | { name: "default" | "scale"; shade: "dark" | "light" }
-    | { name: "fill"; shade: "white" | "blue" };
-  shade?: "light" | "dark";
+    | { name: "fill"; shade: "white" | "blue" }
+    | { name: "opacity"; shade: "white" | "red" };
   transition?: "fast" | "medium" | "long";
   sizeY?: "sm" | "md" | "lg";
   sizeX?: "sm" | "md" | "lg" | "xl";

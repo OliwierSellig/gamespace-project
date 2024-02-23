@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiOutlineUser } from "react-icons/hi2";
 import notFound from "../../../public/img/not-found.png";
+import Button from "../global/Button";
 
 type BrowseItemProps = {
   cover: string;
@@ -35,9 +36,16 @@ function BrowseItem({
       />
       <div className={styles.content}>
         <h2 className={styles.name}>{name || "Undefined"}</h2>
-        <Link className={styles.link} href={href}>
+        <Button
+          style={{ name: "opacity", shade: "white" }}
+          borderRadius="sm"
+          href={{ url: href }}
+          additionalStyle={{ marginBottom: "4.8rem" }}
+          sizeX="sm"
+          sizeY="md"
+        >
           View Games
-        </Link>
+        </Button>
 
         <p className={styles.count}>
           <span className={styles.count__game}>Game Count:</span>

@@ -135,6 +135,27 @@
       }
     }
   }
+
+  &__opacity {
+    &.shade__white {
+      background-color: rgba(#fff, 0.15);
+
+      &:hover,
+      &:focus {
+        background-color: var(--color-light-100);
+        color: var(--color-dark-200);
+      }
+    }
+
+    &.shade__red {
+      background-color: rgba(#dc143c, 0.15);
+
+      &:hover,
+      &:focus {
+        background-color: #dc143c;
+      }
+    }
+  }
 }
 
 .sizeX {

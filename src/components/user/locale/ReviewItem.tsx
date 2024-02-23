@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./reviewItem.module.scss";
+import Button from "../../global/Button";
 
 type ReviewItemProps = {
   game: { name: string; cover: string };
@@ -19,12 +20,23 @@ function ReviewItem({ game, review, author, date }: ReviewItemProps) {
         <p className={styles.date}>{date}</p>
       </div>
       <nav className={styles.row}>
-        <button className={`${styles.btn} ${styles.btn__white}`}>
+        <Button
+          style={{ name: "opacity", shade: "white" }}
+          borderRadius="sm"
+          sizeX="lg"
+        >
           Edit Review
-        </button>
-        <button className={`${styles.btn} ${styles.btn__red}`}>
+        </Button>
+        <Button
+          style={{ name: "opacity", shade: "red" }}
+          borderRadius="sm"
+          sizeX="lg"
+        >
           Delete Review
-        </button>
+        </Button>
+        {/* <button className={`${styles.btn} ${styles.btn__red}`}>
+          Delete Review
+        </button> */}
       </nav>
     </li>
   );
