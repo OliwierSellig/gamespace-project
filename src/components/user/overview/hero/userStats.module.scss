@@ -1,0 +1,16 @@
+.container {
+  padding: 4.8rem;
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-dark-300);
+  border: 2px solid rgba(#ccc, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 4.2rem;
+}
+
+.line {
+  width: 2px;
+  height: 100%;
+  background-color: rgba(#8f8f8f, 0.6);
+  border-radius: 1300px;
+}
