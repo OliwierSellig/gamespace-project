@@ -14,11 +14,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.className}>
+    <html lang="en">
       <head>
         <Script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></Script>
       </head>
-      <body>
+      <body className={poppins.className}>
         <Providers>
           <UserProvider>
             <GlobalLayout>{children}</GlobalLayout>

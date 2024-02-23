@@ -1,7 +1,6 @@
 @import "swiper/css";
 @import "swiper/scss/keyboard";
 @import "swiper/css/keyboard";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 // -----------------------------------------
 // Custom Colors
@@ -150,7 +149,6 @@ canvas {
 html {
   font-size: 62.5%;
   overflow-x: clip;
-  font-family: "Poppins", sans-serif;
   scrollbar-gutter: stable;
 
   @media only screen and (max-width: 1200px) {
