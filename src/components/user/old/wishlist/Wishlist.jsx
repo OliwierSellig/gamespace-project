@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useUser } from "../../../contexts/UserContext";
-import GameList from "../../global/GameList";
-import TurnBtn from "../../global/TurnBtn";
+import { useUser } from "../../../../contexts/UserContext";
+import GameList from "../../../global/GameList";
+import TurnBtn from "../../../global/TurnBtn";
 import UserSearchHeader from "../UserSearchHeader";
-import NoSearchResults from "../../global/NoSearchResults";
-import EmptyList from "../../global/EmptyList";
+import NoSearchResults from "../../../global/NoSearchResults";
+import EmptyList from "../../../global/EmptyList";
 
 function Wishlist() {
   const { wishlist } = useUser();

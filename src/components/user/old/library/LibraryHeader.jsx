@@ -1,5 +1,5 @@
-import FilterByBtn from "../../global/FilterByBtn";
-import OrderByBtn from "../../global/OrderByBtn";
+import FilterByBtn from "../../../global/FilterByBtn";
+import OrderByBtn from "../../../global/OrderByBtn";
 import styles from "./libraryHeader.module.scss";
 
 function LibraryHeader({ filterBy, setFilterBy, setOrderBy, orderBy }) {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useUser } from "../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/UserContext";
 import styles from "./reviewsCard.module.scss";
 import Link from "next/link";
 

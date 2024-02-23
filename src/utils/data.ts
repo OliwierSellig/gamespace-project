@@ -101,12 +101,16 @@ export const platformsIcons = [
   { id: 14, icon: "/svg/web.svg" },
 ];
 
-export const loadingStyle = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "5rem",
-  padding: "8rem",
-  textAlign: "center",
-  lineHeight: "1.2",
-};
+export const userNavPages = [
+  { url: "overview", name: "Overview" },
+  { url: "library", name: "Library" },
+  { url: "wishlist", name: "Wishlist" },
+  { url: "reviews", name: "Reviews" },
+  { url: "collections", name: "Collections" },
+];
+
+export const browseByPages = [
+  { url: "developers", name: "Developers" },
+  { url: "genres", name: "Genres" },
+  { url: "platforms", name: "Platforms" },
+];

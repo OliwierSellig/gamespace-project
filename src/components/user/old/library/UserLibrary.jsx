@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useUser } from "../../../contexts/UserContext";
-import GameList from "../../global/GameList";
+import { useUser } from "../../../../contexts/UserContext";
+import GameList from "../../../global/GameList";
 import GameListFiltered from "./GameListFiltered";
 import LibraryHeader from "./LibraryHeader";
-import SearchInput from "../../global/SearchInput";
-import TurnBtn from "../../global/TurnBtn";
+import SearchInput from "../../../global/SearchInput";
+import TurnBtn from "../../../global/TurnBtn";
 import { loadingStyle } from "@/utils/data";
 
 const PAGE_AMOUNT = 20;

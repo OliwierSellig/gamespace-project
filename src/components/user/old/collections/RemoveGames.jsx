@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { useUser } from "../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/UserContext";
 import RemoveGameItem from "./RemoveGameItem";
 import styles from "./removeGames.module.scss";
 

@@ -1,4 +1,4 @@
-import SearchInput from "../global/SearchInput";
+import SearchInput from "../../global/SearchInput";
 import styles from "./userSearchHeader.module.scss";
 
 function UserSearchHeader({

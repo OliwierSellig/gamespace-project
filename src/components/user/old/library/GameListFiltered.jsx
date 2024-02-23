@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useUser } from "../../../contexts/UserContext";
-import Slider from "../../global/Slider";
-import BtnNav from "../../global/BtnNav";
+import { useUser } from "../../../../contexts/UserContext";
+import Slider from "../../../global/Slider";
+import BtnNav from "../../../global/BtnNav";
 import styles from "./gameListFiltered.module.scss";
 import { loadingStyle } from "@/utils/data";
 

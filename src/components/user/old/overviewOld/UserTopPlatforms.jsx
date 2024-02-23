@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useUser } from "../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/UserContext";
 import styles from "./userTopPlatforms.module.scss";
 import { getPlatformIcon } from "@/utils/functions";
 

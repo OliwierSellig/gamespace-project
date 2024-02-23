@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useUser } from "../../../contexts/UserContext";
-import BtnNav from "../../global/BtnNav";
+import { useUser } from "../../../../contexts/UserContext";
+import BtnNav from "../../../global/BtnNav";
 import ReviewCard from "./ReviewsCard";
-import NoSearchResults from "../../global/NoSearchResults";
-import EmptyList from "../../global/EmptyList";
+import NoSearchResults from "../../../global/NoSearchResults";
+import EmptyList from "../../../global/EmptyList";
 import styles from "./reviewsContainer.module.scss";
 
 const AMOUNT_PER_PAGE = 8;

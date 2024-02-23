@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useUser } from "../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/UserContext";
 import styles from "./gamesStats.module.scss";
 
 function GamesStats({ type, amount }) {

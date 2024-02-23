@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useUser } from "../../contexts/UserContext";
+import { useUser } from "../../../contexts/UserContext";
 import styles from "./userNavigation.module.scss";
 
 function UserNavigation({ children }) {

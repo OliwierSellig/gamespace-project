@@ -5,7 +5,6 @@ import UserContainer from "./UserContainer";
 
 type UserLayoutProps = {
   children: ReactNode;
-  params: object;
 };
 
 function UserLayout({ children }: UserLayoutProps) {
