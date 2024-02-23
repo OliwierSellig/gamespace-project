@@ -1,3 +1,4 @@
+import ActivitiesContainer from "../activities/ActivitiesContainer";
 import FavouritesContainer from "../favourites/FavouritesContainer";
 import HeroContainer from "../hero/HeroContainer";
 
@@ -6,6 +7,7 @@ function UserOverview() {
     <>
       <HeroContainer />
       <FavouritesContainer />
+      <ActivitiesContainer />
     </>
   );
 }

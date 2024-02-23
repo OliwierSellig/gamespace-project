@@ -1,0 +1,22 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.8rem;
+  color: var(--color-light-300);
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  cursor: pointer;
+  transition: var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    color: var(--color-light-100);
+  }
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}

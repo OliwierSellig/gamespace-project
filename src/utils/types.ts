@@ -257,3 +257,8 @@ export type AchievementResult = {
   image: string;
   percent: string;
 };
+
+export type LogItemType = {
+  date: string;
+  actions: { sub: string; link: { name: string; href: string } }[];
+};

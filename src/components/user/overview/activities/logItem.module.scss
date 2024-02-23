@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.date {
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-light-100);
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: var(--color-dark-200);
+  width: 12rem;
+  text-align: center;
+}
+
+.text {
+  font-size: 1.8rem;
+}
+
+.sub {
+  color: var(--color-light-300);
+}
+
+.link {
+  font-family: 500;
+  text-decoration: underline;
+  transition: var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    color: var(--color-light-300);
+  }
+}
