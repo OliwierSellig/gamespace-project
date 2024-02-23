@@ -1,13 +1,13 @@
 import UserHeading from "../../layout/UserHeading";
+import OverviewSection from "../layout/OverviewSection";
 import LogContainer from "./LogContainer";
-import styles from "./activitiesContainer.module.scss";
 
 function ActivitiesContainer() {
   return (
-    <section className={styles.container}>
+    <OverviewSection>
       <UserHeading>Activity Board</UserHeading>
       <LogContainer />
-    </section>
+    </OverviewSection>
   );
 }
 

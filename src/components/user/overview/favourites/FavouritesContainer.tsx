@@ -2,12 +2,12 @@ import { fetchGames } from "../../../../lib/games";
 import GameCard from "../../../global/GameCard";
 import SwiperComponent from "../../../global/SwiperComponent";
 import UserHeading from "../../layout/UserHeading";
-import styles from "./favouritesContainer.module.scss";
+import OverviewSection from "../layout/OverviewSection";
 
 async function FavouritesContainer() {
   const games = await fetchGames({});
   return (
-    <section className={styles.container}>
+    <OverviewSection>
       <UserHeading>Favourite Games</UserHeading>
       <SwiperComponent
         props={{
@@ -35,7 +35,7 @@ async function FavouritesContainer() {
           </GameCard>
         ))}
       </SwiperComponent>
-    </section>
+    </OverviewSection>
   );
 }
 
