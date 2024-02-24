@@ -1,3 +1,5 @@
+import { FaInstagram, FaFacebookF, FaYoutube, FaDiscord } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import heroBg0 from "../../public/img/hero-background-0.webp";
 import heroBg1 from "../../public/img/hero-background-1.webp";
 import heroBg2 from "../../public/img/hero-background-2.webp";
@@ -23,6 +25,7 @@ import eaVid from "../../public/video/ea.mp4";
 import sonyVid from "../../public/video/sony.mp4";
 import cdpVid from "../../public/video/cdp.mp4";
 import ubisoftVid from "../../public/video/ubisoft.mp4";
+import { SocialPlatformType } from "./types";
 
 export const API_KEY = "041a371c18934671bc7c7df826093657";
 
@@ -113,4 +116,37 @@ export const browseByPages = [
   { url: "developers", name: "Developers" },
   { url: "genres", name: "Genres" },
   { url: "platforms", name: "Platforms" },
+];
+
+export const socials: SocialPlatformType[] = [
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/",
+    icon: FaFacebookF,
+    color: "#316FF6",
+  },
+  {
+    name: "Twitter/X",
+    url: "https://twitter.com/",
+    icon: FaXTwitter,
+    color: "#2C2C2C",
+  },
+  {
+    name: "Discord",
+    url: "https://discord.com/app",
+    icon: FaDiscord,
+    color: "#7289DA",
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/",
+    icon: FaInstagram,
+    color: "#E4405F",
+  },
+  {
+    name: "Youtube",
+    url: "https://www.youtube.com/",
+    icon: FaYoutube,
+    color: "#FF0000",
+  },
 ];

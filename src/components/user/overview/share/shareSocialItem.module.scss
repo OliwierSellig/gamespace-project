@@ -1,0 +1,25 @@
+.container {
+  padding: 2rem 2.4rem;
+  border-radius: var(--border-radius-smallest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  transition: var(--transition-medium);
+  opacity: 0.8;
+  box-shadow: 1px 8px 24px 0px rgba(0, 0, 0, 0.1);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: var(--color-light-100);
+  }
+}

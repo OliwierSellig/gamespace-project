@@ -5,6 +5,7 @@ import YearsContainer from "../gameYears/YearsContainer";
 import HeroContainer from "../hero/HeroContainer";
 import RecentGamesContainer from "../recentGames/RecentGamesContainer";
 import ReviewsContainer from "../recentReviews/ReviewsContainer";
+import ShareContainer from "../share/ShareContainer";
 
 function UserOverview() {
   return (
@@ -16,6 +17,7 @@ function UserOverview() {
       <DataContainer />
       <YearsContainer />
       <RecentGamesContainer />
+      <ShareContainer />
     </>
   );
 }

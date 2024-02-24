@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { IconType } from "react-icons";
 
 export type ChildrenProp = { children: ReactNode };
 
@@ -269,4 +270,11 @@ export type UserGameItem = {
   id?: number;
   background_image?: string;
   added?: number;
+};
+
+export type SocialPlatformType = {
+  name: string;
+  icon: IconType;
+  url: string;
+  color: string;
 };

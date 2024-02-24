@@ -1,4 +1,5 @@
-import { currentDate, platformsIcons } from "./data";
+import { currentDate, platformsIcons, socials } from "./data";
+import { SocialPlatformType } from "./types";
 
 export function getPlatformIcon(id: number) {
   return platformsIcons.find((platform) => platform.id === id).icon;
@@ -138,4 +139,18 @@ export function getYearList(startYear: number) {
   );
 
   return arr;
+}
+
+export function getSocialsByOrder(
+  list: ("Youtube" | "Facebook" | "Twitter/X" | "Instagram" | "Discord")[]
+) {
+  const filteredArr: SocialPlatformType[] = [];
+
+  list.forEach((item) => {
+    if (socials.map((social) => social.name).includes(item)) {
+      filteredArr.push(socials.find((social) => social.name === item));
+    }
+  });
+
+  return filteredArr;
 }
