@@ -262,3 +262,11 @@ export type LogItemType = {
   date: string;
   actions: { sub: string; link: { name: string; href: string } }[];
 };
+
+export type UserGameItem = {
+  name?: string;
+  slug?: string;
+  id?: number;
+  background_image?: string;
+  added?: number;
+};

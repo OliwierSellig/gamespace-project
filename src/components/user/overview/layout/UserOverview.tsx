@@ -1,6 +1,7 @@
 import ActivitiesContainer from "../activities/ActivitiesContainer";
 import FavouritesContainer from "../favourites/FavouritesContainer";
 import DataContainer from "../gameData/DataContainer";
+import YearsContainer from "../gameYears/YearsContainer";
 import HeroContainer from "../hero/HeroContainer";
 import ReviewsContainer from "../recentReviews/ReviewsContainer";
 
@@ -12,6 +13,7 @@ function UserOverview() {
       <ActivitiesContainer />
       <ReviewsContainer />
       <DataContainer />
+      <YearsContainer />
     </>
   );
 }

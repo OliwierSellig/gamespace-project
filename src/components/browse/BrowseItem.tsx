@@ -1,9 +1,8 @@
 import styles from "./browseItem.module.scss";
 import Image from "next/image";
-import Link from "next/link";
-import { HiOutlineUser } from "react-icons/hi2";
 import notFound from "../../../public/img/not-found.png";
 import Button from "../global/Button";
+import PopularGamesCol from "../global/popularGames/PopularGamesCol";
 
 type BrowseItemProps = {
   cover: string;
@@ -53,26 +52,7 @@ function BrowseItem({
             {gameCount || "undefined"}
           </span>
         </p>
-        <ul className={styles.list}>
-          {popularGames ? (
-            popularGames.slice(0, 3).map((game) => (
-              <li className={styles.popular} key={game.id}>
-                <Link
-                  href={`/games/${game.id}`}
-                  className={styles.popular__game}
-                >
-                  {game.name}
-                </Link>
-                <span className={styles.popular__visitors}>
-                  <span>{game.added}</span>
-                  <HiOutlineUser />
-                </span>
-              </li>
-            ))
-          ) : (
-            <p className={styles.empty}>No popular games</p>
-          )}
-        </ul>
+        <PopularGamesCol gameList={popularGames} />
       </div>
     </li>
   );

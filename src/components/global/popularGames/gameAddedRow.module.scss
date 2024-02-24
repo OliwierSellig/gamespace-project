@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.game {
+  font-size: 1.6rem;
+  transition: var(--transition-fast);
+
+  &:focus,
+  &:hover {
+    color: var(--color-light-300);
+  }
+}
+
+.visitors {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-light-300);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
