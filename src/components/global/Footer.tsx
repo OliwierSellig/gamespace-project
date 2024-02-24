@@ -1,100 +1,57 @@
-import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import Logo from "./Logo";
 import styles from "./footer.module.scss";
+import { getSocialsByOrder } from "../../utils/functions";
+
+const pages1 = [
+  "Abouts us",
+  "Privacy Policy",
+  "Become an Investor",
+  "Terms of use",
+];
+
+const pages2 = ["Help Center", "Contact us", "Jobs", "Cookie Preferences"];
 
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <ul className={styles.list}>
-        <li>
-          <Link className={styles.link} href="/">
-            About Us
+      <nav className={styles.list}>
+        {pages1.map((page) => (
+          <Link className={styles.link} key={page} href="/">
+            {page}
           </Link>
-        </li>
-        <li>
-          <Link className={styles.link} href="/">
-            Privacy Policy
+        ))}
+      </nav>
+      <nav className={styles.list}>
+        {pages2.map((page) => (
+          <Link className={styles.link} key={page} href="/">
+            {page}
           </Link>
-        </li>
-        <li>
-          <Link className={styles.link} href="/">
-            Become an investor
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.link} href="/">
-            Terms of use
-          </Link>
-        </li>
-      </ul>
-      <ul className={styles.list}>
-        <li>
-          <Link className={styles.link} href="/">
-            Help Center
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.link} href="/">
-            Contact us
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.link} href="/">
-            Jobs
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.link} href="/">
-            Cookie Preferences
-          </Link>
-        </li>
-      </ul>
-      <nav className={styles.additional}>
+        ))}
+      </nav>
+      <div className={styles.additional}>
         <Logo pos="footer" />
         <p className={styles.copyright}>
           &copy; GameSpace {new Date().getFullYear()}
         </p>
-        <ul className={styles.socials}>
-          <li>
-            <a
+        <nav className={styles.socials}>
+          {getSocialsByOrder([
+            "Facebook",
+            "Instagram",
+            "Youtube",
+            "Twitter/X",
+          ]).map((platform) => (
+            <Link
+              href={platform.url}
+              key={platform.url}
               className={styles.icon}
-              href="https://www.facebook.com/profile.php?id=100014860652231&locale=pl_PL"
-              aria-label="Check our Facebook"
+              aria-label={`Check our ${platform.name}`}
             >
-              <FaFacebookF />
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.icon}
-              href="https://www.instagram.com/oliwier_sellig/"
-              aria-label="Check our Instagram"
-            >
-              <FaInstagram />
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.icon}
-              href="https://www.youtube.com/"
-              aria-label="See our Youtube"
-            >
-              <FaYoutube />
-            </a>
-          </li>
-          <li>
-            <a
-              className={styles.icon}
-              href="https://twitter.com/home?lang=pl"
-              aria-label="See our Twitter"
-            >
-              <FaXTwitter />
-            </a>
-          </li>
-        </ul>
-      </nav>
+              <platform.icon />
+            </Link>
+          ))}
+        </nav>
+      </div>
     </footer>
   );
 }
