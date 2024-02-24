@@ -1,0 +1,28 @@
+.btn {
+  cursor: pointer;
+  border-radius: var(--border-radius-default);
+  background-color: var(--color-dark-500);
+  transition: var(--transition-long);
+  aspect-ratio: 1/1;
+  padding: 0.6rem;
+  opacity: 0;
+  transform: translateX(-50%);
+
+  svg {
+    fill: var(--color-light-300);
+    transition: var(--transition-fast);
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-100);
+    opacity: 1;
+    transform: translateX(0%);
+
+    svg {
+      fill: var(--color-dark-200);
+    }
+  }
+}
