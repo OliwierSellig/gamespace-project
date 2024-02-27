@@ -1,11 +1,12 @@
-import ActivitiesContainer from "../activities/ActivitiesContainer";
-import FavouritesContainer from "../favourites/FavouritesContainer";
+import LogContainer from "../activities/LogContainer";
+import FavouritesSwiper from "../favourites/FavouritesSwiper";
 import DataContainer from "../gameData/DataContainer";
-import YearsContainer from "../gameYears/YearsContainer";
+import YearsSwiper from "../gameYears/YearsSwiper";
 import HeroContainer from "../hero/HeroContainer";
-import RecentGamesContainer from "../recentGames/RecentGamesContainer";
-import ReviewsContainer from "../recentReviews/ReviewsContainer";
+import RecentGameList from "../recentGames/RecentGameList";
+import ReviewsRow from "../recentReviews/ReviewsRow";
 import ShareContainer from "../share/ShareContainer";
+import OverviewSection from "./OverviewSection";
 import OverviewVideo from "./OverviewVideo";
 
 function UserOverview() {
@@ -13,12 +14,22 @@ function UserOverview() {
     <>
       <HeroContainer />
       <OverviewVideo />
-      <FavouritesContainer />
-      <ActivitiesContainer />
-      <ReviewsContainer />
+      <OverviewSection heading="Favourite Games">
+        <FavouritesSwiper />
+      </OverviewSection>
+      <OverviewSection heading="Activities Board">
+        <LogContainer />
+      </OverviewSection>
+      <OverviewSection heading="Recent Revies">
+        <ReviewsRow />
+      </OverviewSection>
       <DataContainer />
-      <YearsContainer />
-      <RecentGamesContainer />
+      <OverviewSection heading="Common Years">
+        <YearsSwiper />
+      </OverviewSection>
+      <OverviewSection heading="Recently Added Games">
+        <RecentGameList />
+      </OverviewSection>
       <ShareContainer />
     </>
   );

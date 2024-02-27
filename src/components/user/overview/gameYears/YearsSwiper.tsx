@@ -1,10 +1,8 @@
 import { fetchGames } from "../../../../lib/games";
 import SwiperComponent from "../../../global/SwiperComponent";
-import UserHeading from "../../layout/UserHeading";
-import OverviewSection from "../layout/OverviewSection";
 import YearsItem from "./YearsItem";
 
-async function YearsContainer() {
+async function YearsSwiper() {
   const games2018 = await fetchGames({
     dates: {
       fromDay: 1,
@@ -47,28 +45,25 @@ async function YearsContainer() {
     games2023.results,
   ];
   return (
-    <OverviewSection>
-      <UserHeading>Common Years</UserHeading>
-      <SwiperComponent
-        props={{
-          default: {
-            slidesPerView: 3,
-            spaceBetween: 36,
-            loop: true,
-            navigation: true,
-          },
-        }}
-      >
-        {list.map((games, i) => (
-          <YearsItem
-            key={i}
-            year={new Date(games.at(0).released).getFullYear()}
-            gameList={games}
-          />
-        ))}
-      </SwiperComponent>
-    </OverviewSection>
+    <SwiperComponent
+      props={{
+        default: {
+          slidesPerView: 3,
+          spaceBetween: 36,
+          loop: true,
+          navigation: true,
+        },
+      }}
+    >
+      {list.map((games, i) => (
+        <YearsItem
+          key={i}
+          year={new Date(games.at(0).released).getFullYear()}
+          gameList={games}
+        />
+      ))}
+    </SwiperComponent>
   );
 }
 
-export default YearsContainer;
+export default YearsSwiper;

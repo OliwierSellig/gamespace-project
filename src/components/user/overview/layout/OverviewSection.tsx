@@ -1,8 +1,19 @@
-import { ChildrenProp } from "../../../../utils/types";
-import styles from "./overviewSection.module.scss";
+import { ReactNode } from "react";
+import OverviewSectionContainer from "./OverviewSectionContainer";
+import UserHeading from "../../layout/UserHeading";
 
-function OverviewSection({ children }: ChildrenProp) {
-  return <section className={styles.container}>{children}</section>;
+type OverviewSectionProps = {
+  children: ReactNode;
+  heading: string;
+};
+
+function OverviewSection({ children, heading }: OverviewSectionProps) {
+  return (
+    <OverviewSectionContainer>
+      <UserHeading>{heading}</UserHeading>
+      {children}
+    </OverviewSectionContainer>
+  );
 }
 
 export default OverviewSection;

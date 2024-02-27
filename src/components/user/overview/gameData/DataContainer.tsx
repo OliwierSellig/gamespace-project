@@ -1,4 +1,4 @@
-import OverviewSection from "../layout/OverviewSection";
+import OverviewSectionContainer from "../layout/OverviewSectionContainer";
 import DataCol from "./DataCol";
 import styles from "./dataContainer.module.scss";
 
@@ -20,12 +20,12 @@ const genreList = [
 
 function DataContainer() {
   return (
-    <OverviewSection>
+    <OverviewSectionContainer>
       <div className={styles.container}>
         <DataCol data={{ type: "Developers", list: devList }} />
         <DataCol data={{ type: "Genres", list: genreList }} />
       </div>
-    </OverviewSection>
+    </OverviewSectionContainer>
   );
 }
 

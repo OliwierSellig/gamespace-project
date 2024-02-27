@@ -1,16 +1,16 @@
-import OverviewSection from "../layout/OverviewSection";
+import OverviewSectionContainer from "../layout/OverviewSectionContainer";
 import UserBox from "./UserBox";
 import UserStats from "./UserStats";
 import styles from "./heroContainer.module.scss";
 
 function HeroContainer() {
   return (
-    <OverviewSection>
+    <OverviewSectionContainer>
       <div className={styles.container}>
         <UserBox />
         <UserStats />
       </div>
-    </OverviewSection>
+    </OverviewSectionContainer>
   );
 }
 
