@@ -3,6 +3,11 @@
   grid-template-columns: 1.5fr 1fr;
   gap: 2.4rem;
   align-items: center;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
 }
 
 .content {
@@ -12,6 +17,11 @@
   padding-bottom: 0.8rem;
   border-bottom: 2px solid rgba(#ccc, 0.4);
   gap: 2.4rem;
+
+  @media only screen and (max-width: 600px) {
+    padding-bottom: 0rem;
+    border-bottom: none;
+  }
 }
 
 .box {

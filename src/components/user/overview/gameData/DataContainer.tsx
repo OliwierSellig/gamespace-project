@@ -1,6 +1,6 @@
+import SwiperComponent from "../../../global/SwiperComponent";
 import OverviewSectionContainer from "../layout/OverviewSectionContainer";
 import DataCol from "./DataCol";
-import styles from "./dataContainer.module.scss";
 
 const devList = [
   { name: "Ubisoft Montreal", href: "/", count: 5 },
@@ -21,10 +21,18 @@ const genreList = [
 function DataContainer() {
   return (
     <OverviewSectionContainer>
-      <div className={styles.container}>
+      <SwiperComponent
+        props={{
+          default: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          breakpoints: [{ minWidth: 1024, slidesPerView: 2 }],
+        }}
+      >
         <DataCol data={{ type: "Developers", list: devList }} />
         <DataCol data={{ type: "Genres", list: genreList }} />
-      </div>
+      </SwiperComponent>
     </OverviewSectionContainer>
   );
 }
