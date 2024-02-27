@@ -48,11 +48,16 @@ async function YearsSwiper() {
     <SwiperComponent
       props={{
         default: {
-          slidesPerView: 3,
-          spaceBetween: 36,
+          slidesPerView: 1,
+          spaceBetween: 24,
           loop: true,
           navigation: true,
         },
+        breakpoints: [
+          { minWidth: 1024, slidesPerView: 3 },
+          { minWidth: 560, slidesPerView: 2, spaceBetween: 16 },
+          { minWidth: 460, slidesPerView: 1.5 },
+        ],
       }}
     >
       {list.map((games, i) => (

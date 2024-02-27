@@ -34,9 +34,6 @@ function ReviewItem({ game, review, author, date }: ReviewItemProps) {
         >
           Delete Review
         </Button>
-        {/* <button className={`${styles.btn} ${styles.btn__red}`}>
-          Delete Review
-        </button> */}
       </nav>
     </li>
   );

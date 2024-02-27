@@ -20,16 +20,18 @@ function YearsItem({ gameList, year }: YearsItemProps) {
           </div>
         ))}
       </div>
-      <h3 className={styles.heading}>{year}</h3>
-      <Button
-        href={{ url: "search" }}
-        style={{ name: "opacity", shade: "white" }}
-        borderRadius="sm"
-        additionalStyle={{ marginBottom: "2.4rem" }}
-      >
-        View Game
-      </Button>
-      <PopularGamesCol gameList={gameList} />
+      <div className={styles.content}>
+        <h3 className={styles.heading}>{year}</h3>
+        <Button
+          href={{ url: "search" }}
+          style={{ name: "opacity", shade: "white" }}
+          borderRadius="sm"
+          additionalStyle={{ marginBottom: "2.4rem" }}
+        >
+          View Game
+        </Button>
+        <PopularGamesCol gameList={gameList} />
+      </div>
     </div>
   );
 }

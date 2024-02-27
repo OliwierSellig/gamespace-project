@@ -4,10 +4,15 @@
   flex-direction: column;
   flex: 1;
   min-width: 16rem;
+
+  @media only screen and (max-width: 660px) {
+    max-width: none;
+    width: 100%;
+  }
 }
 
 .name {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
   margin-bottom: 1.8rem;
   color: var(--color-light-300);
@@ -15,7 +20,7 @@
 
 .count {
   font-weight: 600;
-  font-size: 3.8rem;
+  font-size: 3.4rem;
   margin-bottom: 2.4rem;
 }
 

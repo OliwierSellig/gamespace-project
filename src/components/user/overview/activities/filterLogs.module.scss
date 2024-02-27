@@ -1,12 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 2.4rem;
+}
+
 .btn {
   display: flex;
   align-items: center;
   gap: 1rem;
   font-size: 1.8rem;
   color: var(--color-light-300);
-  position: absolute;
-  top: 8%;
-  right: 5%;
   cursor: pointer;
   transition: var(--transition-fast);
 

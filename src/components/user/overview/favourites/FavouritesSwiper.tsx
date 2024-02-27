@@ -9,11 +9,15 @@ async function FavouritesSwiper() {
     <SwiperComponent
       props={{
         default: {
-          slidesPerView: 3,
+          slidesPerView: 1,
           spaceBetween: 20,
           navigation: true,
           loop: true,
         },
+        breakpoints: [
+          { minWidth: 1024, slidesPerView: 3 },
+          { minWidth: 600, slidesPerView: 2 },
+        ],
       }}
     >
       {games.results.map((game) => (
@@ -22,7 +26,13 @@ async function FavouritesSwiper() {
           key={game.id}
           href={`/games/${game.id}`}
           image={game.background_image}
-          imageSizes={{ defalult: { number: 40, unit: "vw" } }}
+          imageSizes={{
+            defalult: { number: 40, unit: "vw" },
+            sizes: [
+              { maxWidth: 1024, size: { number: 50, unit: "vw" } },
+              { maxWidth: 600, size: { number: 95, unit: "vw" } },
+            ],
+          }}
           scales={false}
         >
           <GameCard.Title>{game.name}</GameCard.Title>

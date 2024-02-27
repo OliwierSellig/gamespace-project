@@ -9,9 +9,6 @@
 :root {
   // --- Colors ---
 
-  --color-dark-primary: #121212;
-  --color-dark-secondary: #151515;
-  --color-dark-tertiary: #2c2c2c;
   --color-dark-100: #121212;
   --color-dark-200: #151515;
   --color-dark-300: #2c2c2c;
@@ -40,15 +37,6 @@
   --transition-long: all 0.4s;
   --transition-medium: all 0.3s;
   --transition-fast: all 0.2s;
-
-  // To use
-
-  --color-facebook: #4267b2;
-  --color-facebook-shade: #3b5da0;
-  --color-twitter: #00acee;
-  --color-twitter-shade: #009bd6;
-  --color-delete: #dc143c;
-  --color-delete-shade: #b01030;
 }
 
 // ---
@@ -169,7 +157,7 @@ html {
 }
 
 body {
-  background-color: var(--color-dark-secondary);
+  background-color: var(--color-dark-200);
   color: #fff;
   line-height: 1;
   overflow-x: clip;

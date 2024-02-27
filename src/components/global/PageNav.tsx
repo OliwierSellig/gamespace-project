@@ -12,6 +12,7 @@ function PageNav({ list }: PageNavProps) {
   const pathname = usePathname();
   const currentPath = pathname.split("/").at(-1);
   const activeLink = list.find((page) => page.url === currentPath);
+
   const lineStyles = activeLink
     ? {
         left: `${

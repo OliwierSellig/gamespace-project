@@ -13,7 +13,7 @@ function UserOverview() {
   return (
     <>
       <HeroContainer />
-      <OverviewVideo />
+      {/* <OverviewVideo /> */}
       <OverviewSection heading="Favourite Games">
         <FavouritesSwiper />
       </OverviewSection>

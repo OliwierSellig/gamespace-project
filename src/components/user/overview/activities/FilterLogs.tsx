@@ -3,10 +3,12 @@ import { HiMiniAdjustmentsHorizontal } from "react-icons/hi2";
 
 function FilterLogs() {
   return (
-    <button className={styles.btn}>
-      <span>Filter</span>
-      <HiMiniAdjustmentsHorizontal />
-    </button>
+    <div className={styles.container}>
+      <button className={styles.btn}>
+        <span>Filter</span>
+        <HiMiniAdjustmentsHorizontal />
+      </button>
+    </div>
   );
 }
 
