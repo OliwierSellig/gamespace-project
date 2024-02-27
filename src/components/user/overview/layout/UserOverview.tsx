@@ -6,11 +6,13 @@ import HeroContainer from "../hero/HeroContainer";
 import RecentGamesContainer from "../recentGames/RecentGamesContainer";
 import ReviewsContainer from "../recentReviews/ReviewsContainer";
 import ShareContainer from "../share/ShareContainer";
+import OverviewVideo from "./OverviewVideo";
 
 function UserOverview() {
   return (
     <>
       <HeroContainer />
+      <OverviewVideo />
       <FavouritesContainer />
       <ActivitiesContainer />
       <ReviewsContainer />

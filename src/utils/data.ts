@@ -19,12 +19,6 @@ import ea from "../../public/svg/ea.svg";
 import cdp from "../../public/svg/cdp.svg";
 import sony from "../../public/svg/sony.svg";
 import ubisoft from "../../public/svg/ubisoft.svg";
-import rockstarVid from "../../public/video/rockstar.mp4";
-import warnerVid from "../../public/video/wb.mp4";
-import eaVid from "../../public/video/ea.mp4";
-import sonyVid from "../../public/video/sony.mp4";
-import cdpVid from "../../public/video/cdp.mp4";
-import ubisoftVid from "../../public/video/ubisoft.mp4";
 import { SocialPlatformType } from "./types";
 
 export const API_KEY = "041a371c18934671bc7c7df826093657";
@@ -36,42 +30,48 @@ export const heroImages = [heroBg0, heroBg1, heroBg2, heroBg3, heroBg4];
 export const devList = [
   {
     name: "Rockstar Games",
-    video: rockstarVid,
+    video:
+      "https://firebasestorage.googleapis.com/v0/b/gamespace-36145.appspot.com/o/rockstar.mp4?alt=media&token=bccb561f-6927-4396-81f5-2b674d05be3c",
     slug: "rockstar-games",
     logo: rockstar,
     gameSeries: ["Grand Theft Auto", "Red Dead Redemption"],
   },
   {
     name: "Warner Bros Interactive",
-    video: warnerVid,
+    video:
+      "https://firebasestorage.googleapis.com/v0/b/gamespace-36145.appspot.com/o/wb.mp4?alt=media&token=5f8d8238-58a0-47fc-9e69-4de0e9cbd46b",
     slug: "warner-bros-interactive",
     logo: warner,
     gameSeries: ["Hogwarts Legacy", "Middle Earth"],
   },
   {
     name: "Ubisoft",
-    video: ubisoftVid,
+    video:
+      "https://firebasestorage.googleapis.com/v0/b/gamespace-36145.appspot.com/o/ubisoft.mp4?alt=media&token=77a846fd-8b69-4127-ab1d-a4067359fd75",
     slug: "ubisoft",
     logo: ubisoft,
     gameSeries: ["Assasin's Creed", "Far Cry"],
   },
   {
     name: "Sony Interactive Entertainment",
-    video: sonyVid,
+    video:
+      "https://firebasestorage.googleapis.com/v0/b/gamespace-36145.appspot.com/o/sony.mp4?alt=media&token=4633e379-b2b9-4c4b-9766-a67f4b47aa8d",
     slug: "sony-interactive-entertainment",
     logo: sony,
     gameSeries: ["God of War", "Uncharted"],
   },
   {
     name: "Electronic Arts",
-    video: eaVid,
+    video:
+      "https://firebasestorage.googleapis.com/v0/b/gamespace-36145.appspot.com/o/ea.mp4?alt=media&token=67bbe704-ab7c-4448-9d13-e4b3e98721c8",
     slug: "electronic-arts",
     logo: ea,
     gameSeries: ["Battlefied", "Dragon Age"],
   },
   {
     name: "CD Projekt Red",
-    video: cdpVid,
+    video:
+      "https://firebasestorage.googleapis.com/v0/b/gamespace-36145.appspot.com/o/cdp.mp4?alt=media&token=4b019caa-6391-4a28-a715-70697c117eef",
     slug: "cd-projekt-red",
     logo: cdp,
     gameSeries: ["The Witcher", "Cyberpunk 2077"],
