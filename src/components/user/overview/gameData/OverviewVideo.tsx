@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./overviewVideo.module.scss";
-import background from "../../../../../public/img/md.jpg";
+import background from "../../../../../public/img/game-data-background.jpg";
 
 function OverviewVideo() {
   return (
@@ -13,7 +13,7 @@ function OverviewVideo() {
         autoPlay
         loop
       />
-      <Image alt="" src={background} fill />
+      <Image alt="" src={background} sizes="100vw" fill />
     </div>
   );
 }

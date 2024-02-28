@@ -1,6 +1,6 @@
 import SwiperComponent from "../../../global/SwiperComponent";
 import OverviewSectionContainer from "../layout/OverviewSectionContainer";
-import OverviewVideo from "../layout/OverviewVideo";
+import OverviewVideo from "./OverviewVideo";
 import DataCol from "./DataCol";
 
 const devList = [

@@ -12,7 +12,12 @@ type ReviewItemProps = {
 function ReviewItem({ game, review, author, date }: ReviewItemProps) {
   return (
     <li className={styles.container}>
-      <Image src={game.cover} alt={`${game.name} cover`} fill />
+      <Image
+        src={game.cover}
+        alt={`${game.name} cover`}
+        sizes="(max-width: 1040px) 95vw, (max-width: 1600px) 50vw, 740px"
+        fill
+      />
       <div className={styles.content}>
         <p className={styles.name}>{game.name}</p>
         <p className={styles.review}>{review}</p>

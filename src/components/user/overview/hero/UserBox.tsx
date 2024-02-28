@@ -6,7 +6,7 @@ function UserBox() {
   return (
     <div className={styles.container}>
       <div className={styles.photo}>
-        <Image src={userPhoto} alt="User Photo" fill />
+        <Image src={userPhoto} alt="User Photo" sizes="14rem" fill />
       </div>
       <div className={styles.text}>
         <p className={styles.name}>John Sanderson</p>

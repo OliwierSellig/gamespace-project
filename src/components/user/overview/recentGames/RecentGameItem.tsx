@@ -18,7 +18,12 @@ function RecentGameItem({ cover, name, added, id }: RecentGameItemProps) {
   return (
     <li className={styles.container}>
       <Link tabIndex={-1} href={href} className={styles.cover}>
-        <Image src={cover || notFound} fill alt={`${name} Cover`} />
+        <Image
+          src={cover || notFound}
+          sizes="12rem"
+          fill
+          alt={`${name} Cover`}
+        />
       </Link>
       <div className={styles.content}>
         <Link href={href} className={styles.name}>

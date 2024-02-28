@@ -16,7 +16,12 @@ function YearsItem({ gameList, year }: YearsItemProps) {
       <div className={styles.background}>
         {gameList.slice(0, 3).map((game) => (
           <div key={game.id} className={styles.background__cover}>
-            <Image src={game.background_image || notFound} fill alt="" />
+            <Image
+              src={game.background_image || notFound}
+              fill
+              alt=""
+              sizes="(max-width: 460px) 33vw, (max-width: 560px) 20vw, (max-width: 1024px) 15vw, (max-width: 1600px) 10vw, 160px"
+            />
           </div>
         ))}
       </div>
