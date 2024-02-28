@@ -4,7 +4,7 @@ import styles from "./shareSocialList.module.scss";
 
 function ShareSocialList() {
   return (
-    <ul className={styles.container}>
+    <nav className={styles.container}>
       {getSocialsByOrder(["Facebook", "Twitter/X", "Discord", "Instagram"]).map(
         (item) => (
           <ShareSocialItem
@@ -16,7 +16,7 @@ function ShareSocialList() {
           />
         )
       )}
-    </ul>
+    </nav>
   );
 }
 
