@@ -20,7 +20,7 @@ function UserStats() {
           />
         ) : (
           <>
-            <div className={styles.line} />
+            <li className={styles.line} />
             <UserStatsItem
               key={item.name}
               name={item.name}

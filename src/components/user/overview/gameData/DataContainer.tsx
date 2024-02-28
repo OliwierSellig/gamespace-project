@@ -1,5 +1,6 @@
 import SwiperComponent from "../../../global/SwiperComponent";
 import OverviewSectionContainer from "../layout/OverviewSectionContainer";
+import OverviewVideo from "../layout/OverviewVideo";
 import DataCol from "./DataCol";
 
 const devList = [
@@ -21,18 +22,21 @@ const genreList = [
 function DataContainer() {
   return (
     <OverviewSectionContainer>
-      <SwiperComponent
-        props={{
-          default: {
-            slidesPerView: 1,
-            spaceBetween: 16,
-          },
-          breakpoints: [{ minWidth: 1024, slidesPerView: 2 }],
-        }}
-      >
-        <DataCol data={{ type: "Developers", list: devList }} />
-        <DataCol data={{ type: "Genres", list: genreList }} />
-      </SwiperComponent>
+      <div style={{ position: "relative" }}>
+        <OverviewVideo />
+        <SwiperComponent
+          props={{
+            default: {
+              slidesPerView: 1,
+              spaceBetween: 16,
+            },
+            breakpoints: [{ minWidth: 1024, slidesPerView: 2 }],
+          }}
+        >
+          <DataCol data={{ type: "Developers", list: devList }} />
+          <DataCol data={{ type: "Genres", list: genreList }} />
+        </SwiperComponent>
+      </div>
     </OverviewSectionContainer>
   );
 }

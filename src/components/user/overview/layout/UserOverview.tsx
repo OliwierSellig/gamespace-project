@@ -7,13 +7,11 @@ import RecentGameList from "../recentGames/RecentGameList";
 import ReviewsRow from "../recentReviews/ReviewsRow";
 import ShareContainer from "../share/ShareContainer";
 import OverviewSection from "./OverviewSection";
-import OverviewVideo from "./OverviewVideo";
 
 function UserOverview() {
   return (
     <>
       <HeroContainer />
-      {/* <OverviewVideo /> */}
       <OverviewSection heading="Favourite Games">
         <FavouritesSwiper />
       </OverviewSection>
