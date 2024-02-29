@@ -47,13 +47,20 @@ function UserSelector({
           onClick={() => setIsOpen(true)}
           className={styles.btn}
         >
-          <span>{activeItem?.item}</span>
+          <span>{activeItem ? activeItem.item : list.at(0)?.item}</span>
           <HiMiniChevronDown />
         </button>
         {isOpen && (
           <nav className={styles.nav}>
             {list.map((item, i) => (
-              <Link key={i} className={styles.link} href={item.href}>
+              <Link
+                key={i}
+                className={styles.link}
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+                href={item.href}
+              >
                 {item.item}
               </Link>
             ))}

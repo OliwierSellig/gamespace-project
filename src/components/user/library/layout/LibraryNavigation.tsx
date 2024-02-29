@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../locale/userSelectContainer/UserSelectContainer";
 import UserSelector from "../../locale/userSelectContainer/UserSelector";
@@ -11,10 +11,16 @@ import { filterList, orderList } from "../../../../utils/data";
 type LibraryNavigationProps = {
   orderBy: string;
   filterBy: string;
+  query: string;
+  setQuery: Dispatch<SetStateAction<string>>;
 };
 
-function LibraryNavigation({ orderBy, filterBy }: LibraryNavigationProps) {
-  const [query, setQuery] = useState<string>("");
+function LibraryNavigation({
+  orderBy,
+  filterBy,
+  query,
+  setQuery,
+}: LibraryNavigationProps) {
   const filterByList = filterList.map((item) => {
     return {
       item,
@@ -31,21 +37,17 @@ function LibraryNavigation({ orderBy, filterBy }: LibraryNavigationProps) {
     <nav className={styles.container}>
       <UserSelectContainer>
         <UserSelector
-          activeItem={
-            filterByList.find(
-              (item) => changeToUrlSlug(item.item) === filterBy
-            ) || filterByList.at(0)
-          }
+          activeItem={filterByList.find(
+            (item) => changeToUrlSlug(item.item) === filterBy
+          )}
           list={filterByList}
         >
           Filter By
         </UserSelector>
         <UserSelector
-          activeItem={
-            orderByList.find(
-              (item) => changeToUrlSlug(item.item) === orderBy
-            ) || orderByList.at(0)
-          }
+          activeItem={orderByList.find(
+            (item) => changeToUrlSlug(item.item) === orderBy
+          )}
           list={orderByList}
         >
           Sort By

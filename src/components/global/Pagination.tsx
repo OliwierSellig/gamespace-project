@@ -14,10 +14,9 @@ function Pagination({ currentPage, maxPage, length = 5 }: PaginationProps) {
   const pathname = usePathname();
   const router = useRouter();
   const params = useSearchParams();
-  const canGoNext = currentPage < maxPage;
-  const canGoPrev = currentPage > 1;
-
   const page = currentPage > 0 && currentPage <= maxPage ? currentPage : 1;
+  const canGoNext = page < maxPage;
+  const canGoPrev = page > 1;
 
   function setPage(p: number) {
     const current = new URLSearchParams(Array.from(params.entries()));
