@@ -150,3 +150,7 @@ export const socials: SocialPlatformType[] = [
     color: "#FF0000",
   },
 ];
+
+export const filterList = ["All games", "Developers", "Genres", "Platforms"];
+
+export const orderList = ["Relevance", "Release Date", "Popularity", "Rating"];

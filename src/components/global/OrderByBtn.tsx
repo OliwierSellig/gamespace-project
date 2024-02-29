@@ -32,9 +32,12 @@ function OrderByBtn({ order: o }: OrderByBtnProps) {
         setIsOpen(false);
     }
 
+    addEventListener("scroll", () => setIsOpen(false));
     addEventListener("mouseup", (e: MouseEvent) => clickOutside(e));
-    return () =>
+    return () => {
       removeEventListener("mouseup", (e: MouseEvent) => clickOutside(e));
+      removeEventListener("scroll", () => setIsOpen(false));
+    };
   }, []);
 
   function setOrder(o: string) {

@@ -154,3 +154,7 @@ export function getSocialsByOrder(
 
   return filteredArr;
 }
+
+export function changeToUrlSlug(item: string) {
+  return item.toLowerCase().trim().replaceAll(" ", "-");
+}

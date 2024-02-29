@@ -1,10 +1,25 @@
-.container {
+@import "../../../../scss/animations.scss";
+
+.disabled {
+  opacity: 0.4;
+
+  & > div > button {
+    cursor: auto;
+    &:hover,
+    &:focus {
+      color: var(--color-light-100);
+    }
+  }
 }
 
 .text {
   font-size: 1.4rem;
   color: var(--color-light-200);
   font-weight: 300;
+}
+.box {
+  display: inline-block;
+  position: relative;
 }
 
 .btn {
@@ -13,9 +28,10 @@
   letter-spacing: 0.2px;
   transition: var(--transition-fast);
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.2rem;
+  min-width: 14rem;
 
   &:hover,
   &:focus {
@@ -26,5 +42,32 @@
     width: 1.8rem;
     height: 1.8rem;
     stroke-width: 0.6;
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--color-dark-200);
+  width: max-content;
+  background-color: var(--color-light-100);
+  border-radius: var(--border-radius-smallest);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.2rem 1rem;
+  animation: fadeIn 0.2s;
+}
+
+.link {
+  font-size: 1.4rem;
+  transition: var(--transition-fast);
+  padding: 1.2rem 2rem;
+  border-radius: var(--border-radius-smallest);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-200);
   }
 }

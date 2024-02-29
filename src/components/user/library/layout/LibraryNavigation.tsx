@@ -5,36 +5,58 @@ import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../locale/userSelectContainer/UserSelectContainer";
 import UserSelector from "../../locale/userSelectContainer/UserSelector";
 import styles from "./libraryNavigation.module.scss";
-import { ChildrenProp } from "../../../../utils/types";
+import { changeToUrlSlug } from "../../../../utils/functions";
+import { filterList, orderList } from "../../../../utils/data";
 
-const filterList = [
-  { item: "All games", currentlyActive: true },
-  { item: "Developers", currentlyActive: false },
-];
+type LibraryNavigationProps = {
+  orderBy: string;
+  filterBy: string;
+};
 
-const sortList = [
-  { item: "Relevance", currentlyActive: true },
-  { item: "Release Date", currentlyActive: false },
-];
-
-function LibraryNavigation({ children }: ChildrenProp) {
+function LibraryNavigation({ orderBy, filterBy }: LibraryNavigationProps) {
   const [query, setQuery] = useState<string>("");
-  console.log(query);
+  const filterByList = filterList.map((item) => {
+    return {
+      item,
+      href: `?filter=${changeToUrlSlug(item)}`,
+    };
+  });
+  const orderByList = orderList.map((item) => {
+    return {
+      item,
+      href: `?order=${changeToUrlSlug(item)}`,
+    };
+  });
   return (
-    <>
-      <nav className={styles.container}>
-        <UserSelectContainer>
-          <UserSelector list={filterList}>Filter By</UserSelector>
-          <UserSelector list={sortList}>Sort By</UserSelector>
-        </UserSelectContainer>
-        <UserSearchInput
-          placeholder="Search Games"
-          inputValue={query}
-          handleChange={setQuery}
-        />
-      </nav>
-      {children}
-    </>
+    <nav className={styles.container}>
+      <UserSelectContainer>
+        <UserSelector
+          activeItem={
+            filterByList.find(
+              (item) => changeToUrlSlug(item.item) === filterBy
+            ) || filterByList.at(0)
+          }
+          list={filterByList}
+        >
+          Filter By
+        </UserSelector>
+        <UserSelector
+          activeItem={
+            orderByList.find(
+              (item) => changeToUrlSlug(item.item) === orderBy
+            ) || orderByList.at(0)
+          }
+          list={orderByList}
+        >
+          Sort By
+        </UserSelector>
+      </UserSelectContainer>
+      <UserSearchInput
+        placeholder="Search Games"
+        inputValue={query}
+        handleChange={setQuery}
+      />
+    </nav>
   );
 }
 
