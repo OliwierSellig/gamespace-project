@@ -1,6 +1,6 @@
 import baldurCover from "../../../../../public/img/review-baldur.jpg";
 import tlouCover from "../../../../../public/img/review-tlou.webp";
-import ReviewItem from "../../locale/ReviewItem";
+import ReviewItem from "../../locale/reviewItem/ReviewItem";
 import styles from "./reviewsRow.module.scss";
 
 const reviews = [

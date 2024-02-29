@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.input {
+  flex-grow: 1;
+  font-size: 1.8rem;
+
+  &::placeholder {
+    color: var(--color-light-300);
+  }
+}
+
+.close {
+  cursor: pointer;
+  transition: var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    color: var(--color-light-300);
+  }
+  svg {
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+}

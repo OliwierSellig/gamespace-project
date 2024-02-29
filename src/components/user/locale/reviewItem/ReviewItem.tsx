@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./reviewItem.module.scss";
-import Button from "../../global/Button";
+import Button from "../../../global/Button";
 
 type ReviewItemProps = {
   game: { name: string; cover: string };

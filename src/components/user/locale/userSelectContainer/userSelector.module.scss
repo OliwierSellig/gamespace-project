@@ -1,0 +1,30 @@
+.container {
+}
+
+.text {
+  font-size: 1.4rem;
+  color: var(--color-light-200);
+  font-weight: 300;
+}
+
+.btn {
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+
+  &:hover,
+  &:focus {
+    color: var(--color-light-300);
+  }
+
+  svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    stroke-width: 0.6;
+  }
+}
