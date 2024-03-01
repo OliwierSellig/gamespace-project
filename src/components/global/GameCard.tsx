@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ChildrenProp, ImageSizesType } from "../../utils/types";
 import { ReactNode } from "react";
 import noImage from "../../../public/img/not-found.png";
+import { getImageSizes } from "../../utils/functions";
 
 type GameCardProps = {
   children?: ReactNode;
@@ -22,20 +23,7 @@ function GameCard({
   scales = true,
   imageSizes,
 }: GameCardProps) {
-  const sizes =
-    imageSizes?.sizes && imageSizes.sizes.length > 0
-      ? imageSizes.sizes
-          .sort((a, b) => a.maxWidth - b.maxWidth)
-          .map(
-            (item) =>
-              `(max-width: ${item.maxWidth}px) ${item.size.number}${item.size.unit}`
-          )
-          .join(", ")
-          .concat(
-            ", ",
-            `${imageSizes.defalult.number}${imageSizes.defalult.unit}`
-          )
-      : `${imageSizes.defalult.number}${imageSizes.defalult.unit}`;
+  const sizes = getImageSizes(imageSizes);
 
   return (
     <Link

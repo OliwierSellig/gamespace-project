@@ -5,6 +5,8 @@ import { IconType } from "react-icons";
 import { HiMiniArrowRight, HiMiniBookmarkSlash } from "react-icons/hi2";
 
 import Link from "next/link";
+import { ImageSizesType } from "../../../../utils/types";
+import { getImageSizes } from "../../../../utils/functions";
 
 type GameLibraryProps = {
   name: string;
@@ -15,18 +17,22 @@ type GameLibraryProps = {
     actionLabel: string;
     actionIcon: IconType;
   };
+  imageSizes: ImageSizesType;
 };
 
 function GameLibraryItem({
   name,
   id,
   cover,
+  imageSizes,
   action = {
     handleClick: () => {},
     actionLabel: "Remove game from Library",
     actionIcon: HiMiniBookmarkSlash,
   },
 }: GameLibraryProps) {
+  // const sizes = getImageSizes(imageSizes);
+
   return (
     <div className={styles.container}>
       <Image src={cover || notFound} alt="" fill />

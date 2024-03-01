@@ -1,5 +1,5 @@
 import { currentDate, platformsIcons, socials } from "./data";
-import { SocialPlatformType } from "./types";
+import { ImageSizesType, SocialPlatformType } from "./types";
 
 export function getPlatformIcon(id: number) {
   return platformsIcons.find((platform) => platform.id === id).icon;
@@ -157,4 +157,23 @@ export function getSocialsByOrder(
 
 export function changeToUrlSlug(item: string) {
   return item.toLowerCase().trim().replaceAll(" ", "-");
+}
+
+export function getImageSizes(imageSizes: ImageSizesType) {
+  const sizes =
+    imageSizes?.sizes && imageSizes.sizes.length > 0
+      ? imageSizes.sizes
+          .sort((a, b) => a.maxWidth - b.maxWidth)
+          .map(
+            (item) =>
+              `(max-width: ${item.maxWidth}px) ${item.size.number}${item.size.unit}`
+          )
+          .join(", ")
+          .concat(
+            ", ",
+            `${imageSizes.defalult.number}${imageSizes.defalult.unit}`
+          )
+      : `${imageSizes.defalult.number}${imageSizes.defalult.unit}`;
+
+  return sizes;
 }

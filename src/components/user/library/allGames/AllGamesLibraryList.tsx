@@ -19,6 +19,14 @@ function AllGamesLibraryList({ list, count, page }: AllGamesLibraryList) {
         {list.map((item) => (
           <li key={item.id}>
             <GameLibraryItem
+              imageSizes={{
+                defalult: { number: 500, unit: "px" },
+                sizes: [
+                  { maxWidth: 1600, size: { number: 33, unit: "vw" } },
+                  { maxWidth: 1044, size: { number: 46, unit: "vw" } },
+                  { maxWidth: 520, size: { number: 98, unit: "vw" } },
+                ],
+              }}
               cover={item.background_image}
               name={item.name}
               id={item.id}
