@@ -17,12 +17,13 @@ function AllGamesLibraryList({ list, count, page }: AllGamesLibraryList) {
     <>
       <ul className={styles.container}>
         {list.map((item) => (
-          <GameLibraryItem
-            cover={item.background_image}
-            name={item.name}
-            id={item.id}
-            key={item.id}
-          />
+          <li key={item.id}>
+            <GameLibraryItem
+              cover={item.background_image}
+              name={item.name}
+              id={item.id}
+            />
+          </li>
         ))}
       </ul>
       <Pagination

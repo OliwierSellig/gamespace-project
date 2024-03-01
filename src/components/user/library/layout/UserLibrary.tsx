@@ -7,7 +7,6 @@ import AllGamesLibraryList from "../allGames/AllGamesLibraryList";
 import FilteredGamesLibraryList from "../filteredGames/FilteredGamesLibraryList";
 import LibraryNavigation from "./LibraryNavigation";
 import { useGames } from "../../../../hooks/useGames";
-import { useDevelopers } from "../../../../hooks/useDevelopers";
 
 type UserLibraryProps = {
   orderBy: string;
@@ -46,7 +45,6 @@ function UserLibrary({ orderBy, filterBy, page }: UserLibraryProps) {
           <FilteredGamesLibraryList
             list={ubiGames.results}
             count={ubiGames.count}
-            filterBy={filterBy}
             page={page}
           />
         )}

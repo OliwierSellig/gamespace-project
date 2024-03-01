@@ -28,7 +28,7 @@ function GameLibraryItem({
   },
 }: GameLibraryProps) {
   return (
-    <li className={styles.container}>
+    <div className={styles.container}>
       <Image src={cover || notFound} alt="" fill />
       <p className={styles.name}>{name || "Undefined Game"}</p>
       <div className={styles.btns}>
@@ -47,7 +47,7 @@ function GameLibraryItem({
           <HiMiniArrowRight />
         </Link>
       </div>
-    </li>
+    </div>
   );
 }
 

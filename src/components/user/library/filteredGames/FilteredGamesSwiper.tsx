@@ -10,11 +10,16 @@ function FilteredGamesSwiper({ list }: FilteredGamesSwiperProps) {
     <SwiperComponent
       props={{
         default: {
-          slidesPerView: 3,
-          spaceBetween: 24,
+          slidesPerView: 1,
+          spaceBetween: 16,
           navigation: true,
           pagination: false,
         },
+        breakpoints: [
+          { minWidth: 1024, slidesPerView: 3 },
+          { minWidth: 560, slidesPerView: 2 },
+          { minWidth: 425, slidesPerView: 1.5 },
+        ],
       }}
     >
       {list.map((item) => (
