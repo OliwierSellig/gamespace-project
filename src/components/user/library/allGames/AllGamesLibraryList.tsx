@@ -22,7 +22,12 @@ function AllGamesLibraryList({
     <>
       <ul className={styles.container}>
         {list.map((item) => (
-          <GameLibraryItem key={item.id} />
+          <GameLibraryItem
+            cover={item.background_image}
+            name={item.name}
+            id={item.id}
+            key={item.id}
+          />
         ))}
       </ul>
       <Pagination
