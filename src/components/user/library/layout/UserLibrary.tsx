@@ -7,6 +7,7 @@ import AllGamesLibraryList from "../allGames/AllGamesLibraryList";
 import FilteredGamesLibraryList from "../filteredGames/FilteredGamesLibraryList";
 import LibraryNavigation from "./LibraryNavigation";
 import { useGames } from "../../../../hooks/useGames";
+import { useDevelopers } from "../../../../hooks/useDevelopers";
 
 type UserLibraryProps = {
   orderBy: string;
@@ -27,7 +28,9 @@ function UserLibrary({ orderBy, filterBy, page }: UserLibraryProps) {
     },
   });
 
-  console.log(games);
+  const { games: ubiGames, isLoading: isLoadingUbi } = useGames({
+    developers: [405],
+  });
 
   return (
     <>
@@ -37,21 +40,25 @@ function UserLibrary({ orderBy, filterBy, page }: UserLibraryProps) {
         setQuery={setQuery}
         filterBy={filterBy}
       />
-      {!isLoading &&
-        (filterBy && filterBy !== changeToUrlSlug(filterList.at(0)) ? (
+      {!isLoadingUbi &&
+        filterBy &&
+        filterBy !== changeToUrlSlug(filterList.at(0)) && (
           <FilteredGamesLibraryList
-            list={games.results}
-            count={games.count}
+            list={ubiGames.results}
+            count={ubiGames.count}
             filterBy={filterBy}
+            page={page}
           />
-        ) : (
+        )}
+      {!isLoading &&
+        (!filterBy || filterBy === changeToUrlSlug(filterList.at(0))) && (
           <AllGamesLibraryList
             list={games.results}
             count={games.count}
             orderBy={orderBy}
             page={page}
           />
-        ))}
+        )}
     </>
   );
 }
