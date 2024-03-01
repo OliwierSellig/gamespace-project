@@ -17,14 +17,12 @@ async function Developers({ params }: DevelopersProps) {
   });
 
   return (
-    <>
-      <BrowseList
-        type="dev"
-        list={developers.results}
-        count={developers.count}
-        page={target}
-      />
-    </>
+    <BrowseList
+      type="dev"
+      list={developers.results}
+      count={developers.count}
+      page={target}
+    />
   );
 }
 

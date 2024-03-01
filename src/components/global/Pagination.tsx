@@ -8,9 +8,18 @@ type PaginationProps = {
   currentPage: number;
   maxPage: number;
   length?: number;
+  padding?: { top: number; right: number; bottom: number; left: number };
 };
 
-function Pagination({ currentPage, maxPage, length = 5 }: PaginationProps) {
+function Pagination({
+  currentPage,
+  maxPage,
+  length = 5,
+  padding = { top: 0, left: 0, right: 0, bottom: 0 },
+}: PaginationProps) {
+  const paginationStyles = {
+    padding: `${padding.top}rem ${padding.right}rem ${padding.bottom}rem ${padding.left}rem`,
+  };
   const pathname = usePathname();
   const router = useRouter();
   const params = useSearchParams();
@@ -28,7 +37,7 @@ function Pagination({ currentPage, maxPage, length = 5 }: PaginationProps) {
   }
 
   return (
-    <nav className={styles.container}>
+    <nav className={styles.container} style={paginationStyles}>
       <button
         disabled={!canGoPrev}
         onClick={() => setPage(1)}
