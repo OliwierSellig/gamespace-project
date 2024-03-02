@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { orderList } from "../../../../utils/data";
 import { changeToUrlSlug } from "../../../../utils/functions";
-import UserGamesListNav from "../../locale/userGamesListNav/userGamesListNav";
+import UserGamesListNav from "../../locale/userGamesListNav/UserGamesListNav";
 import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../locale/userSelectContainer/UserSelectContainer";
 import UserSelector from "../../locale/userSelectContainer/UserSelector";

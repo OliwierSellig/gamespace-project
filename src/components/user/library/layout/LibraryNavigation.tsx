@@ -6,7 +6,7 @@ import UserSelectContainer from "../../locale/userSelectContainer/UserSelectCont
 import UserSelector from "../../locale/userSelectContainer/UserSelector";
 import { changeToUrlSlug } from "../../../../utils/functions";
 import { filterList, orderList } from "../../../../utils/data";
-import UserGamesListNav from "../../locale/userGamesListNav/userGamesListNav";
+import UserGamesListNav from "../../locale/userGamesListNav/UserGamesListNav";
 
 type LibraryNavigationProps = {
   orderBy: string;

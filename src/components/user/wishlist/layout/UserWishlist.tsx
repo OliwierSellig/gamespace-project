@@ -37,6 +37,8 @@ function UserWishlist({ orderBy, page }: UserWishlistProps) {
           },
         };
       });
+
+  console.log(gamesList);
   return (
     <>
       <WishlistNavigation query={query} setQuery={setQuery} orderBy={orderBy} />

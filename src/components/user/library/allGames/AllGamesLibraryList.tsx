@@ -1,4 +1,4 @@
-import { FetchedGameItem, UserListItem } from "../../../../utils/types";
+import { UserListItem } from "../../../../utils/types";
 import Pagination from "../../../global/Pagination";
 import GameLibraryItem from "../../locale/gameLibraryItem/GameLibraryItem";
 import styles from "./allGamesLibraryList.module.scss";

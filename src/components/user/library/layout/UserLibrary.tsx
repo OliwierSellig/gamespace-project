@@ -7,6 +7,7 @@ import AllGamesLibraryList from "../allGames/AllGamesLibraryList";
 import FilteredGamesLibraryList from "../filteredGames/FilteredGamesLibraryList";
 import LibraryNavigation from "./LibraryNavigation";
 import { useGames } from "../../../../hooks/useGames";
+import { HiMiniBookmarkSlash } from "react-icons/hi2";
 
 type UserLibraryProps = {
   orderBy: string;
@@ -31,6 +32,21 @@ function UserLibrary({ orderBy, filterBy, page }: UserLibraryProps) {
     developers: [405],
   });
 
+  const gamesList = isLoading
+    ? []
+    : games.results.map((game) => {
+        return {
+          ...game,
+          action: {
+            actionLabel: "Remove from Library",
+            actionIcon: HiMiniBookmarkSlash,
+            handleClick: () => {
+              console.log(`Removing ${game.name} from Library`);
+            },
+          },
+        };
+      });
+
   return (
     <>
       <LibraryNavigation
@@ -51,7 +67,7 @@ function UserLibrary({ orderBy, filterBy, page }: UserLibraryProps) {
       {!isLoading &&
         (!filterBy || filterBy === changeToUrlSlug(filterList.at(0))) && (
           <AllGamesLibraryList
-            list={games.results}
+            list={gamesList}
             count={games.count}
             orderBy={orderBy}
             page={page}
