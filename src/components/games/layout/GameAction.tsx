@@ -17,7 +17,7 @@ function GameAction({ game, topGenre, topYear }: GameActionProps) {
   return (
     <div className={styles.container}>
       <GameHeader game={game} />
-      <GameActionButtons />
+      <GameActionButtons game={game} />
       <GameRating topGenre={topGenre} topYear={topYear} game={game} />
       <Button
         positionSelf={{ type: "align", pos: "center" }}

@@ -1,19 +1,18 @@
 import styles from "./gameActionButtons.module.scss";
-import { HiOutlinePlusCircle, HiOutlineBookmark } from "react-icons/hi2";
-import Button from "../../global/Button";
 import SaveToCollectionButton from "../utils/SaveToCollectionButton";
+import { SingleGameItem } from "../../../utils/types";
+import UpdateLibraryButton from "./UpdateLibraryButton";
+import UpdateWishlistButton from "./UpdateWishlistButton";
 
-function GameActionButtons() {
+type GameActionButtonsProps = {
+  game: SingleGameItem;
+};
+
+function GameActionButtons({ game }: GameActionButtonsProps) {
   return (
     <nav className={styles.actionBtns}>
-      <Button style={{ name: "scale", shade: "dark" }}>
-        <span>Add to my games</span>
-        <HiOutlinePlusCircle />
-      </Button>
-      <Button transition="medium" style={{ name: "fill", shade: "white" }}>
-        <span>Add to Wishlist</span>
-        <HiOutlineBookmark />
-      </Button>
+      <UpdateLibraryButton game={game} />
+      <UpdateWishlistButton game={game} />
       <SaveToCollectionButton />
     </nav>
   );

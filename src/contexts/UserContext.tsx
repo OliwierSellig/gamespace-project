@@ -13,8 +13,10 @@ const UserContext = createContext<ContextType | undefined>(undefined);
 
 type ContextType = {
   state: stateProps;
+  checkInLibrary: (id: number) => boolean;
   addToLibrary: (game: LibraryItemType) => void;
   removeFromLibrary: (id: number) => void;
+  checkInWishlist: (id: number) => boolean;
   addToWishlist: (game: BasicItemType) => void;
   removeFromWishlist: (id: number) => void;
 };
@@ -65,6 +67,8 @@ function UserProvider({ children }: ChildrenProp) {
 
   const { library, wishlist } = state;
 
+  console.log(state);
+
   function checkInLibrary(id: number) {
     return library.map((game) => game.id).includes(id);
   }
@@ -75,6 +79,7 @@ function UserProvider({ children }: ChildrenProp) {
       return;
     }
     const newList = [...library, game];
+    if (checkInWishlist(game.id)) removeFromWishlist(game.id);
     dispatch({ type: REDUCER_ACTION_TYPE.SET_LIBRARY, payload: newList });
     toast.success("Successfully added to library");
   }
@@ -118,8 +123,10 @@ function UserProvider({ children }: ChildrenProp) {
     <UserContext.Provider
       value={{
         state,
+        checkInLibrary,
         addToLibrary,
         removeFromLibrary,
+        checkInWishlist,
         addToWishlist,
         removeFromWishlist,
       }}
