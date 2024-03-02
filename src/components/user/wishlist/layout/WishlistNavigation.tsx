@@ -1,49 +1,32 @@
-"use client";
-
 import { Dispatch, SetStateAction } from "react";
+import { orderList } from "../../../../utils/data";
+import { changeToUrlSlug } from "../../../../utils/functions";
+import UserGamesListNav from "../../locale/userGamesListNav/userGamesListNav";
 import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../locale/userSelectContainer/UserSelectContainer";
 import UserSelector from "../../locale/userSelectContainer/UserSelector";
-import { changeToUrlSlug } from "../../../../utils/functions";
-import { filterList, orderList } from "../../../../utils/data";
-import UserGamesListNav from "../../locale/userGamesListNav/userGamesListNav";
 
-type LibraryNavigationProps = {
+type WishlistNavigationProps = {
   orderBy: string;
-  filterBy: string;
   query: string;
   setQuery: Dispatch<SetStateAction<string>>;
 };
 
-function LibraryNavigation({
+function WishlistNavigation({
   orderBy,
-  filterBy,
   query,
   setQuery,
-}: LibraryNavigationProps) {
-  const filterByList = filterList.map((item) => {
-    return {
-      item,
-      href: `?filter=${changeToUrlSlug(item)}`,
-    };
-  });
+}: WishlistNavigationProps) {
   const orderByList = orderList.map((item) => {
     return {
       item,
       href: `?order=${changeToUrlSlug(item)}`,
     };
   });
+
   return (
     <UserGamesListNav>
       <UserSelectContainer>
-        <UserSelector
-          activeItem={filterByList.find(
-            (item) => changeToUrlSlug(item.item) === filterBy
-          )}
-          list={filterByList}
-        >
-          Filter By
-        </UserSelector>
         <UserSelector
           activeItem={orderByList.find(
             (item) => changeToUrlSlug(item.item) === orderBy
@@ -62,4 +45,4 @@ function LibraryNavigation({
   );
 }
 
-export default LibraryNavigation;
+export default WishlistNavigation;

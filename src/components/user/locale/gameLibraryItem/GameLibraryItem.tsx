@@ -31,11 +31,11 @@ function GameLibraryItem({
     actionIcon: HiMiniBookmarkSlash,
   },
 }: GameLibraryProps) {
-  // const sizes = getImageSizes(imageSizes);
+  const sizes = getImageSizes(imageSizes);
 
   return (
     <div className={styles.container}>
-      <Image src={cover || notFound} alt="" fill />
+      <Image src={cover || notFound} alt="" fill sizes={sizes} />
       <p className={styles.name}>{name || "Undefined Game"}</p>
       <div className={styles.btns}>
         <button

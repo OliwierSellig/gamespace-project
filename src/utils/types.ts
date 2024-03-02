@@ -278,3 +278,11 @@ export type SocialPlatformType = {
   url: string;
   color: string;
 };
+
+export type UserListItem = FetchedGameItem & {
+  action: {
+    handleClick: () => void;
+    actionLabel: string;
+    actionIcon: IconType;
+  };
+};

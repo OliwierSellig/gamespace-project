@@ -1,24 +1,33 @@
-import { FetchedGameItem } from "../../../../utils/types";
+import { FetchedGameItem, UserListItem } from "../../../../utils/types";
 import Pagination from "../../../global/Pagination";
 import GameLibraryItem from "../../locale/gameLibraryItem/GameLibraryItem";
 import styles from "./allGamesLibraryList.module.scss";
 
 type AllGamesLibraryList = {
-  list: FetchedGameItem[];
+  list: UserListItem[];
   count: number;
   orderBy: string;
   page: string;
+  resultsPerPage?: number;
 };
 
-const RESULTS_PER_PAGE = 12;
-
-function AllGamesLibraryList({ list, count, page }: AllGamesLibraryList) {
+function AllGamesLibraryList({
+  list,
+  count,
+  page,
+  resultsPerPage = 12,
+}: AllGamesLibraryList) {
   return (
     <>
       <ul className={styles.container}>
         {list.map((item) => (
           <li key={item.id}>
             <GameLibraryItem
+              action={{
+                actionIcon: item.action.actionIcon,
+                actionLabel: item.action.actionLabel,
+                handleClick: item.action.handleClick,
+              }}
               imageSizes={{
                 defalult: { number: 500, unit: "px" },
                 sizes: [
@@ -37,7 +46,7 @@ function AllGamesLibraryList({ list, count, page }: AllGamesLibraryList) {
       <Pagination
         padding={{ top: 3.6, left: 0, right: 0, bottom: 3.6 }}
         currentPage={parseInt(page)}
-        maxPage={Math.ceil(count / RESULTS_PER_PAGE)}
+        maxPage={Math.ceil(count / resultsPerPage)}
       />
     </>
   );
