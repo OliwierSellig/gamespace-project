@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./gameLibraryItem.module.scss";
 import notFound from "../../../../../public/img/not-found.png";
 import Image from "next/image";

@@ -1,6 +1,6 @@
 import { fetchGames } from "../../../../lib/games";
-import GameCard from "../../../global/GameCard";
 import SwiperComponent from "../../../global/SwiperComponent";
+import GameLibraryItem from "../../locale/gameLibraryItem/GameLibraryItem";
 
 async function FavouritesSwiper() {
   const games = await fetchGames({});
@@ -21,11 +21,11 @@ async function FavouritesSwiper() {
       }}
     >
       {games.results.map((game) => (
-        <GameCard
-          alt={`${game.name} Cover`}
+        <GameLibraryItem
           key={game.id}
-          href={`/games/${game.id}`}
-          image={game.background_image}
+          name={game.name}
+          id={game.id}
+          cover={game.background_image}
           imageSizes={{
             defalult: { number: 40, unit: "vw" },
             sizes: [
@@ -33,13 +33,7 @@ async function FavouritesSwiper() {
               { maxWidth: 600, size: { number: 95, unit: "vw" } },
             ],
           }}
-          scales={false}
-        >
-          <GameCard.Title>{game.name}</GameCard.Title>
-          <GameCard.Details>{`${game.genres?.at(0)?.name || ""} ${
-            game.released || ""
-          }`}</GameCard.Details>
-        </GameCard>
+        />
       ))}
     </SwiperComponent>
   );

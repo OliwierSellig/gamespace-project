@@ -1,13 +1,18 @@
+"use client";
+
+import { useUser } from "../../../../contexts/UserContext";
 import UserStatsItem from "./UserStatsItem";
 import styles from "./userStats.module.scss";
 
-const userStatsItems = [
-  { name: "Games Played", count: 27, color: "#4169E1" },
-  { name: "Wishlisted", count: 12, color: "#FFDF00" },
-  { name: "Collections", count: 9, color: "#29AB87" },
-];
-
 function UserStats() {
+  const { state } = useUser();
+
+  const userStatsItems = [
+    { name: "Games Played", count: state.library.length, color: "#4169E1" },
+    { name: "Wishlisted", count: state.wishlist.length, color: "#FFDF00" },
+    { name: "Collections", count: 9, color: "#29AB87" },
+  ];
+
   return (
     <ul className={styles.container}>
       {userStatsItems.map((item, i) =>
