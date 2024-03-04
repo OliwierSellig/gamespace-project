@@ -177,3 +177,16 @@ export function getImageSizes(imageSizes: ImageSizesType) {
 
   return sizes;
 }
+
+export function rankList(list: string[], ascending = false) {
+  const uniqueList = [...new Set(list)];
+  const topList = uniqueList.map((item) => {
+    return {
+      item,
+      amount: list.filter((i) => i === item).length,
+    };
+  });
+  return topList.sort((a, b) =>
+    ascending ? a.amount - b.amount : b.amount - a.amount
+  );
+}

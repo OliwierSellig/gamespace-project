@@ -183,7 +183,7 @@ export type GameDeveloperType = {
   games_count: number;
   id: number;
   image_background: number;
-  name: number;
+  name: string;
   slug: number;
 };
 

@@ -8,11 +8,14 @@ import {
   PlatformType,
 } from "../utils/types";
 import toast from "react-hot-toast";
+import { rankList } from "../utils/functions";
 
 const UserContext = createContext<ContextType | undefined>(undefined);
 
 type ContextType = {
   state: stateProps;
+  genreList: { item: string; amount: number }[];
+  devList: { item: string; amount: number }[];
   checkInLibrary: (id: number) => boolean;
   addToLibrary: (game: LibraryItemType) => void;
   removeFromLibrary: (id: number) => void;
@@ -67,7 +70,17 @@ function UserProvider({ children }: ChildrenProp) {
 
   const { library, wishlist } = state;
 
-  console.log(state);
+  const devList = rankList(
+    library
+      .filter((game) => game.developers.length)
+      .map((game) => game.developers.at(0).name)
+  );
+
+  const genreList = rankList(
+    library
+      .filter((game) => game.genres.length)
+      .map((game) => game.genres.at(0).name)
+  );
 
   function checkInLibrary(id: number) {
     return library.map((game) => game.id).includes(id);
@@ -123,6 +136,8 @@ function UserProvider({ children }: ChildrenProp) {
     <UserContext.Provider
       value={{
         state,
+        genreList,
+        devList,
         checkInLibrary,
         addToLibrary,
         removeFromLibrary,
