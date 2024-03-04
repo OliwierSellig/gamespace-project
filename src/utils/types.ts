@@ -286,3 +286,18 @@ export type UserListItem = FetchedGameItem & {
     actionIcon: IconType;
   };
 };
+
+export type BasicItemType = {
+  name: string;
+  slug: string;
+  id: number;
+  cover: string;
+};
+
+export type LibraryItemType = BasicItemType & {
+  released: string;
+  added: number;
+  genres: GameGenreItem[];
+  platforms: PlatformType[];
+  developers: GameDeveloperType[];
+};

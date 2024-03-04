@@ -26,6 +26,8 @@ function UpdateLibraryButton({ game }: UpdateLibraryButtonProps) {
             developers: game.developers,
             genres: game.genres,
             platforms: game.platforms,
+            released: game.released,
+            added: game.added,
           });
         }
       }}

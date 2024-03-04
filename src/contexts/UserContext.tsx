@@ -1,12 +1,7 @@
 "use client";
 
 import { createContext, useContext, useReducer } from "react";
-import {
-  ChildrenProp,
-  GameDeveloperType,
-  GameGenreItem,
-  PlatformType,
-} from "../utils/types";
+import { BasicItemType, ChildrenProp, LibraryItemType } from "../utils/types";
 import toast from "react-hot-toast";
 import { rankList } from "../utils/functions";
 
@@ -22,14 +17,10 @@ type ContextType = {
   checkInWishlist: (id: number) => boolean;
   addToWishlist: (game: BasicItemType) => void;
   removeFromWishlist: (id: number) => void;
-};
-
-type BasicItemType = { name: string; slug: string; id: number; cover: string };
-
-type LibraryItemType = BasicItemType & {
-  genres: GameGenreItem[];
-  platforms: PlatformType[];
-  developers: GameDeveloperType[];
+  getCommonYearList: () => {
+    year: number;
+    games: LibraryItemType[];
+  }[];
 };
 
 type stateProps = {
@@ -132,6 +123,21 @@ function UserProvider({ children }: ChildrenProp) {
     toast.success("Successfully removed game from wishlist");
   }
 
+  function getCommonYearList() {
+    const uniqueList = [
+      ...new Set(library.map((game) => new Date(game.released).getFullYear())),
+    ];
+    const topList = uniqueList.map((year) => {
+      return {
+        year,
+        games: library.filter(
+          (game) => new Date(game.released).getFullYear() === year
+        ),
+      };
+    });
+    return topList.sort((a, b) => b.year - a.year);
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -144,6 +150,7 @@ function UserProvider({ children }: ChildrenProp) {
         checkInWishlist,
         addToWishlist,
         removeFromWishlist,
+        getCommonYearList,
       }}
     >
       {children}
