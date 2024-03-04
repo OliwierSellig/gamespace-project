@@ -7,11 +7,9 @@ import YearsItem from "./YearsItem";
 
 function YearsSwiper() {
   const { getCommonYearList } = useUser();
-
   const yearList = getCommonYearList();
-  console.log(getCommonYearList());
   const emptySlotsCount = Math.max(0, 3 - yearList.length);
-  console.log(emptySlotsCount);
+
   return (
     <SwiperComponent
       props={{

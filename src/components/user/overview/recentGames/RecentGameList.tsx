@@ -1,25 +1,21 @@
-import { fetchGames } from "../../../../lib/games";
+"use client";
+
+import { useUser } from "../../../../contexts/UserContext";
+import EmptyRecentGamesList from "./EmptyRecentGamesList";
 import RecentGameItem from "./RecentGameItem";
 import styles from "./recentGameList.module.scss";
 
-async function RecentGameList() {
-  const games = await fetchGames({
-    dates: {
-      fromDay: 1,
-      fromMonth: 1,
-      fromYear: 2018,
-      toDay: 30,
-      toMonth: 12,
-      toYear: 2018,
-    },
-  });
+function RecentGameList() {
+  const { recentAddedGames } = useUser();
+
+  if (!recentAddedGames.length) return <EmptyRecentGamesList />;
 
   return (
     <ul className={styles.container}>
-      {games.results.slice(0, 9).map((game) => (
+      {recentAddedGames.map((game) => (
         <RecentGameItem
           id={game.id}
-          cover={game.background_image}
+          cover={game.cover}
           added={game.added}
           name={game.name}
           key={game.id}

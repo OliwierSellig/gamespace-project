@@ -1,4 +1,10 @@
-.btn {
+@import "../../../../scss/animations.scss";
+
+.container {
+  position: relative;
+}
+
+.open {
   cursor: pointer;
   border-radius: var(--border-radius-default);
   background-color: var(--color-dark-500);
@@ -24,5 +30,37 @@
     svg {
       fill: var(--color-dark-200);
     }
+  }
+}
+
+.list {
+  position: absolute;
+  top: -5%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-light-100);
+  color: var(--color-dark-200);
+  width: max-content;
+  background-color: var(--color-light-100);
+  border-radius: var(--border-radius-smallest);
+  gap: 0.8rem;
+  padding: 1.2rem 1rem;
+  border-radius: var(--border-radius-small);
+  animation: fadeIn 0.2s;
+  z-index: 50;
+}
+
+.option {
+  font-size: 1.4rem;
+  color: var(--color-dark-200);
+  transition: var(--transition-fast);
+  cursor: pointer;
+  padding: 1.2rem 2rem;
+  border-radius: var(--border-radius-smallest);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-200);
   }
 }

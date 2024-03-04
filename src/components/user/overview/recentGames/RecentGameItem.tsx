@@ -31,7 +31,7 @@ function RecentGameItem({ cover, name, added, id }: RecentGameItemProps) {
         </Link>
         <nav className={styles.row}>
           <RecentGamesCount count={added} />
-          <RecentGamesOptions />
+          <RecentGamesOptions id={id} />
         </nav>
       </div>
     </li>

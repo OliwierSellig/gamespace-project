@@ -11,6 +11,7 @@ type ContextType = {
   state: stateProps;
   genreList: { item: string; amount: number }[];
   devList: { item: string; amount: number }[];
+  recentAddedGames: LibraryItemType[];
   checkInLibrary: (id: number) => boolean;
   addToLibrary: (game: LibraryItemType) => void;
   removeFromLibrary: (id: number) => void;
@@ -72,6 +73,12 @@ function UserProvider({ children }: ChildrenProp) {
       .filter((game) => game.genres.length)
       .map((game) => game.genres.at(0).name)
   );
+
+  const recentAddedGames = [...library]
+    .sort(
+      (a, b) => b.addedToLibraryDate.getTime() - a.addedToLibraryDate.getTime()
+    )
+    .slice(0, 9);
 
   function checkInLibrary(id: number) {
     return library.map((game) => game.id).includes(id);
@@ -144,6 +151,7 @@ function UserProvider({ children }: ChildrenProp) {
         state,
         genreList,
         devList,
+        recentAddedGames,
         checkInLibrary,
         addToLibrary,
         removeFromLibrary,

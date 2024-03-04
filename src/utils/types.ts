@@ -297,6 +297,7 @@ export type BasicItemType = {
 export type LibraryItemType = BasicItemType & {
   released: string;
   added: number;
+  addedToLibraryDate: Date;
   genres: GameGenreItem[];
   platforms: PlatformType[];
   developers: GameDeveloperType[];

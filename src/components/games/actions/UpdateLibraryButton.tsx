@@ -28,6 +28,7 @@ function UpdateLibraryButton({ game }: UpdateLibraryButtonProps) {
             platforms: game.platforms,
             released: game.released,
             added: game.added,
+            addedToLibraryDate: new Date(),
           });
         }
       }}

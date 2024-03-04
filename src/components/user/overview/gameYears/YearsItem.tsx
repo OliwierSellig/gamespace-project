@@ -33,7 +33,7 @@ function YearsItem({ gameList, year }: YearsItemProps) {
         borderRadius="sm"
         additionalStyle={{ marginBottom: "2.4rem" }}
       >
-        View Game
+        View Games
       </Button>
       <PopularGamesCol gameList={gameList} />
     </div>
