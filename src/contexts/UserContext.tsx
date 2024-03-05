@@ -12,6 +12,7 @@ type ContextType = {
   genreList: { item: string; amount: number }[];
   devList: { item: string; amount: number }[];
   recentAddedGames: LibraryItemType[];
+  favouritesList: LibraryItemType[];
   checkInLibrary: (id: number) => boolean;
   addToLibrary: (game: LibraryItemType) => void;
   removeFromLibrary: (id: number) => void;
@@ -81,6 +82,8 @@ function UserProvider({ children }: ChildrenProp) {
       (a, b) => b.addedToLibraryDate.getTime() - a.addedToLibraryDate.getTime()
     )
     .slice(0, 9);
+
+  const favouritesList = library.filter((game) => game.isFavourite);
 
   function checkInLibrary(id: number) {
     return library.map((game) => game.id).includes(id);
@@ -179,6 +182,7 @@ function UserProvider({ children }: ChildrenProp) {
         genreList,
         devList,
         recentAddedGames,
+        favouritesList,
         checkInLibrary,
         addToLibrary,
         removeFromLibrary,

@@ -1,9 +1,13 @@
-import { fetchGames } from "../../../../lib/games";
+"use client";
+
+import { useUser } from "../../../../contexts/UserContext";
 import SwiperComponent from "../../../global/SwiperComponent";
 import GameLibraryItem from "../../locale/gameLibraryItem/GameLibraryItem";
+import EmptyUserSwiperItem from "../../locale/emptyUserSliderItem/EmptyYearItem";
 
-async function FavouritesSwiper() {
-  const games = await fetchGames({});
+function FavouritesSwiper() {
+  const { favouritesList } = useUser();
+  const emptySlotsCount = Math.max(0, 3 - favouritesList.length);
 
   return (
     <SwiperComponent
@@ -11,8 +15,8 @@ async function FavouritesSwiper() {
         default: {
           slidesPerView: 1,
           spaceBetween: 20,
-          navigation: true,
-          loop: true,
+          navigation: favouritesList.length > 3,
+          loop: favouritesList.length > 3,
         },
         breakpoints: [
           { minWidth: 1024, slidesPerView: 3 },
@@ -20,12 +24,12 @@ async function FavouritesSwiper() {
         ],
       }}
     >
-      {games.results.map((game) => (
+      {favouritesList.map((game) => (
         <GameLibraryItem
           key={game.id}
           name={game.name}
           id={game.id}
-          cover={game.background_image}
+          cover={game.cover}
           imageSizes={{
             defalult: { number: 40, unit: "vw" },
             sizes: [
@@ -33,6 +37,12 @@ async function FavouritesSwiper() {
               { maxWidth: 600, size: { number: 95, unit: "vw" } },
             ],
           }}
+        />
+      ))}
+      {Array.from({ length: emptySlotsCount }, (_, i) => (
+        <EmptyUserSwiperItem
+          additionalStyle={{ aspectRatio: "16/10" }}
+          key={i}
         />
       ))}
     </SwiperComponent>

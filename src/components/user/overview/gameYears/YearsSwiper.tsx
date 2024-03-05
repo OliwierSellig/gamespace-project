@@ -2,7 +2,7 @@
 
 import { useUser } from "../../../../contexts/UserContext";
 import SwiperComponent from "../../../global/SwiperComponent";
-import EmptyYearItem from "./EmptyYearItem";
+import EmptyUserSwiperItem from "../../locale/emptyUserSliderItem/EmptyYearItem";
 import YearsItem from "./YearsItem";
 
 function YearsSwiper() {
@@ -30,7 +30,7 @@ function YearsSwiper() {
         <YearsItem key={i} year={item.year} gameList={item.games} />
       ))}
       {Array.from({ length: emptySlotsCount }, (_, i) => (
-        <EmptyYearItem key={i} />
+        <EmptyUserSwiperItem additionalStyle={{ minHeight: "34rem" }} key={i} />
       ))}
     </SwiperComponent>
   );
