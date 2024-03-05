@@ -22,6 +22,8 @@ type ContextType = {
     year: number;
     games: LibraryItemType[];
   }[];
+  updateFavourite: (id: number, action: "add" | "remove") => void;
+  checkIsFavourite: (id: number) => boolean;
 };
 
 type stateProps = {
@@ -145,6 +147,31 @@ function UserProvider({ children }: ChildrenProp) {
     return topList.sort((a, b) => b.year - a.year);
   }
 
+  function updateFavourite(id: number, action: "add" | "remove") {
+    const selectedGame = library.find((game) => game.id === id);
+    if (!selectedGame) {
+      toast.error("Couldn't add game to favourites");
+      return;
+    }
+    const updatedGame = { ...selectedGame, isFavourite: action === "add" };
+    const filteredList = library.filter((game) => game.id !== id);
+    const newList = [...filteredList, updatedGame];
+    dispatch({ type: REDUCER_ACTION_TYPE.SET_LIBRARY, payload: newList });
+    toast.success(
+      `Successfully ${
+        action === "add" ? "added game to " : "removed game from "
+      } favourites`
+    );
+  }
+
+  function checkIsFavourite(id: number) {
+    const selectedGame = library.find((game) => game.id === id);
+
+    if (!selectedGame) return false;
+
+    return selectedGame ? selectedGame.isFavourite : false;
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -159,6 +186,8 @@ function UserProvider({ children }: ChildrenProp) {
         addToWishlist,
         removeFromWishlist,
         getCommonYearList,
+        updateFavourite,
+        checkIsFavourite,
       }}
     >
       {children}

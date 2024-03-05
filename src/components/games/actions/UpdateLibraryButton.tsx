@@ -29,9 +29,11 @@ function UpdateLibraryButton({ game }: UpdateLibraryButtonProps) {
             released: game.released,
             added: game.added,
             addedToLibraryDate: new Date(),
+            isFavourite: false,
           });
         }
       }}
+      additionalStyle={{ minWidth: "30rem" }}
       style={{ name: "scale", shade: "dark" }}
     >
       {checkInLibrary(game.id) ? (

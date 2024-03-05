@@ -20,6 +20,7 @@ type ButtonProps = {
   iconSize?: "sm" | "md" | "lg";
   fontSize?: "sm" | "md" | "lg";
   additionalStyle?: object;
+  additionalClass?: string[];
   disabled?: boolean;
 };
 
@@ -38,6 +39,7 @@ function Button({
   iconSize = "md",
   fontSize = "md",
   additionalStyle = {},
+  additionalClass = [],
   disabled = false,
 }: ButtonProps) {
   const styleList = {
@@ -58,7 +60,7 @@ function Button({
     positionSelf?.type
       ? styles[`${positionSelf.type}__${positionSelf.pos}`]
       : ""
-  }`;
+  } ${additionalClass.join(" ")}`;
 
   if (href?.url)
     return (

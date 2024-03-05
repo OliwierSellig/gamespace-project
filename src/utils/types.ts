@@ -301,4 +301,5 @@ export type LibraryItemType = BasicItemType & {
   genres: GameGenreItem[];
   platforms: PlatformType[];
   developers: GameDeveloperType[];
+  isFavourite: boolean;
 };
