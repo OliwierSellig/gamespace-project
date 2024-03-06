@@ -148,6 +148,7 @@ export type SingleGameItem = {
   platforms: PlatformType[];
   developers: GameDeveloperType[];
   metacritic: number;
+  rating: number;
   tags: {
     games_count: number;
     id: number;
@@ -292,14 +293,21 @@ export type BasicItemType = {
   slug: string;
   id: number;
   cover: string;
+  released: string;
+  added: number;
+  rating: number;
 };
 
 export type LibraryItemType = BasicItemType & {
-  released: string;
-  added: number;
   addedToLibraryDate: Date;
   genres: GameGenreItem[];
   platforms: PlatformType[];
   developers: GameDeveloperType[];
   isFavourite: boolean;
+};
+
+export type ActionType = {
+  actionLabel: string;
+  actionIcon: IconType;
+  handleClick: () => void;
 };

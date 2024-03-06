@@ -30,7 +30,10 @@ function YearsSwiper() {
         <YearsItem key={i} year={item.year} gameList={item.games} />
       ))}
       {Array.from({ length: emptySlotsCount }, (_, i) => (
-        <EmptyUserSwiperItem additionalStyle={{ minHeight: "34rem" }} key={i} />
+        <EmptyUserSwiperItem
+          additionalStyle={{ minHeight: "33.6rem" }}
+          key={i}
+        />
       ))}
     </SwiperComponent>
   );

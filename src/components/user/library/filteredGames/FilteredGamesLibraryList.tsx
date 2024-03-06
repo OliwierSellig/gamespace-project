@@ -1,38 +1,45 @@
-import { FetchedGameItem } from "../../../../utils/types";
+import { useUser } from "../../../../contexts/UserContext";
 import Pagination from "../../../global/Pagination";
-import UserLibrarySwiper from "./FilteredGamesItem";
+import FilteredGamesItem from "./FilteredGamesItem";
 import styles from "./filteredGamesLibraryList.module.scss";
 
 type FilteredGamesLibraryList = {
-  list: FetchedGameItem[];
-  count: number;
   page: string;
+  query: string;
+  resultsPerPage?: number;
+  filterBy: string;
 };
 
-const RESULTS_PER_PAGE = 4;
-
 function FilteredGamesLibraryList({
-  list,
   page,
-  count,
+  filterBy,
+  query,
+  resultsPerPage = 4,
 }: FilteredGamesLibraryList) {
+  const { filterLibraryBy } = useUser();
+  console.log(filterBy);
+  const list = filterLibraryBy(filterBy);
+  const maxPage = Math.ceil(list.length / resultsPerPage);
+  const curPage =
+    page && parseInt(page) > 0 && parseInt(page) <= maxPage
+      ? parseInt(page)
+      : 1;
+
+  console.log(list);
+
   return (
     <>
       <ul className={styles.container}>
-        {list.slice(0, RESULTS_PER_PAGE).map((item, i) => (
-          <UserLibrarySwiper
-            key={i}
-            type="developer"
-            id={320}
-            name="Ubisoft Montreal"
-            games={list}
-          />
-        ))}
+        {list
+          .slice((curPage - 1) * resultsPerPage, curPage * resultsPerPage)
+          .map((item, i) => (
+            <FilteredGamesItem key={i} name={item.name} games={item.games} />
+          ))}
       </ul>
       <Pagination
         padding={{ top: 3.6, left: 0, right: 0, bottom: 3.6 }}
-        currentPage={parseInt(page)}
-        maxPage={Math.ceil(count / RESULTS_PER_PAGE)}
+        currentPage={curPage}
+        maxPage={maxPage}
       />
     </>
   );

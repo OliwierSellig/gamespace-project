@@ -3,7 +3,7 @@
 import { useState } from "react";
 import WishlistNavigation from "./WishlistNavigation";
 import { useGames } from "../../../../hooks/useGames";
-import AllGamesLibraryList from "../../library/allGames/AllGamesLibraryList";
+import AllGamesLibraryList from "../../library/allGames/AllGamesLibrary";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 
 type UserWishlistProps = {

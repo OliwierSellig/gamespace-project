@@ -30,6 +30,7 @@ function UpdateLibraryButton({ game }: UpdateLibraryButtonProps) {
             added: game.added,
             addedToLibraryDate: new Date(),
             isFavourite: false,
+            rating: game.rating,
           });
         }
       }}

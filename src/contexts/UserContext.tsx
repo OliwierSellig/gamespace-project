@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { BasicItemType, ChildrenProp, LibraryItemType } from "../utils/types";
 import toast from "react-hot-toast";
 import { rankList } from "../utils/functions";
@@ -25,16 +25,23 @@ type ContextType = {
   }[];
   updateFavourite: (id: number, action: "add" | "remove") => void;
   checkIsFavourite: (id: number) => boolean;
+  sortGames: (list: "library" | "wishlist", sortBy: string) => BasicItemType[];
+  filterLibraryBy: (type: string) => {
+    name: string;
+    games: LibraryItemType[];
+  }[];
 };
 
 type stateProps = {
   library: LibraryItemType[];
   wishlist: BasicItemType[];
+  initialRender: boolean;
 };
 
 const enum REDUCER_ACTION_TYPE {
   SET_LIBRARY,
   SET_WISHLIST,
+  SET_INITIAL_RENDER,
 }
 
 type ReducerAction =
@@ -42,11 +49,13 @@ type ReducerAction =
       type: REDUCER_ACTION_TYPE.SET_LIBRARY;
       payload: LibraryItemType[];
     }
-  | { type: REDUCER_ACTION_TYPE.SET_WISHLIST; payload: BasicItemType[] };
+  | { type: REDUCER_ACTION_TYPE.SET_WISHLIST; payload: BasicItemType[] }
+  | { type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER };
 
 const initialState: stateProps = {
   library: [],
   wishlist: [],
+  initialRender: true,
 };
 
 function reducer(state: stateProps, action: ReducerAction): stateProps {
@@ -55,6 +64,10 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
       return { ...state, library: action.payload };
     case REDUCER_ACTION_TYPE.SET_WISHLIST:
       return { ...state, wishlist: action.payload };
+    case REDUCER_ACTION_TYPE.SET_WISHLIST:
+      return { ...state, wishlist: action.payload };
+    case REDUCER_ACTION_TYPE.SET_INITIAL_RENDER:
+      return { ...state, initialRender: false };
     default:
       throw new Error("Undefined reducer action");
   }
@@ -63,7 +76,7 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
 function UserProvider({ children }: ChildrenProp) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { library, wishlist } = state;
+  const { library, wishlist, initialRender } = state;
 
   const devList = rankList(
     library
@@ -79,12 +92,46 @@ function UserProvider({ children }: ChildrenProp) {
 
   const recentAddedGames = [...library]
     .sort(
-      (a, b) => b.addedToLibraryDate.getTime() - a.addedToLibraryDate.getTime()
+      (a, b) =>
+        new Date(b.addedToLibraryDate).getTime() -
+        new Date(a.addedToLibraryDate).getTime()
     )
     .slice(0, 9);
 
   const favouritesList = library.filter((game) => game.isFavourite);
 
+  // ---------- Getting Data From Local Storage ---------------------------
+
+  useEffect(() => {
+    if (localStorage.getItem("library"))
+      dispatch({
+        type: REDUCER_ACTION_TYPE.SET_LIBRARY,
+        payload: JSON.parse(localStorage.getItem("library") || ""),
+      });
+    if (localStorage.getItem("wishlist"))
+      dispatch({
+        type: REDUCER_ACTION_TYPE.SET_WISHLIST,
+        payload: JSON.parse(localStorage.getItem("wishlist") || ""),
+      });
+
+    dispatch({ type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER });
+  }, []);
+
+  // --------------------------------------------
+
+  // ---------- Saving Data To Local Storage ---------------------------
+
+  useEffect(() => {
+    if (!initialRender)
+      localStorage.setItem("library", JSON.stringify(library));
+  }, [library, initialRender]);
+
+  useEffect(() => {
+    if (!initialRender)
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist, initialRender]);
+
+  // --------------------------------------------
   function checkInLibrary(id: number) {
     return library.map((game) => game.id).includes(id);
   }
@@ -175,6 +222,107 @@ function UserProvider({ children }: ChildrenProp) {
     return selectedGame ? selectedGame.isFavourite : false;
   }
 
+  function sortGames(list: "library" | "wishlist", sortBy: string) {
+    const sortList = list === "wishlist" ? [...wishlist] : [...library];
+
+    switch (sortBy) {
+      case "popularity":
+        return sortList.sort((a, b) => b.added - a.added);
+      case "release-date":
+        return sortList.sort(
+          (a, b) =>
+            new Date(b.released).getTime() - new Date(a.released).getTime()
+        );
+      case "rating":
+        return sortList.sort((a, b) => b.rating - a.rating);
+      default:
+        return sortList;
+    }
+  }
+
+  function filterLibraryBy(type: string) {
+    switch (type) {
+      case "year": {
+        const uniqueList = [
+          ...new Set(
+            library.map((game) =>
+              new Date(game.released).getFullYear().toString()
+            )
+          ),
+        ];
+
+        const topList = uniqueList.map((year) => {
+          return {
+            name: year,
+            games: library.filter(
+              (game) => new Date(game.released).getFullYear() === parseInt(year)
+            ),
+          };
+        });
+
+        return topList.sort((a, b) => parseInt(b.name) - parseInt(a.name));
+      }
+      case "developer": {
+        const uniqueList = [
+          ...new Set(
+            library
+              .filter((game) => game.developers && game.developers.length > 0)
+              .map((game) => game.developers.at(0).name)
+          ),
+        ];
+        const topList = uniqueList.map((developer) => {
+          return {
+            name: developer,
+            games: library.filter(
+              (game) => game.developers?.at(0)?.name === developer
+            ),
+          };
+        });
+
+        return topList;
+      }
+      case "genre": {
+        const uniqueList = [
+          ...new Set(
+            library
+              .filter((game) => game.genres && game.genres.length > 0)
+              .map((game) => game.genres.at(0).name)
+          ),
+        ];
+
+        const topList = uniqueList.map((genre) => {
+          return {
+            name: genre,
+            games: library.filter((game) => game.genres?.at(0)?.name === genre),
+          };
+        });
+        return topList;
+      }
+      case "platform": {
+        const uniqueList = [
+          ...new Set(
+            library
+              .filter((game) => game.platforms && game.platforms.length > 0)
+              .map((game) => game.platforms.at(0).platform.name)
+          ),
+        ];
+
+        const topList = uniqueList.map((platform) => {
+          return {
+            name: platform,
+            games: library.filter(
+              (game) => game.platforms?.at(0)?.platform?.name === platform
+            ),
+          };
+        });
+
+        return topList;
+      }
+      default:
+        return [];
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -192,6 +340,8 @@ function UserProvider({ children }: ChildrenProp) {
         getCommonYearList,
         updateFavourite,
         checkIsFavourite,
+        sortGames,
+        filterLibraryBy,
       }}
     >
       {children}

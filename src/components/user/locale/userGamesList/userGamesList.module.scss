@@ -4,6 +4,7 @@
   grid-template-columns: repeat(3, 1fr);
   column-gap: 2rem;
   row-gap: 2.4rem;
+  flex-grow: 1;
 
   @media only screen and (max-width: 1400px) {
     grid-template-columns: repeat(auto-fill, minmax(34rem, 1fr));

@@ -34,6 +34,9 @@ function UpdateWishlistFavouritesButton({
         slug: game.slug,
         cover: game.background_image,
         id: game.id,
+        added: game.added,
+        released: game.released,
+        rating: game.rating,
       });
     }
   }
