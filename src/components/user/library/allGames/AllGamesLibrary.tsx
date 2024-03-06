@@ -27,24 +27,28 @@ function AllGamesLibrary({
       },
     };
   });
-  const maxPage = Math.ceil(games.length / resultsPerPage);
+
+  const filteredGames = games.filter((game) =>
+    game.name
+      .toLowerCase()
+      .replaceAll(" ", "")
+      .includes(query.toLowerCase().replaceAll(" ", ""))
+  );
+
+  const maxPage = Math.ceil(filteredGames.length / resultsPerPage);
   const curPage =
     page && parseInt(page) > 0 && parseInt(page) <= maxPage
       ? parseInt(page)
       : 1;
 
-  const filteredGames = games
-    .filter((game) =>
-      game.name
-        .toLowerCase()
-        .replaceAll(" ", "")
-        .includes(query.toLowerCase().replaceAll(" ", ""))
-    )
-    .slice((curPage - 1) * resultsPerPage, curPage * resultsPerPage);
+  const filteredQueryGames = filteredGames.slice(
+    (curPage - 1) * resultsPerPage,
+    curPage * resultsPerPage
+  );
 
   return (
     <AllGamesLibraryList
-      list={filteredGames}
+      list={filteredQueryGames}
       maxPage={maxPage}
       curPage={curPage}
     />

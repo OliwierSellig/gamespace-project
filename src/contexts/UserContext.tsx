@@ -310,8 +310,10 @@ function UserProvider({ children }: ChildrenProp) {
         const topList = uniqueList.map((platform) => {
           return {
             name: platform,
-            games: library.filter(
-              (game) => game.platforms?.at(0)?.platform?.name === platform
+            games: library.filter((game) =>
+              game.platforms
+                .map((platform) => platform.platform.name)
+                .includes(platform)
             ),
           };
         });

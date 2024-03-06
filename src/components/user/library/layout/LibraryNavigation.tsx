@@ -33,6 +33,7 @@ function LibraryNavigation({
       href: `?order=${changeToUrlSlug(item)}`,
     };
   });
+
   return (
     <UserGamesListNav>
       <UserSelectContainer>
@@ -45,6 +46,10 @@ function LibraryNavigation({
           Filter By
         </UserSelector>
         <UserSelector
+          disabled={filterList
+            .slice(1)
+            .map((filterBy) => changeToUrlSlug(filterBy))
+            .includes(filterBy)}
           activeItem={orderByList.find(
             (item) => changeToUrlSlug(item.item) === orderBy
           )}

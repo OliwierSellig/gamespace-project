@@ -1,40 +1,31 @@
-import { useUser } from "../../../../contexts/UserContext";
+import { LibraryItemType } from "../../../../utils/types";
 import Pagination from "../../../global/Pagination";
+import EmptyUserList from "../../locale/emptyUserList/EmptyUserList";
 import FilteredGamesItem from "./FilteredGamesItem";
 import styles from "./filteredGamesLibraryList.module.scss";
 
-type FilteredGamesLibraryList = {
-  page: string;
-  query: string;
-  resultsPerPage?: number;
-  filterBy: string;
+type FilteredGamesLibraryListProps = {
+  list: {
+    name: string;
+    games: LibraryItemType[];
+  }[];
+  curPage: number;
+  maxPage: number;
 };
 
 function FilteredGamesLibraryList({
-  page,
-  filterBy,
-  query,
-  resultsPerPage = 4,
-}: FilteredGamesLibraryList) {
-  const { filterLibraryBy } = useUser();
-  console.log(filterBy);
-  const list = filterLibraryBy(filterBy);
-  const maxPage = Math.ceil(list.length / resultsPerPage);
-  const curPage =
-    page && parseInt(page) > 0 && parseInt(page) <= maxPage
-      ? parseInt(page)
-      : 1;
-
-  console.log(list);
-
+  list,
+  curPage,
+  maxPage,
+}: FilteredGamesLibraryListProps) {
+  if (!list || !list.length)
+    return <EmptyUserList>There is nothing matching this query</EmptyUserList>;
   return (
     <>
       <ul className={styles.container}>
-        {list
-          .slice((curPage - 1) * resultsPerPage, curPage * resultsPerPage)
-          .map((item, i) => (
-            <FilteredGamesItem key={i} name={item.name} games={item.games} />
-          ))}
+        {list.map((item, i) => (
+          <FilteredGamesItem key={i} name={item.name} games={item.games} />
+        ))}
       </ul>
       <Pagination
         padding={{ top: 3.6, left: 0, right: 0, bottom: 3.6 }}

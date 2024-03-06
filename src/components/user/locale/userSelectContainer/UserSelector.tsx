@@ -21,6 +21,8 @@ function UserSelector({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const selectorRef = useRef<HTMLDivElement>(null);
 
+  console.log(disabled);
+
   useEffect(() => {
     function clickOutside(e: MouseEvent) {
       if (
