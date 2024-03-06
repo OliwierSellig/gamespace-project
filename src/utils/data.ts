@@ -20,6 +20,8 @@ import cdp from "../../public/svg/cdp.svg";
 import sony from "../../public/svg/sony.svg";
 import ubisoft from "../../public/svg/ubisoft.svg";
 import { SocialPlatformType } from "./types";
+import review1 from "../../public/img/review-baldur.jpg";
+import review2 from "../../public/img/review-tlou.webp";
 
 export const API_KEY = "041a371c18934671bc7c7df826093657";
 
@@ -154,3 +156,69 @@ export const socials: SocialPlatformType[] = [
 export const filterList = ["All games", "Developer", "Genre", "Platform"];
 
 export const orderList = ["Relevance", "Release Date", "Popularity", "Rating"];
+
+export const reviewOrderList = ["Relevance", "Rating", "Game Title"];
+
+export const reviewList: {
+  game: { name: string; cover: string };
+  review: string;
+  author: string;
+  date: string;
+}[] = [
+  {
+    game: { name: "Baldur's Gate 3", cover: review1 },
+    author: "John Sanderson",
+    date: "28-02-2024",
+    review:
+      "Baldur’s Gate is without a doubt the best game of 2023. Bringing back to life the old beloved series with addition of stunning graphics and designs as well as the good old adventure like realm. If you’re a D&D fan, you’ll for sure love this game!",
+  },
+  {
+    game: { name: "The Last of Us Part 1", cover: review2 },
+    review:
+      "The Last of Us Part 1 is a masterpiece, blending intense action, emotional storytelling, and stunning visuals. Its post-apocalyptic world feels hauntingly real, with memorable characters and morally complex decisions. The gameplay is gripping, and the bond between protagonists Joel and Ellie is deeply moving. A must-play experience.",
+    author: "John Sanderson",
+    date: "17.02.2024",
+  },
+  {
+    game: { name: "Baldur's Gate 3", cover: review1 },
+    author: "John Sanderson",
+    date: "28-02-2024",
+    review:
+      "Baldur’s Gate is without a doubt the best game of 2023. Bringing back to life the old beloved series with addition of stunning graphics and designs as well as the good old adventure like realm. If you’re a D&D fan, you’ll for sure love this game!",
+  },
+  {
+    game: { name: "The Last of Us Part 1", cover: review2 },
+    review:
+      "The Last of Us Part 1 is a masterpiece, blending intense action, emotional storytelling, and stunning visuals. Its post-apocalyptic world feels hauntingly real, with memorable characters and morally complex decisions. The gameplay is gripping, and the bond between protagonists Joel and Ellie is deeply moving. A must-play experience.",
+    author: "John Sanderson",
+    date: "17.02.2024",
+  },
+  {
+    game: { name: "Baldur's Gate 3", cover: review1 },
+    author: "John Sanderson",
+    date: "28-02-2024",
+    review:
+      "Baldur’s Gate is without a doubt the best game of 2023. Bringing back to life the old beloved series with addition of stunning graphics and designs as well as the good old adventure like realm. If you’re a D&D fan, you’ll for sure love this game!",
+  },
+  {
+    game: { name: "The Last of Us Part 1", cover: review2 },
+    review:
+      "The Last of Us Part 1 is a masterpiece, blending intense action, emotional storytelling, and stunning visuals. Its post-apocalyptic world feels hauntingly real, with memorable characters and morally complex decisions. The gameplay is gripping, and the bond between protagonists Joel and Ellie is deeply moving. A must-play experience.",
+    author: "John Sanderson",
+    date: "17.02.2024",
+  },
+  {
+    game: { name: "Baldur's Gate 3", cover: review1 },
+    author: "John Sanderson",
+    date: "28-02-2024",
+    review:
+      "Baldur’s Gate is without a doubt the best game of 2023. Bringing back to life the old beloved series with addition of stunning graphics and designs as well as the good old adventure like realm. If you’re a D&D fan, you’ll for sure love this game!",
+  },
+  {
+    game: { name: "The Last of Us Part 1", cover: review2 },
+    review:
+      "The Last of Us Part 1 is a masterpiece, blending intense action, emotional storytelling, and stunning visuals. Its post-apocalyptic world feels hauntingly real, with memorable characters and morally complex decisions. The gameplay is gripping, and the bond between protagonists Joel and Ellie is deeply moving. A must-play experience.",
+    author: "John Sanderson",
+    date: "17.02.2024",
+  },
+];
