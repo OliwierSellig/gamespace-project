@@ -311,3 +311,11 @@ export type ActionType = {
   actionIcon: IconType;
   handleClick: () => void;
 };
+
+export type ReviewType = {
+  game: { id: number; name: string; cover: string };
+  rating: number;
+  author: string;
+  editDate: Date;
+  content: string;
+};

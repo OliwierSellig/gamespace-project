@@ -1,7 +1,12 @@
 "use client";
 
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { BasicItemType, ChildrenProp, LibraryItemType } from "../utils/types";
+import {
+  BasicItemType,
+  ChildrenProp,
+  LibraryItemType,
+  ReviewType,
+} from "../utils/types";
 import toast from "react-hot-toast";
 import { rankList } from "../utils/functions";
 
@@ -19,6 +24,8 @@ type ContextType = {
   checkInWishlist: (id: number) => boolean;
   addToWishlist: (game: BasicItemType) => void;
   removeFromWishlist: (id: number) => void;
+  updateReviews: (newReview: ReviewType) => void;
+  checkInReviews: (id: number) => ReviewType;
   getCommonYearList: () => {
     year: number;
     games: LibraryItemType[];
@@ -35,12 +42,14 @@ type ContextType = {
 type stateProps = {
   library: LibraryItemType[];
   wishlist: BasicItemType[];
+  reviews: ReviewType[];
   initialRender: boolean;
 };
 
 const enum REDUCER_ACTION_TYPE {
   SET_LIBRARY,
   SET_WISHLIST,
+  SET_REVIEWS,
   SET_INITIAL_RENDER,
 }
 
@@ -50,11 +59,13 @@ type ReducerAction =
       payload: LibraryItemType[];
     }
   | { type: REDUCER_ACTION_TYPE.SET_WISHLIST; payload: BasicItemType[] }
+  | { type: REDUCER_ACTION_TYPE.SET_REVIEWS; payload: ReviewType[] }
   | { type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER };
 
 const initialState: stateProps = {
   library: [],
   wishlist: [],
+  reviews: [],
   initialRender: true,
 };
 
@@ -64,8 +75,8 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
       return { ...state, library: action.payload };
     case REDUCER_ACTION_TYPE.SET_WISHLIST:
       return { ...state, wishlist: action.payload };
-    case REDUCER_ACTION_TYPE.SET_WISHLIST:
-      return { ...state, wishlist: action.payload };
+    case REDUCER_ACTION_TYPE.SET_REVIEWS:
+      return { ...state, reviews: action.payload };
     case REDUCER_ACTION_TYPE.SET_INITIAL_RENDER:
       return { ...state, initialRender: false };
     default:
@@ -76,7 +87,7 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
 function UserProvider({ children }: ChildrenProp) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { library, wishlist, initialRender } = state;
+  const { library, wishlist, reviews, initialRender } = state;
 
   const devList = rankList(
     library
@@ -325,6 +336,18 @@ function UserProvider({ children }: ChildrenProp) {
     }
   }
 
+  function checkInReviews(id: number) {
+    return reviews.find((review) => review.game.id === id);
+  }
+
+  function updateReviews(newReview: ReviewType) {
+    const filteredList = checkInReviews(newReview.game.id)
+      ? reviews.filter((review) => review.game.id !== newReview.game.id)
+      : [...reviews];
+    const newList = [...filteredList, newReview];
+    dispatch({ type: REDUCER_ACTION_TYPE.SET_REVIEWS, payload: newList });
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -339,6 +362,8 @@ function UserProvider({ children }: ChildrenProp) {
         checkInWishlist,
         addToWishlist,
         removeFromWishlist,
+        updateReviews,
+        checkInReviews,
         getCommonYearList,
         updateFavourite,
         checkIsFavourite,

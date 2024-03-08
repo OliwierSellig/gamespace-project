@@ -4,8 +4,7 @@ import GameHeader from "../header/GameHeader";
 import GameActionButtons from "../actions/GameActionButtons";
 import GameStores from "../stores/GameStores";
 import GameRating from "../rating/GameRating";
-import { HiOutlinePencilSquare } from "react-icons/hi2";
-import Button from "../../global/Button";
+import WriteReviewButton from "../review/WriteReviewButton";
 
 type GameActionProps = {
   game: SingleGameItem;
@@ -19,18 +18,7 @@ function GameAction({ game, topGenre, topYear }: GameActionProps) {
       <GameHeader game={game} />
       <GameActionButtons game={game} />
       <GameRating topGenre={topGenre} topYear={topYear} game={game} />
-      <Button
-        positionSelf={{ type: "align", pos: "center" }}
-        sizeX="xl"
-        sizeY="md"
-        href={{ url: "/reviews" }}
-        fontWeight={400}
-        borderRadius="md"
-        additionalStyle={{ marginBottom: "4.2rem" }}
-      >
-        <span>Write a review</span>
-        <HiOutlinePencilSquare />
-      </Button>
+      <WriteReviewButton game={game} />
       <GameStores game={game} />
     </div>
   );

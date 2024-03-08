@@ -1,7 +1,7 @@
 import { fetchGameAchievements, fetchGameByID } from "../../../../lib/games";
 import styles from "./achievementsView.module.scss";
-import AchievementsViewHeader from "./AchievementsViewHeader";
 import AchievementsViewList from "./AchievementsViewList";
+import GameViewHeader from "../../locale/GameViewHeader";
 
 const ACHIEVEMENTS_PER_PAGE = 12;
 
@@ -22,7 +22,9 @@ async function AchievementsView({ id, page }: AchievementsViewProps) {
 
   return (
     <div className={styles.container}>
-      <AchievementsViewHeader id={id} name={game.name} />
+      <GameViewHeader id={parseInt(id)}>
+        {game.name || "Undefined game"} Achievements
+      </GameViewHeader>
       <AchievementsViewList
         list={achievements.results}
         count={achievements.count}
