@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useUser } from "../../../contexts/UserContext";
 import { SingleGameItem } from "../../../utils/types";
 import CommonRatingList from "./CommonRatingList";
@@ -14,10 +15,14 @@ type UpdateReviewProps = {
 
 function UpdateReview({ game }: UpdateReviewProps) {
   const { checkInReviews } = useUser();
+  const [currentRating, setCurrentRating] = useState<number>(0);
 
   return (
     <div className={styles.container}>
-      <RangeBar />
+      <RangeBar
+        currentRating={currentRating}
+        setCurrentRating={setCurrentRating}
+      />
       <CommonRatingList />
       <ReviewText />
       <ReviewButtons />
