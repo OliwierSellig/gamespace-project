@@ -1,15 +1,13 @@
 .container {
   display: flex;
   align-items: center;
-  gap: 2.4rem;
-  margin-bottom: 3.2rem;
-}
-
-.bar {
-  width: 52rem;
-  border-radius: 1300px;
-  background-color: rgba(#ccc, 0.8);
-  height: 3px;
+  column-gap: 2.4rem;
+  row-gap: 4.8rem;
+  margin-bottom: 4.6rem;
+  width: 100%;
+  max-width: 60rem;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
 }
 
 .number {
@@ -19,11 +17,13 @@
   display: inline-block;
   width: 12rem;
   text-align: center;
+  cursor: pointer;
 }
 .input {
   -webkit-appearance: none;
   appearance: none;
-  width: 52rem;
+  flex-grow: 1;
+  min-width: 36rem;
   border-radius: 4rem;
   outline: none;
   background: none;

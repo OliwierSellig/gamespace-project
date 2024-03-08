@@ -5,10 +5,11 @@ export function getPlatformIcon(id: number) {
   return platformsIcons.find((platform) => platform.id === id).icon;
 }
 
-export function dateTransform(date = new Date()) {
-  const transformed = `${setToDoubleDigit(date.getDate())}.${setToDoubleDigit(
-    date.getMonth() + 1
-  )}.${date.getFullYear()}`;
+export function dateTransform(date: Date | string = new Date()) {
+  const dateItem = typeof date === "string" ? new Date(date) : date;
+  const transformed = `${setToDoubleDigit(
+    dateItem.getDate()
+  )}.${setToDoubleDigit(dateItem.getMonth() + 1)}.${dateItem.getFullYear()}`;
   return transformed;
 }
 

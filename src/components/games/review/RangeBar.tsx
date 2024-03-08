@@ -12,24 +12,30 @@ function RangeBar({
   maxRating = 5,
   setCurrentRating,
 }: RangeBarProps) {
-  console.log(currentRating);
   const currentValue = ((currentRating / maxRating) * 100).toFixed(1);
-  console.log(currentValue);
+
   return (
     <div className={styles.container}>
       <input
+        id="rating"
         type="range"
-        min={0}
+        min={1}
         max={maxRating * 10}
         step={1}
         style={{
           backgroundImage: `linear-gradient(to right, #ccc 0%, #aaa ${currentValue}%, #555 ${currentValue}%, #777 100%)`,
         }}
-        value={currentRating * 10}
-        onChange={(e) => setCurrentRating(parseInt(e.target.value) / 10)}
+        value={(currentRating * 10).toFixed(1)}
+        onChange={(e) => {
+          if (!e.target.value) return;
+          console.log(parseFloat(e.target.value) / 10);
+          setCurrentRating(parseFloat(e.target.value) / 10);
+        }}
         className={styles.input}
       />
-      <span className={styles.number}>{currentRating.toFixed(1)}/5</span>
+      <label htmlFor="rating" className={styles.number}>
+        {currentRating.toFixed(1)}/5
+      </label>
     </div>
   );
 }

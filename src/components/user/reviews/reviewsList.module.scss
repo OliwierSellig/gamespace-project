@@ -1,8 +1,12 @@
 .container {
   padding: 3.6rem 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 2.4rem;
-  row-gap: 3.2rem;
   flex-grow: 1;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
+  row-gap: 3.2rem;
+  column-gap: 2.4rem;
+  height: max-content;
 }

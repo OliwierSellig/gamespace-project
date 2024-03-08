@@ -25,7 +25,10 @@ type ContextType = {
   addToWishlist: (game: BasicItemType) => void;
   removeFromWishlist: (id: number) => void;
   updateReviews: (newReview: ReviewType) => void;
-  checkInReviews: (id: number) => ReviewType;
+  findInReviews: (id: number) => ReviewType;
+  removeFromReviews: (id: number) => void;
+  sortReviews: (sortBy: string) => ReviewType[];
+  getLatestReviews: () => ReviewType[];
   getCommonYearList: () => {
     year: number;
     games: LibraryItemType[];
@@ -124,6 +127,11 @@ function UserProvider({ children }: ChildrenProp) {
         type: REDUCER_ACTION_TYPE.SET_WISHLIST,
         payload: JSON.parse(localStorage.getItem("wishlist") || ""),
       });
+    if (localStorage.getItem("reviews"))
+      dispatch({
+        type: REDUCER_ACTION_TYPE.SET_REVIEWS,
+        payload: JSON.parse(localStorage.getItem("reviews") || ""),
+      });
 
     dispatch({ type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER });
   }, []);
@@ -141,6 +149,11 @@ function UserProvider({ children }: ChildrenProp) {
     if (!initialRender)
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist, initialRender]);
+
+  useEffect(() => {
+    if (!initialRender)
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+  }, [reviews, initialRender]);
 
   // --------------------------------------------
   function checkInLibrary(id: number) {
@@ -336,16 +349,58 @@ function UserProvider({ children }: ChildrenProp) {
     }
   }
 
-  function checkInReviews(id: number) {
+  function findInReviews(id: number) {
     return reviews.find((review) => review.game.id === id);
   }
 
   function updateReviews(newReview: ReviewType) {
-    const filteredList = checkInReviews(newReview.game.id)
+    const filteredList = findInReviews(newReview.game.id)
       ? reviews.filter((review) => review.game.id !== newReview.game.id)
       : [...reviews];
     const newList = [...filteredList, newReview];
     dispatch({ type: REDUCER_ACTION_TYPE.SET_REVIEWS, payload: newList });
+    toast.success("Successfully updated reviews");
+  }
+
+  function removeFromReviews(id: number) {
+    if (!findInReviews(id)) return;
+    const filteredList = reviews.filter((review) => review.game.id !== id);
+    dispatch({ type: REDUCER_ACTION_TYPE.SET_REVIEWS, payload: filteredList });
+    toast.success("Successfully removed game from reviews");
+  }
+
+  function sortReviews(sortBy: string) {
+    const sortList = [...reviews];
+
+    switch (sortBy) {
+      case "relevance":
+        return sortList.sort(
+          (a, b) =>
+            new Date(b.editDate).getTime() - new Date(a.editDate).getTime()
+        );
+      case "rating":
+        return sortList.sort((a, b) => b.rating - a.rating);
+      case "game-title":
+        return sortList.sort((a, b) => {
+          if (a.game.name < b.game.name) {
+            return -1;
+          }
+          if (a.game.name > b.game.name) {
+            return 1;
+          }
+        });
+      default:
+        return sortList;
+    }
+  }
+
+  function getLatestReviews() {
+    return [...reviews]
+      .sort(
+        (a, b) =>
+          new Date(b.editDate).getTime() - new Date(a.editDate).getTime()
+      )
+      .slice(0, 2);
   }
 
   return (
@@ -363,7 +418,10 @@ function UserProvider({ children }: ChildrenProp) {
         addToWishlist,
         removeFromWishlist,
         updateReviews,
-        checkInReviews,
+        findInReviews,
+        removeFromReviews,
+        sortReviews,
+        getLatestReviews,
         getCommonYearList,
         updateFavourite,
         checkIsFavourite,

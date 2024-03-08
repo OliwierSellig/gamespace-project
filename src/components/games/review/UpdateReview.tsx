@@ -14,8 +14,14 @@ type UpdateReviewProps = {
 };
 
 function UpdateReview({ game }: UpdateReviewProps) {
-  const { checkInReviews } = useUser();
-  const [currentRating, setCurrentRating] = useState<number>(0);
+  const { findInReviews } = useUser();
+  const gameReview = findInReviews(game.id);
+  const [currentRating, setCurrentRating] = useState<number>(
+    gameReview?.rating || 0
+  );
+  const [reviewText, setReviewText] = useState<string>(
+    gameReview?.content || ""
+  );
 
   return (
     <div className={styles.container}>
@@ -23,9 +29,17 @@ function UpdateReview({ game }: UpdateReviewProps) {
         currentRating={currentRating}
         setCurrentRating={setCurrentRating}
       />
-      <CommonRatingList />
-      <ReviewText />
-      <ReviewButtons />
+      <CommonRatingList
+        currentRating={currentRating}
+        setCurrentRating={setCurrentRating}
+      />
+      <ReviewText reviewText={reviewText} setReviewText={setReviewText} />
+      <ReviewButtons
+        game={game}
+        rating={currentRating}
+        reviewText={reviewText}
+        alreadyReviewed={Boolean(gameReview)}
+      />
     </div>
   );
 }

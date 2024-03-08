@@ -1,15 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./reviewItem.module.scss";
 import Button from "../../../global/Button";
+import { dateTransform } from "../../../../utils/functions";
+import { useUser } from "../../../../contexts/UserContext";
 
 type ReviewItemProps = {
-  game: { name: string; cover: string };
+  game: { name: string; cover: string; id: number };
+  rating: number;
   review: string;
   author: string;
-  date: string;
+  date: Date;
 };
 
-function ReviewItem({ game, review, author, date }: ReviewItemProps) {
+function ReviewItem({ game, review, author, date, rating }: ReviewItemProps) {
+  const { removeFromReviews } = useUser();
   return (
     <li className={styles.container}>
       <Image
@@ -19,13 +25,17 @@ function ReviewItem({ game, review, author, date }: ReviewItemProps) {
         fill
       />
       <div className={styles.content}>
-        <p className={styles.name}>{game.name}</p>
+        <header className={styles.header}>
+          <span className={styles.name}>{game.name}</span>
+          <div className={styles.rating}>{rating}/5</div>
+        </header>
         <p className={styles.review}>{review}</p>
         <p className={styles.author}>{author}</p>
-        <p className={styles.date}>{date}</p>
+        <p className={styles.date}>{dateTransform(date)}</p>
       </div>
       <nav className={styles.row}>
         <Button
+          href={{ url: `/games/${game.id}/review` }}
           style={{ name: "opacity", shade: "white" }}
           borderRadius="sm"
           sizeX="lg"
@@ -33,6 +43,7 @@ function ReviewItem({ game, review, author, date }: ReviewItemProps) {
           Edit Review
         </Button>
         <Button
+          handleClick={() => removeFromReviews(game.id)}
           style={{ name: "opacity", shade: "red" }}
           borderRadius="sm"
           sizeX="lg"

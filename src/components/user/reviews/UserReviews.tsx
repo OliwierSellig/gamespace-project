@@ -4,7 +4,7 @@ import { useState } from "react";
 import ReviewsList from "./ReviewsList";
 import ReviewsNavigation from "./ReviewsNavigation";
 import EmptyUserList from "../locale/emptyUserList/EmptyUserList";
-import { reviewList } from "../../../utils/data";
+import { useUser } from "../../../contexts/UserContext";
 
 type UserReviewsProps = {
   orderBy: string;
@@ -15,7 +15,9 @@ type UserReviewsProps = {
 function UserReviews({ orderBy, page, resultsPerPage = 6 }: UserReviewsProps) {
   const [query, setQuery] = useState("");
 
-  const filteredList = reviewList.filter((review) =>
+  const { sortReviews } = useUser();
+
+  const filteredList = sortReviews(orderBy).filter((review) =>
     review.game.name
       .toLowerCase()
       .replaceAll(" ", "")
@@ -33,11 +35,11 @@ function UserReviews({ orderBy, page, resultsPerPage = 6 }: UserReviewsProps) {
     curPage * resultsPerPage
   );
 
-  if (!reviewList || !reviewList.length)
+  if (!sortReviews(orderBy) || !sortReviews(orderBy).length)
     return (
       <EmptyUserList>
-        You haven&apos;t added any games to your wishlist yet, please add some
-        games to fill this page.
+        You haven&apos;t reviewed any games yet, please add review some games to
+        fill this page.
       </EmptyUserList>
     );
   return (

@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+  max-height: 52rem;
 
   img {
     z-index: -1;
@@ -37,13 +38,31 @@
   align-items: start;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+}
+
 .name {
   font-size: 2.6rem;
   font-weight: 500;
   padding-bottom: 0.4rem;
   border-bottom: 2px solid var(--color-light-300);
-  margin-bottom: 1.8rem;
   display: inline-block;
+}
+
+.rating {
+  padding: 1.2rem 2.4rem;
+  border-radius: var(--border-radius-small);
+  background-color: rgba(#2c2c2c, 0.8);
+  border: 2px solid rgba(#ccc, 0.2);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-light-300);
+  box-shadow: 0 0.8rem 2.4rem 0 rgba(#121212, 0.1);
 }
 
 .review {
