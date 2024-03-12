@@ -1,0 +1,33 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  cursor: pointer;
+  padding-top: 0.2rem;
+
+  &:hover,
+  &:focus {
+    .btn__collection,
+    svg {
+      color: var(--color-light-300);
+    }
+  }
+
+  &__start {
+    font-size: 1.4rem;
+    color: var(--color-light-200);
+  }
+
+  &__collection {
+    font-size: 1.6rem;
+    font-weight: 500;
+    transition: var(--transition-fast);
+  }
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    transition: var(--transition-fast);
+    padding-bottom: 0.2rem;
+  }
+}

@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  & > div:last-child {
+    min-height: 12rem;
+  }
+}
+
+.separator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.games {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-light-300);
+}
+
+.line {
+  flex-grow: 1;
+  height: 2px;
+  border-radius: 1300px;
+  background-color: rgba(#ccc, 0.4);
+}
