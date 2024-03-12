@@ -14,7 +14,14 @@ function CollectionCardGames({ games }: CollecionCardGames) {
         <div className={styles.line} />
       </div>
       <SwiperComponent
-        props={{ default: { spaceBetween: 12, slidesPerView: 3 } }}
+        props={{
+          default: { spaceBetween: 12, slidesPerView: 2 },
+          breakpoints: [
+            { minWidth: 480, slidesPerView: 3 },
+            { minWidth: 980, slidesPerView: 2 },
+            { minWidth: 1200, slidesPerView: 3 },
+          ],
+        }}
       >
         {games.map((game) => (
           <CollectionsGamePreviewCard

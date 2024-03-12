@@ -1,10 +1,12 @@
 .link {
-  min-height: 12rem;
   width: 100%;
+  aspect-ratio: 16/10;
+  min-height: 12rem;
   border-radius: var(--border-radius-smallest);
-  position: absolute;
+  position: relative;
   user-select: none;
   overflow: hidden;
+  display: block;
 
   &:focus,
   &:hover {
