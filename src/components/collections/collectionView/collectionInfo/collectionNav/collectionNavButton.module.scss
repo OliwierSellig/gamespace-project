@@ -1,0 +1,23 @@
+.btn {
+  background-color: rgba(#2c2c2c, 0.8);
+  border: 2px solid rgba(#ccc, 0.1);
+  font-size: 1.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-100);
+    color: var(--color-dark-200);
+    border-color: var(--color-light-100);
+  }
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}

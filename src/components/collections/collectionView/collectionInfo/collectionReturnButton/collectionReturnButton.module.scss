@@ -1,0 +1,26 @@
+.btn {
+  border-radius: 50%;
+  padding: 0.8rem;
+  background-color: rgba(#fff, 0.15);
+  transition: var(--transition-fast);
+  cursor: pointer;
+  box-shadow: 0rem 0.8rem 2.4rem rgba(#151515, 0.1);
+  align-self: start;
+  margin-bottom: 1.8rem;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-100);
+
+    svg {
+      fill: var(--color-dark-200);
+    }
+  }
+
+  svg {
+    width: 2.8rem;
+    height: 2.8rem;
+    fill: var(--color-light-100);
+    transition: var(--transition-fast);
+  }
+}

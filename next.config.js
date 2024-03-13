@@ -37,6 +37,11 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/collections",
+        destination: "/collections/create",
+        permanent: true,
+      },
     ];
   },
 };

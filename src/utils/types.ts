@@ -319,3 +319,10 @@ export type ReviewType = {
   editDate: Date;
   content: string;
 };
+
+export type PaddingType = {
+  top: number;
+  left: number;
+  right: number;
+  bottom: number;
+};
