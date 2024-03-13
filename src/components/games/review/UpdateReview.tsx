@@ -6,8 +6,8 @@ import { SingleGameItem } from "../../../utils/types";
 import CommonRatingList from "./CommonRatingList";
 import RangeBar from "./RangeBar";
 import ReviewButtons from "./ReviewButtons";
-import ReviewText from "./ReviewText";
 import styles from "./updateReview.module.scss";
+import UserInput from "../../global/UserInput";
 
 type UpdateReviewProps = {
   game: SingleGameItem;
@@ -33,7 +33,15 @@ function UpdateReview({ game }: UpdateReviewProps) {
         currentRating={currentRating}
         setCurrentRating={setCurrentRating}
       />
-      <ReviewText reviewText={reviewText} setReviewText={setReviewText} />
+      <UserInput
+        type={{ name: "textArea", height: 24 }}
+        placeholder="Write review here..."
+        value={reviewText}
+        handleChange={setReviewText}
+        label="Review Text"
+        maxCharacters={650}
+        additionalStyle={{ marginBottom: "3.2rem" }}
+      />
       <ReviewButtons
         game={game}
         rating={currentRating}
