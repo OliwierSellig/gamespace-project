@@ -2,34 +2,68 @@
 
 import { useState } from "react";
 import CollectionGamesNav from "./CollectionGamesNav";
-import UserGamesList from "../../../user/locale/userGamesList/UserGamesList";
 import { useUser } from "../../../../contexts/UserContext";
 import CollectionGamesList from "./CollectionGamesList";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
+import EmptyUserList from "../../../user/locale/emptyUserList/EmptyUserList";
 
-type CollectionGamesProps = { orderBy: string };
+type CollectionGamesProps = {
+  orderBy: string;
+  page: string;
+  resultsPerPage?: number;
+};
 
-function CollectionGames({ orderBy }: CollectionGamesProps) {
-  const { state } = useUser();
+function CollectionGames({
+  orderBy,
+  page,
+  resultsPerPage = 12,
+}: CollectionGamesProps) {
+  const { sortGames, removeFromLibrary } = useUser();
   const [query, setQuery] = useState("");
+  const games = sortGames("library", orderBy).map((game) => {
+    return {
+      ...game,
+      action: {
+        actionLabel: "Remove from Wishlist",
+        actionIcon: HiMiniBookmarkSlash,
+        handleClick: () => removeFromLibrary(game.id),
+      },
+    };
+  });
+
+  const filteredGames = games.filter((game) =>
+    game.name
+      .toLowerCase()
+      .replaceAll(" ", "")
+      .includes(query.toLowerCase().replaceAll(" ", ""))
+  );
+
+  const maxPage = Math.ceil(filteredGames.length / resultsPerPage);
+  const curPage =
+    page && parseInt(page) > 0 && parseInt(page) <= maxPage
+      ? parseInt(page)
+      : 1;
+
+  const filteredQueryGames = filteredGames.slice(
+    (curPage - 1) * resultsPerPage,
+    curPage * resultsPerPage
+  );
+
+  if (!games || !games.length)
+    return (
+      <EmptyUserList>
+        You haven&apos;t added any games to this collection yet, please add some
+        games to fill the page.
+      </EmptyUserList>
+    );
 
   return (
     <>
       <CollectionGamesNav query={query} orderBy={orderBy} setQuery={setQuery} />
       <CollectionGamesList
-        list={state.library.map((game) => {
-          return {
-            ...game,
-            action: {
-              actionLabel: "Remove from Wishlist",
-              actionIcon: HiMiniBookmarkSlash,
-              handleClick: () =>
-                console.log(`Removed ${game.name} from collection!`),
-            },
-          };
-        })}
-        curPage={1}
-        maxPage={3}
+        list={filteredQueryGames}
+        curPage={curPage}
+        maxPage={maxPage}
       />
     </>
   );

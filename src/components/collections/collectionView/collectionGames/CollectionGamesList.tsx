@@ -1,5 +1,6 @@
 import { ActionType, BasicItemType } from "../../../../utils/types";
 import Pagination from "../../../global/Pagination";
+import EmptyUserList from "../../../user/locale/emptyUserList/EmptyUserList";
 import GameLibraryItem from "../../../user/locale/gameLibraryItem/GameLibraryItem";
 import UserGamesList from "../../../user/locale/userGamesList/UserGamesList";
 
@@ -14,6 +15,8 @@ function CollectionGamesList({
   curPage,
   maxPage,
 }: CollectionGamesListProps) {
+  if (!list || !list.length)
+    return <EmptyUserList>You have no games matching that query</EmptyUserList>;
   return (
     <>
       <UserGamesList>

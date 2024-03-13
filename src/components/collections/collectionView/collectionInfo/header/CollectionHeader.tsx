@@ -1,5 +1,5 @@
-import CollectionAuthor from "./CollectionAuthor";
-import CollectionTitle from "./CollectionTitle";
+import CollectionAuthor from "./author/CollectionAuthor";
+import CollectionTitle from "./title/CollectionTitle";
 import styles from "./collectionHeader.module.scss";
 
 function CollectionHeader() {

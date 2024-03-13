@@ -5,9 +5,15 @@ function page({
   searchParams,
 }: {
   params: { id: string };
-  searchParams: { order: string };
+  searchParams: { order: string; page: string };
 }) {
-  return <CollectionView orderBy={searchParams.order || ""} id={params.id} />;
+  return (
+    <CollectionView
+      orderBy={searchParams.order || ""}
+      id={params.id}
+      page={searchParams.page}
+    />
+  );
 }
 
 export default page;

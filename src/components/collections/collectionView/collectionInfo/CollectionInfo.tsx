@@ -1,8 +1,8 @@
-import CollectionDescription from "./CollectionDescription";
-import CollectionHeader from "./CollectionHeader";
-import CollectionNav from "./collectionNav/CollectionNav";
+import CollectionDescription from "./description/CollectionDescription";
+import CollectionHeader from "./header/CollectionHeader";
+import CollectionNav from "./nav/CollectionNav";
 import styles from "./collectionInfo.module.scss";
-import CollectionReturnButton from "./collectionReturnButton/CollectionReturnButton";
+import CollectionReturnButton from "./returnButton/CollectionReturnButton";
 
 function CollectionInfo() {
   return (

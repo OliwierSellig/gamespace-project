@@ -1,15 +1,12 @@
-"use client";
-
 import { HiMiniArrowSmallLeft } from "react-icons/hi2";
 import styles from "./collectionReturnButton.module.scss";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function CollectionReturnButton() {
-  const router = useRouter();
   return (
-    <button onClick={() => router.back()} className={styles.btn}>
+    <Link href="/user/collections" className={styles.btn}>
       <HiMiniArrowSmallLeft />
-    </button>
+    </Link>
   );
 }
 

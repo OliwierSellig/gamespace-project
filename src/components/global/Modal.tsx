@@ -59,24 +59,31 @@ function Open({ children, opens: opensWindowName }: OpenProps) {
 type WindowProps = {
   name: string;
   children: ReactElement;
+  locked?: boolean;
 };
 
-function Window({ name, children }: WindowProps) {
+function Window({ name, children, locked = true }: WindowProps) {
   const { openName, close } = useModal();
   const backgroundRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (openName) document.documentElement.classList.add("modal");
+    if (locked && openName) document.documentElement.classList.add("modal");
 
-    if (!openName && document.documentElement.classList.contains("modal"))
+    if (
+      locked &&
+      !openName &&
+      document.documentElement.classList.contains("modal")
+    )
       document.documentElement.classList.remove("modal");
-  }, [openName]);
+  }, [openName, locked]);
 
   if (name !== openName) return null;
 
   return createPortal(
     <div
-      className={styles.container}
+      className={`${styles.container} ${
+        locked ? styles.container__blurred : ""
+      }`}
       ref={backgroundRef}
       onClick={(e) => {
         if (e.target === backgroundRef.current) close();
@@ -84,9 +91,11 @@ function Window({ name, children }: WindowProps) {
     >
       <div>
         <>
-          <button onClick={close} className={styles.close}>
-            <IoClose />
-          </button>
+          {locked && (
+            <button onClick={close} className={styles.close}>
+              <IoClose />
+            </button>
+          )}
           {cloneElement(children, { onCloseModal: close })}
         </>
       </div>
