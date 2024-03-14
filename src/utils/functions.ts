@@ -1,5 +1,10 @@
 import { currentDate, platformsIcons, socials } from "./data";
-import { ImageSizesType, SocialPlatformType } from "./types";
+import {
+  BasicItemType,
+  ImageSizesType,
+  SingleGameItem,
+  SocialPlatformType,
+} from "./types";
 
 export function getPlatformIcon(id: number) {
   return platformsIcons.find((platform) => platform.id === id).icon;
@@ -190,4 +195,18 @@ export function rankList(list: string[], ascending = false) {
   return topList.sort((a, b) =>
     ascending ? a.amount - b.amount : b.amount - a.amount
   );
+}
+
+export function SingleGameItemToBasicItemType(game: SingleGameItem) {
+  const basicItem: BasicItemType = {
+    name: game.name,
+    cover: game.background_image,
+    slug: game.slug,
+    id: game.id,
+    added: game.added,
+    rating: game.rating,
+    released: game.released,
+  };
+
+  return basicItem;
 }

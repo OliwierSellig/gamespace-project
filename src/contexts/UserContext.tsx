@@ -538,6 +538,7 @@ function UserProvider({ children }: ChildrenProp) {
     const newList = [...filteredCollections, updatedCollection];
 
     dispatch({ type: REDUCER_ACTION_TYPE.SET_COLLECTIONS, payload: newList });
+    toast.success("Collection modified successfully");
   }
 
   function checkGameInCollection(gameID: number, collectionID: number) {

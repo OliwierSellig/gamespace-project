@@ -5,8 +5,12 @@ import styles from "./collectionPropertiesBox.module.scss";
 import UserInput from "../../global/UserInput";
 import { useUser } from "../../../contexts/UserContext";
 import { useRouter } from "next/navigation";
+import { SingleGameItem } from "../../../utils/types";
+import { SingleGameItemToBasicItemType } from "../../../utils/functions";
 
-function CollectionsPropertiesBox() {
+type CollectionsPropertiesBoxProps = { game: SingleGameItem };
+
+function CollectionsPropertiesBox({ game }: CollectionsPropertiesBoxProps) {
   const { addToCollections } = useUser();
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -47,7 +51,7 @@ function CollectionsPropertiesBox() {
             description: description,
             author: "John Sanderson",
             creationDate: new Date(),
-            games: [],
+            games: game && game.id ? [SingleGameItemToBasicItemType(game)] : [],
           });
           router.push(id.toString());
         }}

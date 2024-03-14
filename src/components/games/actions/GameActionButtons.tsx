@@ -13,7 +13,7 @@ function GameActionButtons({ game }: GameActionButtonsProps) {
     <nav className={styles.actionBtns}>
       <UpdateLibraryButton game={game} />
       <UpdateWishlistButton game={game} />
-      <SaveToCollectionButton />
+      <SaveToCollectionButton game={game} />
     </nav>
   );
 }

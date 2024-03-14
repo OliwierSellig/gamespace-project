@@ -5,15 +5,20 @@ import { ReactNode } from "react";
 type CollectionsNameListItemProps = {
   children: ReactNode;
   isActive: boolean;
+  handleClick: () => void;
 };
 
 function CollectionsNameListItem({
   children,
   isActive,
+  handleClick,
 }: CollectionsNameListItemProps) {
   return (
     <li>
-      <button className={`${styles.btn} ${isActive ? styles.btn__active : ""}`}>
+      <button
+        onClick={() => handleClick?.()}
+        className={`${styles.btn} ${isActive ? styles.btn__active : ""}`}
+      >
         <span className={styles.btn__name}>{children}</span>
         <HiOutlineCheckCircle />
       </button>
