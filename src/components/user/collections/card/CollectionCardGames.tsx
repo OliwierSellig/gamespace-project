@@ -1,5 +1,6 @@
 import SwiperComponent from "../../../global/SwiperComponent";
 import CollectionsGamePreviewCard from "./CollectionsGamePreviewCard";
+import EmptyGameCard from "./EmptyGameCard";
 import styles from "./collectionCardGames.module.scss";
 
 type CollecionCardGames = {
@@ -7,6 +8,8 @@ type CollecionCardGames = {
 };
 
 function CollectionCardGames({ games }: CollecionCardGames) {
+  const emptySlotsCount = Math.max(0, 3 - games.length);
+
   return (
     <div className={styles.container}>
       <div className={styles.separator}>
@@ -30,6 +33,9 @@ function CollectionCardGames({ games }: CollecionCardGames) {
             key={game.id}
             name={game.name}
           />
+        ))}
+        {Array.from({ length: emptySlotsCount }, (_, i) => (
+          <EmptyGameCard key={i} />
         ))}
       </SwiperComponent>
     </div>

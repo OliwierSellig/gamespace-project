@@ -1,0 +1,17 @@
+.link {
+  padding: 0.6rem;
+  border-radius: 50%;
+  transition: var(--transition-fast);
+  background-color: rgba(#fff, 0.15);
+  color: var(--color-light-300);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-100);
+    color: var(--color-dark-200);
+  }
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}

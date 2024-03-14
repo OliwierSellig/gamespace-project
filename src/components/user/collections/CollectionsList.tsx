@@ -1,18 +1,23 @@
-import { BasicItemType } from "../../../utils/types";
+import { CollectionItemType } from "../../../utils/types";
 import Pagination from "../../global/Pagination";
+import EmptyCollections from "./EmptyCollections";
 import CollectionsCard from "./card/CollectionsCard";
 import styles from "./collectionsList.module.scss";
 
 type CollectionsListProps = {
-  list: {
-    title: string;
-    author: string;
-    id: number;
-    games: BasicItemType[];
-  }[];
+  list: CollectionItemType[];
+  curPage: number;
+  maxPage: number;
 };
 
-function CollectionsList({ list }: CollectionsListProps) {
+function CollectionsList({ list, curPage, maxPage }: CollectionsListProps) {
+  if (!list || !list.length)
+    return (
+      <EmptyCollections>
+        You have no collections matching that query
+      </EmptyCollections>
+    );
+
   return (
     <>
       <ul className={styles.container}>
@@ -28,8 +33,8 @@ function CollectionsList({ list }: CollectionsListProps) {
       </ul>
       <Pagination
         padding={{ left: 0, right: 0, bottom: 3.6, top: 3.6 }}
-        currentPage={1}
-        maxPage={3}
+        currentPage={curPage}
+        maxPage={maxPage}
       />
     </>
   );

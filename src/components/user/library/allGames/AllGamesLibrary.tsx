@@ -16,7 +16,7 @@ function AllGamesLibrary({
   query,
 }: AllGamesLibraryProps) {
   const { removeFromLibrary, sortGames } = useUser();
-  const sorted = sortGames("library", orderBy);
+  const sorted = sortGames({ type: "library" }, orderBy);
   const games = sorted.map((game) => {
     return {
       ...game,

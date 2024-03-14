@@ -3,6 +3,7 @@ import CollectionCardGames from "./CollectionCardGames";
 import styles from "./collectionsCard.module.scss";
 import Image from "next/image";
 import Button from "../../../global/Button";
+import notFound from "../../../../../public/img/not-found.png";
 
 type CollectionsCardProps = {
   title: string;
@@ -15,7 +16,7 @@ function CollectionsCard({ title, author, id, games }: CollectionsCardProps) {
   return (
     <li className={styles.container}>
       <Image
-        src={games.at(0).cover}
+        src={games.at(0)?.cover || notFound}
         alt={`${title || "Undefined Collection"} cover`}
         sizes="(max-width: 1000px) 95vw (max-width: 1600px) 50vw ,74rem"
         fill
@@ -29,7 +30,7 @@ function CollectionsCard({ title, author, id, games }: CollectionsCardProps) {
         </span>
       </p>
       <Button
-        href={{ url: `collections/${id}` }}
+        href={{ url: `/collections/${id}` }}
         style={{ name: "opacity", shade: "white" }}
         sizeY="sm"
         sizeX="md"

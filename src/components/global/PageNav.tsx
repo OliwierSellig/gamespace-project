@@ -11,7 +11,9 @@ type PageNavProps = {
 function PageNav({ list }: PageNavProps) {
   const pathname = usePathname();
   const currentPath = pathname.split("/").at(-1);
-  const activeLink = list.find((page) => page.url === currentPath);
+  const activeLink = list.find(
+    (page) => page.url.split("/").at(-1) === currentPath
+  );
 
   const lineStyles = activeLink
     ? {

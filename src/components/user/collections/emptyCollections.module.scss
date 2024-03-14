@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  padding: 3.2rem;
+  min-height: 60rem;
+}
+
+.text {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-light-300);
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
