@@ -1,6 +1,6 @@
 import { SingleScreenshotItem } from "../../../utils/types";
 import Slider from "../../global/Slider";
-import GameSectionHeading from "../utils/GameSectionHeading";
+import GameSectionHeading from "../layout/GameSectionHeading";
 import ScreenshotCard from "./ScreenshotCard";
 import styles from "./screenshotsSlider.module.scss";
 

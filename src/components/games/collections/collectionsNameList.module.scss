@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  max-height: 20rem;
+  overflow-y: scroll;
+  gap: 0.6rem;
+  padding-right: 0.6rem;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-light-300);
+    border-radius: 3000px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-dark-700);
+    border-radius: 1000px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-dark-500);
+  }
+}
+
+.empty {
+  font-size: 1.4rem;
+  padding: 1.6rem 2rem;
+  color: var(--color-dark-400);
+  max-width: 28rem;
+  line-height: 1.2;
+  text-align: center;
+  align-self: center;
+}

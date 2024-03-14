@@ -1,0 +1,31 @@
+.btn {
+  font-size: 1.4rem;
+  transition: var(--transition-fast);
+  padding: 1.2rem 2rem;
+  border-radius: var(--border-radius-smallest);
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.4rem;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-200);
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    transition: var(--transition-fast);
+    opacity: 0;
+    stroke: #00a300;
+  }
+
+  &__active {
+    svg {
+      opacity: 1;
+    }
+  }
+}

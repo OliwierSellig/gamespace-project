@@ -1,0 +1,34 @@
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--color-dark-200);
+  width: max-content;
+  background-color: var(--color-light-100);
+  border-radius: var(--border-radius-smallest);
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 1rem;
+  animation: fadeIn 0.2s;
+  z-index: 50;
+}
+
+.header {
+  font-size: 1.6rem;
+  color: var(--color-dark-700);
+  opacity: 0.8;
+  padding: 1.2rem 2rem;
+}
+
+.create {
+  font-size: 1.4rem;
+  transition: var(--transition-fast);
+  padding: 1.2rem 2rem;
+  border-radius: var(--border-radius-smallest);
+  margin-bottom: 1.2rem;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-200);
+  }
+}
