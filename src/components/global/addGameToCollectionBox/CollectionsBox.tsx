@@ -3,23 +3,14 @@ import styles from "./collectionsBox.module.scss";
 import { useState } from "react";
 import CollectionsNameList from "./list/CollectionsNameList";
 import CollectionsBoxInput from "./input/CollectionsBoxInput";
-import { BasicItemType, SingleGameItem } from "../../../../utils/types";
+import { BasicItemType } from "../../../utils/types";
 
 type CollectionsBoxProps = {
-  game: SingleGameItem;
+  game: BasicItemType;
 };
 
 function CollectionsBox({ game }: CollectionsBoxProps) {
   const [query, setQuery] = useState<string>("");
-  const gameProp: BasicItemType = {
-    name: game.name,
-    id: game.id,
-    cover: game.background_image,
-    slug: game.slug,
-    added: game.added,
-    rating: game.rating,
-    released: game.released,
-  };
 
   return (
     <div className={styles.box}>
@@ -31,7 +22,7 @@ function CollectionsBox({ game }: CollectionsBoxProps) {
         Start a new Collection
       </Link>
       <CollectionsBoxInput query={query} handleChange={setQuery} />
-      <CollectionsNameList game={gameProp} query={query} />
+      <CollectionsNameList game={game} query={query} />
     </div>
   );
 }

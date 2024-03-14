@@ -4,34 +4,32 @@ import notFound from "./../../../../../public/img/not-found.png";
 import RecentGamesCount from "./RecentGamesCount";
 import Link from "next/link";
 import RecentGamesOptions from "./RecentGamesOptions";
+import { BasicItemType } from "../../../../utils/types";
 
 type RecentGameItemProps = {
-  cover: string;
-  name: string;
-  added: number;
-  id: number;
+  game: BasicItemType;
 };
 
-function RecentGameItem({ cover, name, added, id }: RecentGameItemProps) {
-  const href = `/games/${id}`;
+function RecentGameItem({ game }: RecentGameItemProps) {
+  const href = `/games/${game.id}`;
 
   return (
     <li className={styles.container}>
       <Link tabIndex={-1} href={href} className={styles.cover}>
         <Image
-          src={cover || notFound}
+          src={game.cover || notFound}
           sizes="12rem"
           fill
-          alt={`${name} Cover`}
+          alt={`${game.name} Cover`}
         />
       </Link>
       <div className={styles.content}>
         <Link href={href} className={styles.name}>
-          {name}
+          {game.name}
         </Link>
         <nav className={styles.row}>
-          <RecentGamesCount count={added} />
-          <RecentGamesOptions id={id} />
+          <RecentGamesCount count={game.added} />
+          <RecentGamesOptions game={game} />
         </nav>
       </div>
     </li>

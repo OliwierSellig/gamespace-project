@@ -3,8 +3,9 @@
 import { HiOutlineFolderPlus } from "react-icons/hi2";
 import styles from "./saveToCollectionButton.module.scss";
 import { useEffect, useRef, useState } from "react";
-import CollectionsBox from "../box/CollectionsBox";
-import { SingleGameItem } from "../../../../utils/types";
+import { SingleGameItem } from "../../../utils/types";
+import CollectionsBox from "../../global/addGameToCollectionBox/CollectionsBox";
+import { SingleGameItemToBasicItemType } from "../../../utils/functions";
 
 type SaveToCollectionButtonProps = { game: SingleGameItem };
 
@@ -33,7 +34,7 @@ function SaveToCollectionButton({ game }: SaveToCollectionButtonProps) {
         <span>Save to Collection</span>
         <HiOutlineFolderPlus />
       </button>
-      {isOpen && <CollectionsBox game={game} />}
+      {isOpen && <CollectionsBox game={SingleGameItemToBasicItemType(game)} />}
     </div>
   );
 }

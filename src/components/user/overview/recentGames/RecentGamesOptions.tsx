@@ -2,14 +2,18 @@ import { HiEllipsisHorizontal } from "react-icons/hi2";
 import styles from "./recentGamesOptions.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { useUser } from "../../../../contexts/UserContext";
+import Link from "next/link";
+import CollectionsBox from "../../../global/addGameToCollectionBox/CollectionsBox";
+import { BasicItemType } from "../../../../utils/types";
 
 type RecentGamesOptionsProps = {
-  id: number;
+  game: BasicItemType;
 };
 
-function RecentGamesOptions({ id }: RecentGamesOptionsProps) {
+function RecentGamesOptions({ game }: RecentGamesOptionsProps) {
   const { removeFromLibrary } = useUser();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [openCollections, setOpenCollections] = useState<boolean>(false);
   const selectorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -19,6 +23,7 @@ function RecentGamesOptions({ id }: RecentGamesOptionsProps) {
         !selectorRef.current.contains(e.target as Node)
       )
         setIsOpen(false);
+      setOpenCollections(false);
     }
 
     addEventListener("scroll", () => setIsOpen(false));
@@ -38,18 +43,26 @@ function RecentGamesOptions({ id }: RecentGamesOptionsProps) {
       >
         <HiEllipsisHorizontal />
       </button>
-      {isOpen && (
+      {isOpen && !openCollections && (
         <div className={styles.list}>
-          <button className={styles.option}>Write a review</button>
-          <button className={styles.option}>Add to collection</button>
+          <Link href={`/games/${game.id}/review`} className={styles.option}>
+            Write a review
+          </Link>
           <button
-            onClick={() => removeFromLibrary(id)}
+            onClick={() => setOpenCollections(true)}
+            className={styles.option}
+          >
+            Add to collection
+          </button>
+          <button
+            onClick={() => removeFromLibrary(game.id)}
             className={styles.option}
           >
             Remove from library
           </button>
         </div>
       )}
+      {openCollections && <CollectionsBox game={game} />}
     </div>
   );
 }

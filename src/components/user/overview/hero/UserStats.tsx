@@ -10,7 +10,7 @@ function UserStats() {
   const userStatsItems = [
     { name: "Games Played", count: state.library.length, color: "#4169E1" },
     { name: "Wishlisted", count: state.wishlist.length, color: "#FFDF00" },
-    { name: "Collections", count: 9, color: "#29AB87" },
+    { name: "Collections", count: state.collections.length, color: "#29AB87" },
   ];
 
   return (

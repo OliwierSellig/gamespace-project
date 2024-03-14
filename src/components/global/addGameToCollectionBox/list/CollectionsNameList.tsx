@@ -1,5 +1,5 @@
-import { useUser } from "../../../../../contexts/UserContext";
-import { BasicItemType } from "../../../../../utils/types";
+import { useUser } from "../../../../contexts/UserContext";
+import { BasicItemType } from "../../../../utils/types";
 import styles from "./collectionsNameList.module.scss";
 import CollectionsNameListItem from "./item/CollectionsNameListItem";
 

@@ -13,13 +13,7 @@ function RecentGameList() {
   return (
     <ul className={styles.container}>
       {recentAddedGames.map((game) => (
-        <RecentGameItem
-          id={game.id}
-          cover={game.cover}
-          added={game.added}
-          name={game.name}
-          key={game.id}
-        />
+        <RecentGameItem key={game.id} game={game} />
       ))}
     </ul>
   );
