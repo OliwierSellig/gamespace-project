@@ -1,3 +1,5 @@
+import { useRouter } from "next/navigation";
+import { useUser } from "../../../../../contexts/UserContext";
 import ConfirmationPopup from "../../../../global/ConfirmationPopup";
 import Modal from "../../../../global/Modal";
 import CollectionNavButton from "./CollectionNavButtonLayout";
@@ -7,6 +9,9 @@ type RemoveCollectionButtonProps = {
 };
 
 function RemoveCollectionButton({ id }: RemoveCollectionButtonProps) {
+  const { removeFromCollections } = useUser();
+  const router = useRouter();
+
   return (
     <Modal>
       <Modal.Open opens={`Remove collection ${id}`}>
@@ -19,7 +24,12 @@ function RemoveCollectionButton({ id }: RemoveCollectionButtonProps) {
         </div>
       </Modal.Open>
       <Modal.Window locked={false} name={`Remove collection ${id}`}>
-        <ConfirmationPopup>
+        <ConfirmationPopup
+          handleClick={() => {
+            removeFromCollections(id);
+            router.push("/user/collections");
+          }}
+        >
           Are you sure you want to delete this collection? This action cannot be
           undone.
         </ConfirmationPopup>

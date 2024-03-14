@@ -1,13 +1,16 @@
 "use client";
 import { useState } from "react";
 import Button from "../../global/Button";
-
 import styles from "./collectionPropertiesBox.module.scss";
 import UserInput from "../../global/UserInput";
+import { useUser } from "../../../contexts/UserContext";
+import { useRouter } from "next/navigation";
 
 function CollectionsPropertiesBox() {
+  const { addToCollections } = useUser();
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const router = useRouter();
 
   return (
     <div className={styles.container}>
@@ -33,11 +36,21 @@ function CollectionsPropertiesBox() {
       />
 
       <Button
+        disabled={!title}
         additionalStyle={{ width: "100%" }}
         style={{ name: "opacity", shade: "white" }}
         borderRadius="sm"
         sizeY="lg"
-        handleClick={() => console.log("Collection started")}
+        handleClick={() => {
+          const id = addToCollections({
+            title: title,
+            description: description,
+            author: "John Sanderson",
+            creationDate: new Date(),
+            games: [],
+          });
+          router.push(id.toString());
+        }}
       >
         Start a Collection
       </Button>

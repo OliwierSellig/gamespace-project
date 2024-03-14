@@ -1,6 +1,5 @@
-import { HiOutlineCheckCircle } from "react-icons/hi2";
 import styles from "./collectionsNameList.module.scss";
-import CollectionsNameListItem from "./CollectionsNameListItem";
+import CollectionsNameListItem from "./item/CollectionsNameListItem";
 
 type CollectionsNameListProps = { list: string[]; query: string };
 

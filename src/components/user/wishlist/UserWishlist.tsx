@@ -20,7 +20,7 @@ function UserWishlist({
 }: UserWishlistProps) {
   const [query, setQuery] = useState<string>("");
   const { sortGames, removeFromWishlist } = useUser();
-  const games = sortGames("wishlist", orderBy).map((game) => {
+  const games = sortGames({ type: "wishlist" }, orderBy).map((game) => {
     return {
       ...game,
       action: {

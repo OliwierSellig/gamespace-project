@@ -1,8 +1,8 @@
 import Link from "next/link";
 import styles from "./collectionsBox.module.scss";
 import { useState } from "react";
-import CollectionsNameList from "./CollectionsNameList";
-import CollectionsBoxInput from "./CollectionsBoxInput";
+import CollectionsNameList from "./list/CollectionsNameList";
+import CollectionsBoxInput from "./input/CollectionsBoxInput";
 
 const collectionList = [
   "My Gaming Collection",

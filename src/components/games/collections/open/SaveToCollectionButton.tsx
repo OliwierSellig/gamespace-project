@@ -3,7 +3,7 @@
 import { HiOutlineFolderPlus } from "react-icons/hi2";
 import styles from "./saveToCollectionButton.module.scss";
 import { useEffect, useRef, useState } from "react";
-import CollectionsBox from "./CollectionsBox";
+import CollectionsBox from "../box/CollectionsBox";
 
 function SaveToCollectionButton() {
   const [isOpen, setIsOpen] = useState<boolean>(false);

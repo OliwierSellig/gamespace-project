@@ -11,16 +11,21 @@ type CollectionGamesProps = {
   orderBy: string;
   page: string;
   resultsPerPage?: number;
+  collectionID: number;
 };
 
 function CollectionGames({
   orderBy,
   page,
   resultsPerPage = 12,
+  collectionID,
 }: CollectionGamesProps) {
   const { sortGames, removeFromLibrary } = useUser();
   const [query, setQuery] = useState("");
-  const games = sortGames("library", orderBy).map((game) => {
+  const games = sortGames(
+    { type: "collections", id: collectionID },
+    orderBy
+  ).map((game) => {
     return {
       ...game,
       action: {

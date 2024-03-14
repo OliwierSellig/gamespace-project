@@ -4,6 +4,8 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import {
   BasicItemType,
   ChildrenProp,
+  CollectionItemType,
+  CollectionPropsType,
   LibraryItemType,
   ReviewType,
 } from "../utils/types";
@@ -28,6 +30,26 @@ type ContextType = {
   findInReviews: (id: number) => ReviewType;
   removeFromReviews: (id: number) => void;
   sortReviews: (sortBy: string) => ReviewType[];
+  addToCollections: (newCollection: CollectionPropsType) => number;
+  removeFromCollections: (id: number) => void;
+  findCollection: (id: number) => CollectionItemType;
+  updateCollection: (
+    action:
+      | {
+          type: "updateTitle" | "updateDescription";
+          content: string;
+        }
+      | {
+          type: "removeGame";
+          gameID: number;
+        }
+      | {
+          type: "addGame";
+          game: BasicItemType;
+        },
+    collectionID: number
+  ) => void;
+  checkGameInCollection: (gameID: number, collectionID: number) => boolean;
   getLatestReviews: () => ReviewType[];
   getCommonYearList: () => {
     year: number;
@@ -35,7 +57,13 @@ type ContextType = {
   }[];
   updateFavourite: (id: number, action: "add" | "remove") => void;
   checkIsFavourite: (id: number) => boolean;
-  sortGames: (list: "library" | "wishlist", sortBy: string) => BasicItemType[];
+  sortGames: (
+    list:
+      | { type: "library" }
+      | { type: "wishlist" }
+      | { type: "collections"; id: number },
+    sortBy: string
+  ) => BasicItemType[];
   filterLibraryBy: (type: string) => {
     name: string;
     games: LibraryItemType[];
@@ -46,6 +74,7 @@ type stateProps = {
   library: LibraryItemType[];
   wishlist: BasicItemType[];
   reviews: ReviewType[];
+  collections: CollectionItemType[];
   initialRender: boolean;
 };
 
@@ -53,6 +82,7 @@ const enum REDUCER_ACTION_TYPE {
   SET_LIBRARY,
   SET_WISHLIST,
   SET_REVIEWS,
+  SET_COLLECTIONS,
   SET_INITIAL_RENDER,
 }
 
@@ -63,12 +93,14 @@ type ReducerAction =
     }
   | { type: REDUCER_ACTION_TYPE.SET_WISHLIST; payload: BasicItemType[] }
   | { type: REDUCER_ACTION_TYPE.SET_REVIEWS; payload: ReviewType[] }
+  | { type: REDUCER_ACTION_TYPE.SET_COLLECTIONS; payload: CollectionItemType[] }
   | { type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER };
 
 const initialState: stateProps = {
   library: [],
   wishlist: [],
   reviews: [],
+  collections: [],
   initialRender: true,
 };
 
@@ -80,6 +112,8 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
       return { ...state, wishlist: action.payload };
     case REDUCER_ACTION_TYPE.SET_REVIEWS:
       return { ...state, reviews: action.payload };
+    case REDUCER_ACTION_TYPE.SET_COLLECTIONS:
+      return { ...state, collections: action.payload };
     case REDUCER_ACTION_TYPE.SET_INITIAL_RENDER:
       return { ...state, initialRender: false };
     default:
@@ -90,7 +124,7 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
 function UserProvider({ children }: ChildrenProp) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { library, wishlist, reviews, initialRender } = state;
+  const { library, wishlist, reviews, collections, initialRender } = state;
 
   const devList = rankList(
     library
@@ -132,6 +166,11 @@ function UserProvider({ children }: ChildrenProp) {
         type: REDUCER_ACTION_TYPE.SET_REVIEWS,
         payload: JSON.parse(localStorage.getItem("reviews") || ""),
       });
+    if (localStorage.getItem("collections"))
+      dispatch({
+        type: REDUCER_ACTION_TYPE.SET_COLLECTIONS,
+        payload: JSON.parse(localStorage.getItem("collections") || ""),
+      });
 
     dispatch({ type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER });
   }, []);
@@ -154,6 +193,11 @@ function UserProvider({ children }: ChildrenProp) {
     if (!initialRender)
       localStorage.setItem("reviews", JSON.stringify(reviews));
   }, [reviews, initialRender]);
+
+  useEffect(() => {
+    if (!initialRender)
+      localStorage.setItem("collections", JSON.stringify(collections));
+  }, [collections, initialRender]);
 
   // --------------------------------------------
   function checkInLibrary(id: number) {
@@ -246,8 +290,19 @@ function UserProvider({ children }: ChildrenProp) {
     return selectedGame ? selectedGame.isFavourite : false;
   }
 
-  function sortGames(list: "library" | "wishlist", sortBy: string) {
-    const sortList = list === "wishlist" ? [...wishlist] : [...library];
+  function sortGames(
+    list:
+      | { type: "library" }
+      | { type: "wishlist" }
+      | { type: "collections"; id: number },
+    sortBy: string
+  ) {
+    const sortList =
+      list.type === "wishlist"
+        ? [...wishlist]
+        : list.type === "library"
+        ? [...library]
+        : [...findCollection(list.id).games];
 
     switch (sortBy) {
       case "popularity":
@@ -403,6 +458,96 @@ function UserProvider({ children }: ChildrenProp) {
       .slice(0, 2);
   }
 
+  function findCollection(id: number) {
+    return collections.find((collection) => collection.id === id);
+  }
+
+  function addToCollections(newCollection: CollectionPropsType) {
+    const randomID = Math.ceil(Math.random() * 10000);
+    if (findCollection(randomID)) {
+      toast.error("Collection with that ID already exists.");
+      return;
+    }
+    const newList = [...collections, { ...newCollection, id: randomID }];
+    dispatch({ type: REDUCER_ACTION_TYPE.SET_COLLECTIONS, payload: newList });
+    toast.success("Collection created succesfully");
+    return randomID;
+  }
+
+  function removeFromCollections(id: number) {
+    if (!findCollection(id)) {
+      toast.error("There is no collection with that ID");
+      return;
+    }
+    const filteredList = collections.filter(
+      (collection) => collection.id !== id
+    );
+    dispatch({
+      type: REDUCER_ACTION_TYPE.SET_COLLECTIONS,
+      payload: filteredList,
+    });
+    toast.success("Collection removed succesfully");
+  }
+
+  function updateCollection(
+    action:
+      | { type: "updateTitle" | "updateDescription"; content: string }
+      | { type: "removeGame"; gameID: number }
+      | { type: "addGame"; game: BasicItemType },
+    collectionID: number
+  ) {
+    const targetCollection = findCollection(collectionID);
+    if (!targetCollection) {
+      toast.error("There is no collection with that ID");
+      return;
+    }
+
+    const filteredCollections = collections.filter(
+      (collection) => collection.id !== collectionID
+    );
+
+    function setUpdatedCollection() {
+      switch (action.type) {
+        case "updateTitle":
+          return { ...targetCollection, title: action.content };
+        case "updateDescription":
+          return { ...targetCollection, description: action.content };
+        case "removeGame":
+          return {
+            ...targetCollection,
+            games: targetCollection.games.filter(
+              (game) => game.id !== action.gameID
+            ),
+          };
+        case "addGame":
+          if (
+            targetCollection.games.find((game) => game.id === action.game.id)
+          ) {
+            toast.error("This collection already have such game.");
+            return;
+          }
+          return {
+            ...targetCollection,
+            games: [...targetCollection.games, action.game],
+          };
+      }
+    }
+
+    const updatedCollection = setUpdatedCollection();
+
+    const newList = [...filteredCollections, updatedCollection];
+
+    dispatch({ type: REDUCER_ACTION_TYPE.SET_COLLECTIONS, payload: newList });
+  }
+
+  function checkGameInCollection(gameID: number, collectionID: number) {
+    const targetCollection = findCollection(collectionID);
+    if (!targetCollection) return false;
+    return Boolean(targetCollection.games.find((game) => game.id === gameID));
+  }
+
+  console.log(state);
+
   return (
     <UserContext.Provider
       value={{
@@ -421,6 +566,11 @@ function UserProvider({ children }: ChildrenProp) {
         findInReviews,
         removeFromReviews,
         sortReviews,
+        addToCollections,
+        removeFromCollections,
+        findCollection,
+        updateCollection,
+        checkGameInCollection,
         getLatestReviews,
         getCommonYearList,
         updateFavourite,

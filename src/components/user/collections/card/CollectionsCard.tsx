@@ -17,6 +17,7 @@ function CollectionsCard({ title, author, id, games }: CollectionsCardProps) {
       <Image
         src={games.at(0).cover}
         alt={`${title || "Undefined Collection"} cover`}
+        sizes="(max-width: 1000px) 95vw (max-width: 1600px) 50vw ,74rem"
         fill
       />
       <h2 className={styles.title}>{title || "Undefied Collection"}</h2>

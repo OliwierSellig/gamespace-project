@@ -326,3 +326,13 @@ export type PaddingType = {
   right: number;
   bottom: number;
 };
+
+export type CollectionPropsType = {
+  title: string;
+  author: string;
+  creationDate: Date;
+  description: string;
+  games: BasicItemType[];
+};
+
+export type CollectionItemType = CollectionPropsType & { id: number };

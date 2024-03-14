@@ -6,12 +6,14 @@ import styles from "./confirmationPopup.module.scss";
 type ConfirmationPopupProps = {
   children: ReactNode;
   actionButtonText?: string;
+  handleClick?: () => void;
   onCloseModal?: () => void;
 };
 
 function ConfirmationPopup({
   children,
   actionButtonText = "Delete",
+  handleClick,
   onCloseModal,
 }: ConfirmationPopupProps) {
   return (
@@ -26,10 +28,15 @@ function ConfirmationPopup({
           style={{ name: "fill", shade: "white" }}
           sizeX="xl"
           borderRadius="sm"
+          handleClick={onCloseModal}
         >
           Cancel
         </Button>
         <Button
+          handleClick={() => {
+            handleClick?.();
+            onCloseModal();
+          }}
           style={{ name: "opacity", shade: "red" }}
           sizeX="xl"
           borderRadius="sm"

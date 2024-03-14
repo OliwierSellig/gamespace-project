@@ -1,3 +1,6 @@
+"use client";
+
+import { useUser } from "../../../contexts/UserContext";
 import PageNotFound from "../../global/PageNotFound";
 import CollectionContainer from "./CollectionContainer";
 
@@ -8,8 +11,16 @@ type CollectionViewProps = {
 };
 
 function CollectionView({ id, orderBy, page }: CollectionViewProps) {
-  if (!parseInt(id)) return <PageNotFound />;
-  return <CollectionContainer orderBy={orderBy} page={page} />;
+  const { findCollection } = useUser();
+  const collection = findCollection(parseInt(id));
+  if (!collection) return <PageNotFound />;
+  return (
+    <CollectionContainer
+      collection={collection}
+      orderBy={orderBy}
+      page={page}
+    />
+  );
 }
 
 export default CollectionView;
