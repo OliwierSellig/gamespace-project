@@ -1,4 +1,6 @@
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { currentDate, platformsIcons, socials } from "./data";
+
 import {
   BasicItemType,
   ImageSizesType,
@@ -209,4 +211,19 @@ export function SingleGameItemToBasicItemType(game: SingleGameItem) {
   };
 
   return basicItem;
+}
+
+export function setPage(
+  router: AppRouterInstance,
+  pathname: string,
+  params: URLSearchParams,
+  maxPage: number,
+  p: number
+) {
+  const current = new URLSearchParams(Array.from(params.entries()));
+  current.set("page", p.toString());
+  const search = current.toString();
+  const query = search ? `?${search}` : "";
+  if (p < 1 || p > maxPage) return;
+  router.push(`${pathname}${query}`);
 }

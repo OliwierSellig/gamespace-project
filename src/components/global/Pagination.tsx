@@ -3,6 +3,7 @@
 import styles from "./pagination.module.scss";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
+import { setPage } from "../../utils/functions";
 
 type PaginationProps = {
   currentPage: number;
@@ -27,20 +28,15 @@ function Pagination({
   const canGoNext = page < maxPage;
   const canGoPrev = page > 1;
 
-  function setPage(p: number) {
-    const current = new URLSearchParams(Array.from(params.entries()));
-    current.set("page", p.toString());
-    const search = current.toString();
-    const query = search ? `?${search}` : "";
-    if (p < 1 || p > maxPage) return;
-    router.push(`${pathname}${query}`);
+  function setPagePagination(page: number) {
+    setPage(router, pathname, params, maxPage, page);
   }
 
   return (
     <nav className={styles.container} style={paginationStyles}>
       <button
         disabled={!canGoPrev}
-        onClick={() => setPage(1)}
+        onClick={() => setPagePagination(1)}
         className={`${styles.text} ${!canGoPrev ? styles.text__disabled : ""}`}
       >
         First
@@ -49,7 +45,7 @@ function Pagination({
         <button
           aria-label="Previous page"
           disabled={!canGoPrev}
-          onClick={() => setPage(page - 1)}
+          onClick={() => setPagePagination(page - 1)}
           className={`${styles.icon} ${
             !canGoPrev ? styles.icon__disabled : ""
           } ${styles.move}`}
@@ -59,7 +55,7 @@ function Pagination({
         {length > maxPage ? (
           Array.from({ length: maxPage }, (_, i) => (
             <button
-              onClick={() => setPage(i + 1)}
+              onClick={() => setPagePagination(i + 1)}
               disabled={page === i + 1}
               className={`${styles.number} ${styles.move} ${
                 page === i + 1 ? styles.number__active : ""
@@ -74,7 +70,7 @@ function Pagination({
             { length: length < maxPage ? length : maxPage },
             (_, i) => (
               <button
-                onClick={() => setPage(page + i)}
+                onClick={() => setPagePagination(page + i)}
                 disabled={i === 0}
                 className={`${styles.number} ${styles.move} ${
                   i === 0 ? styles.number__active : ""
@@ -88,7 +84,7 @@ function Pagination({
         ) : (
           <>
             <button
-              onClick={() => setPage(1)}
+              onClick={() => setPagePagination(1)}
               disabled={page === 1}
               className={`${styles.number} ${styles.move} ${
                 page === 1 ? styles.number__active : ""
@@ -99,7 +95,7 @@ function Pagination({
             {maxPage - currentPage <= 3
               ? Array.from({ length: length - 1 }, (_, i) => (
                   <button
-                    onClick={() => setPage(maxPage - 3 + i)}
+                    onClick={() => setPagePagination(maxPage - 3 + i)}
                     disabled={page === maxPage - 3 + i}
                     className={`${styles.number} ${styles.move} ${
                       page === maxPage - 3 + i ? styles.number__active : ""
@@ -111,7 +107,7 @@ function Pagination({
                 ))
               : Array.from({ length: length - 1 }, (_, i) => (
                   <button
-                    onClick={() => setPage(page + i)}
+                    onClick={() => setPagePagination(page + i)}
                     disabled={i === 0}
                     className={`${styles.number} ${styles.move} ${
                       i === 0 ? styles.number__active : ""
@@ -127,7 +123,7 @@ function Pagination({
         <button
           aria-label="Next page"
           disabled={!canGoNext}
-          onClick={() => setPage(page + 1)}
+          onClick={() => setPagePagination(page + 1)}
           className={`${styles.icon} ${
             !canGoNext ? styles.icon__disabled : ""
           } ${styles.move}`}
@@ -137,7 +133,7 @@ function Pagination({
       </div>
       <button
         disabled={!canGoNext}
-        onClick={() => setPage(maxPage)}
+        onClick={() => setPagePagination(maxPage)}
         className={`${styles.text} ${!canGoNext ? styles.text__disabled : ""}`}
       >
         Last
