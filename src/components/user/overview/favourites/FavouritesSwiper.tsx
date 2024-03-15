@@ -4,9 +4,10 @@ import { useUser } from "../../../../contexts/UserContext";
 import SwiperComponent from "../../../global/SwiperComponent";
 import GameLibraryItem from "../../locale/gameLibraryItem/GameLibraryItem";
 import EmptyUserSwiperItem from "../../locale/emptyUserSliderItem/EmptyYearItem";
+import { HiMiniBookmarkSlash } from "react-icons/hi2";
 
 function FavouritesSwiper() {
-  const { favouritesList } = useUser();
+  const { favouritesList, updateFavourite } = useUser();
   const emptySlotsCount = Math.max(0, 3 - favouritesList.length);
 
   return (
@@ -30,6 +31,11 @@ function FavouritesSwiper() {
           name={game.name}
           id={game.id}
           cover={game.cover}
+          action={{
+            actionLabel: "Remove from Favourites",
+            actionIcon: HiMiniBookmarkSlash,
+            handleClick: () => updateFavourite(game.id, "remove"),
+          }}
           imageSizes={{
             defalult: { number: 40, unit: "vw" },
             sizes: [
