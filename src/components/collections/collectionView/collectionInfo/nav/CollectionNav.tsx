@@ -21,6 +21,7 @@ function CollectionNav({ collection }: CollectionNavProps) {
       </CollectionNavButton>
       <RemoveCollectionButton id={collection.id} />
       <CollectionNavButton
+        label="Update Collection Details"
         href={`/collections/${collection.id}/edit`}
         padding={{ top: 1, left: 1, bottom: 1, right: 1 }}
       >

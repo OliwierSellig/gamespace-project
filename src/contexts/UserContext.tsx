@@ -36,17 +36,11 @@ type ContextType = {
   updateCollection: (
     action:
       | {
-          type: "updateTitle" | "updateDescription";
-          content: string;
+          type: "updateDetails";
+          content: { title: string; description: string };
         }
-      | {
-          type: "removeGame";
-          gameID: number;
-        }
-      | {
-          type: "addGame";
-          game: BasicItemType;
-        },
+      | { type: "removeGame"; gameID: number }
+      | { type: "addGame"; game: BasicItemType },
     collectionID: number
   ) => void;
   checkGameInCollection: (gameID: number, collectionID: number) => boolean;
@@ -491,7 +485,10 @@ function UserProvider({ children }: ChildrenProp) {
 
   function updateCollection(
     action:
-      | { type: "updateTitle" | "updateDescription"; content: string }
+      | {
+          type: "updateDetails";
+          content: { title: string; description: string };
+        }
       | { type: "removeGame"; gameID: number }
       | { type: "addGame"; game: BasicItemType },
     collectionID: number
@@ -508,10 +505,12 @@ function UserProvider({ children }: ChildrenProp) {
 
     function setUpdatedCollection() {
       switch (action.type) {
-        case "updateTitle":
-          return { ...targetCollection, title: action.content };
-        case "updateDescription":
-          return { ...targetCollection, description: action.content };
+        case "updateDetails":
+          return {
+            ...targetCollection,
+            title: action.content.title,
+            description: action.content.description,
+          };
         case "removeGame":
           return {
             ...targetCollection,
@@ -534,8 +533,6 @@ function UserProvider({ children }: ChildrenProp) {
     }
 
     const updatedCollection = setUpdatedCollection();
-
-    console.log(updatedCollection);
 
     const newList = [...filteredCollections, updatedCollection];
 

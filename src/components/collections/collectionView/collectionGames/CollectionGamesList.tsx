@@ -21,21 +21,22 @@ function CollectionGamesList({
     <>
       <UserGamesList>
         {list.map((game) => (
-          <GameLibraryItem
-            name={game.name}
-            cover={game.cover}
-            id={game.id}
-            action={game.action}
-            key={game.id}
-            imageSizes={{
-              defalult: { number: 500, unit: "px" },
-              sizes: [
-                { maxWidth: 1600, size: { number: 33, unit: "vw" } },
-                { maxWidth: 1044, size: { number: 46, unit: "vw" } },
-                { maxWidth: 520, size: { number: 98, unit: "vw" } },
-              ],
-            }}
-          />
+          <li key={game.id}>
+            <GameLibraryItem
+              name={game.name}
+              cover={game.cover}
+              id={game.id}
+              action={game.action}
+              imageSizes={{
+                defalult: { number: 500, unit: "px" },
+                sizes: [
+                  { maxWidth: 1600, size: { number: 33, unit: "vw" } },
+                  { maxWidth: 1044, size: { number: 46, unit: "vw" } },
+                  { maxWidth: 520, size: { number: 98, unit: "vw" } },
+                ],
+              }}
+            />
+          </li>
         ))}
       </UserGamesList>
       <Pagination

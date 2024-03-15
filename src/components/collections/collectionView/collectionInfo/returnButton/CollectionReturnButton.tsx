@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function CollectionReturnButton() {
   return (
-    <Link href="/user/collections" className={styles.btn}>
+    <Link href="/user/collections" aria-label="Go Back" className={styles.btn}>
       <HiMiniArrowSmallLeft />
     </Link>
   );

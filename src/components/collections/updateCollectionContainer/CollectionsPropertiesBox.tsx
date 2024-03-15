@@ -27,11 +27,7 @@ function CollectionsPropertiesBox({ action }: CollectionsPropertiesBoxProps) {
   function handleSubmit() {
     if (action.type === "update") {
       updateCollection(
-        { type: "updateTitle", content: title },
-        action.currentCollection.id
-      );
-      updateCollection(
-        { type: "updateDescription", content: description },
+        { type: "updateDetails", content: { title, description } },
         action.currentCollection.id
       );
       router.push(`/collections/${action.currentCollection.id}`);
