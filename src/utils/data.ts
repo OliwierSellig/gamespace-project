@@ -151,7 +151,13 @@ export const socials: SocialPlatformType[] = [
   },
 ];
 
-export const filterList = ["All games", "Developer", "Genre", "Platform"];
+export const filterList = [
+  "All games",
+  "Developer",
+  "Genre",
+  "Platform",
+  "Year of release",
+];
 
 export const orderList = ["Relevance", "Release Date", "Popularity", "Rating"];
 

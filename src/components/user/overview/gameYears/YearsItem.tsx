@@ -28,7 +28,7 @@ function YearsItem({ gameList, year }: YearsItemProps) {
 
       <h3 className={styles.heading}>{year}</h3>
       <Button
-        href={{ url: "search" }}
+        href={{ url: `/user/library?filter=year-of-release` }}
         style={{ name: "opacity", shade: "white" }}
         borderRadius="sm"
         additionalStyle={{ marginBottom: "2.4rem" }}

@@ -315,7 +315,7 @@ function UserProvider({ children }: ChildrenProp) {
 
   function filterLibraryBy(type: string) {
     switch (type) {
-      case "year": {
+      case "year-of-release": {
         const uniqueList = [
           ...new Set(
             library.map((game) =>
