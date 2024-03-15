@@ -17,7 +17,7 @@ function CollectionsBox({ game }: CollectionsBoxProps) {
       <header className={styles.header}>Select Collections</header>
       <Link
         className={styles.create}
-        href={`/collections/create?game=${game.id}`}
+        href={`/games/${game.id}/create-collection`}
       >
         Start a new Collection
       </Link>

@@ -1,7 +1,7 @@
 import styles from "./userInput.module.scss";
 
 type UserInputProps = {
-  label: string;
+  label?: string;
   maxCharacters: number;
   placeholder?: string;
   type?: { name: "text" } | { name: "textArea"; height: number };
@@ -11,7 +11,7 @@ type UserInputProps = {
 };
 
 function UserInput({
-  label = "Undefined Input",
+  label,
   maxCharacters = 10,
   placeholder = "",
   type = { name: "text" },
@@ -21,9 +21,14 @@ function UserInput({
 }: UserInputProps) {
   return (
     <div style={additionalStyle} className={styles.container}>
-      <label htmlFor={`${label.toLowerCase()}-input`} className={styles.label}>
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={`${label.toLowerCase()}-input`}
+          className={styles.label}
+        >
+          {label}
+        </label>
+      )}
 
       <div className={styles.box}>
         {type.name === "text" && (

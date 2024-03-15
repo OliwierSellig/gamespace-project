@@ -20,7 +20,7 @@ function CollectionGames({
   resultsPerPage = 12,
   collectionID,
 }: CollectionGamesProps) {
-  const { sortGames, removeFromLibrary } = useUser();
+  const { sortGames, updateCollection } = useUser();
   const [query, setQuery] = useState("");
   const games = sortGames(
     { type: "collections", id: collectionID },
@@ -29,9 +29,13 @@ function CollectionGames({
     return {
       ...game,
       action: {
-        actionLabel: "Remove from Wishlist",
+        actionLabel: "Remove from this collection",
         actionIcon: HiMiniBookmarkSlash,
-        handleClick: () => removeFromLibrary(game.id),
+        handleClick: () =>
+          updateCollection(
+            { type: "removeGame", gameID: game.id },
+            collectionID
+          ),
       },
     };
   });

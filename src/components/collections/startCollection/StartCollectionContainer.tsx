@@ -1,26 +1,14 @@
 import GameBackgroundLayout from "../../global/GameBackgroundLayout";
-import CollectionsPropertiesBox from "./CollectionsPropertiesBox";
-import ReturnButton from "./ReturnButton";
-import styles from "./startCollectionContainer.module.scss";
+import CollectionsPropertiesBox from "../updateCollectionContainer/CollectionsPropertiesBox";
 import backgroundImage from "../../../../public/img/user-background.jpg";
-import { fetchGameByID } from "../../../lib/games";
+import UpdateCollectionContainer from "../updateCollectionContainer/UpdateCollectionContainer";
 
-type StartCollectionContainerProps = { gameId: string };
-
-async function StartCollectionContainer({
-  gameId,
-}: StartCollectionContainerProps) {
-  const game =
-    !isNaN(parseInt(gameId)) && parseInt(gameId) >= 0
-      ? await fetchGameByID(parseInt(gameId))
-      : null;
-
+function StartCollectionContainer() {
   return (
     <GameBackgroundLayout image={backgroundImage}>
-      <div className={styles.container}>
-        <ReturnButton />
-        <CollectionsPropertiesBox game={game} />
-      </div>
+      <UpdateCollectionContainer>
+        <CollectionsPropertiesBox action={{ type: "add" }} />
+      </UpdateCollectionContainer>
     </GameBackgroundLayout>
   );
 }

@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useUser } from "../../../../../contexts/UserContext";
-import ConfirmationPopup from "../../../../global/ConfirmationPopup";
+import ConfirmationPopup from "../../../../global/popups/ConfirmationPopup";
 import Modal from "../../../../global/Modal";
 import CollectionNavButton from "./CollectionNavButtonLayout";
 

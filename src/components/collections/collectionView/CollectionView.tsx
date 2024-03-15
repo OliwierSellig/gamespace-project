@@ -1,8 +1,9 @@
 "use client";
 
 import { useUser } from "../../../contexts/UserContext";
-import PageNotFound from "../../global/PageNotFound";
-import CollectionContainer from "./CollectionContainer";
+import CollectionGames from "./collectionGames/CollectionGames";
+import CollectionInfo from "./collectionInfo/CollectionInfo";
+import styles from "./collectionView.module.scss";
 
 type CollectionViewProps = {
   id: string;
@@ -13,13 +14,15 @@ type CollectionViewProps = {
 function CollectionView({ id, orderBy, page }: CollectionViewProps) {
   const { findCollection } = useUser();
   const collection = findCollection(parseInt(id));
-  if (!collection) return <PageNotFound />;
   return (
-    <CollectionContainer
-      collection={collection}
-      orderBy={orderBy}
-      page={page}
-    />
+    <div className={styles.container}>
+      <CollectionInfo collection={collection} />
+      <CollectionGames
+        collectionID={collection.id}
+        orderBy={orderBy}
+        page={page}
+      />
+    </div>
   );
 }
 

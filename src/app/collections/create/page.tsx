@@ -1,7 +1,7 @@
 import StartCollectionContainer from "../../../components/collections/startCollection/StartCollectionContainer";
 
-function page({ searchParams }: { searchParams: { game: string } }) {
-  return <StartCollectionContainer gameId={searchParams.game} />;
+function page() {
+  return <StartCollectionContainer />;
 }
 
 export default page;

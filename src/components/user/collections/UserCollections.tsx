@@ -17,7 +17,7 @@ function UserCollections({ page, resultsPerPage = 6 }: UserCollectionsProps) {
   const { collections } = state;
 
   const filteredCollections = collections.filter((collection) =>
-    collection.title
+    (collection.title || "")
       .toLowerCase()
       .trim()
       .replaceAll(" ", "-")

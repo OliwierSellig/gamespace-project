@@ -535,6 +535,8 @@ function UserProvider({ children }: ChildrenProp) {
 
     const updatedCollection = setUpdatedCollection();
 
+    console.log(updatedCollection);
+
     const newList = [...filteredCollections, updatedCollection];
 
     dispatch({ type: REDUCER_ACTION_TYPE.SET_COLLECTIONS, payload: newList });
