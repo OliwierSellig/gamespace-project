@@ -4,7 +4,6 @@ import Image from "next/image";
 import styles from "./reviewItem.module.scss";
 import Button from "../../../global/Button";
 import { dateTransform } from "../../../../utils/functions";
-import { useUser } from "../../../../contexts/UserContext";
 import OpenDeleteReviewConfirmation from "../../../global/deleteReview/OpenDeleteReviewConfirmation";
 
 type ReviewItemProps = {
@@ -16,7 +15,6 @@ type ReviewItemProps = {
 };
 
 function ReviewItem({ game, review, author, date, rating }: ReviewItemProps) {
-  const { removeFromReviews } = useUser();
   return (
     <li className={styles.container}>
       <Image

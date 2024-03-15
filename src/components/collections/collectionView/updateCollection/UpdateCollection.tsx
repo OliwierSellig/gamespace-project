@@ -14,7 +14,7 @@ function UpdateCollection({ collectionId }: UpdateCollectionProps) {
   const currentCollection = findCollection(parseInt(collectionId));
 
   return (
-    <UpdateCollectionContainer>
+    <UpdateCollectionContainer returnDest={`/collections/${collectionId}`}>
       <CollectionsPropertiesBox
         action={{ type: "update", currentCollection }}
       />

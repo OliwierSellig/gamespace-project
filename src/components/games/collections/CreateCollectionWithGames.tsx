@@ -12,7 +12,7 @@ async function CreateCollectionWithGames({
   const game = await fetchGameByID(parseInt(id));
 
   return (
-    <UpdateCollectionContainer>
+    <UpdateCollectionContainer returnDest={`/games/${game.id}`}>
       <CollectionsPropertiesBox action={{ type: "add", game }} />
     </UpdateCollectionContainer>
   );

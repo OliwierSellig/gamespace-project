@@ -21,9 +21,10 @@ function RecentGamesOptions({ game }: RecentGamesOptionsProps) {
       if (
         selectorRef.current &&
         !selectorRef.current.contains(e.target as Node)
-      )
+      ) {
         setIsOpen(false);
-      setOpenCollections(false);
+        setOpenCollections(false);
+      }
     }
 
     addEventListener("scroll", () => setIsOpen(false));

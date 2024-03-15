@@ -6,7 +6,7 @@ import UpdateCollectionContainer from "../updateCollectionContainer/UpdateCollec
 function StartCollectionContainer() {
   return (
     <GameBackgroundLayout image={backgroundImage}>
-      <UpdateCollectionContainer>
+      <UpdateCollectionContainer returnDest="/user/collections">
         <CollectionsPropertiesBox action={{ type: "add" }} />
       </UpdateCollectionContainer>
     </GameBackgroundLayout>

@@ -1,25 +1,14 @@
-"use client";
-
 import { HiMiniXMark } from "react-icons/hi2";
 import styles from "./returnButton.module.scss";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-function ReturnButton() {
-  const router = useRouter();
+type ReturnButtonProps = { href: string };
 
+function ReturnButton({ href }: ReturnButtonProps) {
   return (
-    <button
-      onClick={() => {
-        if (document.referrer.includes(window.location.hostname)) {
-          router.back();
-        } else {
-          router.push("/");
-        }
-      }}
-      className={styles.btn}
-    >
+    <Link href={href} className={styles.btn}>
       <HiMiniXMark />
-    </button>
+    </Link>
   );
 }
 

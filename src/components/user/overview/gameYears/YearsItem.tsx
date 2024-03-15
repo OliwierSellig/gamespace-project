@@ -20,7 +20,7 @@ function YearsItem({ gameList, year }: YearsItemProps) {
               src={game.cover || notFound}
               fill
               alt=""
-              sizes="(max-width: 460px) 33vw, (max-width: 560px) 20vw, (max-width: 1024px) 15vw, (max-width: 1600px) 10vw, 160px"
+              sizes="(max-width: 460px) 95vw, (max-width: 560px) 60vw, (max-width: 1024px) 45vw, (max-width: 1600px) 30vw, 50rem"
             />
           </div>
         ))}

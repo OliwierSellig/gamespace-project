@@ -1,11 +1,19 @@
-import { ChildrenProp } from "../../../utils/types";
+import { ReactNode } from "react";
 import ReturnButton from "./ReturnButton";
 import styles from "./updateCollectionContainer.module.scss";
 
-function UpdateCollectionContainer({ children }: ChildrenProp) {
+type UpdateCollectionContainerProps = {
+  children: ReactNode;
+  returnDest: string;
+};
+
+function UpdateCollectionContainer({
+  children,
+  returnDest,
+}: UpdateCollectionContainerProps) {
   return (
     <div className={styles.container}>
-      <ReturnButton />
+      <ReturnButton href={returnDest} />
       {children}
     </div>
   );
