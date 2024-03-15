@@ -5,6 +5,7 @@ import styles from "./reviewItem.module.scss";
 import Button from "../../../global/Button";
 import { dateTransform } from "../../../../utils/functions";
 import { useUser } from "../../../../contexts/UserContext";
+import OpenDeleteReviewConfirmation from "../../../global/deleteReview/OpenDeleteReviewConfirmation";
 
 type ReviewItemProps = {
   game: { name: string; cover: string; id: number };
@@ -42,14 +43,15 @@ function ReviewItem({ game, review, author, date, rating }: ReviewItemProps) {
         >
           Edit Review
         </Button>
-        <Button
-          handleClick={() => removeFromReviews(game.id)}
-          style={{ name: "opacity", shade: "red" }}
-          borderRadius="sm"
-          sizeX="lg"
-        >
-          Delete Review
-        </Button>
+        <OpenDeleteReviewConfirmation id={game.id}>
+          <Button
+            style={{ name: "opacity", shade: "red" }}
+            borderRadius="sm"
+            sizeX="lg"
+          >
+            Delete Review
+          </Button>
+        </OpenDeleteReviewConfirmation>
       </nav>
     </li>
   );
