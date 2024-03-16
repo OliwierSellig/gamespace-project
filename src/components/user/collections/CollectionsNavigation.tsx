@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import UserGamesListNav from "../locale/userGamesListNav/UserGamesListNav";
 import UserSearchInput from "../locale/userSearchInput/UserSearchInput";
-import StartCollectionButton from "./StartCollectionButton";
+import StartCollectionButton from "./startCollection/StartCollectionButton";
 
 type CollectionsNavigationProps = {
   query: string;

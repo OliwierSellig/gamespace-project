@@ -1,4 +1,4 @@
-import LoaderWindow from "../../../../components/global/LoaderWindow";
+import LoaderWindow from "../../components/global/LoaderWindow";
 
 function loading() {
   return <LoaderWindow />;

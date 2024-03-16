@@ -1,4 +1,4 @@
-import UserWishlist from "../../../components/user/wishlist/UserWishlist";
+import UserWishlist from "../../../../components/user/wishlist/UserWishlist";
 
 function page({
   searchParams,

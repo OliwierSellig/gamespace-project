@@ -1,9 +1,9 @@
 import Image from "next/image";
 import styles from "./fullDescription.module.scss";
 import notFound from "./../../../../public/img/not-found.png";
-import { HiOutlineBookmark, HiOutlinePlusCircle } from "react-icons/hi2";
 import { SingleGameItem } from "../../../utils/types";
-import Button from "../../global/Button";
+import UpdateLibraryButton from "../actions/UpdateLibraryButton";
+import UpdateWishlistFavouritesButton from "../actions/UpdateWishlistFavouritesButton";
 
 type FullDescriptionProps = {
   game: SingleGameItem;
@@ -28,14 +28,8 @@ function FullDescription({ game }: FullDescriptionProps) {
             className={styles.description}
           />
           <nav className={styles.btns}>
-            <Button style="scale">
-              <span>Add to my games</span>
-              <HiOutlinePlusCircle />
-            </Button>
-            <Button transition="long" style="fill">
-              <span>Add to Wishlist</span>
-              <HiOutlineBookmark />
-            </Button>
+            <UpdateLibraryButton game={game} />
+            <UpdateWishlistFavouritesButton game={game} />
           </nav>
         </div>
       </div>
