@@ -11,17 +11,7 @@ type FilteredGamesSwiperProps = {
 
 function FilteredGamesSwiper({ list }: FilteredGamesSwiperProps) {
   const { removeFromLibrary } = useUser();
-  const games = list.map((game) => {
-    return {
-      ...game,
-      action: {
-        actionLabel: "Remove from Library",
-        actionIcon: HiMiniBookmarkSlash,
-        handleClick: () => removeFromLibrary(game.id),
-      },
-    };
-  });
-  const emptySlotsCount = Math.max(0, 3 - games.length);
+  const emptySlotsCount = Math.max(0, 3 - list.length);
 
   return (
     <SwiperComponent
@@ -29,7 +19,7 @@ function FilteredGamesSwiper({ list }: FilteredGamesSwiperProps) {
         default: {
           slidesPerView: 1,
           spaceBetween: 16,
-          navigation: games.length > 3,
+          navigation: list.length > 3,
           pagination: false,
         },
         breakpoints: [
@@ -40,7 +30,7 @@ function FilteredGamesSwiper({ list }: FilteredGamesSwiperProps) {
         ],
       }}
     >
-      {games.map((game) => (
+      {list.map((game) => (
         <GameLibraryItem
           imageSizes={{
             defalult: { number: 500, unit: "px" },
@@ -56,6 +46,11 @@ function FilteredGamesSwiper({ list }: FilteredGamesSwiperProps) {
           key={game.id}
           name={game.name}
           id={game.id}
+          action={{
+            actionLabel: "Remove from Library",
+            actionIcon: HiMiniBookmarkSlash,
+            handleClick: () => removeFromLibrary(game.id),
+          }}
         />
       ))}
       {Array.from({ length: emptySlotsCount }, (_, i) => (

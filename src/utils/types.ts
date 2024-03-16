@@ -336,3 +336,33 @@ export type CollectionPropsType = {
 };
 
 export type CollectionItemType = CollectionPropsType & { id: number };
+
+export type ActivityItem = {
+  date: Date;
+  action:
+    | {
+        type:
+          | "addToLibrary"
+          | "removeFromLibrary"
+          | "addToWishlist"
+          | "removeFromWishlist"
+          | "publishReview"
+          | "deleteReview"
+          | "updateReview"
+          | "startCollection"
+          | "deleteCollection"
+          | "updateCollection"
+          | "addToFavourites"
+          | "removeFromFavourites";
+        item: { name: string; id: number };
+      }
+    | {
+        type: "addGameToCollection" | "removeGameFromCollection";
+        item: {
+          gameId: number;
+          collectionId: number;
+          gameName: string;
+          collectionName: string;
+        };
+      };
+};
