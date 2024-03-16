@@ -1,16 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ActivityItem } from "../../../../utils/types";
-import styles from "./activityItem.module.scss";
-import { useUser } from "../../../../contexts/UserContext";
-import { dateTransform } from "../../../../utils/functions";
+import { ActivityItem } from "../../../../../../utils/types";
+import styles from "./activityLogItem.module.scss";
+import { useUser } from "../../../../../../contexts/UserContext";
+import { dateTransform } from "../../../../../../utils/functions";
 
-type ActivityItemProps = {
+type ActivityLogItemProps = {
   activity: ActivityItem;
 };
 
-function ActivityItem({ activity }: ActivityItemProps) {
+function ActivityLogItem({ activity }: ActivityLogItemProps) {
   const { transformActivityIntoString } = useUser();
   const activityString = transformActivityIntoString(activity);
   return (
@@ -41,4 +41,4 @@ function ActivityItem({ activity }: ActivityItemProps) {
   );
 }
 
-export default ActivityItem;
+export default ActivityLogItem;

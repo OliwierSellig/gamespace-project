@@ -1,13 +1,23 @@
-import UserHeading from "../../layout/UserHeading";
-import OverviewSection from "../layout/OverviewSection";
-import LogContainer from "./LogContainer";
+"use client";
 
-function ActivitiesContainer() {
+import { useUser } from "../../../../contexts/UserContext";
+import ActivitiesList from "./activitiesList/ActivitiesList";
+import styles from "./activitiesContainer.module.scss";
+import FilterActivitiesOpen from "./filterActivities/FilterActivitiesOpen";
+
+type ActivitiesContainerProps = {
+  filterBy: string;
+};
+
+function ActivitiesContainer({ filterBy }: ActivitiesContainerProps) {
+  const { filterActivities } = useUser();
+
+  const activities = filterActivities(filterBy);
   return (
-    <OverviewSection>
-      <UserHeading>Activity Board</UserHeading>
-      <LogContainer />
-    </OverviewSection>
+    <div className={styles.container}>
+      <FilterActivitiesOpen filterBy={filterBy} />
+      <ActivitiesList list={activities} />
+    </div>
   );
 }
 

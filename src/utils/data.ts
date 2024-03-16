@@ -162,3 +162,12 @@ export const filterList = [
 export const orderList = ["Relevance", "Release Date", "Popularity", "Rating"];
 
 export const reviewOrderList = ["Relevance", "Rating", "Game Title"];
+
+export const filterActivities = [
+  "All Activities",
+  "Library",
+  "Wishlist",
+  "Favourites",
+  "Reviews",
+  "Collections",
+];

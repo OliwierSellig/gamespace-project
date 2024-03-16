@@ -1,0 +1,29 @@
+@import "../../../../../scss/animations.scss";
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--color-dark-200);
+  width: max-content;
+  background-color: var(--color-light-100);
+  border-radius: var(--border-radius-smallest);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.2rem 1rem;
+  animation: fadeIn 0.2s;
+  z-index: 50;
+}
+
+.link {
+  font-size: 1.4rem;
+  transition: var(--transition-fast);
+  padding: 1.2rem 2rem;
+  border-radius: var(--border-radius-smallest);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-200);
+  }
+}

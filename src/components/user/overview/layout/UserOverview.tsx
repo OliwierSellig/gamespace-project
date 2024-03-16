@@ -1,4 +1,4 @@
-import LogContainer from "../activities/LogContainer";
+import ActivitiesContainer from "../activities/ActivitiesContainer";
 import FavouritesSwiper from "../favourites/FavouritesSwiper";
 import DataContainer from "../gameData/DataContainer";
 import YearsSwiper from "../gameYears/YearsSwiper";
@@ -8,7 +8,11 @@ import ReviewsRow from "../recentReviews/ReviewsRow";
 import ShareContainer from "../share/ShareContainer";
 import OverviewSection from "./OverviewSection";
 
-function UserOverview() {
+type UserOvervierwProps = {
+  filterActivities: string;
+};
+
+function UserOverview({ filterActivities }: UserOvervierwProps) {
   return (
     <>
       <HeroContainer />
@@ -16,7 +20,7 @@ function UserOverview() {
         <FavouritesSwiper />
       </OverviewSection>
       <OverviewSection heading="Activities Board">
-        <LogContainer />
+        <ActivitiesContainer filterBy={filterActivities} />
       </OverviewSection>
       <OverviewSection heading="Recent Revies">
         <ReviewsRow />

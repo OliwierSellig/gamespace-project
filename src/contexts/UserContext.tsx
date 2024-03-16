@@ -75,6 +75,7 @@ type ContextType = {
         url: string;
       }
   )[];
+  filterActivities: (filter: string) => ActivityItem[];
 };
 
 type stateProps = {
@@ -185,6 +186,11 @@ function UserProvider({ children }: ChildrenProp) {
         type: REDUCER_ACTION_TYPE.SET_COLLECTIONS,
         payload: JSON.parse(localStorage.getItem("collections") || ""),
       });
+    if (localStorage.getItem("activities"))
+      dispatch({
+        type: REDUCER_ACTION_TYPE.SET_ACTIVITIES,
+        payload: JSON.parse(localStorage.getItem("activities") || ""),
+      });
 
     dispatch({ type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER });
   }, []);
@@ -212,6 +218,11 @@ function UserProvider({ children }: ChildrenProp) {
     if (!initialRender)
       localStorage.setItem("collections", JSON.stringify(collections));
   }, [collections, initialRender]);
+
+  useEffect(() => {
+    if (!initialRender)
+      localStorage.setItem("activities", JSON.stringify(activities));
+  }, [activities, initialRender]);
 
   // --------------------------------------------
   function checkInLibrary(id: number) {
@@ -877,7 +888,44 @@ function UserProvider({ children }: ChildrenProp) {
     }
   }
 
-  console.log(state);
+  function filterActivities(filter: string) {
+    const activitiesList = [...activities];
+    function getFilteredStrings() {
+      switch (filter) {
+        case "library": {
+          return ["addToLibrary", "removeFromLibrary"];
+        }
+        case "wishlist": {
+          return ["addToWishlist", "removeFromWishlist"];
+        }
+        case "favourites": {
+          return ["addToFavourites", "removeFromFavourites"];
+        }
+        case "reviews": {
+          return ["publishReview", "updateReview", "deleteReview"];
+        }
+        case "collections": {
+          return ["startCollection", "updateCollection", "deleteCollection"];
+        }
+        default:
+          return [];
+      }
+    }
+
+    const filteredStrings = getFilteredStrings();
+
+    const filteredList = !filteredStrings.length
+      ? activitiesList
+      : activitiesList.filter((activity) =>
+          filteredStrings.includes(activity.action.type)
+        );
+
+    const sortedList = filteredList.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    return sortedList;
+  }
 
   return (
     <UserContext.Provider
@@ -909,6 +957,7 @@ function UserProvider({ children }: ChildrenProp) {
         sortGames,
         filterLibraryBy,
         transformActivityIntoString,
+        filterActivities,
       }}
     >
       {children}
