@@ -7,7 +7,10 @@ import Script from "next/script";
 import GlobalLayout from "../components/global/GlobalLayout";
 
 export const metadata = {
-  title: "GameSpace | Web's most advanced games library",
+  title: {
+    default: "GameSpace | Web's most advanced games library",
+    template: "%s | GameSpace",
+  },
   description:
     "Internet's most advanced game library to date. Find the game you are looking for and get all the most important infomation about in in just few click!",
 };

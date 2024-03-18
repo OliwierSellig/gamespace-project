@@ -32,10 +32,7 @@ function CollectionGames({
         actionLabel: "Remove from this collection",
         actionIcon: HiMiniBookmarkSlash,
         handleClick: () =>
-          updateCollection(
-            { type: "removeGame", gameID: game.id },
-            collectionID
-          ),
+          updateCollection({ type: "removeGame", game }, collectionID),
       },
     };
   });

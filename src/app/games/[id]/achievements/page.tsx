@@ -1,5 +1,9 @@
 import AchievementsView from "../../../../components/games/achievements/achievementsPage/AchievementsView";
 
+export const metadata = {
+  title: " - Achievements",
+};
+
 function page({
   params,
   searchParams,
