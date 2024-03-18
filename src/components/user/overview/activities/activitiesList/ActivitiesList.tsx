@@ -1,6 +1,6 @@
 import { ActivityItem } from "../../../../../utils/types";
-import ActivityLogItem from "./activityLogItem/ActivityLogItem";
-import EmptyActivities from "./emptyActivities/EmptyActivities";
+import ActivityLogItem from "../activityLogItem/ActivityLogItem";
+import EmptyActivities from "../emptyActivities/EmptyActivities";
 import styles from "./activitiesList.module.scss";
 
 type ActivitiesListProps = {

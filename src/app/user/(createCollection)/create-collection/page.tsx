@@ -1,4 +1,4 @@
-import StartCollectionContainer from "../../../../components/user/createCollection/StartCollectionContainer";
+import StartCollectionContainer from "../../../../components/user/createCollection/startCollectionContainer/StartCollectionContainer";
 
 export const metadata = {
   title: "Create Collection",

@@ -1,4 +1,4 @@
-import UserCollections from "../../../../components/user/collections/UserCollections";
+import UserCollections from "../../../../components/user/collections/userCollections/UserCollections";
 
 export const metadata = {
   title: "Collections",

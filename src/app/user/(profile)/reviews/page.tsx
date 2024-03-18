@@ -1,4 +1,4 @@
-import UserReviews from "../../../../components/user/reviews/UserReviews";
+import UserReviews from "../../../../components/user/reviews/userReviews/UserReviews";
 
 export const metadata = {
   title: "Reviews",

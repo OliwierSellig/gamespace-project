@@ -1,4 +1,4 @@
-import UserLibrary from "../../../../components/user/library/layout/UserLibrary";
+import UserLibrary from "../../../../components/user/library/layout/userLibrary/UserLibrary";
 
 export const metadata = {
   title: "Library",
