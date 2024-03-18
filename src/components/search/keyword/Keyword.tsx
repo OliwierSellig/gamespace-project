@@ -1,7 +1,7 @@
-import { fetchDevById } from "../../lib/developers";
-import { fetchGenreById } from "../../lib/genres";
-import { fetchPlatformById } from "../../lib/platfroms";
-import ConfigurationBox from "./ConfigurationBox";
+import { fetchDevById } from "../../../lib/developers";
+import { fetchGenreById } from "../../../lib/genres";
+import { fetchPlatformById } from "../../../lib/platfroms";
+import ConfigurationBox from "../configurationBox/ConfigurationBox";
 import styles from "./keyword.module.scss";
 
 type KeywordProps = {

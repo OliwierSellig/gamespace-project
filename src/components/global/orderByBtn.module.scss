@@ -3,7 +3,7 @@
   align-items: start;
   flex-direction: column;
   position: relative;
-  z-index: 2000;
+  z-index: 500;
 }
 
 .header {
@@ -41,7 +41,7 @@
   }
 
   &__text {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 500;
     color: var(--color-light-300);
     transition: var(--transition-fast);
@@ -82,7 +82,7 @@
 }
 
 .pick {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
   color: var(--color-light-300);
   padding: 1.6rem 2rem;

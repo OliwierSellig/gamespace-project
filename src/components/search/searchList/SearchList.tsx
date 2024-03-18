@@ -1,6 +1,6 @@
-import { FetchedGameItem } from "../../utils/types";
-import GameCard from "../global/GameCard";
-import Pagination from "../global/Pagination";
+import { FetchedGameItem } from "../../../utils/types";
+import GameCard from "../../global/GameCard";
+import Pagination from "../../global/Pagination";
 import styles from "./searchList.module.scss";
 
 type SearchListProps = {

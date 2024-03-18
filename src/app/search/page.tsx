@@ -1,5 +1,5 @@
-import SearchComponent from "../../components/search/SearchComponent";
-import SearchHeader from "../../components/search/SearchHeader";
+import SearchComponent from "../../components/search/searchComponent/SearchComponent";
+import SearchHeader from "../../components/search/searchHeader/SearchHeader";
 import { SearchProvider } from "../../contexts/SearchContex";
 
 export const metadata = {

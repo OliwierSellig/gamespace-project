@@ -1,6 +1,6 @@
-import OrderByBtn from "../global/OrderByBtn";
-import Keyword from "./Keyword";
-import SearchQuery from "./SearchQuery";
+import OrderByBtn from "../../global/OrderByBtn";
+import Keyword from "../keyword/Keyword";
+import SearchQuery from "../searchQuery/SearchQuery";
 import styles from "./searchHeader.module.scss";
 
 type SearchHeaderProps = {

@@ -10,16 +10,17 @@
   -webkit-user-drag: none;
   transition: var(--transition-fast);
 
+  &__scale {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
   &:hover,
   &:focus,
   &:focus-within {
     .box {
       opacity: 1;
-    }
-    &__scale {
-      &:hover {
-        transform: scale(1.05);
-      }
     }
   }
 }

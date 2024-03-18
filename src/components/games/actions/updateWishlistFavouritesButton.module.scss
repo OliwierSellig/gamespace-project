@@ -8,16 +8,19 @@
   align-items: center;
   justify-content: center;
   transition: var(--transition-fast);
+  gap: 0.4rem;
 }
 
-.visible{
-    transform: translateY(0);
+.visible {
+  transform: translateY(0);
 }
 
-.hidden{
- &__fav{    transform: translateY(100%);}
+.hidden {
+  &__fav {
+    transform: translateY(100%);
+  }
 
- &__wish{    transform: translateY(-100%);}
-
+  &__wish {
+    transform: translateY(-100%);
+  }
 }
-

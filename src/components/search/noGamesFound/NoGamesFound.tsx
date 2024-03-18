@@ -1,7 +1,6 @@
 import { useRouter } from "next/navigation";
-import { useSearch } from "../../contexts/SearchContex";
+import { useSearch } from "../../../contexts/SearchContex";
 import styles from "./noGamesFound.module.scss";
-import Link from "next/link";
 
 function NoGamesFound() {
   const { setQuery } = useSearch();
