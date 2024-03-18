@@ -1,10 +1,10 @@
-import { HiOutlineDocumentDuplicate, HiOutlinePlus } from "react-icons/hi2";
 import styles from "./rowContent.module.scss";
 import Image from "next/image";
-import { FetchedGameItem } from "../../utils/types";
-import MetacriticScore from "./MetacriticScore";
-import GenreList from "./GenreList";
-import Button from "../global/Button";
+import { FetchedGameItem } from "../../../../../utils/types";
+import MetacriticScore from "../../../locale/MetacriticScore";
+import GenreList from "../../../locale/GenreList";
+import ViewDetailsButton from "../../../locale/ViewDetailsButton";
+import UpdateGameStateButton from "../../../locale/UpdateGameStateButton";
 
 type RowContentProps = {
   isActive: boolean;
@@ -44,21 +44,8 @@ function RowContent({ isActive, game }: RowContentProps) {
               <MetacriticScore score={game.metacritic} />
             </div>
             <nav className={styles.btns}>
-              <Button
-                transition="medium"
-                href={{ url: `/games/${game.id}` }}
-                style={{ name: "fill", shade: "white" }}
-              >
-                <span>Details</span>
-                <HiOutlineDocumentDuplicate />
-              </Button>
-              <Button
-                transition="medium"
-                style={{ name: "fill", shade: "blue" }}
-              >
-                <span>Add Game</span>
-                <HiOutlinePlus />
-              </Button>
+              <ViewDetailsButton gameId={game.id} />
+              <UpdateGameStateButton type="mini" gameId={game.id} />
             </nav>
           </div>
         </div>

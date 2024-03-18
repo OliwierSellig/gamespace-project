@@ -1,14 +1,13 @@
 import Image from "next/image";
-import { FetchedGameItem } from "../../utils/types";
-import {
-  HiOutlinePlus,
-  HiOutlineTrophy,
-  HiOutlineArrowUpOnSquare,
-} from "react-icons/hi2";
+import { FetchedGameItem } from "../../../../../utils/types";
+import { HiOutlineTrophy } from "react-icons/hi2";
 import styles from "./topRankedCard.module.scss";
 import { useState } from "react";
-import TopDetails from "./TopDetails";
-import hero from "../../../public/img/hero-background-0.webp";
+import TopDetails from "./topRankedDetails/TopDetails";
+import TopRankedButtons from "./topRankedButtons/TopRankedButtons";
+import notFound from "../../../../../../public/img/not-found.png";
+import MoreInfoButton from "./topRankedButtons/MoreInfoButton";
+import UpdateGameStateButton from "../../../locale/UpdateGameStateButton";
 
 type TopRankedCardProps = {
   game: FetchedGameItem;
@@ -28,7 +27,7 @@ function TopRankedCard({ game, place, order, animTime }: TopRankedCardProps) {
     >
       <div className={styles.cover}>
         <Image
-          src={game.background_image || hero}
+          src={game.background_image || notFound}
           alt={`${game.name} cover`}
           fill
           sizes="(max-width: 900px) 95vw, (max-width: 1440px) 45vw, (max-width: 1800px) 30vw, 530px"
@@ -45,19 +44,10 @@ function TopRankedCard({ game, place, order, animTime }: TopRankedCardProps) {
             : `${game.rating} rating`}
         </p>
       </div>
-      <nav className={styles.nav}>
-        <button
-          className={`${styles.btn} ${styles.btn__ext}`}
-          onClick={() => setOpenDetails(true)}
-        >
-          <span>More Info</span>
-          <HiOutlineArrowUpOnSquare />
-        </button>
-        <button className={`${styles.btn} ${styles.btn__add}`}>
-          <span>Add Game</span>
-          <HiOutlinePlus />
-        </button>
-      </nav>
+      <TopRankedButtons>
+        <MoreInfoButton handleClick={() => setOpenDetails(true)} />
+        <UpdateGameStateButton gameId={game.id} />
+      </TopRankedButtons>
       {openDetails && (
         <TopDetails game={game} closeDetails={() => setOpenDetails(false)} />
       )}

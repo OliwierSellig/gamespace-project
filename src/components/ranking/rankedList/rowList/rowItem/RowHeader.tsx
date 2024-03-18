@@ -1,5 +1,5 @@
 import { HiMiniChevronLeft } from "react-icons/hi2";
-import { FetchedGameItem } from "../../utils/types";
+import { FetchedGameItem } from "../../../../../utils/types";
 import styles from "./rowHeader.module.scss";
 
 type RowHeaderProps = {

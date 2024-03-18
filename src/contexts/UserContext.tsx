@@ -12,6 +12,7 @@ import {
 } from "../utils/types";
 import toast from "react-hot-toast";
 import { rankList } from "../utils/functions";
+import { fetchGameByID } from "../lib/games";
 
 const UserContext = createContext<ContextType | undefined>(undefined);
 
@@ -25,6 +26,7 @@ type ContextType = {
   favouritesList: LibraryItemType[];
   checkInLibrary: (id: number) => LibraryItemType;
   addToLibrary: (game: LibraryItemType) => void;
+  addGameFromRanking: (id: number) => Promise<void>;
   removeFromLibrary: (id: number) => void;
   checkInWishlist: (id: number) => BasicItemType;
   addToWishlist: (game: BasicItemType) => void;
@@ -281,6 +283,24 @@ function UserProvider({ children }: ChildrenProp) {
 
     addActivity(activitiesList);
     toast.success("Successfully added to library");
+  }
+
+  async function addGameFromRanking(id: number) {
+    const fetchedGame = await fetchGameByID(id);
+    addToLibrary({
+      name: fetchedGame.name,
+      cover: fetchedGame.background_image,
+      slug: fetchedGame.slug,
+      id: fetchedGame.id,
+      addedToLibraryDate: new Date(),
+      developers: fetchedGame.developers,
+      genres: fetchedGame.genres,
+      platforms: fetchedGame.platforms,
+      released: fetchedGame.released,
+      added: fetchedGame.added,
+      rating: fetchedGame.rating,
+      isFavourite: false,
+    });
   }
 
   function removeFromLibrary(id: number) {
@@ -978,6 +998,7 @@ function UserProvider({ children }: ChildrenProp) {
         favouritesList,
         checkInLibrary,
         addToLibrary,
+        addGameFromRanking,
         removeFromLibrary,
         checkInWishlist,
         addToWishlist,

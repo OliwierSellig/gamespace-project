@@ -1,0 +1,53 @@
+import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
+import TopRankedButton from "../rankedList/topRanked/topRankedCard/topRankedButtons/TopRankedButton";
+import { useUser } from "../../../contexts/UserContext";
+import Button from "../../global/Button";
+
+type UpdateGameStateButtonProps = { gameId: number; type?: "mini" | "default" };
+
+function UpdateGameStateButton({
+  gameId,
+  type = "default",
+}: UpdateGameStateButtonProps) {
+  const { checkInLibrary, removeFromLibrary, addGameFromRanking } = useUser();
+
+  const buttonTextContent = checkInLibrary(gameId) ? (
+    <>
+      <span>Remove</span>
+      <HiOutlineMinusSm />
+    </>
+  ) : (
+    <>
+      <span>Add Game</span>
+      <HiOutlinePlusSm />
+    </>
+  );
+
+  function updateGameState() {
+    if (checkInLibrary(gameId)) {
+      removeFromLibrary(gameId);
+    } else {
+      addGameFromRanking(gameId);
+    }
+  }
+
+  if (type === "default")
+    return (
+      <TopRankedButton style="blue" handleClick={updateGameState}>
+        {buttonTextContent}
+      </TopRankedButton>
+    );
+
+  return (
+    <Button
+      transition="medium"
+      additionalStyle={{ minWidth: "20rem" }}
+      style={{ name: "fill", shade: "blue" }}
+      handleClick={updateGameState}
+    >
+      {buttonTextContent}
+    </Button>
+  );
+}
+
+export default UpdateGameStateButton;

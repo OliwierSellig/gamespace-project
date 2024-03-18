@@ -1,11 +1,11 @@
 "use client";
 
-import { useRanking } from "../../contexts/RankingContext";
-import { useGames } from "../../hooks/useGames";
-import LoaderWindow from "../global/LoaderWindow";
+import { useRanking } from "../../../contexts/RankingContext";
+import { useGames } from "../../../hooks/useGames";
+import LoaderWindow from "../../global/LoaderWindow";
 import RankingError from "./RankingError";
-import RowList from "./RowList";
-import TopRanked from "./TopRanked";
+import RowList from "./rowList/RowList";
+import TopRanked from "./topRanked/TopRanked";
 import styles from "./rankedList.module.scss";
 
 type RankedListProps = {

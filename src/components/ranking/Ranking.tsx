@@ -4,8 +4,8 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import { fetchGames } from "../../lib/games";
-import Configurator from "./Configurator";
-import RankedList from "./RankedList";
+import Configurator from "./settings/Configurator";
+import RankedList from "./rankedList/RankedList";
 import { currentDate } from "../../utils/data";
 
 type RankingProps = {

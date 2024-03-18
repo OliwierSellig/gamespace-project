@@ -1,0 +1,38 @@
+.btn {
+  padding: 2.8rem 1.2rem;
+  width: 50%;
+  font-weight: 500;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    stroke: var(--color-light-100);
+    transition: var(--transition-fast);
+  }
+
+  &__white {
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 -4.25em 0 0 var(--color-light-100);
+      color: var(--color-dark-200);
+
+      svg {
+        stroke: var(--color-dark-200);
+      }
+    }
+  }
+
+  &__blue {
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 -4.25em 0 0 var(--color-blue-300);
+    }
+  }
+}

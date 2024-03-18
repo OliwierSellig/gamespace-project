@@ -1,4 +1,4 @@
-import { FetchedGameItem } from "../../utils/types";
+import { FetchedGameItem } from "../../../../../utils/types";
 import RowHeader from "./RowHeader";
 import RowContent from "./RowContent";
 import styles from "./rowItem.module.scss";

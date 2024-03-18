@@ -1,11 +1,13 @@
 import { IoClose } from "react-icons/io5";
-import { FetchedGameItem } from "../../utils/types";
+import { FetchedGameItem } from "../../../../../../utils/types";
 import styles from "./topDetails.module.scss";
-import { HiOutlineDocumentDuplicate, HiOutlinePlus } from "react-icons/hi2";
-import MetacriticScore from "./MetacriticScore";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
+import MetacriticScore from "../../../../locale/MetacriticScore";
 
-import GenreList from "./GenreList";
-import Button from "../global/Button";
+import GenreList from "../../../../locale/GenreList";
+import Button from "../../../../../global/Button";
+import UpdateGameStateButton from "../../../../locale/UpdateGameStateButton";
+import ViewDetailsButton from "../../../../locale/ViewDetailsButton";
 
 type TopDetailsProps = {
   game: FetchedGameItem;
@@ -31,18 +33,8 @@ function TopDetails({ game, closeDetails }: TopDetailsProps) {
         <MetacriticScore score={game.metacritic} />
       </div>
       <nav className={styles.btns}>
-        <Button
-          transition="medium"
-          href={{ url: `/games/${game.id}` }}
-          style={{ name: "fill", shade: "white" }}
-        >
-          <span>Details</span>
-          <HiOutlineDocumentDuplicate />
-        </Button>
-        <Button transition="medium" style={{ name: "fill", shade: "blue" }}>
-          <span>Add Game</span>
-          <HiOutlinePlus />
-        </Button>
+        <ViewDetailsButton gameId={game.id} />
+        <UpdateGameStateButton type="mini" gameId={game.id} />
       </nav>
     </div>
   );

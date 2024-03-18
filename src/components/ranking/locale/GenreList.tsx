@@ -1,4 +1,4 @@
-import { FetchedGameItem } from "../../utils/types";
+import { FetchedGameItem } from "../../../utils/types";
 import styles from "./genreList.module.scss";
 
 type GenreListProps = { game: FetchedGameItem };
