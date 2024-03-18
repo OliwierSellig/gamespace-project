@@ -1,4 +1,4 @@
-import BrowseLayout from "../../components/browse/BrowseLayout";
+import BrowseLayout from "../../components/browse/layout/BrowseLayout";
 
 export const metadata = {
   description:

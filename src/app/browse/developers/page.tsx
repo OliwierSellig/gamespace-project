@@ -1,4 +1,4 @@
-import Developers from "../../../components/browse/Developers";
+import Developers from "../../../components/browse/developers/Developers";
 
 export const metadata = {
   title: "Developers",

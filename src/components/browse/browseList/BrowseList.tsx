@@ -1,8 +1,8 @@
-import { fetchedParentResult } from "../../utils/types";
-import Pagination from "../global/Pagination";
-import BrowseItem from "./BrowseItem";
+import { fetchedParentResult } from "../../../utils/types";
+import Pagination from "../../global/Pagination";
+import BrowseItem from "../browseItem/BrowseItem";
 import styles from "./browseList.module.scss";
-import FetchPageNotFound from "../global/FetchPageNotFound";
+import FetchPageNotFound from "../../global/FetchPageNotFound";
 
 type BrowseListProps = {
   list: fetchedParentResult[];

@@ -1,4 +1,4 @@
-import Genres from "../../../components/browse/Genres";
+import Genres from "../../../components/browse/genres/Genres";
 
 export const metadata = {
   title: "Genres",

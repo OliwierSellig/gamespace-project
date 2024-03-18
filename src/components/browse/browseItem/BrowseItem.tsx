@@ -1,8 +1,8 @@
 import styles from "./browseItem.module.scss";
 import Image from "next/image";
 import notFound from "../../../public/img/not-found.png";
-import Button from "../global/Button";
-import PopularGamesCol from "../global/popularGames/PopularGamesCol";
+import Button from "../../global/Button";
+import PopularGamesCol from "../../global/popularGames/PopularGamesCol";
 
 type BrowseItemProps = {
   cover: string;

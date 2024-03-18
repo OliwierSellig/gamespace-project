@@ -1,4 +1,4 @@
-import Platforms from "../../../components/browse/Platforms";
+import Platforms from "../../../components/browse/platforms/Platforms";
 
 export const metadata = {
   title: "Platforms",

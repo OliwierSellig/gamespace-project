@@ -1,5 +1,5 @@
-import { fetchPlatforms } from "../../lib/platfroms";
-import BrowseList from "./BrowseList";
+import { fetchPlatforms } from "../../../lib/platfroms";
+import BrowseList from "../browseList/BrowseList";
 
 type PlatfromsProps = {
   params: { [key: string]: string };

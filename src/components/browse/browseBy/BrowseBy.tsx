@@ -1,7 +1,7 @@
 "use client";
 
-import { browseByPages } from "../../utils/data";
-import PageNav from "../global/PageNav";
+import { browseByPages } from "../../../utils/data";
+import PageNav from "../../global/PageNav";
 import styles from "./browseBy.module.scss";
 
 function BrowseBy() {

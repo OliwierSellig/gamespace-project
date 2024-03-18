@@ -1,5 +1,5 @@
-import { fetchDevelopers } from "../../lib/developers";
-import BrowseList from "./BrowseList";
+import { fetchDevelopers } from "../../../lib/developers";
+import BrowseList from "../browseList/BrowseList";
 
 type DevelopersProps = {
   params: { [key: string]: string };

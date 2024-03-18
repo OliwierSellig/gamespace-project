@@ -3,11 +3,11 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { ChildrenProp } from "../../utils/types";
-import BrowseBy from "./BrowseBy";
-import { fetchDevelopers } from "../../lib/developers";
-import { fetchPlatforms } from "../../lib/platfroms";
-import { fetchGenres } from "../../lib/genres";
+import { ChildrenProp } from "../../../utils/types";
+import BrowseBy from "../browseBy/BrowseBy";
+import { fetchDevelopers } from "../../../lib/developers";
+import { fetchPlatforms } from "../../../lib/platfroms";
+import { fetchGenres } from "../../../lib/genres";
 
 async function BrowseLayout({ children }: ChildrenProp) {
   const queryClient = new QueryClient();
