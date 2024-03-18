@@ -11,7 +11,7 @@ import DateBox from "./dateBox/DateBox";
 import DateSetter from "./dateSetter/DateSetter";
 import styles from "./dateConfigurator.module.scss";
 import { currentDate } from "../../../../utils/data";
-import SaveButton from "../../SaveButton";
+import SaveButton from "../saveButton/SaveButton";
 
 function DateConfigurator() {
   const { state, yearList, monthList, isBorderDate } = useRanking();

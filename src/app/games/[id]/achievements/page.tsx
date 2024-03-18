@@ -1,4 +1,4 @@
-import AchievementsView from "../../../../components/games/achievements/achievementsPage/AchievementsView";
+import AchievementsView from "../../../../components/games/achievements/achievementsPage/achievementsView/AchievementsView";
 
 export const metadata = {
   title: " - Achievements",

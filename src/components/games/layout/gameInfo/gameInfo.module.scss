@@ -1,0 +1,14 @@
+@import "../../../../scss/animations.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  min-width: 0;
+  padding-top: 12rem;
+  animation: fadeIn 0.4s;
+
+  @media only screen and (max-width: 1200px) {
+    padding-top: 6.4rem;
+  }
+}

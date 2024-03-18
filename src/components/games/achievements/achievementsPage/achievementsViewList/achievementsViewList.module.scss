@@ -1,0 +1,28 @@
+@import "../../../../../scss/animations.scss";
+
+.box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  animation: fadeIn 0.4s;
+
+  & nav {
+    margin-top: auto;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  row-gap: 4.2rem;
+  column-gap: 3.2rem;
+  margin-bottom: 4.2rem;
+  padding: 0 2.4rem;
+
+  & > li {
+    padding-bottom: 1.2rem;
+    border-bottom: 2px solid rgba(#555, 0.6);
+  }
+}

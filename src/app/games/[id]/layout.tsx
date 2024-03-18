@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import GameLayout from "../../../components/games/layout/GameLayout";
+import GameLayout from "../../../components/games/layout/gameLayout/GameLayout";
 import { Metadata } from "next";
 import { fetchGameByID } from "../../../lib/games";
 

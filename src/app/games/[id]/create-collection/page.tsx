@@ -1,4 +1,4 @@
-import CreateCollectionWithGames from "../../../../components/games/collections/CreateCollectionWithGames";
+import CreateCollectionWithGames from "../../../../components/games/collections/createCollectionWithGames/CreateCollectionWithGames";
 
 export const metadata = {
   title: " - Create Collection",

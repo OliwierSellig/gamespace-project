@@ -1,4 +1,4 @@
-import GameReview from "../../../../components/games/review/GameReview";
+import GameReview from "../../../../components/games/review/gameReview/GameReview";
 
 export const metadata = {
   title: " - Review",

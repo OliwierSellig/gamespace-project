@@ -1,0 +1,38 @@
+@import "../../../../scss/animations.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  margin-bottom: 5.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeRight 0.3s;
+}
+
+.back {
+  padding: 0.6rem;
+  border: 2px solid var(--color-light-100);
+  border-radius: 50%;
+  transition: var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-100);
+
+    svg {
+      fill: var(--color-dark-200);
+    }
+  }
+  svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    transition: var(--transition-fast);
+  }
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 4.2rem;
+  text-align: center;
+}
