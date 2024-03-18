@@ -1,8 +1,8 @@
 "use client";
 
-import { CollectionItemType } from "../../../../../utils/types";
-import CollectionNavButton from "./CollectionNavButtonLayout";
-import RemoveCollectionButton from "./RemoveCollectionButton";
+import { CollectionItemType } from "../../../../utils/types";
+import CollectionNavButton from "../collectionNavButton/CollectionNavButtonLayout";
+import RemoveCollectionButton from "../removeCollectionButton/RemoveCollectionButton";
 import styles from "./collectionNav.module.scss";
 import { HiOutlineCog6Tooth } from "react-icons/hi2";
 

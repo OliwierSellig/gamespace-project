@@ -1,6 +1,5 @@
 import { fetchGameByID } from "../../../../lib/games";
-import CollectionsPropertiesBox from "../../../collections/updateCollectionContainer/CollectionsPropertiesBox";
-import UpdateCollectionContainer from "../../../collections/updateCollectionContainer/UpdateCollectionContainer";
+import UpdateCollectionContainer from "../../../global/updateCollectionContainer/updateCollectionContainer/UpdateCollectionContainer";
 
 type CreateCollectionWithGameProps = {
   id: string;
@@ -12,9 +11,10 @@ async function CreateCollectionWithGames({
   const game = await fetchGameByID(parseInt(id));
 
   return (
-    <UpdateCollectionContainer returnDest={`/games/${game.id}`}>
-      <CollectionsPropertiesBox action={{ type: "add", game }} />
-    </UpdateCollectionContainer>
+    <UpdateCollectionContainer
+      action={{ type: "add", game }}
+      returnDest={`/games/${game.id}`}
+    />
   );
 }
 

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styles from "./collectionNavButton.module.scss";
-import { PaddingType } from "../../../../../utils/types";
+import { PaddingType } from "../../../../utils/types";
 import Link from "next/link";
 
 type CollectionNavButtonProps = {

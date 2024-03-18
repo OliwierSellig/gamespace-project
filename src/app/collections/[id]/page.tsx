@@ -1,4 +1,4 @@
-import CollectionView from "../../../components/collections/collectionView/CollectionView";
+import CollectionView from "../../../components/collections/layout/collectionView/CollectionView";
 
 function page({
   params,

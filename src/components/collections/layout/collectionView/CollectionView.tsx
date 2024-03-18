@@ -1,8 +1,8 @@
 "use client";
 
-import { useUser } from "../../../contexts/UserContext";
-import CollectionGames from "./collectionGames/CollectionGames";
-import CollectionInfo from "./collectionInfo/CollectionInfo";
+import { useUser } from "../../../../contexts/UserContext";
+import CollectionGames from "../../games/collectionGames/CollectionGames";
+import CollectionInfo from "../../header/collectionInfo/CollectionInfo";
 import styles from "./collectionView.module.scss";
 
 type CollectionViewProps = {

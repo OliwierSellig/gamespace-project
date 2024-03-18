@@ -3,7 +3,7 @@ import CollectionCardGames from "../collectionCardGames/CollectionCardGames";
 import styles from "./collectionsCard.module.scss";
 import Image from "next/image";
 import Button from "../../../../global/Button";
-import notFound from "../../../../../public/img/not-found.png";
+import notFound from "../../../../../../public/img/not-found.png";
 
 type CollectionsCardProps = {
   title: string;

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./overviewVideo.module.scss";
-import background from "../../../../../public/img/game-data-background.jpg";
+import background from "../../../../../../public/img/game-data-background.jpg";
 
 function OverviewVideo() {
   return (

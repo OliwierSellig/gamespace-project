@@ -1,4 +1,4 @@
-import { dateTransform } from "../../../../../../utils/functions";
+import { dateTransform } from "../../../../utils/functions";
 import styles from "./collectionAuthor.module.scss";
 
 type CollectionAuthorProps = {

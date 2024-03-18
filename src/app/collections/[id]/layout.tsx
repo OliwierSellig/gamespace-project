@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import CollectionViewLayout from "../../../components/collections/collectionView/CollectionViewLayout";
+import CollectionViewLayout from "../../../components/collections/layout/collectionViewLayout/CollectionViewLayout";
 
 export const metadata = {
   title: "Personal Collection",

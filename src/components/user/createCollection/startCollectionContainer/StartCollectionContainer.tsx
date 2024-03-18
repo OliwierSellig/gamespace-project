@@ -1,11 +1,11 @@
-import CollectionsPropertiesBox from "../../../collections/updateCollectionContainer/CollectionsPropertiesBox";
-import UpdateCollectionContainer from "../../../collections/updateCollectionContainer/UpdateCollectionContainer";
+import UpdateCollectionContainer from "../../../global/updateCollectionContainer/updateCollectionContainer/UpdateCollectionContainer";
 
 function StartCollectionContainer() {
   return (
-    <UpdateCollectionContainer returnDest="/user/collections">
-      <CollectionsPropertiesBox action={{ type: "add" }} />
-    </UpdateCollectionContainer>
+    <UpdateCollectionContainer
+      action={{ type: "add" }}
+      returnDest="/user/collections"
+    />
   );
 }
 

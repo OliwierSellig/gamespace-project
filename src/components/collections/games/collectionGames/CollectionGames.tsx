@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import CollectionGamesNav from "./CollectionGamesNav";
+import CollectionGamesNav from "../collectionGamesNav/CollectionGamesNav";
 import { useUser } from "../../../../contexts/UserContext";
-import CollectionGamesList from "./CollectionGamesList";
+import CollectionGamesList from "../collectionGamesList/CollectionGamesList";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import EmptyUserList from "../../../user/locale/emptyUserList/EmptyUserList";
 

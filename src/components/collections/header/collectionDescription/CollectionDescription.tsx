@@ -1,4 +1,4 @@
-import { ChildrenProp } from "../../../../../utils/types";
+import { ChildrenProp } from "../../../../utils/types";
 import styles from "./collectionDescription.module.scss";
 
 function CollectionDescription({ children }: ChildrenProp) {
