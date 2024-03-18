@@ -79,12 +79,12 @@ export const devList = [
 ];
 
 export const platforms = [
-  { name: "Windows", icon: SiWindows, id: "4" },
-  { name: "PlayStation", icon: SiPlaystation, id: "187" },
-  { name: "Xbox", icon: SiXbox, id: "1" },
-  { name: "Ios", icon: SiApple, id: "3" },
-  { name: "Android", icon: SiAndroid, id: "21" },
-  { name: "Nintendo", icon: SiNintendoswitch, id: "7" },
+  { name: "Windows", icon: SiWindows, id: 4 },
+  { name: "PlayStation", icon: SiPlaystation, id: 187 },
+  { name: "Xbox", icon: SiXbox, id: 1 },
+  { name: "Ios", icon: SiApple, id: 3 },
+  { name: "Android", icon: SiAndroid, id: 21 },
+  { name: "Nintendo", icon: SiNintendoswitch, id: 7 },
 ];
 
 export const platformsIcons = [

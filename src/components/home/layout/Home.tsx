@@ -1,11 +1,11 @@
-import { fetchGames } from "../../lib/games";
-import { currentDate } from "../../utils/data";
-import Favourites from "./Favourites";
-import Hero from "./Hero";
-import PlatformsHome from "./PlatformsHome";
-import SliderHome from "./SliderHome";
-import GameCard from "../global/GameCard";
-import { ImageSizesType } from "../../utils/types";
+import { fetchGames } from "../../../lib/games";
+import { currentDate } from "../../../utils/data";
+import Favourites from "../favourites/Favourites";
+import Hero from "../hero/Hero";
+import PlatformsHome from "../platformsHome/PlatformsHome";
+import SliderHome from "../sliderHome/SliderHome";
+import GameCard from "../../global/GameCard";
+import { ImageSizesType } from "../../../utils/types";
 
 async function Home() {
   const trending = await fetchGames({
