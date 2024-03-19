@@ -4,7 +4,7 @@ import { UserProvider } from "../contexts/UserContext";
 import Providers from "../lib/QueryProvider";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
-import GlobalLayout from "../components/global/GlobalLayout";
+import GlobalLayout from "../components/global/layout/globalLayout/GlobalLayout";
 
 export const metadata = {
   title: {

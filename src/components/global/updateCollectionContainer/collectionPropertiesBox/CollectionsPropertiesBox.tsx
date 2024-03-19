@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import Button from "../../Button";
+import Button from "../../button/Button";
 import styles from "./collectionPropertiesBox.module.scss";
-import UserInput from "../../UserInput";
+import UserInput from "../../userInput/UserInput";
 import { useUser } from "../../../../contexts/UserContext";
 import { useRouter } from "next/navigation";
 import { CollectionItemType, SingleGameItem } from "../../../../utils/types";

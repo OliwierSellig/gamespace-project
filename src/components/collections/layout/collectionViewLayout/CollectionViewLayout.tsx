@@ -2,9 +2,9 @@
 
 import { ReactNode } from "react";
 import { useUser } from "../../../../contexts/UserContext";
-import PageNotFound from "../../../global/PageNotFound";
+import PageNotFound from "../../../global/pageNotFound/PageNotFound";
 import notFound from "../../../../../public/img/not-found.png";
-import GameBackgroundLayout from "../../../global/GameBackgroundLayout";
+import GameBackgroundLayout from "../../../global/gameBackgroundLayout/GameBackgroundLayout";
 
 type CollectionViewLayoutProps = {
   id: string;

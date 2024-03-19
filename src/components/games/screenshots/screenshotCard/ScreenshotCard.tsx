@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { SingleScreenshotItem } from "../../../../utils/types";
-import Modal from "../../../global/Modal";
+import Modal from "../../../global/modal/Modal";
 import ScreenshotView from "../screenshotView/ScreenshotView";
 import styles from "./screenshotCard.module.scss";
 import notFound from "../../../../../public/img/not-found.png";

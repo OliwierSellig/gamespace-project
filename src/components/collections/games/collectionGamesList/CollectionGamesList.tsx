@@ -1,5 +1,5 @@
 import { ActionType, BasicItemType } from "../../../../utils/types";
-import Pagination from "../../../global/Pagination";
+import Pagination from "../../../global/pagination/Pagination";
 import EmptyUserList from "../../../user/locale/emptyUserList/EmptyUserList";
 import GameLibraryItem from "../../../user/locale/gameLibraryItem/GameLibraryItem";
 import UserGamesList from "../../../user/locale/userGamesList/UserGamesList";

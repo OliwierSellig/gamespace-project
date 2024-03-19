@@ -1,6 +1,6 @@
 import { AchievementResult } from "../../../../../utils/types";
-import FetchPageNotFound from "../../../../global/FetchPageNotFound";
-import Pagination from "../../../../global/Pagination";
+import FetchPageNotFound from "../../../../global/fetchPageNotFound/FetchPageNotFound";
+import Pagination from "../../../../global/pagination/Pagination";
 import AchievementsItem from "../../achievementsItem/AchievementsItem";
 import styles from "./achievementsViewList.module.scss";
 

@@ -1,5 +1,5 @@
 import { ReviewType } from "../../../../utils/types";
-import Pagination from "../../../global/Pagination";
+import Pagination from "../../../global/pagination/Pagination";
 import EmptyUserList from "../../locale/emptyUserList/EmptyUserList";
 import ReviewItem from "../../locale/reviewItem/ReviewItem";
 import styles from "./reviewsList.module.scss";

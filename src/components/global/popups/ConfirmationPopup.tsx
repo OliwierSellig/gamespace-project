@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Button from "../Button";
+import Button from "../button/Button";
 import styles from "./confirmationPopup.module.scss";
 import NoBlurPopup from "./NoBlurPopup";
 

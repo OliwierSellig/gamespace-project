@@ -1,6 +1,6 @@
 import { userNavPages } from "../../../utils/data";
 import { ChildrenProp } from "../../../utils/types";
-import PagesNav from "../../global/PageNav";
+import PagesNav from "../../global/pageNav/PageNav";
 import ProfileOptions from "./ProfileOptions";
 import styles from "./userContainer.module.scss";
 

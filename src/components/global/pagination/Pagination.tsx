@@ -3,7 +3,7 @@
 import styles from "./pagination.module.scss";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
-import { setPage } from "../../utils/functions";
+import { setPage } from "../../../utils/functions";
 
 type PaginationProps = {
   currentPage: number;

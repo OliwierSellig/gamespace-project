@@ -4,7 +4,7 @@ import Favourites from "../favourites/Favourites";
 import Hero from "../hero/Hero";
 import PlatformsHome from "../platformsHome/PlatformsHome";
 import SliderHome from "../sliderHome/SliderHome";
-import GameCard from "../../global/GameCard";
+import GameCard from "../../global/gameCard/GameCard";
 import { ImageSizesType } from "../../../utils/types";
 
 async function Home() {

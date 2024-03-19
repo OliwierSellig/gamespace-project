@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Button from "../../../global/Button";
+import Button from "../../../global/button/Button";
 import styles from "./emptyUserList.module.scss";
 
 type EmptyUserListProps = { children?: ReactNode };

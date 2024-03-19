@@ -1,4 +1,4 @@
-import SwiperComponent from "../../../../global/SwiperComponent";
+import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
 import CollectionsGamePreviewCard from "../collectionsGamePreviewCard/CollectionsGamePreviewCard";
 import EmptyGameCard from "../emptyGameCard/EmptyGameCard";
 import styles from "./collectionCardGames.module.scss";

@@ -7,8 +7,8 @@ import {
   HiOutlineCog6Tooth,
 } from "react-icons/hi2";
 import { FaRegUser } from "react-icons/fa";
-import user from "../../../public/img/user.webp";
-import Logo from "./Logo";
+import user from "../../../../../public/img/user.webp";
+import Logo from "../../logo/Logo";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import Image from "next/image";

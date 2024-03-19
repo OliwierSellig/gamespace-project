@@ -2,7 +2,7 @@
 
 import { useRanking } from "../../../contexts/RankingContext";
 import { useGames } from "../../../hooks/useGames";
-import LoaderWindow from "../../global/LoaderWindow";
+import LoaderWindow from "../../global/loading/loaderWindow/LoaderWindow";
 import RankingError from "./RankingError";
 import RowList from "./rowList/RowList";
 import TopRanked from "./topRanked/TopRanked";

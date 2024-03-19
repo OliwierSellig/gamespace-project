@@ -3,7 +3,7 @@
 import { useUser } from "../../../../contexts/UserContext";
 import { SingleGameItem } from "../../../../utils/types";
 import { HiOutlinePlusCircle, HiOutlineMinusCircle } from "react-icons/hi2";
-import Button from "../../../global/Button";
+import Button from "../../../global/button/Button";
 
 type UpdateLibraryButtonProps = {
   game: SingleGameItem;

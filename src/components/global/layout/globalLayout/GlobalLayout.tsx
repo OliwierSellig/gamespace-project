@@ -1,13 +1,14 @@
-import { ChildrenProp } from "../../utils/types";
-import Footer from "./Footer";
-import Header from "./Header";
+import { ChildrenProp } from "../../../../utils/types";
+import Footer from "../footer/Footer";
+import Header from "../header/Header";
 import styles from "./globalLayout.module.scss";
 
 function GlobalLayout({ children }: ChildrenProp) {
   return (
     <div className={styles.container}>
       <Header />
-      <main className={styles.main}>{children}</main> <Footer />
+      <main className={styles.main}>{children}</main>
+      <Footer />
     </div>
   );
 }

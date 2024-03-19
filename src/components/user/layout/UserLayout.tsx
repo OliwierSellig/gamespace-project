@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import GameBackgroundLayout from "../../global/GameBackgroundLayout";
+import GameBackgroundLayout from "../../global/gameBackgroundLayout/GameBackgroundLayout";
 import bg from "../../../../public/img/user-background.jpg";
 
 type UserLayoutProps = {

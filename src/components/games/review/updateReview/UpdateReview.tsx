@@ -7,7 +7,7 @@ import CommonRatingList from "../commonRatingList/CommonRatingList";
 import RangeBar from "../rangeBar/RangeBar";
 import ReviewButtons from "../reviewButtons/ReviewButtons";
 import styles from "./updateReview.module.scss";
-import UserInput from "../../../global/UserInput";
+import UserInput from "../../../global/userInput/UserInput";
 
 type UpdateReviewProps = {
   game: SingleGameItem;

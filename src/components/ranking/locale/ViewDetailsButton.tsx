@@ -1,5 +1,5 @@
 import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
-import Button from "../../global/Button";
+import Button from "../../global/button/Button";
 
 type ViewDetailsButtonProps = { gameId: number };
 

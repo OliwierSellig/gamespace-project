@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./yearsItem.module.scss";
 import notFound from "../../../../../../public/img/not-found.png";
 import { LibraryItemType } from "../../../../../utils/types";
-import Button from "../../../../global/Button";
+import Button from "../../../../global/button/Button";
 import PopularGamesCol from "../../../../global/popularGames/PopularGamesCol";
 
 type YearsItemProps = {

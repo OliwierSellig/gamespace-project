@@ -1,4 +1,4 @@
-import PageNotFound from "../components/global/PageNotFound";
+import PageNotFound from "../components/global/pageNotFound/PageNotFound";
 
 function NotFoundPage() {
   return <PageNotFound />;

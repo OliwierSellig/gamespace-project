@@ -4,7 +4,7 @@ import { useUser } from "../../../../contexts/UserContext";
 import { SingleGameItem } from "../../../../utils/types";
 import { HiOutlineBookmark, HiOutlineBookmarkSlash } from "react-icons/hi2";
 import { IoHeartDislikeOutline, IoHeartOutline } from "react-icons/io5";
-import Button from "../../../global/Button";
+import Button from "../../../global/button/Button";
 import styles from "./updateWishlistFavouritesButton.module.scss";
 
 type UpdateWishlistFavouritesButtonProps = {

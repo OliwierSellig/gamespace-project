@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import { useUser } from "../../../contexts/UserContext";
-import Modal from "../Modal";
+import Modal from "../modal/Modal";
 import ConfirmationPopup from "../popups/ConfirmationPopup";
 
 type OpenDeleteReviewConfirmationProps = { children: ReactNode; id: number };

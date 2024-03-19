@@ -1,5 +1,5 @@
 import { ChildrenProp } from "../../../../../utils/types";
-import Button from "../../../../global/Button";
+import Button from "../../../../global/button/Button";
 import styles from "./emptyCollections.module.scss";
 
 function EmptyCollections({ children }: ChildrenProp) {

@@ -1,4 +1,4 @@
-import Button from "../../../../global/Button";
+import Button from "../../../../global/button/Button";
 import styles from "./emptyRecentGamesList.module.scss";
 
 function EmptyRecentGamesList() {

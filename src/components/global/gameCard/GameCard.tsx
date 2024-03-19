@@ -1,10 +1,10 @@
 import Link from "next/link";
 import styles from "./gameCard.module.scss";
 import Image from "next/image";
-import { ChildrenProp, ImageSizesType } from "../../utils/types";
+import { ChildrenProp, ImageSizesType } from "../../../utils/types";
 import { ReactNode } from "react";
-import noImage from "../../../public/img/not-found.png";
-import { getImageSizes } from "../../utils/functions";
+import notFound from "../../../../public/img/not-found.png";
+import { getImageSizes } from "../../../utils/functions";
 
 type GameCardProps = {
   children?: ReactNode;
@@ -34,7 +34,7 @@ function GameCard({
       <Image
         className={styles.background}
         sizes={sizes}
-        src={image || noImage}
+        src={image || notFound}
         alt={alt || ""}
         fill
         draggable={false}

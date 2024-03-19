@@ -2,7 +2,7 @@
 
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useSearch } from "../../../contexts/SearchContex";
-import SearchInput from "../../global/SearchInput";
+import SearchInput from "../searchInput/SearchInput";
 import { setPage } from "../../../utils/functions";
 
 function SearchQuery() {

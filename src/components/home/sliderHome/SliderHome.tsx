@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import Slider from "../../global/Slider";
+import Slider from "../../global/slider/Slider";
 import styles from "./siderHome.module.scss";
 import SectionHeading from "../layout/SectionHeading";
 

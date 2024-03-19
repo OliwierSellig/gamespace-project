@@ -1,7 +1,7 @@
 "use client";
 
 import { HiOutlinePencilSquare } from "react-icons/hi2";
-import Button from "../../../global/Button";
+import Button from "../../../global/button/Button";
 import { useUser } from "../../../../contexts/UserContext";
 import { SingleGameItem } from "../../../../utils/types";
 

@@ -1,7 +1,7 @@
 import styles from "./browseItem.module.scss";
 import Image from "next/image";
-import notFound from "../../../public/img/not-found.png";
-import Button from "../../global/Button";
+import notFound from "../../../../public/img/not-found.png";
+import Button from "../../global/button/Button";
 import PopularGamesCol from "../../global/popularGames/PopularGamesCol";
 
 type BrowseItemProps = {

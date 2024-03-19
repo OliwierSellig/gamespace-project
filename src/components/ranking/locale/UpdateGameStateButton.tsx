@@ -1,7 +1,7 @@
 import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 import TopRankedButton from "../rankedList/topRanked/topRankedCard/topRankedButtons/TopRankedButton";
 import { useUser } from "../../../contexts/UserContext";
-import Button from "../../global/Button";
+import Button from "../../global/button/Button";
 
 type UpdateGameStateButtonProps = { gameId: number; type?: "mini" | "default" };
 

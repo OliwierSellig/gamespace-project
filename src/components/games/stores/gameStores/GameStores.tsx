@@ -1,6 +1,6 @@
 import { SingleGameItem } from "../../../../utils/types";
 import styles from "./gameStores.module.scss";
-import Button from "../../../global/Button";
+import Button from "../../../global/button/Button";
 
 type GameStoresProps = {
   game: SingleGameItem;

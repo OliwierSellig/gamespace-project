@@ -1,4 +1,4 @@
-import Button from "../../../../global/Button";
+import Button from "../../../../global/button/Button";
 import DataItem from "../dataItem/DataItem";
 import EmptyDataCol from "../emptyDataCol/EmptyDataCol";
 import styles from "./dataCol.module.scss";

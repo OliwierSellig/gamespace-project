@@ -1,7 +1,7 @@
 "use client";
 
 import { SingleGameItem } from "../../../../utils/types";
-import Modal from "../../../global/Modal";
+import Modal from "../../../global/modal/Modal";
 import FullDescription from "../fullDescription/FullDescription";
 import styles from "./readMore.module.scss";
 

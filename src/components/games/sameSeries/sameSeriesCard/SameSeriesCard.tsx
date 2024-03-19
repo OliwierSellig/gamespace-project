@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./sameSeriesCard.module.scss";
 import notFound from "../../../../../public/img/not-found.png";
 import { FetchedGameItem } from "../../../../utils/types";
-import Button from "../../../global/Button";
+import Button from "../../../global/button/Button";
 
 type SameSeriesCard = {
   game: FetchedGameItem;

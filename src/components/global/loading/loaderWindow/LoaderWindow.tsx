@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Loader from "./Loader";
+import Loader from "../loader/Loader";
 import styles from "./loaderWindow.module.scss";
 
 type LoaderWindowProps = {

@@ -1,4 +1,4 @@
-import OrderByBtn from "../../global/OrderByBtn";
+import OrderByBtn from "../../global/orderByBtn/OrderByBtn";
 import Keyword from "../keyword/Keyword";
 import SearchQuery from "../searchQuery/SearchQuery";
 import styles from "./searchHeader.module.scss";

@@ -2,7 +2,7 @@ import { SingleScreenshotItem } from "../../../../utils/types";
 import styles from "./screenshotView.module.scss";
 import Image from "next/image";
 import notFound from "../../../../../public/img/not-found.png";
-import SwiperComponent from "../../../global/SwiperComponent";
+import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
 
 type ScreenshotViewProps = {
   currentScreenshot: number;

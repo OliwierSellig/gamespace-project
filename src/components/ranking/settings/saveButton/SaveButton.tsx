@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { dateType } from "../../../../utils/types";
 import { useRanking } from "../../../../contexts/RankingContext";
-import Button from "../../../global/Button";
+import Button from "../../../global/button/Button";
 import toast from "react-hot-toast";
 
 type SaveButtonProps = {

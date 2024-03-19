@@ -1,6 +1,6 @@
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import { LibraryItemType } from "../../../../../utils/types";
-import SwiperComponent from "../../../../global/SwiperComponent";
+import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
 import GameLibraryItem from "../../../locale/gameLibraryItem/GameLibraryItem";
 import { useUser } from "../../../../../contexts/UserContext";
 import EmptyUserSwiperItem from "../../../locale/emptyUserSliderItem/EmptyYearItem";

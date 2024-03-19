@@ -2,7 +2,7 @@ import { BasicItemType } from "../../../../../utils/types";
 import CollectionCardGames from "../collectionCardGames/CollectionCardGames";
 import styles from "./collectionsCard.module.scss";
 import Image from "next/image";
-import Button from "../../../../global/Button";
+import Button from "../../../../global/button/Button";
 import notFound from "../../../../../../public/img/not-found.png";
 
 type CollectionsCardProps = {

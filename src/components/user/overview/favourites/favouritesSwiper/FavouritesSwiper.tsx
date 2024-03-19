@@ -1,7 +1,7 @@
 "use client";
 
 import { useUser } from "../../../../../contexts/UserContext";
-import SwiperComponent from "../../../../global/SwiperComponent";
+import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
 import GameLibraryItem from "../../../locale/gameLibraryItem/GameLibraryItem";
 import EmptyUserSwiperItem from "../../../locale/emptyUserSliderItem/EmptyYearItem";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";

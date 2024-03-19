@@ -1,5 +1,5 @@
 import { CollectionItemType } from "../../../../../utils/types";
-import Pagination from "../../../../global/Pagination";
+import Pagination from "../../../../global/pagination/Pagination";
 import EmptyCollections from "../emptyCollections/EmptyCollections";
 import CollectionsCard from "../../card/collectionCard/CollectionsCard";
 import styles from "./collectionsList.module.scss";

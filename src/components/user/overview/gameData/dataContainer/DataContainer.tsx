@@ -1,6 +1,6 @@
 "use client";
 
-import SwiperComponent from "../../../../global/SwiperComponent";
+import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
 import OverviewSectionContainer from "../../layout/overviewSectionContainer/OverviewSectionContainer";
 import OverviewVideo from "../overviewVideo/OverviewVideo";
 import DataCol from "../dataCol/DataCol";
