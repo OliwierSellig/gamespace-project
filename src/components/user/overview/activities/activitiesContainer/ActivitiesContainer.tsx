@@ -2,8 +2,8 @@
 
 import { useUser } from "../../../../../contexts/UserContext";
 import ActivitiesList from "../activitiesList/ActivitiesList";
-import styles from "./activitiesContainer.module.scss";
 import FilterActivitiesOpen from "../filterActivitiesOpen/FilterActivitiesOpen";
+import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 
 type ActivitiesContainerProps = {
   filterBy: string;
@@ -14,10 +14,19 @@ function ActivitiesContainer({ filterBy }: ActivitiesContainerProps) {
 
   const activities = filterActivities(filterBy);
   return (
-    <div className={styles.container}>
+    <UserBoxLayout
+      padding={{ top: 2.4, left: 3.2, right: 3.2, bottom: 4.8 }}
+      additionalStyles={{
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        height: "40rem",
+        overflow: "hidden",
+      }}
+    >
       <FilterActivitiesOpen filterBy={filterBy} />
       <ActivitiesList list={activities} />
-    </div>
+    </UserBoxLayout>
   );
 }
 

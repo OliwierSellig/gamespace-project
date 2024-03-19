@@ -1,6 +1,7 @@
 "use client";
 
 import { useUser } from "../../../../../contexts/UserContext";
+import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 import UserStatsItem from "../userStatsItem/UserStatsItem";
 import styles from "./userStats.module.scss";
 
@@ -14,28 +15,30 @@ function UserStats() {
   ];
 
   return (
-    <ul className={styles.container}>
-      {userStatsItems.map((item, i) =>
-        i === 0 ? (
-          <UserStatsItem
-            key={item.name}
-            name={item.name}
-            count={item.count}
-            color={item.color}
-          />
-        ) : (
-          <>
-            <li className={styles.line} />
+    <UserBoxLayout padding={{ top: 3.2, left: 4.8, right: 4.8, bottom: 3.2 }}>
+      <ul className={styles.container}>
+        {userStatsItems.map((item, i) =>
+          i === 0 ? (
             <UserStatsItem
               key={item.name}
               name={item.name}
               count={item.count}
               color={item.color}
             />
-          </>
-        )
-      )}
-    </ul>
+          ) : (
+            <>
+              <li className={styles.line} />
+              <UserStatsItem
+                key={item.name}
+                name={item.name}
+                count={item.count}
+                color={item.color}
+              />
+            </>
+          )
+        )}
+      </ul>
+    </UserBoxLayout>
   );
 }
 
