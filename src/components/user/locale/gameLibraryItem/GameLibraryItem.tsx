@@ -7,8 +7,8 @@ import { IconType } from "react-icons";
 import { HiMiniArrowRight, HiMiniBookmarkSlash } from "react-icons/hi2";
 
 import Link from "next/link";
-import { ImageSizesType } from "../../../../utils/types";
-import { getImageSizes } from "../../../../utils/functions";
+import { ImageSizesType } from "../../../../utils/types/types";
+import { getImageSizes } from "../../../../utils/functions/functions";
 
 type GameLibraryProps = {
   name: string;

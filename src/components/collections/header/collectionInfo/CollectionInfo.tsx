@@ -3,7 +3,7 @@ import CollectionHeader from "../collectionHeader/CollectionHeader";
 import CollectionNav from "../collectionNav/CollectionNav";
 import styles from "./collectionInfo.module.scss";
 import CollectionReturnButton from "../../layout/collectionReturnButton/CollectionReturnButton";
-import { CollectionItemType } from "../../../../utils/types";
+import { CollectionItemType } from "../../../../utils/types/types";
 
 type CollectionInfoProps = {
   collection: CollectionItemType;

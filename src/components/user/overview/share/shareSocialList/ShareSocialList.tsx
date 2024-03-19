@@ -1,4 +1,4 @@
-import { getSocialsByOrder } from "../../../../../utils/functions";
+import { getSocialsByOrder } from "../../../../../utils/functions/functions";
 import ShareSocialItem from "../shareSocialItem/ShareSocialItem";
 import styles from "./shareSocialList.module.scss";
 

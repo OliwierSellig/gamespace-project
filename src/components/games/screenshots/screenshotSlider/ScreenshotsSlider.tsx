@@ -1,4 +1,4 @@
-import { SingleScreenshotItem } from "../../../../utils/types";
+import { SingleScreenshotItem } from "../../../../utils/types/types";
 import Slider from "../../../global/slider/Slider";
 import GameSectionHeading from "../../layout/gameSectionHeading/GameSectionHeading";
 import ScreenshotCard from "../screenshotCard/ScreenshotCard";

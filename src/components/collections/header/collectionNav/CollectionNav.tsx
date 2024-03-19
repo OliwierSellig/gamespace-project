@@ -1,6 +1,6 @@
 "use client";
 
-import { CollectionItemType } from "../../../../utils/types";
+import { CollectionItemType } from "../../../../utils/types/types";
 import CollectionNavButton from "../collectionNavButton/CollectionNavButtonLayout";
 import RemoveCollectionButton from "../removeCollectionButton/RemoveCollectionButton";
 import styles from "./collectionNav.module.scss";

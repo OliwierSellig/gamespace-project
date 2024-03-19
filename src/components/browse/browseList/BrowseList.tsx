@@ -1,4 +1,4 @@
-import { fetchedParentResult } from "../../../utils/types";
+import { fetchedParentResult } from "../../../utils/types/types";
 import Pagination from "../../global/pagination/Pagination";
 import BrowseItem from "../browseItem/BrowseItem";
 import styles from "./browseList.module.scss";

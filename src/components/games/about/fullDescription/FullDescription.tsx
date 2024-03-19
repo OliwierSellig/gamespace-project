@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./fullDescription.module.scss";
 import notFound from "./../../../../../public/img/not-found.png";
-import { SingleGameItem } from "../../../../utils/types";
+import { SingleGameItem } from "../../../../utils/types/types";
 import UpdateLibraryButton from "../../actions/updateLibraryButton/UpdateLibraryButton";
 import UpdateWishlistFavouritesButton from "../../actions/updateWishlistFavouritesButton/UpdateWishlistFavouritesButton";
 

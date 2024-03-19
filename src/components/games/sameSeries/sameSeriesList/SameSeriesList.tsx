@@ -1,7 +1,7 @@
 import styles from "./sameSeriesList.module.scss";
 import SameSeriesCard from "../sameSeriesCard/SameSeriesCard";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
-import { FetchedGameItem } from "../../../../utils/types";
+import { FetchedGameItem } from "../../../../utils/types/types";
 
 type SameSeriesListProps = {
   list: FetchedGameItem[];

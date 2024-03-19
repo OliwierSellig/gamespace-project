@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./gameHeader.module.scss";
-import { SingleGameItem } from "../../../../utils/types";
+import { SingleGameItem } from "../../../../utils/types/types";
 import notFound from "./../../../../../public/img/not-found.png";
 
 type GameHeaderProps = { game: SingleGameItem };

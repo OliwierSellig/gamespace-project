@@ -1,4 +1,4 @@
-import { GameDeveloperType } from "../../../../../utils/types";
+import { GameDeveloperType } from "../../../../../utils/types/types";
 import EmptyDetails from "../../overview/emptyDetails/EmptyDetails";
 import DetailsContentText from "../../overview/detailsConentText/DetailsContentText";
 

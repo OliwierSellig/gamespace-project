@@ -1,4 +1,4 @@
-import { ReviewType } from "../../../../utils/types";
+import { ReviewType } from "../../../../utils/types/types";
 import Pagination from "../../../global/pagination/Pagination";
 import EmptyUserList from "../../locale/emptyUserList/EmptyUserList";
 import ReviewItem from "../../locale/reviewItem/ReviewItem";

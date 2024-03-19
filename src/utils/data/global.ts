@@ -1,6 +1,6 @@
 import { FaInstagram, FaFacebookF, FaYoutube, FaDiscord } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { SocialPlatformType } from "./../types";
+import { SocialPlatformType } from "../types/types";
 
 export const API_KEY = "041a371c18934671bc7c7df826093657";
 

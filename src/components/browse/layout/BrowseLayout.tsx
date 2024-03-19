@@ -3,7 +3,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { ChildrenProp } from "../../../utils/types";
+import { ChildrenProp } from "../../../utils/types/types";
 import BrowseBy from "../browseBy/BrowseBy";
 import { fetchDevelopers } from "../../../lib/developers";
 import { fetchPlatforms } from "../../../lib/platfroms";

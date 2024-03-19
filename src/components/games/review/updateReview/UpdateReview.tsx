@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useUser } from "../../../../contexts/UserContext";
-import { SingleGameItem } from "../../../../utils/types";
+import { SingleGameItem } from "../../../../utils/types/types";
 import CommonRatingList from "../commonRatingList/CommonRatingList";
 import RangeBar from "../rangeBar/RangeBar";
 import ReviewButtons from "../reviewButtons/ReviewButtons";

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchedParentProps } from "../utils/types";
+import { fetchedParentProps } from "../utils/types/types";
 import { fetchPlatforms } from "../lib/platfroms";
 
 export function usePlatforms(props: fetchedParentProps) {

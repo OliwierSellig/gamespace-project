@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FetchedGameItem } from "../../../../utils/types";
+import { FetchedGameItem } from "../../../../utils/types/types";
 import RowItem from "./rowItem/RowItem";
 import styles from "./rowList.module.scss";
 

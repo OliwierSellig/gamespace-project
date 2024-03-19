@@ -3,7 +3,7 @@ import UserGamesListNav from "../../locale/userGamesListNav/UserGamesListNav";
 import UserSelectContainer from "../../locale/userSelectContainer/UserSelectContainer";
 import UserSelector from "../../locale/userSelectContainer/UserSelector";
 import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
-import { changeToUrlSlug } from "../../../../utils/functions";
+import { changeToUrlSlug } from "../../../../utils/functions/functions";
 import { reviewOrderList } from "../../../../utils/data/user";
 
 type ReviewsNavigationProps = {

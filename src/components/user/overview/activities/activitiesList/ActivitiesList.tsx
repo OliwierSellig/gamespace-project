@@ -1,4 +1,4 @@
-import { ActivityItem } from "../../../../../utils/types";
+import { ActivityItem } from "../../../../../utils/types/types";
 import ActivityLogItem from "../activityLogItem/ActivityLogItem";
 import EmptyActivities from "../emptyActivities/EmptyActivities";
 import styles from "./activitiesList.module.scss";

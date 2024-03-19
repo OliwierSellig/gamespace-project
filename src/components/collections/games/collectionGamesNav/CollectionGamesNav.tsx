@@ -3,7 +3,7 @@ import UserGamesListNav from "../../../user/locale/userGamesListNav/UserGamesLis
 import UserSearchInput from "../../../user/locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../../user/locale/userSelectContainer/UserSelectContainer";
 import UserSelector from "../../../user/locale/userSelectContainer/UserSelector";
-import { changeToUrlSlug } from "../../../../utils/functions";
+import { changeToUrlSlug } from "../../../../utils/functions/functions";
 import { orderList } from "../../../../utils/data/global";
 
 type CollectionGamesNavProps = {

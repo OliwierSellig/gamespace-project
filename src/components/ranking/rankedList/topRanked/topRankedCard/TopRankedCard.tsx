@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FetchedGameItem } from "../../../../../utils/types";
+import { FetchedGameItem } from "../../../../../utils/types/types";
 import { HiOutlineTrophy } from "react-icons/hi2";
 import styles from "./topRankedCard.module.scss";
 import { useState } from "react";

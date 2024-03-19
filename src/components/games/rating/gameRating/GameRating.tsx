@@ -1,5 +1,5 @@
-import { upperCaseFirstLetter } from "../../../../utils/functions";
-import { SingleGameItem } from "../../../../utils/types";
+import { upperCaseFirstLetter } from "../../../../utils/functions/functions";
+import { SingleGameItem } from "../../../../utils/types/types";
 import GameRatingItem from "../gameRatingItem/GameRatingItem";
 import styles from "./gameRating.module.scss";
 

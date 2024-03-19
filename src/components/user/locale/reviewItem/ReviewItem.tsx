@@ -3,7 +3,7 @@
 import Image from "next/image";
 import styles from "./reviewItem.module.scss";
 import Button from "../../../global/button/Button";
-import { dateTransform } from "../../../../utils/functions";
+import { dateTransform } from "../../../../utils/functions/functions";
 import OpenDeleteReviewConfirmation from "../../../global/deleteReview/OpenDeleteReviewConfirmation";
 
 type ReviewItemProps = {

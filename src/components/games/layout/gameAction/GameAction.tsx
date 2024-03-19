@@ -1,5 +1,5 @@
 import styles from "./gameAction.module.scss";
-import { SingleGameItem } from "../../../../utils/types";
+import { SingleGameItem } from "../../../../utils/types/types";
 import GameHeader from "../../header/gameHeader/GameHeader";
 import GameActionButtons from "../../actions/gameActionButtons/GameActionButtons";
 import GameStores from "../../stores/gameStores/GameStores";

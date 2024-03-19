@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchGamesProps } from "../utils/types";
+import { fetchGamesProps } from "../utils/types/types";
 import { fetchGames } from "../lib/games";
 
 export function useGames(props: fetchGamesProps) {

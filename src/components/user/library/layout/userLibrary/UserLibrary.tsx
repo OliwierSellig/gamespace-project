@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { filterList } from "../../../../../utils/data/user";
-import { changeToUrlSlug } from "../../../../../utils/functions";
+import { changeToUrlSlug } from "../../../../../utils/functions/functions";
 import AllGamesLibraryList from "../../allGames/allGamesLibrary/AllGamesLibrary";
 import LibraryNavigation from "../libraryNavigation/LibraryNavigation";
 import { useUser } from "../../../../../contexts/UserContext";

@@ -3,7 +3,7 @@ import styles from "./filterActivitiesOpen.module.scss";
 import { HiMiniAdjustmentsHorizontal } from "react-icons/hi2";
 import FilterActivitiesPopup from "../filterActivitiesPopup/FilterActivitiesPopup";
 import { filterActivities } from "../../../../../utils/data/user";
-import { changeToUrlSlug } from "../../../../../utils/functions";
+import { changeToUrlSlug } from "../../../../../utils/functions/functions";
 
 type FilterActivitiesOpenProps = {
   filterBy: string;

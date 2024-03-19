@@ -1,4 +1,4 @@
-import { FetchedGameItem } from "../../../utils/types";
+import { FetchedGameItem } from "../../../utils/types/types";
 import GameCard from "../../global/gameCard/GameCard";
 import Pagination from "../../global/pagination/Pagination";
 import styles from "./searchList.module.scss";

@@ -1,4 +1,4 @@
-import { GameGenreItem } from "../../../../../utils/types";
+import { GameGenreItem } from "../../../../../utils/types/types";
 import DetailsContentText from "../../overview/detailsConentText/DetailsContentText";
 import EmptyDetails from "../../overview/emptyDetails/EmptyDetails";
 

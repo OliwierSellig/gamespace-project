@@ -3,7 +3,7 @@ import {
   fetchedParentType,
   fetchedParentProps,
   SingleGenreType,
-} from "../utils/types";
+} from "../utils/types/types";
 
 export async function fetchGenres({ pageSize, page }: fetchedParentProps) {
   const query = `?${pageSize ? `page_size=${pageSize}&` : ""}${

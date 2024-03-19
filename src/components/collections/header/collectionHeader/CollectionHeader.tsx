@@ -1,7 +1,7 @@
 import CollectionAuthor from "../collectionAuthor/CollectionAuthor";
 import CollectionTitle from "../collectionTitle/CollectionTitle";
 import styles from "./collectionHeader.module.scss";
-import { CollectionItemType } from "../../../../utils/types";
+import { CollectionItemType } from "../../../../utils/types/types";
 
 type CollectionHeaderProps = { collection: CollectionItemType };
 

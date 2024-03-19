@@ -1,4 +1,4 @@
-import { ActionType, BasicItemType } from "../../../../utils/types";
+import { ActionType, BasicItemType } from "../../../../utils/types/types";
 import Pagination from "../../../global/pagination/Pagination";
 import EmptyUserList from "../../../user/locale/emptyUserList/EmptyUserList";
 import GameLibraryItem from "../../../user/locale/gameLibraryItem/GameLibraryItem";

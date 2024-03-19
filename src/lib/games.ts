@@ -1,12 +1,12 @@
 import { API_KEY } from "../utils/data/global";
-import { setToDoubleDigit } from "../utils/functions";
+import { setToDoubleDigit } from "../utils/functions/functions";
 import {
   FetchedAchievementsItem,
   FetchedGameData,
   FetchedScreenshotItem,
   SingleGameItem,
   fetchGamesProps,
-} from "../utils/types";
+} from "../utils/types/types";
 
 export async function fetchGames(options: fetchGamesProps) {
   const paramList = [];

@@ -2,7 +2,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import UserBoxLayout from "../userBoxLayout/userBoxLayout";
 import styles from "./userSearchInput.module.scss";
 import { IoClose } from "react-icons/io5";
-import { setPage } from "../../../../utils/functions";
+import { setPage } from "../../../../utils/functions/functions";
 
 type UserSearchInputProps = {
   inputValue: string;

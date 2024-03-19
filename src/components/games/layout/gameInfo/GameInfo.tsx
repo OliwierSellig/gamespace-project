@@ -1,4 +1,4 @@
-import { FetchedGameItem, SingleGameItem } from "../../../../utils/types";
+import { FetchedGameItem, SingleGameItem } from "../../../../utils/types/types";
 import styles from "./gameInfo.module.scss";
 import SameSeriesSlider from "../../sameSeries/sameSeriesSlider/SameSeriesSlider";
 import GameDetails from "../../details/overview/gameDetials/GameDetails";

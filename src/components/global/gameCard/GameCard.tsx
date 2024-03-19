@@ -1,10 +1,10 @@
 import Link from "next/link";
 import styles from "./gameCard.module.scss";
 import Image from "next/image";
-import { ChildrenProp, ImageSizesType } from "../../../utils/types";
+import { ChildrenProp, ImageSizesType } from "../../../utils/types/types";
 import { ReactNode } from "react";
 import notFound from "../../../../public/img/not-found.png";
-import { getImageSizes } from "../../../utils/functions";
+import { getImageSizes } from "../../../utils/functions/functions";
 
 type GameCardProps = {
   children?: ReactNode;

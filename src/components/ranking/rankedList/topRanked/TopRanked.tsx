@@ -1,6 +1,6 @@
 "use client";
 
-import { FetchedGameItem } from "../../../../utils/types";
+import { FetchedGameItem } from "../../../../utils/types/types";
 import TopRankedCard from "./topRankedCard/TopRankedCard";
 import styles from "./topRanked.module.scss";
 

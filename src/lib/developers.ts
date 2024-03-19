@@ -3,7 +3,7 @@ import {
   SingleDevType,
   fetchedParentProps,
   fetchedParentType,
-} from "../utils/types";
+} from "../utils/types/types";
 
 export async function fetchDevelopers({ pageSize, page }: fetchedParentProps) {
   const query = `?${pageSize ? `page_size=${pageSize}&` : ""}${

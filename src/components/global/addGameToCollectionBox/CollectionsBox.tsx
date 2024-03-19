@@ -3,7 +3,7 @@ import styles from "./collectionsBox.module.scss";
 import { useState } from "react";
 import CollectionsNameList from "./list/CollectionsNameList";
 import CollectionsBoxInput from "./input/CollectionsBoxInput";
-import { BasicItemType } from "../../../utils/types";
+import { BasicItemType } from "../../../utils/types/types";
 
 type CollectionsBoxProps = {
   game: BasicItemType;

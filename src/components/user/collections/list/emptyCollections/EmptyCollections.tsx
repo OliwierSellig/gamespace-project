@@ -1,4 +1,4 @@
-import { ChildrenProp } from "../../../../../utils/types";
+import { ChildrenProp } from "../../../../../utils/types/types";
 import Button from "../../../../global/button/Button";
 import styles from "./emptyCollections.module.scss";
 

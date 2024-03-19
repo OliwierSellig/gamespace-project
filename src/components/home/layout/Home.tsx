@@ -4,7 +4,7 @@ import Hero from "../hero/Hero";
 import PlatformsHome from "../platformsHome/PlatformsHome";
 import SliderHome from "../sliderHome/SliderHome";
 import GameCard from "../../global/gameCard/GameCard";
-import { ImageSizesType } from "../../../utils/types";
+import { ImageSizesType } from "../../../utils/types/types";
 
 async function Home() {
   const currentDate = new Date();

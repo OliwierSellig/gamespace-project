@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useUser } from "../../../../contexts/UserContext";
-import { SingleGameItem } from "../../../../utils/types";
+import { SingleGameItem } from "../../../../utils/types/types";
 import Button from "../../../global/button/Button";
 import styles from "./reviewButtons.module.scss";
 import OpenDeleteReviewConfirmation from "../../../global/deleteReview/OpenDeleteReviewConfirmation";

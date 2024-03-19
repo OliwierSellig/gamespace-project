@@ -1,5 +1,5 @@
 import { IoClose } from "react-icons/io5";
-import { FetchedGameItem } from "../../../../../../utils/types";
+import { FetchedGameItem } from "../../../../../../utils/types/types";
 import styles from "./topDetails.module.scss";
 import MetacriticScore from "../../../../locale/MetacriticScore";
 import GenreList from "../../../../locale/GenreList";

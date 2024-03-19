@@ -1,4 +1,4 @@
-import { SingleScreenshotItem } from "../../../../utils/types";
+import { SingleScreenshotItem } from "../../../../utils/types/types";
 import styles from "./screenshotView.module.scss";
 import Image from "next/image";
 import notFound from "../../../../../public/img/not-found.png";

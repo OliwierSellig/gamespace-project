@@ -1,4 +1,4 @@
-import { EsrbRatingType } from "../../../../../utils/types";
+import { EsrbRatingType } from "../../../../../utils/types/types";
 import DetailsContentText from "../../overview/detailsConentText/DetailsContentText";
 import EmptyDetails from "../../overview/emptyDetails/EmptyDetails";
 

@@ -6,7 +6,7 @@ import {
   getDayList,
   getMonthNumber,
   getMonthSig,
-} from "../../../../utils/functions";
+} from "../../../../utils/functions/functions";
 import DateBox from "./dateBox/DateBox";
 import DateSetter from "./dateSetter/DateSetter";
 import styles from "./dateConfigurator.module.scss";

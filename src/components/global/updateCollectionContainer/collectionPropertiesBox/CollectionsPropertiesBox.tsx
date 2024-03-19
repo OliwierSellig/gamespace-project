@@ -5,8 +5,11 @@ import styles from "./collectionPropertiesBox.module.scss";
 import UserInput from "../../userInput/UserInput";
 import { useUser } from "../../../../contexts/UserContext";
 import { useRouter } from "next/navigation";
-import { CollectionItemType, SingleGameItem } from "../../../../utils/types";
-import { SingleGameItemToBasicItemType } from "../../../../utils/functions";
+import {
+  CollectionItemType,
+  SingleGameItem,
+} from "../../../../utils/types/types";
+import { SingleGameItemToBasicItemType } from "../../../../utils/functions/functions";
 
 type CollectionsPropertiesBoxProps = {
   action:

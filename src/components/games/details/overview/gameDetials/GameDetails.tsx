@@ -1,5 +1,5 @@
 import styles from "./gameDetails.module.scss";
-import { SingleGameItem } from "../../../../../utils/types";
+import { SingleGameItem } from "../../../../../utils/types/types";
 import GameDetailsItem from "../gameDetailsItem/GameDetailsItem";
 import GameDetailsPlatforms from "../../items/gameDetailsPlatforms/GameDetailsPlatforms";
 import GameDetailsMetascore from "../../items/gameDetailsMetascore/GameDetailsMetascore";

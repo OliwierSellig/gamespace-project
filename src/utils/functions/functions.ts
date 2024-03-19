@@ -1,12 +1,12 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { currentDate, socials } from "./data/global";
+import { currentDate, socials } from "../data/global";
 
 import {
   BasicItemType,
   ImageSizesType,
   SingleGameItem,
   SocialPlatformType,
-} from "./types";
+} from "../types/types";
 
 // ------- Transforms date to string DD.MM.YYYY -----------
 

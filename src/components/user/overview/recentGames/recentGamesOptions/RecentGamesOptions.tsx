@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useUser } from "../../../../../contexts/UserContext";
 import Link from "next/link";
 import CollectionsBox from "../../../../global/addGameToCollectionBox/CollectionsBox";
-import { BasicItemType } from "../../../../../utils/types";
+import { BasicItemType } from "../../../../../utils/types/types";
 
 type RecentGamesOptionsProps = {
   game: BasicItemType;

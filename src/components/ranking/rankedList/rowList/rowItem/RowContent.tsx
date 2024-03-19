@@ -1,6 +1,6 @@
 import styles from "./rowContent.module.scss";
 import Image from "next/image";
-import { FetchedGameItem } from "../../../../../utils/types";
+import { FetchedGameItem } from "../../../../../utils/types/types";
 import MetacriticScore from "../../../locale/MetacriticScore";
 import GenreList from "../../../locale/GenreList";
 import ViewDetailsButton from "../../../locale/ViewDetailsButton";

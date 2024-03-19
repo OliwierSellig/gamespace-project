@@ -1,4 +1,4 @@
-import { ChildrenProp } from "../../../../../utils/types";
+import { ChildrenProp } from "../../../../../utils/types/types";
 import styles from "./emptyDetails.module.scss";
 
 function EmptyDetails({ children }: ChildrenProp) {

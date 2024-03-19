@@ -9,9 +9,9 @@ import {
   CollectionPropsType,
   LibraryItemType,
   ReviewType,
-} from "../utils/types";
+} from "../utils/types/types";
 import toast from "react-hot-toast";
-import { rankList } from "../utils/functions";
+import { rankList } from "../utils/functions/functions";
 import { fetchGameByID } from "../lib/games";
 
 const UserContext = createContext<ContextType | undefined>(undefined);

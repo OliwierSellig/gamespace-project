@@ -1,4 +1,4 @@
-import { CollectionItemType } from "../../../../../utils/types";
+import { CollectionItemType } from "../../../../../utils/types/types";
 import Pagination from "../../../../global/pagination/Pagination";
 import EmptyCollections from "../emptyCollections/EmptyCollections";
 import CollectionsCard from "../../card/collectionCard/CollectionsCard";

@@ -3,7 +3,7 @@ import {
   SinglePlatformType,
   fetchedParentProps,
   fetchedParentType,
-} from "../utils/types";
+} from "../utils/types/types";
 
 export async function fetchPlatforms({ pageSize, page }: fetchedParentProps) {
   const query = `?${pageSize ? `page_size=${pageSize}&` : ""}${

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { filterActivities } from "../../../../../utils/data/user";
 import styles from "./filterActivitiesPopup.module.scss";
-import { changeToUrlSlug } from "../../../../../utils/functions";
+import { changeToUrlSlug } from "../../../../../utils/functions/functions";
 
 type FilterActivitiesPopupProps = {
   closePopup: () => void;

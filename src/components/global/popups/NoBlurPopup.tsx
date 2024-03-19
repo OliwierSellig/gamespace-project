@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styles from "./noBlurPopup.module.scss";
 import { HiMiniXMark } from "react-icons/hi2";
-import { PaddingType } from "../../../utils/types";
+import { PaddingType } from "../../../utils/types/types";
 
 type NoBlurPopupProps = {
   children: ReactNode;

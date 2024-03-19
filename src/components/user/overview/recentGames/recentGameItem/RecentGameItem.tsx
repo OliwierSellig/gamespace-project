@@ -4,7 +4,7 @@ import notFound from "./../../../../../../public/img/not-found.png";
 import RecentGamesCount from "../recentGamesCount/RecentGamesCount";
 import Link from "next/link";
 import RecentGamesOptions from "../recentGamesOptions/RecentGamesOptions";
-import { BasicItemType } from "../../../../../utils/types";
+import { BasicItemType } from "../../../../../utils/types/types";
 
 type RecentGameItemProps = {
   game: BasicItemType;

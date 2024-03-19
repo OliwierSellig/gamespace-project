@@ -1,4 +1,4 @@
-import { ChildrenProp } from "../../../../utils/types";
+import { ChildrenProp } from "../../../../utils/types/types";
 import UserBoxLayout from "../userBoxLayout/userBoxLayout";
 import styles from "./userSelectContainer.module.scss";
 

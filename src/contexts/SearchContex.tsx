@@ -7,7 +7,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { ChildrenProp } from "../utils/types";
+import { ChildrenProp } from "../utils/types/types";
 
 const SearchContext = createContext<ContextType | undefined>(undefined);
 

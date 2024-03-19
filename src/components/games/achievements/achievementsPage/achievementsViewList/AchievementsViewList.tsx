@@ -1,4 +1,4 @@
-import { AchievementResult } from "../../../../../utils/types";
+import { AchievementResult } from "../../../../../utils/types/types";
 import FetchPageNotFound from "../../../../global/fetchPageNotFound/FetchPageNotFound";
 import Pagination from "../../../../global/pagination/Pagination";
 import AchievementsItem from "../../achievementsItem/AchievementsItem";

@@ -1,5 +1,5 @@
 import UserContainer from "../../../components/user/layout/UserContainer";
-import { ChildrenProp } from "../../../utils/types";
+import { ChildrenProp } from "../../../utils/types/types";
 
 export const metadata = {
   title: { default: "User", template: "User %s | GameSpace" },

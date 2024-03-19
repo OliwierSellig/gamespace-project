@@ -1,4 +1,4 @@
-import { SingleGameItem } from "../../../../utils/types";
+import { SingleGameItem } from "../../../../utils/types/types";
 import styles from "./gameStores.module.scss";
 import Button from "../../../global/button/Button";
 

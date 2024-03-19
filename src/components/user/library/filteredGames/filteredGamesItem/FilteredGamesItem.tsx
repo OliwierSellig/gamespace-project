@@ -1,6 +1,6 @@
 import styles from "./filteredGamesItem.module.scss";
 import FilteredGamesSwiper from "../filteredGamesSwiper/FilteredGamesSwiper";
-import { LibraryItemType } from "../../../../../utils/types";
+import { LibraryItemType } from "../../../../../utils/types/types";
 
 type FilteredGamesItemProps = {
   name: string;

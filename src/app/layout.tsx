@@ -1,4 +1,4 @@
-import { poppins } from "../utils/fonts";
+import { poppins } from "../utils/other/fonts";
 import "../scss/general.scss";
 import { UserProvider } from "../contexts/UserContext";
 import Providers from "../lib/QueryProvider";

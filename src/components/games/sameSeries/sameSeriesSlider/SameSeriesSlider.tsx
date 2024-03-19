@@ -1,6 +1,6 @@
 "use client";
 
-import { FetchedGameItem } from "../../../../utils/types";
+import { FetchedGameItem } from "../../../../utils/types/types";
 import GameSectionHeading from "../../layout/gameSectionHeading/GameSectionHeading";
 import SameSeriesList from "../sameSeriesList/SameSeriesList";
 import styles from "./sameSeriesSlider.module.scss";

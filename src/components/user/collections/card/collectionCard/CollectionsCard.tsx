@@ -1,4 +1,4 @@
-import { BasicItemType } from "../../../../../utils/types";
+import { BasicItemType } from "../../../../../utils/types/types";
 import CollectionCardGames from "../collectionCardGames/CollectionCardGames";
 import styles from "./collectionsCard.module.scss";
 import Image from "next/image";
