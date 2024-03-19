@@ -8,6 +8,8 @@ import {
   SocialPlatformType,
 } from "./types";
 
+// ------- Transforms date to string DD.MM.YYYY -----------
+
 export function dateTransform(date: Date | string = new Date()) {
   const dateItem = typeof date === "string" ? new Date(date) : date;
   const transformed = `${setToDoubleDigit(
@@ -16,9 +18,7 @@ export function dateTransform(date: Date | string = new Date()) {
   return transformed;
 }
 
-export function getCurrentDate() {
-  return dateTransform(new Date());
-}
+// ------- Forces number to be double digit ex. 1 to 01 -----------
 
 export function setToDoubleDigit(item: number | string) {
   const num = typeof item === "string" ? item : item.toString();
@@ -29,15 +29,21 @@ export function setToDoubleDigit(item: number | string) {
     : item;
 }
 
+// ------- Sets the first letter of the string to uppercase -----------
+
 export function upperCaseFirstLetter(text: string) {
   if (!text || typeof text !== "string") return text;
   return `${text.at(0).toUpperCase()}${text.slice(1)}`;
 }
 
+// ------- Generates random id number -----------
+
 export function generateRandomID() {
   const randomID = Math.ceil(Math.random() * 100000);
   return randomID;
 }
+
+// ------- Gets sizes for item -----------
 
 export function getCurrentItemSize(itemSizes: {
   default: number;
@@ -58,6 +64,8 @@ export function getCurrentItemSize(itemSizes: {
     return size;
   }
 }
+
+// ------- Gets signature for given month ex.  0 - JAN -----------
 
 export function getMonthSig(monthNumber: number) {
   switch (monthNumber) {
@@ -89,6 +97,8 @@ export function getMonthSig(monthNumber: number) {
       return null;
   }
 }
+
+// ------- Gets number for given month ex.  JAN - 0 -----------
 
 export function getMonthNumber(month: string) {
   switch (month) {
@@ -122,6 +132,8 @@ export function getMonthNumber(month: string) {
   }
 }
 
+// ------- Gets list of days of the given month and year -----------
+
 export function getDayList(year: number, month: number) {
   const daysAmount = new Date(year, month, 0).getDate();
 
@@ -129,6 +141,8 @@ export function getDayList(year: number, month: number) {
 
   return arr;
 }
+
+// ------- Gets list year from startYear to starYear - 30 -----------
 
 export function getYearList(startYear: number) {
   if (
@@ -144,6 +158,8 @@ export function getYearList(startYear: number) {
 
   return arr;
 }
+
+// ------- Gets social items by given order -----------
 
 export function getSocialsByOrder(
   list: ("Youtube" | "Facebook" | "Twitter/X" | "Instagram" | "Discord")[]
@@ -162,6 +178,8 @@ export function getSocialsByOrder(
 export function changeToUrlSlug(item: string) {
   return item.toLowerCase().trim().replaceAll(" ", "-");
 }
+
+// ------- Gets sizes for image -----------
 
 export function getImageSizes(imageSizes: ImageSizesType) {
   const sizes =
@@ -182,6 +200,8 @@ export function getImageSizes(imageSizes: ImageSizesType) {
   return sizes;
 }
 
+// ------- Ranks List by each string amount ex. [apple, banana, apple] => [{item: apple, amount: 2}, {item: banana, amount: 1}] -----------
+
 export function rankList(list: string[], ascending = false) {
   const uniqueList = [...new Set(list)];
   const topList = uniqueList.map((item) => {
@@ -194,6 +214,8 @@ export function rankList(list: string[], ascending = false) {
     ascending ? a.amount - b.amount : b.amount - a.amount
   );
 }
+
+// ------- Sets SingleGameItem Objectto BasicItemType Object -----------
 
 export function SingleGameItemToBasicItemType(game: SingleGameItem) {
   const basicItem: BasicItemType = {
@@ -208,6 +230,8 @@ export function SingleGameItemToBasicItemType(game: SingleGameItem) {
 
   return basicItem;
 }
+
+// ------- Sets searchParams.page to given number -----------
 
 export function setPage(
   router: AppRouterInstance,
