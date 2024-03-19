@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { filterList } from "../../../../../utils/data";
+import { filterList } from "../../../../../utils/data/user";
 import { changeToUrlSlug } from "../../../../../utils/functions";
 import AllGamesLibraryList from "../../allGames/allGamesLibrary/AllGamesLibrary";
 import LibraryNavigation from "../libraryNavigation/LibraryNavigation";

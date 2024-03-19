@@ -1,4 +1,4 @@
-import { devList } from "../../../utils/data";
+import { devList } from "../../../utils/data/home";
 import styles from "./favourites.module.scss";
 import SectionHeading from "../layout/SectionHeading";
 import FavouriteDevItem from "./favouriteDevItem/FavouriteDevItem";

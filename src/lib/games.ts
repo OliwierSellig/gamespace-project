@@ -1,4 +1,4 @@
-import { API_KEY } from "../utils/data";
+import { API_KEY } from "../utils/data/global";
 import { setToDoubleDigit } from "../utils/functions";
 import {
   FetchedAchievementsItem,

@@ -6,7 +6,7 @@ import {
 import { fetchGames } from "../../lib/games";
 import Configurator from "./settings/configurator/Configurator";
 import RankedList from "./rankedList/RankedList";
-import { currentDate } from "../../utils/data";
+import { currentDate } from "../../utils/data/global";
 
 type RankingProps = {
   order: string;

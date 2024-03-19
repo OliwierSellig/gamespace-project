@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./backgroundSwitcher.module.scss";
 import Image from "next/image";
 import { ChildrenProp } from "../../../../utils/types";
-import { heroImages } from "../../../../utils/data";
+import { heroImages } from "../../../../utils/data/home";
 
 const BACKGROUND_CHANGE_PERIOD = 8000;
 

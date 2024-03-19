@@ -1,6 +1,6 @@
 "use client";
 
-import { browseByPages } from "../../../utils/data";
+import { browseByPages } from "../../../utils/data/browse";
 import PageNav from "../../global/pageNav/PageNav";
 import styles from "./browseBy.module.scss";
 

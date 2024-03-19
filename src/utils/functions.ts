@@ -1,5 +1,5 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { currentDate, platformsIcons, socials } from "./data";
+import { currentDate, socials } from "./data/global";
 
 import {
   BasicItemType,
@@ -7,10 +7,6 @@ import {
   SingleGameItem,
   SocialPlatformType,
 } from "./types";
-
-export function getPlatformIcon(id: number) {
-  return platformsIcons.find((platform) => platform.id === id).icon;
-}
 
 export function dateTransform(date: Date | string = new Date()) {
   const dateItem = typeof date === "string" ? new Date(date) : date;

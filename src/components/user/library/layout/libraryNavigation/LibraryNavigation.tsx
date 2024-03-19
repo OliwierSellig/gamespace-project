@@ -5,8 +5,9 @@ import UserSearchInput from "../../../locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../../locale/userSelectContainer/UserSelectContainer";
 import UserSelector from "../../../locale/userSelectContainer/UserSelector";
 import { changeToUrlSlug } from "../../../../../utils/functions";
-import { filterList, orderList } from "../../../../../utils/data";
+import { orderList } from "../../../../../utils/data/global";
 import UserGamesListNav from "../../../locale/userGamesListNav/UserGamesListNav";
+import { filterList } from "../../../../../utils/data/user";
 
 type LibraryNavigationProps = {
   orderBy: string;

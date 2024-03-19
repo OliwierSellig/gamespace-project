@@ -4,7 +4,7 @@ import UserSelectContainer from "../../locale/userSelectContainer/UserSelectCont
 import UserSelector from "../../locale/userSelectContainer/UserSelector";
 import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
 import { changeToUrlSlug } from "../../../../utils/functions";
-import { reviewOrderList } from "../../../../utils/data";
+import { reviewOrderList } from "../../../../utils/data/user";
 
 type ReviewsNavigationProps = {
   orderBy: string;

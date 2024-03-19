@@ -1,5 +1,5 @@
 import styles from "./platformsHome.module.scss";
-import { platforms } from "../../../utils/data";
+import { platforms } from "../../../utils/data/home";
 import SectionHeading from "../layout/SectionHeading";
 import PlatformsHomeItem from "./platfromsHomeItem/PlatformsHomeItem";
 

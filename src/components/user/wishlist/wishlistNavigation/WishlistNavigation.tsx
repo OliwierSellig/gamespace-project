@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { orderList } from "../../../../utils/data";
+import { orderList } from "../../../../utils/data/global";
 import { changeToUrlSlug } from "../../../../utils/functions";
 import UserGamesListNav from "../../locale/userGamesListNav/UserGamesListNav";
 import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";

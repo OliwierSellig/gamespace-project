@@ -10,8 +10,8 @@ import {
 import DateBox from "./dateBox/DateBox";
 import DateSetter from "./dateSetter/DateSetter";
 import styles from "./dateConfigurator.module.scss";
-import { currentDate } from "../../../../utils/data";
 import SaveButton from "../saveButton/SaveButton";
+import { currentDate } from "../../../../utils/data/global";
 
 function DateConfigurator() {
   const { state, yearList, monthList, isBorderDate } = useRanking();

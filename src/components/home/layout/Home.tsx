@@ -1,5 +1,4 @@
 import { fetchGames } from "../../../lib/games";
-import { currentDate } from "../../../utils/data";
 import Favourites from "../favourites/Favourites";
 import Hero from "../hero/Hero";
 import PlatformsHome from "../platformsHome/PlatformsHome";
@@ -8,6 +7,7 @@ import GameCard from "../../global/gameCard/GameCard";
 import { ImageSizesType } from "../../../utils/types";
 
 async function Home() {
+  const currentDate = new Date();
   const trending = await fetchGames({
     dates: {
       fromDay: 1,

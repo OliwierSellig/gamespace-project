@@ -1,4 +1,4 @@
-import { userNavPages } from "../../../utils/data";
+import { userNavPages } from "../../../utils/data/user";
 import { ChildrenProp } from "../../../utils/types";
 import PagesNav from "../../global/pageNav/PageNav";
 import ProfileOptions from "./ProfileOptions";

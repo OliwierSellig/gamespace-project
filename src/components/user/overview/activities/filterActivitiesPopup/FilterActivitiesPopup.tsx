@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { filterActivities } from "../../../../../utils/data";
+import { filterActivities } from "../../../../../utils/data/user";
 import styles from "./filterActivitiesPopup.module.scss";
 import { changeToUrlSlug } from "../../../../../utils/functions";
 

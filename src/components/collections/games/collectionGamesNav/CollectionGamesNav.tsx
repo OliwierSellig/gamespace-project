@@ -4,7 +4,7 @@ import UserSearchInput from "../../../user/locale/userSearchInput/UserSearchInpu
 import UserSelectContainer from "../../../user/locale/userSelectContainer/UserSelectContainer";
 import UserSelector from "../../../user/locale/userSelectContainer/UserSelector";
 import { changeToUrlSlug } from "../../../../utils/functions";
-import { orderList } from "../../../../utils/data";
+import { orderList } from "../../../../utils/data/global";
 
 type CollectionGamesNavProps = {
   orderBy: string;

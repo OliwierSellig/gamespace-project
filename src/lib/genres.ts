@@ -1,4 +1,4 @@
-import { API_KEY } from "../utils/data";
+import { API_KEY } from "../utils/data/global";
 import {
   fetchedParentType,
   fetchedParentProps,

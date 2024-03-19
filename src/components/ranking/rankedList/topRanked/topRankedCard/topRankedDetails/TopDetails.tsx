@@ -1,11 +1,8 @@
 import { IoClose } from "react-icons/io5";
 import { FetchedGameItem } from "../../../../../../utils/types";
 import styles from "./topDetails.module.scss";
-import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
 import MetacriticScore from "../../../../locale/MetacriticScore";
-
 import GenreList from "../../../../locale/GenreList";
-import Button from "../../../../../global/button/Button";
 import UpdateGameStateButton from "../../../../locale/UpdateGameStateButton";
 import ViewDetailsButton from "../../../../locale/ViewDetailsButton";
 

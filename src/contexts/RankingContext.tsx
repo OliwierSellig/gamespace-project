@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useReducer } from "react";
 import { ChildrenProp, FetchedGameItem } from "../utils/types";
-import { currentDate } from "../utils/data";
+import { currentDate } from "../utils/data/global";
 import { getMonthSig, getYearList } from "../utils/functions";
 
 const RankingContext = createContext<ContextType | undefined>(undefined);
