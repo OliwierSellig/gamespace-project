@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "./filterActivitiesOpen.module.scss";
 import { HiMiniAdjustmentsHorizontal } from "react-icons/hi2";
-import FilterActivitiesPopup from "../filterActivitiesPopup/FilterActivitiesPopup";
 import { filterActivities } from "../../../../../utils/data/user";
 import { changeToUrlSlug } from "../../../../../utils/functions/functions";
+import FilterActivitiesPopup from "../filterActivitiesPopup/FilterActivitiesPopup";
+import styles from "./filterActivitiesOpen.module.scss";
 
 type FilterActivitiesOpenProps = {
   filterBy: string;
@@ -14,7 +14,7 @@ function FilterActivitiesOpen({ filterBy }: FilterActivitiesOpenProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const currentFilter =
     filterActivities.find(
-      (activity) => changeToUrlSlug(activity) === filterBy
+      (activity) => changeToUrlSlug(activity) === filterBy,
     ) || filterActivities.at(0);
 
   useEffect(() => {

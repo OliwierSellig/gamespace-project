@@ -1,8 +1,8 @@
-import { SingleScreenshotItem } from "../../../../utils/types/types";
-import styles from "./screenshotView.module.scss";
 import Image from "next/image";
+import { SingleScreenshotItem } from "../../../../utils/types/types";
 import notFound from "../../../../../public/img/not-found.png";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
+import styles from "./screenshotView.module.scss";
 
 type ScreenshotViewProps = {
   currentScreenshot: number;

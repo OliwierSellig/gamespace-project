@@ -1,7 +1,7 @@
-import styles from "./platformsHome.module.scss";
 import { platforms } from "../../../utils/data/home";
-import SectionHeading from "../layout/SectionHeading";
-import PlatformsHomeItem from "./platfromsHomeItem/PlatformsHomeItem";
+import PlatformsHomeItem from "../platfromsHomeItem/PlatformsHomeItem";
+import SectionHeading from "../sectionHeading/SectionHeading";
+import styles from "./platformsHome.module.scss";
 
 function PlatformsHome() {
   return (

@@ -1,7 +1,7 @@
 import { fetchGameAchievements, fetchGameByID } from "../../../../../lib/games";
-import styles from "./achievementsView.module.scss";
-import AchievementsViewList from "../achievementsViewList/AchievementsViewList";
 import GameViewHeader from "../../../locale/gameViewHeader/GameViewHeader";
+import AchievementsViewList from "../achievementsViewList/AchievementsViewList";
+import styles from "./achievementsView.module.scss";
 
 const ACHIEVEMENTS_PER_PAGE = 12;
 

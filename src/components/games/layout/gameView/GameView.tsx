@@ -7,11 +7,11 @@ import {
   findIsTopGenre,
   findIsTopYear,
 } from "../../../../lib/games";
-import GameInfo from "../gameInfo/GameInfo";
-import ScreenshotsSlider from "../../screenshots/screenshotSlider/ScreenshotsSlider";
-import GameContainer from "../gameContainer/GameContainer";
 import GameAchievements from "../../achievements/gamePage/gameAchievements/GameAchievements";
+import ScreenshotsSlider from "../../screenshots/screenshotSlider/ScreenshotsSlider";
 import GameAction from "../gameAction/GameAction";
+import GameContainer from "../gameContainer/GameContainer";
+import GameInfo from "../gameInfo/GameInfo";
 
 type GameViewProps = {
   id: string;

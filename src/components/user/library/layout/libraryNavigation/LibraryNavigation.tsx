@@ -1,13 +1,13 @@
 "use client";
 
 import { Dispatch, SetStateAction } from "react";
+import { orderList } from "../../../../../utils/data/global";
+import { filterList } from "../../../../../utils/data/user";
+import { changeToUrlSlug } from "../../../../../utils/functions/functions";
+import UserGamesListNav from "../../../locale/userGamesListNav/UserGamesListNav";
 import UserSearchInput from "../../../locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../../locale/userSelectContainer/UserSelectContainer";
-import UserSelector from "../../../locale/userSelectContainer/UserSelector";
-import { changeToUrlSlug } from "../../../../../utils/functions/functions";
-import { orderList } from "../../../../../utils/data/global";
-import UserGamesListNav from "../../../locale/userGamesListNav/UserGamesListNav";
-import { filterList } from "../../../../../utils/data/user";
+import UserSelector from "../../../locale/userSelector/UserSelector";
 
 type LibraryNavigationProps = {
   orderBy: string;
@@ -40,7 +40,7 @@ function LibraryNavigation({
       <UserSelectContainer>
         <UserSelector
           activeItem={filterByList.find(
-            (item) => changeToUrlSlug(item.item) === filterBy
+            (item) => changeToUrlSlug(item.item) === filterBy,
           )}
           list={filterByList}
         >
@@ -52,7 +52,7 @@ function LibraryNavigation({
             .map((filterBy) => changeToUrlSlug(filterBy))
             .includes(filterBy)}
           activeItem={orderByList.find(
-            (item) => changeToUrlSlug(item.item) === orderBy
+            (item) => changeToUrlSlug(item.item) === orderBy,
           )}
           list={orderByList}
         >

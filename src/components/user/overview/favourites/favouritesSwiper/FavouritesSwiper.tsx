@@ -1,10 +1,10 @@
 "use client";
 
+import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import { useUser } from "../../../../../contexts/UserContext";
 import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
+import EmptyUserSwiperItem from "../../../locale/emptyUserSwiperItem/EmptyUserSwiperItem";
 import GameLibraryItem from "../../../locale/gameLibraryItem/GameLibraryItem";
-import EmptyUserSwiperItem from "../../../locale/emptyUserSliderItem/EmptyYearItem";
-import { HiMiniBookmarkSlash } from "react-icons/hi2";
 
 function FavouritesSwiper() {
   const { favouritesList, updateFavourite } = useUser();

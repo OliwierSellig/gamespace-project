@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
+import UserHeading from "../../../layout/userHeading/UserHeading";
 import OverviewSectionContainer from "../overviewSectionContainer/OverviewSectionContainer";
-import UserHeading from "../../../layout/UserHeading";
 
 type OverviewSectionProps = {
   children: ReactNode;

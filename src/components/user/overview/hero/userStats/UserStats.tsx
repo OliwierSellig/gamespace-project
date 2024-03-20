@@ -35,7 +35,7 @@ function UserStats() {
                 color={item.color}
               />
             </>
-          )
+          ),
         )}
       </ul>
     </UserBoxLayout>

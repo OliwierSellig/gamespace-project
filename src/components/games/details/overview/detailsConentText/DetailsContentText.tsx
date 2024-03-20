@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 import styles from "./detailsContentText.module.scss";
-import Link from "next/link";
 
 type DetailsConentTextProps = {
   children: ReactNode;

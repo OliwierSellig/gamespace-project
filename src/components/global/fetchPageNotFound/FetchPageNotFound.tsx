@@ -1,9 +1,9 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import styles from "./fetchPageNotFound.module.scss";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
+import styles from "./fetchPageNotFound.module.scss";
 
 type FetchPageNotFoundProps = {
   children?: ReactNode;

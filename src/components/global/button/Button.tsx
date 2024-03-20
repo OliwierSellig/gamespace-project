@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 import styles from "./button.module.scss";
-import Link from "next/link";
 
 type ButtonProps = {
   children: ReactNode;

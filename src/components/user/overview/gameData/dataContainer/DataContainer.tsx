@@ -1,10 +1,10 @@
 "use client";
 
+import { useUser } from "../../../../../contexts/UserContext";
 import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
 import OverviewSectionContainer from "../../layout/overviewSectionContainer/OverviewSectionContainer";
-import OverviewVideo from "../overviewVideo/OverviewVideo";
 import DataCol from "../dataCol/DataCol";
-import { useUser } from "../../../../../contexts/UserContext";
+import OverviewVideo from "../overviewVideo/OverviewVideo";
 
 function DataContainer() {
   const { genreList, devList } = useUser();

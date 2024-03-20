@@ -1,17 +1,17 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaRegUser } from "react-icons/fa";
 import {
-  HiOutlineMagnifyingGlass,
   HiBars3,
   HiOutlineCog6Tooth,
+  HiOutlineMagnifyingGlass,
 } from "react-icons/hi2";
-import { FaRegUser } from "react-icons/fa";
 import user from "../../../../../public/img/user.webp";
 import Logo from "../../logo/Logo";
 import styles from "./header.module.scss";
-import Link from "next/link";
-import Image from "next/image";
 
 type HeaderProps = {
   isFixed?: boolean;

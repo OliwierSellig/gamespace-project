@@ -1,9 +1,9 @@
 import { useRouter } from "next/navigation";
-import { useUser } from "../../../../contexts/UserContext";
 import { SingleGameItem } from "../../../../utils/types/types";
+import { useUser } from "../../../../contexts/UserContext";
 import Button from "../../../global/button/Button";
-import styles from "./reviewButtons.module.scss";
 import OpenDeleteReviewConfirmation from "../../../global/deleteReview/OpenDeleteReviewConfirmation";
+import styles from "./reviewButtons.module.scss";
 
 type ReviewButtonsProps = {
   alreadyReviewed: boolean;

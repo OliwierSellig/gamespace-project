@@ -1,15 +1,16 @@
 "use client";
-import { useState } from "react";
-import Button from "../../button/Button";
-import styles from "./collectionPropertiesBox.module.scss";
-import UserInput from "../../userInput/UserInput";
-import { useUser } from "../../../../contexts/UserContext";
+
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { SingleGameItemToBasicItemType } from "../../../../utils/functions/functions";
 import {
   CollectionItemType,
   SingleGameItem,
 } from "../../../../utils/types/types";
-import { SingleGameItemToBasicItemType } from "../../../../utils/functions/functions";
+import { useUser } from "../../../../contexts/UserContext";
+import Button from "../../button/Button";
+import UserInput from "../../userInput/UserInput";
+import styles from "./collectionPropertiesBox.module.scss";
 
 type CollectionsPropertiesBoxProps = {
   action:
@@ -20,10 +21,10 @@ type CollectionsPropertiesBoxProps = {
 function CollectionsPropertiesBox({ action }: CollectionsPropertiesBoxProps) {
   const { addToCollections, updateCollection } = useUser();
   const [title, setTitle] = useState<string>(
-    action.type === "update" ? action.currentCollection.title : ""
+    action.type === "update" ? action.currentCollection.title : "",
   );
   const [description, setDescription] = useState<string>(
-    action.type === "update" ? action.currentCollection.description : ""
+    action.type === "update" ? action.currentCollection.description : "",
   );
   const router = useRouter();
 
@@ -31,7 +32,7 @@ function CollectionsPropertiesBox({ action }: CollectionsPropertiesBoxProps) {
     if (action.type === "update") {
       updateCollection(
         { type: "updateDetails", content: { title, description } },
-        action.currentCollection.id
+        action.currentCollection.id,
       );
       router.push(`/collections/${action.currentCollection.id}`);
     } else {

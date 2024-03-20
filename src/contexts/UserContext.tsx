@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useContext, useEffect, useReducer } from "react";
+import toast from "react-hot-toast";
+import { rankList } from "../utils/functions/functions";
 import {
   ActivityItem,
   BasicItemType,
@@ -10,8 +12,6 @@ import {
   LibraryItemType,
   ReviewType,
 } from "../utils/types/types";
-import toast from "react-hot-toast";
-import { rankList } from "../utils/functions/functions";
 import { fetchGameByID } from "../lib/games";
 
 const UserContext = createContext<ContextType | undefined>(undefined);
@@ -51,7 +51,7 @@ type ContextType = {
           type: "addGame" | "removeGame";
           game: BasicItemType;
         },
-    collectionID: number
+    collectionID: number,
   ) => void;
   checkGameInCollection: (gameID: number, collectionID: number) => boolean;
   getLatestReviews: () => ReviewType[];
@@ -66,7 +66,7 @@ type ContextType = {
       | { type: "library" }
       | { type: "wishlist" }
       | { type: "collections"; id: number },
-    sortBy: string
+    sortBy: string,
   ) => BasicItemType[];
   filterLibraryBy: (type: string) => {
     name: string;
@@ -158,20 +158,20 @@ function UserProvider({ children }: ChildrenProp) {
   const devList = rankList(
     library
       .filter((game) => game.developers.length)
-      .map((game) => game.developers.at(0).name)
+      .map((game) => game.developers.at(0).name),
   );
 
   const genreList = rankList(
     library
       .filter((game) => game.genres.length)
-      .map((game) => game.genres.at(0).name)
+      .map((game) => game.genres.at(0).name),
   );
 
   const recentAddedGames = [...library]
     .sort(
       (a, b) =>
         new Date(b.addedToLibraryDate).getTime() -
-        new Date(a.addedToLibraryDate).getTime()
+        new Date(a.addedToLibraryDate).getTime(),
     )
     .slice(0, 9);
 
@@ -417,7 +417,7 @@ function UserProvider({ children }: ChildrenProp) {
     toast.success(
       `Successfully ${
         action === "add" ? "added game to " : "removed game from "
-      } favourites`
+      } favourites`,
     );
   }
 
@@ -480,7 +480,7 @@ function UserProvider({ children }: ChildrenProp) {
       case "relevance":
         return sortList.sort(
           (a, b) =>
-            new Date(b.editDate).getTime() - new Date(a.editDate).getTime()
+            new Date(b.editDate).getTime() - new Date(a.editDate).getTime(),
         );
       case "rating":
         return sortList.sort((a, b) => b.rating - a.rating);
@@ -502,7 +502,7 @@ function UserProvider({ children }: ChildrenProp) {
     return [...reviews]
       .sort(
         (a, b) =>
-          new Date(b.editDate).getTime() - new Date(a.editDate).getTime()
+          new Date(b.editDate).getTime() - new Date(a.editDate).getTime(),
       )
       .slice(0, 2);
   }
@@ -544,7 +544,7 @@ function UserProvider({ children }: ChildrenProp) {
       return;
     }
     const filteredList = collections.filter(
-      (collection) => collection.id !== id
+      (collection) => collection.id !== id,
     );
     dispatch({
       type: REDUCER_ACTION_TYPE.SET_COLLECTIONS,
@@ -569,7 +569,7 @@ function UserProvider({ children }: ChildrenProp) {
           content: { title: string; description: string };
         }
       | { type: "addGame" | "removeGame"; game: BasicItemType },
-    collectionID: number
+    collectionID: number,
   ) {
     const targetCollection = findCollection(collectionID);
     if (!targetCollection) {
@@ -578,7 +578,7 @@ function UserProvider({ children }: ChildrenProp) {
     }
 
     const filteredCollections = collections.filter(
-      (collection) => collection.id !== collectionID
+      (collection) => collection.id !== collectionID,
     );
 
     function setUpdatedCollection() {
@@ -617,7 +617,7 @@ function UserProvider({ children }: ChildrenProp) {
           return {
             ...targetCollection,
             games: targetCollection.games.filter(
-              (game) => game.id !== action.game.id
+              (game) => game.id !== action.game.id,
             ),
           };
         }
@@ -843,11 +843,11 @@ function UserProvider({ children }: ChildrenProp) {
     const filteredList = !filteredStrings.length
       ? activitiesList
       : activitiesList.filter((activity) =>
-          filteredStrings.includes(activity.action.type)
+          filteredStrings.includes(activity.action.type),
         );
 
     const sortedList = filteredList.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
     );
 
     return sortedList;
@@ -862,14 +862,14 @@ function UserProvider({ children }: ChildrenProp) {
       | { type: "library" }
       | { type: "wishlist" }
       | { type: "collections"; id: number },
-    sortBy: string
+    sortBy: string,
   ) {
     const sortList =
       list.type === "wishlist"
         ? [...wishlist]
         : list.type === "library"
-        ? [...library]
-        : [...findCollection(list.id).games];
+          ? [...library]
+          : [...findCollection(list.id).games];
 
     switch (sortBy) {
       case "popularity":
@@ -877,7 +877,7 @@ function UserProvider({ children }: ChildrenProp) {
       case "release-date":
         return sortList.sort(
           (a, b) =>
-            new Date(b.released).getTime() - new Date(a.released).getTime()
+            new Date(b.released).getTime() - new Date(a.released).getTime(),
         );
       case "rating":
         return sortList.sort((a, b) => b.rating - a.rating);
@@ -892,8 +892,8 @@ function UserProvider({ children }: ChildrenProp) {
         const uniqueList = [
           ...new Set(
             library.map((game) =>
-              new Date(game.released).getFullYear().toString()
-            )
+              new Date(game.released).getFullYear().toString(),
+            ),
           ),
         ];
 
@@ -901,7 +901,8 @@ function UserProvider({ children }: ChildrenProp) {
           return {
             name: year,
             games: library.filter(
-              (game) => new Date(game.released).getFullYear() === parseInt(year)
+              (game) =>
+                new Date(game.released).getFullYear() === parseInt(year),
             ),
           };
         });
@@ -913,14 +914,14 @@ function UserProvider({ children }: ChildrenProp) {
           ...new Set(
             library
               .filter((game) => game.developers && game.developers.length > 0)
-              .map((game) => game.developers.at(0).name)
+              .map((game) => game.developers.at(0).name),
           ),
         ];
         const topList = uniqueList.map((developer) => {
           return {
             name: developer,
             games: library.filter(
-              (game) => game.developers?.at(0)?.name === developer
+              (game) => game.developers?.at(0)?.name === developer,
             ),
           };
         });
@@ -932,7 +933,7 @@ function UserProvider({ children }: ChildrenProp) {
           ...new Set(
             library
               .filter((game) => game.genres && game.genres.length > 0)
-              .map((game) => game.genres.at(0).name)
+              .map((game) => game.genres.at(0).name),
           ),
         ];
 
@@ -949,7 +950,7 @@ function UserProvider({ children }: ChildrenProp) {
           ...new Set(
             library
               .filter((game) => game.platforms && game.platforms.length > 0)
-              .map((game) => game.platforms.at(0).platform.name)
+              .map((game) => game.platforms.at(0).platform.name),
           ),
         ];
 
@@ -959,7 +960,7 @@ function UserProvider({ children }: ChildrenProp) {
             games: library.filter((game) =>
               game.platforms
                 .map((platform) => platform.platform.name)
-                .includes(platform)
+                .includes(platform),
             ),
           };
         });
@@ -979,7 +980,7 @@ function UserProvider({ children }: ChildrenProp) {
       return {
         year,
         games: library.filter(
-          (game) => new Date(game.released).getFullYear() === year
+          (game) => new Date(game.released).getFullYear() === year,
         ),
       };
     });

@@ -1,7 +1,7 @@
 "use client";
 
-import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import styles from "./slider.module.scss";
 
@@ -34,7 +34,7 @@ function Slider({ children, gap = 1, itemSizes }: SliderProps) {
             +sliderRef.current?.style.transform
               .split(" ")[0]
               .replace(/[^0-9, .]/g, "") -
-            containerRef.current.offsetWidth
+            containerRef.current.offsetWidth,
         );
       }
     }
@@ -86,7 +86,7 @@ function Slider({ children, gap = 1, itemSizes }: SliderProps) {
     return sliderRef.current
       ? Math.abs(dragX) <
           Math.abs(
-            sliderRef.current?.scrollWidth - sliderRef.current?.offsetWidth
+            sliderRef.current?.scrollWidth - sliderRef.current?.offsetWidth,
           )
       : false;
   }
@@ -119,7 +119,7 @@ function Slider({ children, gap = 1, itemSizes }: SliderProps) {
             minWidth: `${itemSizes.minWidth}rem`,
             maxWidth: `${itemSizes.maxWidth}rem`,
           },
-        })
+        }),
       )
     : children;
 

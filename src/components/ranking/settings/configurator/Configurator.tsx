@@ -1,6 +1,6 @@
+import DateConfigurator from "../dateConfigurator/dateConfigurator/DateConfigurator";
 import RankingOrder from "../rankingOrder/RankingOrder";
 import styles from "./configurator.module.scss";
-import DateConfigurator from "../dateConfigurator/DateConfigurator";
 
 type ConfiguratorProps = { order: string };
 

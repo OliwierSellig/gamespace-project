@@ -1,8 +1,9 @@
 "use client";
-import { FiTrash2 } from "react-icons/fi";
-import styles from "./configurationBox.module.scss";
+
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
+import { FiTrash2 } from "react-icons/fi";
+import styles from "./configurationBox.module.scss";
 
 type ConfigurationBoxProps = {
   name: string;

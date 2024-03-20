@@ -1,10 +1,10 @@
 "use client";
 
 import React, { ReactNode, useEffect, useState } from "react";
-import styles from "./swiperComponent.module.scss";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
 import { Keyboard } from "swiper/modules";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import styles from "./swiperComponent.module.scss";
 
 type SwiperProps = {
   children: ReactNode;

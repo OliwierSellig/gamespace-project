@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useUser } from "../../../../contexts/UserContext";
 import { SingleGameItem } from "../../../../utils/types/types";
+import { useUser } from "../../../../contexts/UserContext";
+import UserInput from "../../../global/userInput/UserInput";
 import CommonRatingList from "../commonRatingList/CommonRatingList";
 import RangeBar from "../rangeBar/RangeBar";
 import ReviewButtons from "../reviewButtons/ReviewButtons";
 import styles from "./updateReview.module.scss";
-import UserInput from "../../../global/userInput/UserInput";
 
 type UpdateReviewProps = {
   game: SingleGameItem;
@@ -17,10 +17,10 @@ function UpdateReview({ game }: UpdateReviewProps) {
   const { findInReviews } = useUser();
   const gameReview = findInReviews(game.id);
   const [currentRating, setCurrentRating] = useState<number>(
-    gameReview?.rating || 0
+    gameReview?.rating || 0,
   );
   const [reviewText, setReviewText] = useState<string>(
-    gameReview?.content || ""
+    gameReview?.content || "",
   );
 
   return (

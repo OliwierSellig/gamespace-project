@@ -4,7 +4,7 @@ import { changeToUrlSlug } from "../../../../utils/functions/functions";
 import UserGamesListNav from "../../locale/userGamesListNav/UserGamesListNav";
 import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../locale/userSelectContainer/UserSelectContainer";
-import UserSelector from "../../locale/userSelectContainer/UserSelector";
+import UserSelector from "../../locale/userSelector/UserSelector";
 
 type WishlistNavigationProps = {
   orderBy: string;
@@ -29,7 +29,7 @@ function WishlistNavigation({
       <UserSelectContainer>
         <UserSelector
           activeItem={orderByList.find(
-            (item) => changeToUrlSlug(item.item) === orderBy
+            (item) => changeToUrlSlug(item.item) === orderBy,
           )}
           list={orderByList}
         >

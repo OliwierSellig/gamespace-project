@@ -24,7 +24,7 @@ export async function fetchDevelopers({ pageSize, page }: fetchedParentProps) {
 export async function fetchDevById(id: number) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/developers/${id}?key=${API_KEY}`
+      `https://api.rawg.io/api/developers/${id}?key=${API_KEY}`,
     );
     const data = await res.json();
     const results: SingleDevType = data;

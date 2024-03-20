@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { dateType } from "../../../../utils/types/types";
 import { useRanking } from "../../../../contexts/RankingContext";
 import Button from "../../../global/button/Button";
-import toast from "react-hot-toast";
 
 type SaveButtonProps = {
   tempFrom: dateType;

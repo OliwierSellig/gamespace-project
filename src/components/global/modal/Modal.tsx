@@ -12,9 +12,9 @@ import {
   useRef,
   useState,
 } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { IoClose } from "react-icons/io5";
-import React from "react";
 import styles from "./modal.module.scss";
 
 type ModalContextProps = {
@@ -100,7 +100,7 @@ function Window({ name, children, locked = true }: WindowProps) {
         </>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
 

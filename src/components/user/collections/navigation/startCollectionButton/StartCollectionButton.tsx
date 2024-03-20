@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { HiMiniPlus } from "react-icons/hi2";
 import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 import styles from "./startCollectionButton.module.scss";
-import { HiMiniPlus } from "react-icons/hi2";
 
 function StartCollectionButton() {
   return (

@@ -1,8 +1,8 @@
 import { API_KEY } from "../utils/data/global";
 import {
-  fetchedParentType,
-  fetchedParentProps,
   SingleGenreType,
+  fetchedParentProps,
+  fetchedParentType,
 } from "../utils/types/types";
 
 export async function fetchGenres({ pageSize, page }: fetchedParentProps) {
@@ -24,7 +24,7 @@ export async function fetchGenres({ pageSize, page }: fetchedParentProps) {
 export async function fetchGenreById(id: number) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/genres/${id}?key=${API_KEY}`
+      `https://api.rawg.io/api/genres/${id}?key=${API_KEY}`,
     );
     const data = await res.json();
     const results: SingleGenreType = data;

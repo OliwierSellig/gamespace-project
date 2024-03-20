@@ -28,7 +28,7 @@ function GameDetailsGenre({ genres }: GameDetailsGenreProps) {
               {item.name}
             </DetailsContentText>
           </>
-        )
+        ),
       )}
     </nav>
   );

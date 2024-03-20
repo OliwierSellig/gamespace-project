@@ -1,10 +1,10 @@
-import { poppins } from "../utils/other/fonts";
-import "../scss/general.scss";
-import { UserProvider } from "../contexts/UserContext";
-import Providers from "../lib/QueryProvider";
-import { Toaster } from "react-hot-toast";
 import Script from "next/script";
+import { Toaster } from "react-hot-toast";
+import { poppins } from "../utils/other/fonts";
+import Providers from "../lib/QueryProvider";
 import GlobalLayout from "../components/global/layout/globalLayout/GlobalLayout";
+import { UserProvider } from "../contexts/UserContext";
+import "../scss/general.scss";
 
 export const metadata = {
   title: {

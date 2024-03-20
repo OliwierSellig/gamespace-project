@@ -1,5 +1,5 @@
-import BrowseList from "../browseList/BrowseList";
 import { fetchGenres } from "../../../lib/genres";
+import BrowseList from "../browseList/BrowseList";
 
 type GenresProps = {
   params: { [key: string]: string };

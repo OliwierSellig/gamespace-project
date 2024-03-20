@@ -1,5 +1,5 @@
-import { useUser } from "../../../../../contexts/UserContext";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
+import { useUser } from "../../../../../contexts/UserContext";
 import AllGamesLibraryList from "../allGamesLibraryList/AllGamesLibraryList";
 
 type AllGamesLibraryProps = {
@@ -32,7 +32,7 @@ function AllGamesLibrary({
     game.name
       .toLowerCase()
       .replaceAll(" ", "")
-      .includes(query.toLowerCase().replaceAll(" ", ""))
+      .includes(query.toLowerCase().replaceAll(" ", "")),
   );
 
   const maxPage = Math.ceil(filteredGames.length / resultsPerPage);
@@ -43,7 +43,7 @@ function AllGamesLibrary({
 
   const filteredQueryGames = filteredGames.slice(
     (curPage - 1) * resultsPerPage,
-    curPage * resultsPerPage
+    curPage * resultsPerPage,
   );
 
   return (

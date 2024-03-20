@@ -1,5 +1,5 @@
-import styles from "./logo.module.scss";
 import Link from "next/link";
+import styles from "./logo.module.scss";
 
 type LogoProps = { pos?: "header" | "footer" };
 

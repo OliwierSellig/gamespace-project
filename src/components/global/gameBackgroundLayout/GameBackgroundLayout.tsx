@@ -1,7 +1,7 @@
 import Image from "next/image";
-import styles from "./gameBackgroundLayout.module.scss";
-import notFound from "../../../../public/img/not-found.png";
 import { ReactNode } from "react";
+import notFound from "../../../../public/img/not-found.png";
+import styles from "./gameBackgroundLayout.module.scss";
 
 type GameBackgroundLayout = {
   image: string;

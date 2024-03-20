@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { IconType } from "react-icons";
 import styles from "./shareSocialItem.module.scss";
-import Link from "next/link";
 
 type ShareSocialItemProps = {
   Icon: IconType;

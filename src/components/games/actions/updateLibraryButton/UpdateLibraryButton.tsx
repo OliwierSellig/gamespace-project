@@ -1,8 +1,8 @@
 "use client";
 
-import { useUser } from "../../../../contexts/UserContext";
+import { HiOutlineMinusCircle, HiOutlinePlusCircle } from "react-icons/hi2";
 import { SingleGameItem } from "../../../../utils/types/types";
-import { HiOutlinePlusCircle, HiOutlineMinusCircle } from "react-icons/hi2";
+import { useUser } from "../../../../contexts/UserContext";
 import Button from "../../../global/button/Button";
 
 type UpdateLibraryButtonProps = {

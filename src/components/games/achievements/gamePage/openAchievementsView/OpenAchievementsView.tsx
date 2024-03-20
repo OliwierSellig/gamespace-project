@@ -1,6 +1,6 @@
 import Link from "next/link";
-import styles from "./openAchievementsView.module.scss";
 import { HiMiniEllipsisHorizontal } from "react-icons/hi2";
+import styles from "./openAchievementsView.module.scss";
 
 type OpenAchievementsViewProps = {
   id: string;

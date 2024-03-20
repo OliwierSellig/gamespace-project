@@ -1,6 +1,6 @@
-import BackgroundSwitcher from "./backgroundSwitcher/BackgroundSwitcher";
-import styles from "./hero.module.scss";
 import Button from "../../global/button/Button";
+import BackgroundSwitcher from "../backgroundSwitcher/BackgroundSwitcher";
+import styles from "./hero.module.scss";
 
 function Hero() {
   return (

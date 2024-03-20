@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import styles from "./collectionNavButton.module.scss";
-import { PaddingType } from "../../../../utils/types/types";
 import Link from "next/link";
+import { ReactNode } from "react";
+import { PaddingType } from "../../../../utils/types/types";
+import styles from "./collectionNavButton.module.scss";
 
 type CollectionNavButtonProps = {
   children: ReactNode;

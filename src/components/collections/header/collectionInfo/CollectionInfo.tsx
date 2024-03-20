@@ -1,9 +1,9 @@
+import { CollectionItemType } from "../../../../utils/types/types";
+import CollectionReturnButton from "../../layout/collectionReturnButton/CollectionReturnButton";
 import CollectionDescription from "../collectionDescription/CollectionDescription";
 import CollectionHeader from "../collectionHeader/CollectionHeader";
 import CollectionNav from "../collectionNav/CollectionNav";
 import styles from "./collectionInfo.module.scss";
-import CollectionReturnButton from "../../layout/collectionReturnButton/CollectionReturnButton";
-import { CollectionItemType } from "../../../../utils/types/types";
 
 type CollectionInfoProps = {
   collection: CollectionItemType;

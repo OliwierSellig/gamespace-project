@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { filterList } from "../../../../../utils/data/user";
 import { changeToUrlSlug } from "../../../../../utils/functions/functions";
-import AllGamesLibraryList from "../../allGames/allGamesLibrary/AllGamesLibrary";
-import LibraryNavigation from "../libraryNavigation/LibraryNavigation";
 import { useUser } from "../../../../../contexts/UserContext";
 import EmptyUserList from "../../../locale/emptyUserList/EmptyUserList";
+import AllGamesLibraryList from "../../allGames/allGamesLibrary/AllGamesLibrary";
 import FilteredGamesLibrary from "../../filteredGames/filteredGamesLibrary/FilteredGamesLibrary";
+import LibraryNavigation from "../libraryNavigation/LibraryNavigation";
 
 type UserLibraryProps = {
   orderBy: string;

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import pageNotFound from "../../../../public/img/page-not-found.webp";
 import styles from "./pageNotFound.module.scss";
 

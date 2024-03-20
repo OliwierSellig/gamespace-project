@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./rankingOrder.module.scss";
-import { HiChevronDown } from "react-icons/hi";
 import { useEffect, useRef, useState } from "react";
+import { HiChevronDown } from "react-icons/hi";
+import styles from "./rankingOrder.module.scss";
 
 type RankingOrderProps = {
   order: string;

@@ -47,18 +47,18 @@ export async function fetchGames(options: fetchGamesProps) {
   if (options.dates)
     paramList.push(
       `dates=${options.dates.fromYear}-${setToDoubleDigit(
-        options.dates.fromMonth
+        options.dates.fromMonth,
       )}-${setToDoubleDigit(options.dates.fromDay)},${
         options.dates.toYear
       }-${setToDoubleDigit(options.dates.toMonth)}-${setToDoubleDigit(
-        options.dates.toDay
-      )}`
+        options.dates.toDay,
+      )}`,
     );
   if (options.ordering && options.ordering.orderBy)
     paramList.push(
       `ordering=${options.ordering.reversed ? "-" : ""}${
         options.ordering.orderBy
-      }`
+      }`,
     );
 
   const query = `${
@@ -78,7 +78,7 @@ export async function fetchGames(options: fetchGamesProps) {
 export async function fetchGameByID(id: number) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
+      `https://api.rawg.io/api/games/${id}?key=${API_KEY}`,
     );
     const data: SingleGameItem = await res.json();
 
@@ -97,7 +97,7 @@ export async function findIsTopGenre({
 }) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/games?key=${API_KEY}&genres=${genre}&page_size=40&ordering=-added`
+      `https://api.rawg.io/api/games?key=${API_KEY}&genres=${genre}&page_size=40&ordering=-added`,
     );
 
     const data: FetchedGameData = await res.json();
@@ -120,7 +120,7 @@ export async function findIsTopYear({
 }) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/games?key=${API_KEY}&dates=${year}-01-01,${year}-12-31&page_size=40&ordering=-added`
+      `https://api.rawg.io/api/games?key=${API_KEY}&dates=${year}-01-01,${year}-12-31&page_size=40&ordering=-added`,
     );
 
     const data: FetchedGameData = await res.json();
@@ -137,7 +137,7 @@ export async function findIsTopYear({
 export async function fetchGameScreenshots(id: number) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/games/${id}/screenshots?key=${API_KEY}`
+      `https://api.rawg.io/api/games/${id}/screenshots?key=${API_KEY}`,
     );
 
     const data: FetchedScreenshotItem = await res.json();
@@ -161,7 +161,7 @@ export async function fetchGameAchievements({
 }: FetchGameAchievementsProps) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/games/${id}/achievements?page=${page}&page_size=${pageSize}&key=${API_KEY}`
+      `https://api.rawg.io/api/games/${id}/achievements?page=${page}&page_size=${pageSize}&key=${API_KEY}`,
     );
 
     const data: FetchedAchievementsItem = await res.json();
@@ -175,7 +175,7 @@ export async function fetchGameAchievements({
 export async function fetchSameSeriesGames(pk: string) {
   try {
     const res = await fetch(
-      `https://api.rawg.io/api/games/${pk}/game-series?key=${API_KEY}`
+      `https://api.rawg.io/api/games/${pk}/game-series?key=${API_KEY}`,
     );
 
     const data: FetchedGameData = await res.json();

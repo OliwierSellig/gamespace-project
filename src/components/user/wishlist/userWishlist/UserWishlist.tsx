@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import WishlistNavigation from "../wishlistNavigation/WishlistNavigation";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import { useUser } from "../../../../contexts/UserContext";
-import WishlistGamesList from "../wishlistGamesList/WishlistGamesList";
 import EmptyUserList from "../../locale/emptyUserList/EmptyUserList";
+import WishlistGamesList from "../wishlistGamesList/WishlistGamesList";
+import WishlistNavigation from "../wishlistNavigation/WishlistNavigation";
 
 type UserWishlistProps = {
   orderBy: string;
@@ -35,7 +35,7 @@ function UserWishlist({
     game.name
       .toLowerCase()
       .replaceAll(" ", "")
-      .includes(query.toLowerCase().replaceAll(" ", ""))
+      .includes(query.toLowerCase().replaceAll(" ", "")),
   );
 
   const maxPage = Math.ceil(filteredGames.length / resultsPerPage);
@@ -46,7 +46,7 @@ function UserWishlist({
 
   const filteredQueryGames = filteredGames.slice(
     (curPage - 1) * resultsPerPage,
-    curPage * resultsPerPage
+    curPage * resultsPerPage,
   );
 
   if (!games || !games.length)

@@ -1,12 +1,12 @@
-import styles from "./gameDetails.module.scss";
 import { SingleGameItem } from "../../../../../utils/types/types";
-import GameDetailsItem from "../gameDetailsItem/GameDetailsItem";
-import GameDetailsPlatforms from "../../items/gameDetailsPlatforms/GameDetailsPlatforms";
-import GameDetailsMetascore from "../../items/gameDetailsMetascore/GameDetailsMetascore";
-import GameDetailsGenre from "../../items/gameDetailsGenre/GameDetailsGenre";
-import GameDetailsReleased from "../../items/gameDetailsReleased/GameDetailsReleased";
-import GameDetailsDevelopers from "../../items/gameDetailsDevelopers/GameDetailsDevelopers";
 import GameDetailsAgeRating from "../../items/gameDetailsAgeRating/GameDetailsAgeRating";
+import GameDetailsDevelopers from "../../items/gameDetailsDevelopers/GameDetailsDevelopers";
+import GameDetailsGenre from "../../items/gameDetailsGenre/GameDetailsGenre";
+import GameDetailsMetascore from "../../items/gameDetailsMetascore/GameDetailsMetascore";
+import GameDetailsPlatforms from "../../items/gameDetailsPlatforms/GameDetailsPlatforms";
+import GameDetailsReleased from "../../items/gameDetailsReleased/GameDetailsReleased";
+import GameDetailsItem from "../gameDetailsItem/GameDetailsItem";
+import styles from "./gameDetails.module.scss";
 
 type GameDetailsProps = {
   game: SingleGameItem;

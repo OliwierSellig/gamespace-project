@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { SingleScreenshotItem } from "../../../../utils/types/types";
+import notFound from "../../../../../public/img/not-found.png";
 import Modal from "../../../global/modal/Modal";
 import ScreenshotView from "../screenshotView/ScreenshotView";
 import styles from "./screenshotCard.module.scss";
-import notFound from "../../../../../public/img/not-found.png";
-import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
 type ScreenshotCardProps = { index: number; list: SingleScreenshotItem[] };
 

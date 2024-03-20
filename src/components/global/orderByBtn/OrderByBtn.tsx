@@ -1,9 +1,9 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { HiChevronDown } from "react-icons/hi";
 import styles from "./orderByBtn.module.scss";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type OrderByBtnProps = {
   order: string;

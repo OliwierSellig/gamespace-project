@@ -1,7 +1,7 @@
-import Link from "next/link";
-import styles from "./collectionsGamePreviewCard.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 import notFound from "../../../../../../public/img/not-found.png";
+import styles from "./collectionsGamePreviewCard.module.scss";
 
 type CollectionsGamePreviewCardProps = {
   cover: string;

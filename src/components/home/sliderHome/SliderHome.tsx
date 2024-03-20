@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Slider from "../../global/slider/Slider";
+import SectionHeading from "../sectionHeading/SectionHeading";
 import styles from "./siderHome.module.scss";
-import SectionHeading from "../layout/SectionHeading";
 
 type SliderHomeProps = {
   children: ReactElement[];

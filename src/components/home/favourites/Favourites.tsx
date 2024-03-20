@@ -1,7 +1,7 @@
 import { devList } from "../../../utils/data/home";
+import FavouriteDevItem from "../favouriteDevItem/FavouriteDevItem";
+import SectionHeading from "../sectionHeading/SectionHeading";
 import styles from "./favourites.module.scss";
-import SectionHeading from "../layout/SectionHeading";
-import FavouriteDevItem from "./favouriteDevItem/FavouriteDevItem";
 
 function Favourites() {
   return (

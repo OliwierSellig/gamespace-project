@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
+import { orderList } from "../../../../utils/data/global";
+import { changeToUrlSlug } from "../../../../utils/functions/functions";
 import UserGamesListNav from "../../../user/locale/userGamesListNav/UserGamesListNav";
 import UserSearchInput from "../../../user/locale/userSearchInput/UserSearchInput";
 import UserSelectContainer from "../../../user/locale/userSelectContainer/UserSelectContainer";
-import UserSelector from "../../../user/locale/userSelectContainer/UserSelector";
-import { changeToUrlSlug } from "../../../../utils/functions/functions";
-import { orderList } from "../../../../utils/data/global";
+import UserSelector from "../../../user/locale/userSelector/UserSelector";
 
 type CollectionGamesNavProps = {
   orderBy: string;
@@ -29,7 +29,7 @@ function CollectionGamesNav({
       <UserSelectContainer>
         <UserSelector
           activeItem={orderByList.find(
-            (item) => changeToUrlSlug(item.item) === orderBy
+            (item) => changeToUrlSlug(item.item) === orderBy,
           )}
           list={orderByList}
         >

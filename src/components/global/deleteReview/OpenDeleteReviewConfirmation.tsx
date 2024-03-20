@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 import { useUser } from "../../../contexts/UserContext";
 import Modal from "../modal/Modal";
-import ConfirmationPopup from "../popups/ConfirmationPopup";
+import ConfirmationPopup from "../popups/confirmationPupup/ConfirmationPopup";
 
 type OpenDeleteReviewConfirmationProps = { children: ReactNode; id: number };
 

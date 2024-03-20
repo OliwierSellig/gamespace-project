@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { HiMiniArrowSmallLeft } from "react-icons/hi2";
 import styles from "./collectionReturnButton.module.scss";
-import Link from "next/link";
 
 function CollectionReturnButton() {
   return (

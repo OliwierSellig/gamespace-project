@@ -1,5 +1,5 @@
-import { useUser } from "../../../../contexts/UserContext";
 import { BasicItemType } from "../../../../utils/types/types";
+import { useUser } from "../../../../contexts/UserContext";
 import styles from "./collectionsNameList.module.scss";
 import CollectionsNameListItem from "./item/CollectionsNameListItem";
 
@@ -10,14 +10,14 @@ function CollectionsNameList({ query, game }: CollectionsNameListProps) {
   const { collections } = state;
   const sortedCollection = [...collections].sort(
     (a, b) =>
-      new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime()
+      new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime(),
   );
   const filteredList = sortedCollection.filter((collection) =>
     collection.title
       .trim()
       .replaceAll(" ", "-")
       .toLowerCase()
-      .includes(query.trim().replaceAll(" ", "-").toLowerCase())
+      .includes(query.trim().replaceAll(" ", "-").toLowerCase()),
   );
 
   function toggleGameInCollection(game: BasicItemType, collectionID: number) {
@@ -26,7 +26,7 @@ function CollectionsNameList({ query, game }: CollectionsNameListProps) {
       inCollection
         ? { type: "removeGame", gameID: game.id }
         : { type: "addGame", game: game },
-      collectionID
+      collectionID,
     );
   }
 

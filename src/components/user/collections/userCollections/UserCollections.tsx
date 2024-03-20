@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import CollectionsList from "../list/collectionList/CollectionsList";
-import CollectionsNavigation from "../navigation/collectionNavigation/CollectionsNavigation";
 import { useUser } from "../../../../contexts/UserContext";
+import CollectionsList from "../list/collectionList/CollectionsList";
 import EmptyCollections from "../list/emptyCollections/EmptyCollections";
+import CollectionsNavigation from "../navigation/collectionNavigation/CollectionsNavigation";
 
 type UserCollectionsProps = {
   page: string;
@@ -21,7 +21,7 @@ function UserCollections({ page, resultsPerPage = 6 }: UserCollectionsProps) {
       .toLowerCase()
       .trim()
       .replaceAll(" ", "-")
-      .includes(query.toLowerCase().trim().replaceAll(" ", "-"))
+      .includes(query.toLowerCase().trim().replaceAll(" ", "-")),
   );
 
   const maxPage = Math.ceil(filteredCollections.length / resultsPerPage);
@@ -32,7 +32,7 @@ function UserCollections({ page, resultsPerPage = 6 }: UserCollectionsProps) {
 
   const filteredCollectionsPerPage = filteredCollections.slice(
     (curPage - 1) * resultsPerPage,
-    curPage * resultsPerPage
+    curPage * resultsPerPage,
   );
 
   if (!collections || !collections.length)

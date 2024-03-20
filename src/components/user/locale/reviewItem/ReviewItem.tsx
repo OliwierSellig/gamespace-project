@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./reviewItem.module.scss";
-import Button from "../../../global/button/Button";
 import { dateTransform } from "../../../../utils/functions/functions";
+import Button from "../../../global/button/Button";
 import OpenDeleteReviewConfirmation from "../../../global/deleteReview/OpenDeleteReviewConfirmation";
+import styles from "./reviewItem.module.scss";
 
 type ReviewItemProps = {
   game: { name: string; cover: string; id: number };

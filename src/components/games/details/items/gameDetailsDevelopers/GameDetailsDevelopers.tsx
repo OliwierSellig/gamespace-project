@@ -1,6 +1,6 @@
 import { GameDeveloperType } from "../../../../../utils/types/types";
-import EmptyDetails from "../../overview/emptyDetails/EmptyDetails";
 import DetailsContentText from "../../overview/detailsConentText/DetailsContentText";
+import EmptyDetails from "../../overview/emptyDetails/EmptyDetails";
 
 type GameDetailsDevelopers = {
   developer: GameDeveloperType;

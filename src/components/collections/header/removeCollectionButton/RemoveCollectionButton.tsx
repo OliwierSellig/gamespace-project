@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useUser } from "../../../../contexts/UserContext";
-import ConfirmationPopup from "../../../global/popups/ConfirmationPopup";
 import Modal from "../../../global/modal/Modal";
+import ConfirmationPopup from "../../../global/popups/confirmationPupup/ConfirmationPopup";
 import CollectionNavButton from "../collectionNavButton/CollectionNavButtonLayout";
 
 type RemoveCollectionButtonProps = {

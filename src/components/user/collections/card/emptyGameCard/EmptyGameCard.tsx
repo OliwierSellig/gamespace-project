@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { HiMiniPlus } from "react-icons/hi2";
 import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 import styles from "./emptyGameCard.module.scss";
-import { HiMiniPlus } from "react-icons/hi2";
 
 function EmptyGameCard() {
   return (

@@ -1,7 +1,7 @@
 import { AchievementResult } from "../../../../../utils/types/types";
-import styles from "./gameAchievements.module.scss";
 import AchievementsItem from "../../achievementsItem/AchievementsItem";
 import OpenAchievementsView from "../openAchievementsView/OpenAchievementsView";
+import styles from "./gameAchievements.module.scss";
 
 type GameAchievementsProps = {
   list: AchievementResult[];

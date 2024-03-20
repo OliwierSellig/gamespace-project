@@ -1,9 +1,9 @@
 "use client";
 
 import { useUser } from "../../../../../contexts/UserContext";
+import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 import ActivitiesList from "../activitiesList/ActivitiesList";
 import FilterActivitiesOpen from "../filterActivitiesOpen/FilterActivitiesOpen";
-import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 
 type ActivitiesContainerProps = {
   filterBy: string;

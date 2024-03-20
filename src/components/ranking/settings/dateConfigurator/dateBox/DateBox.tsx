@@ -1,6 +1,6 @@
-import styles from "./dateBox.module.scss";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import { setToDoubleDigit } from "../../../../../utils/functions/functions";
+import styles from "./dateBox.module.scss";
 
 type DateBoxProps = {
   list: string[];

@@ -1,9 +1,9 @@
 "use client";
 
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { setPage } from "../../../utils/functions/functions";
 import { useSearch } from "../../../contexts/SearchContex";
 import SearchInput from "../searchInput/SearchInput";
-import { setPage } from "../../../utils/functions/functions";
 
 function SearchQuery() {
   const { query, setQuery } = useSearch();

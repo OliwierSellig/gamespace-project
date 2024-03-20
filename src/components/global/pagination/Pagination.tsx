@@ -1,9 +1,9 @@
 "use client";
 
-import styles from "./pagination.module.scss";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
 import { setPage } from "../../../utils/functions/functions";
+import styles from "./pagination.module.scss";
 
 type PaginationProps = {
   currentPage: number;
@@ -79,7 +79,7 @@ function Pagination({
               >
                 {page + i}
               </button>
-            )
+            ),
           )
         ) : (
           <>

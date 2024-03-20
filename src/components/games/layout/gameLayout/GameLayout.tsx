@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { fetchGameByID } from "../../../../lib/games";
-import PageNotFound from "../../../global/pageNotFound/PageNotFound";
 import GameBackgroundLayout from "../../../global/gameBackgroundLayout/GameBackgroundLayout";
+import PageNotFound from "../../../global/pageNotFound/PageNotFound";
 
 type GameLayoutProps = {
   id: string;

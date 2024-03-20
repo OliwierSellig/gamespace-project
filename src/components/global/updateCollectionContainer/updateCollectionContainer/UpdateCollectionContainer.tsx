@@ -1,10 +1,10 @@
-import ReturnButton from "../returnButton/ReturnButton";
-import styles from "./updateCollectionContainer.module.scss";
 import {
   CollectionItemType,
   SingleGameItem,
 } from "../../../../utils/types/types";
 import CollectionsPropertiesBox from "../collectionPropertiesBox/CollectionsPropertiesBox";
+import ReturnButton from "../returnButton/ReturnButton";
+import styles from "./updateCollectionContainer.module.scss";
 
 type UpdateCollectionContainerProps = {
   returnDest: string;

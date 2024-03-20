@@ -2,7 +2,7 @@
 
 import { useUser } from "../../../../../contexts/UserContext";
 import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
-import EmptyUserSwiperItem from "../../../locale/emptyUserSliderItem/EmptyYearItem";
+import EmptyUserSwiperItem from "../../../locale/emptyUserSwiperItem/EmptyUserSwiperItem";
 import YearsItem from "../yearsItem/YearsItem";
 
 function YearsSwiper() {

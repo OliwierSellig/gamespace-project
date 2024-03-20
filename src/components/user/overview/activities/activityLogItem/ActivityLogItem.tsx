@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ActivityItem } from "../../../../../utils/types/types";
-import styles from "./activityLogItem.module.scss";
-import { useUser } from "../../../../../contexts/UserContext";
 import { dateTransform } from "../../../../../utils/functions/functions";
+import { ActivityItem } from "../../../../../utils/types/types";
+import { useUser } from "../../../../../contexts/UserContext";
+import styles from "./activityLogItem.module.scss";
 
 type ActivityLogItemProps = {
   activity: ActivityItem;

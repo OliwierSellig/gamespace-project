@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
-import UserGamesListNav from "../../locale/userGamesListNav/UserGamesListNav";
-import UserSelectContainer from "../../locale/userSelectContainer/UserSelectContainer";
-import UserSelector from "../../locale/userSelectContainer/UserSelector";
-import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
-import { changeToUrlSlug } from "../../../../utils/functions/functions";
 import { reviewOrderList } from "../../../../utils/data/user";
+import { changeToUrlSlug } from "../../../../utils/functions/functions";
+import UserGamesListNav from "../../locale/userGamesListNav/UserGamesListNav";
+import UserSearchInput from "../../locale/userSearchInput/UserSearchInput";
+import UserSelectContainer from "../../locale/userSelectContainer/UserSelectContainer";
+import UserSelector from "../../locale/userSelector/UserSelector";
 
 type ReviewsNavigationProps = {
   orderBy: string;
@@ -29,7 +29,7 @@ function ReviewsNavigation({
       <UserSelectContainer>
         <UserSelector
           activeItem={orderByList.find(
-            (item) => changeToUrlSlug(item.item) === orderBy
+            (item) => changeToUrlSlug(item.item) === orderBy,
           )}
           list={orderByList}
         >

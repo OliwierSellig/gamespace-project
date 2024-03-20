@@ -1,5 +1,5 @@
-import styles from "./searchInput.module.scss";
 import { IoClose } from "react-icons/io5";
+import styles from "./searchInput.module.scss";
 
 type SearchInputProps = {
   handleChange: (e: string) => void;

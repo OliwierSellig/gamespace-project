@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import GameLayout from "../../../components/games/layout/gameLayout/GameLayout";
 import { Metadata } from "next";
+import { ReactNode } from "react";
 import { fetchGameByID } from "../../../lib/games";
+import GameLayout from "../../../components/games/layout/gameLayout/GameLayout";
 
 type Props = {
   params: { id: string };

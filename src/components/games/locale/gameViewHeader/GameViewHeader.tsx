@@ -1,7 +1,7 @@
 import Link from "next/link";
-import styles from "./gameViewHeader.module.scss";
-import { HiMiniArrowSmallLeft } from "react-icons/hi2";
 import { ReactNode } from "react";
+import { HiMiniArrowSmallLeft } from "react-icons/hi2";
+import styles from "./gameViewHeader.module.scss";
 
 type GameViewHeaderProps = {
   id: number;

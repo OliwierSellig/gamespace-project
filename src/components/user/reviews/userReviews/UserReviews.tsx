@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useUser } from "../../../../contexts/UserContext";
+import EmptyUserList from "../../locale/emptyUserList/EmptyUserList";
 import ReviewsList from "../reviewsList/ReviewsList";
 import ReviewsNavigation from "../reviewsNavigation/ReviewsNavigation";
-import EmptyUserList from "../../locale/emptyUserList/EmptyUserList";
-import { useUser } from "../../../../contexts/UserContext";
 
 type UserReviewsProps = {
   orderBy: string;
@@ -21,7 +21,7 @@ function UserReviews({ orderBy, page, resultsPerPage = 6 }: UserReviewsProps) {
     review.game.name
       .toLowerCase()
       .replaceAll(" ", "")
-      .includes(query.toLowerCase().replaceAll(" ", ""))
+      .includes(query.toLowerCase().replaceAll(" ", "")),
   );
 
   const maxPage = Math.ceil(filteredList.length / resultsPerPage);
@@ -32,7 +32,7 @@ function UserReviews({ orderBy, page, resultsPerPage = 6 }: UserReviewsProps) {
 
   const slicedFilteredList = filteredList.slice(
     (curPage - 1) * resultsPerPage,
-    curPage * resultsPerPage
+    curPage * resultsPerPage,
   );
 
   if (!sortReviews(orderBy) || !sortReviews(orderBy).length)

@@ -1,9 +1,9 @@
 "use client";
 
-import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
-import toast from "react-hot-toast";
-import styles from "./shareLink.module.scss";
 import copy from "clipboard-copy";
+import toast from "react-hot-toast";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
+import styles from "./shareLink.module.scss";
 
 function ShareLink() {
   function copyUrl() {

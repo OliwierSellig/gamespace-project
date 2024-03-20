@@ -1,9 +1,9 @@
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import { LibraryItemType } from "../../../../../utils/types/types";
-import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
-import GameLibraryItem from "../../../locale/gameLibraryItem/GameLibraryItem";
 import { useUser } from "../../../../../contexts/UserContext";
-import EmptyUserSwiperItem from "../../../locale/emptyUserSliderItem/EmptyYearItem";
+import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
+import EmptyUserSwiperItem from "../../../locale/emptyUserSwiperItem/EmptyUserSwiperItem";
+import GameLibraryItem from "../../../locale/gameLibraryItem/GameLibraryItem";
 
 type FilteredGamesSwiperProps = {
   list: LibraryItemType[];

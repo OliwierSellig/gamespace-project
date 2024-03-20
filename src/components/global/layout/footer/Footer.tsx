@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { getSocialsByOrder } from "../../../../utils/functions/functions";
 import Logo from "../../logo/Logo";
 import styles from "./footer.module.scss";
-import { getSocialsByOrder } from "../../../../utils/functions/functions";
 
 const pages1 = [
   "Abouts us",

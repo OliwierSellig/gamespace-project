@@ -1,9 +1,9 @@
 "use client";
 
-import { useUser } from "../../../../contexts/UserContext";
-import { SingleGameItem } from "../../../../utils/types/types";
 import { HiOutlineBookmark, HiOutlineBookmarkSlash } from "react-icons/hi2";
 import { IoHeartDislikeOutline, IoHeartOutline } from "react-icons/io5";
+import { SingleGameItem } from "../../../../utils/types/types";
+import { useUser } from "../../../../contexts/UserContext";
 import Button from "../../../global/button/Button";
 import styles from "./updateWishlistFavouritesButton.module.scss";
 

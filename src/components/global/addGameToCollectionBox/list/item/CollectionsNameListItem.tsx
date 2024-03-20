@@ -1,6 +1,6 @@
+import { ReactNode } from "react";
 import { HiOutlineCheckCircle } from "react-icons/hi2";
 import styles from "./collectionsNameListItem.module.scss";
-import { ReactNode } from "react";
 
 type CollectionsNameListItemProps = {
   children: ReactNode;

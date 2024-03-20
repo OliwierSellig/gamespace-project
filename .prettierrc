@@ -1,0 +1,15 @@
+{
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "context/",
+    "utils/",
+    "hooks/",
+    "lib/",
+    "(components/|./index)",
+    ".svg",
+    "^../(.*)$",
+    "^[./]"
+  ],
+  "importOrderSortSpecifiers": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
+}

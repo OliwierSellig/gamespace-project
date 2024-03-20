@@ -1,11 +1,11 @@
 "use client";
 
-import { HiOutlineFolderPlus } from "react-icons/hi2";
-import styles from "./saveToCollectionButton.module.scss";
 import { useEffect, useRef, useState } from "react";
+import { HiOutlineFolderPlus } from "react-icons/hi2";
+import { SingleGameItemToBasicItemType } from "../../../../utils/functions/functions";
 import { SingleGameItem } from "../../../../utils/types/types";
 import CollectionsBox from "../../../global/addGameToCollectionBox/CollectionsBox";
-import { SingleGameItemToBasicItemType } from "../../../../utils/functions/functions";
+import styles from "./saveToCollectionButton.module.scss";
 
 type SaveToCollectionButtonProps = { game: SingleGameItem };
 

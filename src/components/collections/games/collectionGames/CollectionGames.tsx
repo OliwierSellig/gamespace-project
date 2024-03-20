@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import CollectionGamesNav from "../collectionGamesNav/CollectionGamesNav";
-import { useUser } from "../../../../contexts/UserContext";
-import CollectionGamesList from "../collectionGamesList/CollectionGamesList";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
+import { useUser } from "../../../../contexts/UserContext";
 import EmptyUserList from "../../../user/locale/emptyUserList/EmptyUserList";
+import CollectionGamesList from "../collectionGamesList/CollectionGamesList";
+import CollectionGamesNav from "../collectionGamesNav/CollectionGamesNav";
 
 type CollectionGamesProps = {
   orderBy: string;
@@ -24,7 +24,7 @@ function CollectionGames({
   const [query, setQuery] = useState("");
   const games = sortGames(
     { type: "collections", id: collectionID },
-    orderBy
+    orderBy,
   ).map((game) => {
     return {
       ...game,
@@ -41,7 +41,7 @@ function CollectionGames({
     game.name
       .toLowerCase()
       .replaceAll(" ", "")
-      .includes(query.toLowerCase().replaceAll(" ", ""))
+      .includes(query.toLowerCase().replaceAll(" ", "")),
   );
 
   const maxPage = Math.ceil(filteredGames.length / resultsPerPage);
@@ -52,7 +52,7 @@ function CollectionGames({
 
   const filteredQueryGames = filteredGames.slice(
     (curPage - 1) * resultsPerPage,
-    curPage * resultsPerPage
+    curPage * resultsPerPage,
   );
 
   if (!games || !games.length)

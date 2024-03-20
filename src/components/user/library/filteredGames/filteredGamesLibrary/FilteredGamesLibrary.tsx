@@ -20,7 +20,7 @@ function FilteredGamesLibrary({
     item.name
       .replaceAll(" ", "")
       .toLowerCase()
-      .includes(query.replaceAll(" ", "").toLowerCase())
+      .includes(query.replaceAll(" ", "").toLowerCase()),
   );
   const maxPage = Math.ceil(filteredList.length / resultsPerPage);
   const curPage =
@@ -30,7 +30,7 @@ function FilteredGamesLibrary({
 
   const filteredQueryGames = filteredList.slice(
     (curPage - 1) * resultsPerPage,
-    curPage * resultsPerPage
+    curPage * resultsPerPage,
   );
 
   console.log(filteredQueryGames);

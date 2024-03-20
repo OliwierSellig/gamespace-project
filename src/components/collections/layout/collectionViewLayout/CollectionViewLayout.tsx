@@ -1,10 +1,10 @@
 "use client";
 
 import { ReactNode } from "react";
-import { useUser } from "../../../../contexts/UserContext";
-import PageNotFound from "../../../global/pageNotFound/PageNotFound";
 import notFound from "../../../../../public/img/not-found.png";
+import { useUser } from "../../../../contexts/UserContext";
 import GameBackgroundLayout from "../../../global/gameBackgroundLayout/GameBackgroundLayout";
+import PageNotFound from "../../../global/pageNotFound/PageNotFound";
 
 type CollectionViewLayoutProps = {
   id: string;

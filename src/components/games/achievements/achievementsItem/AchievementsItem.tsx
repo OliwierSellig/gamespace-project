@@ -1,7 +1,7 @@
 import Image from "next/image";
-import styles from "./achievementsItem.module.scss";
 import { AchievementResult } from "../../../../utils/types/types";
 import notFound from "../../../../../public/img/not-found.png";
+import styles from "./achievementsItem.module.scss";
 
 type AchievementItemProps = {
   achievement: AchievementResult;

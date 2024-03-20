@@ -1,14 +1,13 @@
 "use client";
 
-import styles from "./gameLibraryItem.module.scss";
-import notFound from "../../../../../public/img/not-found.png";
 import Image from "next/image";
+import Link from "next/link";
 import { IconType } from "react-icons";
 import { HiMiniArrowRight, HiMiniBookmarkSlash } from "react-icons/hi2";
-
-import Link from "next/link";
-import { ImageSizesType } from "../../../../utils/types/types";
 import { getImageSizes } from "../../../../utils/functions/functions";
+import { ImageSizesType } from "../../../../utils/types/types";
+import notFound from "../../../../../public/img/not-found.png";
+import styles from "./gameLibraryItem.module.scss";
 
 type GameLibraryProps = {
   name: string;

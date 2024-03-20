@@ -1,7 +1,7 @@
 import Image from "next/image";
-import styles from "./userBox.module.scss";
 import userPhoto from "../../../../../../public/img/user.webp";
 import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
+import styles from "./userBox.module.scss";
 
 function UserBox() {
   return (

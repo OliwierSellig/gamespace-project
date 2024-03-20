@@ -1,8 +1,8 @@
 import Image from "next/image";
-import styles from "./sameSeriesCard.module.scss";
-import notFound from "../../../../../public/img/not-found.png";
 import { FetchedGameItem } from "../../../../utils/types/types";
+import notFound from "../../../../../public/img/not-found.png";
 import Button from "../../../global/button/Button";
+import styles from "./sameSeriesCard.module.scss";
 
 type SameSeriesCard = {
   game: FetchedGameItem;

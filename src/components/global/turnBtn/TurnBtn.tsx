@@ -1,5 +1,5 @@
+import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
 import styles from "./turnBtn.module.scss";
-import { HiMiniChevronRight, HiMiniChevronLeft } from "react-icons/hi2";
 
 function TurnBtn({ next = false, size = 4, user = false, handleClick }) {
   return (
@@ -12,8 +12,8 @@ function TurnBtn({ next = false, size = 4, user = false, handleClick }) {
             ? styles.next__user
             : styles.prev__user
           : next
-          ? styles.next
-          : styles.prev
+            ? styles.next
+            : styles.prev
       } ${user ? styles.user : ""} `}
     >
       {next ? (

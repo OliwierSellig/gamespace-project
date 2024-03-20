@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useContext, useReducer } from "react";
-import { ChildrenProp, FetchedGameItem } from "../utils/types/types";
 import { currentDate } from "../utils/data/global";
 import { getMonthSig, getYearList } from "../utils/functions/functions";
+import { ChildrenProp, FetchedGameItem } from "../utils/types/types";
 
 const RankingContext = createContext<ContextType | undefined>(undefined);
 
@@ -18,7 +18,7 @@ type ContextType = {
     date: "month" | "year" | "day",
     currentDate: { year: number; month: number; day: number },
     borderDate: { year: number; month: number; day: number },
-    gap?: number
+    gap?: number,
   ) => boolean;
 };
 
@@ -95,12 +95,12 @@ function RankingProvider({ children }: ChildrenProp) {
     date: "month" | "year" | "day",
     currentDate: { year: number; month: number; day: number },
     borderDate: { year: number; month: number; day: number },
-    gap = 7
+    gap = 7,
   ) {
     const current = new Date(
       currentDate.year + (date === "year" ? (type === "max" ? 1 : -1) : 0),
       currentDate.month + (date === "month" ? (type === "max" ? 1 : -1) : 0),
-      currentDate.day + (date === "day" ? (type === "max" ? 1 : -1) : 0)
+      currentDate.day + (date === "day" ? (type === "max" ? 1 : -1) : 0),
     );
 
     const border = new Date(borderDate.year, borderDate.month, borderDate.day);

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import styles from "./recentGameItem.module.scss";
-import notFound from "./../../../../../../public/img/not-found.png";
-import RecentGamesCount from "../recentGamesCount/RecentGamesCount";
 import Link from "next/link";
-import RecentGamesOptions from "../recentGamesOptions/RecentGamesOptions";
 import { BasicItemType } from "../../../../../utils/types/types";
+import RecentGamesCount from "../recentGamesCount/RecentGamesCount";
+import RecentGamesOptions from "../recentGamesOptions/RecentGamesOptions";
+import notFound from "./../../../../../../public/img/not-found.png";
+import styles from "./recentGameItem.module.scss";
 
 type RecentGameItemProps = {
   game: BasicItemType;

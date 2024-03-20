@@ -1,8 +1,8 @@
-import styles from "./gameActionButtons.module.scss";
-import SaveToCollectionButton from "../../collections/saveToCollectionButton/SaveToCollectionButton";
 import { SingleGameItem } from "../../../../utils/types/types";
+import SaveToCollectionButton from "../../collections/saveToCollectionButton/SaveToCollectionButton";
 import UpdateLibraryButton from "../updateLibraryButton/UpdateLibraryButton";
 import UpdateWishlistButton from "../updateWishlistFavouritesButton/UpdateWishlistFavouritesButton";
+import styles from "./gameActionButtons.module.scss";
 
 type GameActionButtonsProps = {
   game: SingleGameItem;

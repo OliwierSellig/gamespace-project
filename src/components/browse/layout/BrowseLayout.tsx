@@ -4,10 +4,10 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import { ChildrenProp } from "../../../utils/types/types";
-import BrowseBy from "../browseBy/BrowseBy";
 import { fetchDevelopers } from "../../../lib/developers";
-import { fetchPlatforms } from "../../../lib/platfroms";
 import { fetchGenres } from "../../../lib/genres";
+import { fetchPlatforms } from "../../../lib/platfroms";
+import BrowseBy from "../browseBy/BrowseBy";
 
 async function BrowseLayout({ children }: ChildrenProp) {
   const queryClient = new QueryClient();

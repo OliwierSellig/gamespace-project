@@ -1,9 +1,9 @@
 import Link from "next/link";
-import styles from "./collectionsBox.module.scss";
 import { useState } from "react";
-import CollectionsNameList from "./list/CollectionsNameList";
-import CollectionsBoxInput from "./input/CollectionsBoxInput";
 import { BasicItemType } from "../../../utils/types/types";
+import styles from "./collectionsBox.module.scss";
+import CollectionsBoxInput from "./input/CollectionsBoxInput";
+import CollectionsNameList from "./list/CollectionsNameList";
 
 type CollectionsBoxProps = {
   game: BasicItemType;

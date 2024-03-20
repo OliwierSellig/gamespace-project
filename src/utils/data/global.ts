@@ -1,4 +1,4 @@
-import { FaInstagram, FaFacebookF, FaYoutube, FaDiscord } from "react-icons/fa";
+import { FaDiscord, FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SocialPlatformType } from "../types/types";
 

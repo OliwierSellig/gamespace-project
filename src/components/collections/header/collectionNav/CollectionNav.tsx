@@ -1,10 +1,10 @@
 "use client";
 
+import { HiOutlineCog6Tooth } from "react-icons/hi2";
 import { CollectionItemType } from "../../../../utils/types/types";
 import CollectionNavButton from "../collectionNavButton/CollectionNavButtonLayout";
 import RemoveCollectionButton from "../removeCollectionButton/RemoveCollectionButton";
 import styles from "./collectionNav.module.scss";
-import { HiOutlineCog6Tooth } from "react-icons/hi2";
 
 type CollectionNavProps = {
   collection: CollectionItemType;

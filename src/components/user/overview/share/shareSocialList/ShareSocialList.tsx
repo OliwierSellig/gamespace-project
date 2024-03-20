@@ -14,7 +14,7 @@ function ShareSocialList() {
             color={item.color}
             key={item.url}
           />
-        )
+        ),
       )}
     </nav>
   );

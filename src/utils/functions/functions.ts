@@ -1,6 +1,5 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { currentDate, socials } from "../data/global";
-
 import {
   BasicItemType,
   ImageSizesType,
@@ -13,7 +12,7 @@ import {
 export function dateTransform(date: Date | string = new Date()) {
   const dateItem = typeof date === "string" ? new Date(date) : date;
   const transformed = `${setToDoubleDigit(
-    dateItem.getDate()
+    dateItem.getDate(),
   )}.${setToDoubleDigit(dateItem.getMonth() + 1)}.${dateItem.getFullYear()}`;
   return transformed;
 }
@@ -153,7 +152,7 @@ export function getYearList(startYear: number) {
 
   const arr = Array.from(
     { length: currentDate.getFullYear() - startYear + 1 },
-    (_, i) => startYear + i
+    (_, i) => startYear + i,
   );
 
   return arr;
@@ -162,7 +161,7 @@ export function getYearList(startYear: number) {
 // ------- Gets social items by given order -----------
 
 export function getSocialsByOrder(
-  list: ("Youtube" | "Facebook" | "Twitter/X" | "Instagram" | "Discord")[]
+  list: ("Youtube" | "Facebook" | "Twitter/X" | "Instagram" | "Discord")[],
 ) {
   const filteredArr: SocialPlatformType[] = [];
 
@@ -188,12 +187,12 @@ export function getImageSizes(imageSizes: ImageSizesType) {
           .sort((a, b) => a.maxWidth - b.maxWidth)
           .map(
             (item) =>
-              `(max-width: ${item.maxWidth}px) ${item.size.number}${item.size.unit}`
+              `(max-width: ${item.maxWidth}px) ${item.size.number}${item.size.unit}`,
           )
           .join(", ")
           .concat(
             ", ",
-            `${imageSizes.defalult.number}${imageSizes.defalult.unit}`
+            `${imageSizes.defalult.number}${imageSizes.defalult.unit}`,
           )
       : `${imageSizes.defalult.number}${imageSizes.defalult.unit}`;
 
@@ -211,7 +210,7 @@ export function rankList(list: string[], ascending = false) {
     };
   });
   return topList.sort((a, b) =>
-    ascending ? a.amount - b.amount : b.amount - a.amount
+    ascending ? a.amount - b.amount : b.amount - a.amount,
   );
 }
 
@@ -238,7 +237,7 @@ export function setPage(
   pathname: string,
   params: URLSearchParams,
   maxPage: number,
-  p: number
+  p: number,
 ) {
   const current = new URLSearchParams(Array.from(params.entries()));
   current.set("page", p.toString());
