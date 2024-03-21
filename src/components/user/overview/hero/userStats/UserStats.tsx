@@ -17,26 +17,17 @@ function UserStats() {
   return (
     <UserBoxLayout padding={{ top: 3.2, left: 4.8, right: 4.8, bottom: 3.2 }}>
       <ul className={styles.container}>
-        {userStatsItems.map((item, i) =>
-          i === 0 ? (
+        {userStatsItems.map((item, i) => (
+          <>
+            {i !== 0 && <li className={styles.line} />}
             <UserStatsItem
               key={item.name}
               name={item.name}
               count={item.count}
               color={item.color}
             />
-          ) : (
-            <>
-              <li className={styles.line} />
-              <UserStatsItem
-                key={item.name}
-                name={item.name}
-                count={item.count}
-                color={item.color}
-              />
-            </>
-          ),
-        )}
+          </>
+        ))}
       </ul>
     </UserBoxLayout>
   );
