@@ -11,28 +11,28 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
-    "@tanstack/react-query": "^5.17.19",
-    "@tanstack/react-query-devtools": "^5.17.21",
+    "@tanstack/react-query": "^5.28.6",
+    "@tanstack/react-query-devtools": "^5.28.6",
     "clipboard-copy": "^4.0.1",
-    "framer-motion": "^10.18.0",
-    "next": "14.0.4",
+    "framer-motion": "^11.0.20",
+    "next": "14.1.4",
     "next-videos": "^1.4.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
-    "sharp": "^0.33.1",
-    "swiper": "^11.0.6"
+    "sharp": "^0.33.2",
+    "swiper": "^11.0.7"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@types/node": "^20.11.3",
-    "@types/react": "^18.2.48",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.67",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4",
-    "sass": "^1.69.7",
-    "typescript": "^5.3.3"
+    "eslint-config-next": "14.1.4",
+    "sass": "^1.72.0",
+    "typescript": "^5.4.3"
   }
 }
