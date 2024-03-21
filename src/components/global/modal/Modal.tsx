@@ -48,7 +48,7 @@ function Open({ children, opens: opensWindowName }: OpenProps) {
 
   return cloneElement(children, {
     onClick: () => open(opensWindowName),
-    onKeyDown: (e: any) => {
+    onKeyDown: (e: KeyboardEvent) => {
       if (e.key === "Enter") {
         open(opensWindowName);
       }

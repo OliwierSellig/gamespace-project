@@ -1,7 +1,7 @@
-import { BasicItemType } from "../../../../utils/types/types";
-import { useUser } from "../../../../contexts/UserContext";
+import { BasicItemType } from "../../../../../utils/types/types";
+import { useUser } from "../../../../../contexts/UserContext";
+import CollectionsNameListItem from "../item/CollectionsNameListItem";
 import styles from "./collectionsNameList.module.scss";
-import CollectionsNameListItem from "./item/CollectionsNameListItem";
 
 type CollectionsNameListProps = { query: string; game: BasicItemType };
 
@@ -23,9 +23,7 @@ function CollectionsNameList({ query, game }: CollectionsNameListProps) {
   function toggleGameInCollection(game: BasicItemType, collectionID: number) {
     const inCollection = checkGameInCollection(game.id, collectionID);
     updateCollection(
-      inCollection
-        ? { type: "removeGame", gameID: game.id }
-        : { type: "addGame", game: game },
+      { type: inCollection ? "removeGame" : "addGame", game },
       collectionID,
     );
   }

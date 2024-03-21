@@ -34,6 +34,7 @@ function ScreenshotView({ currentScreenshot, list }: ScreenshotViewProps) {
         {list.map((item) => (
           <div className={styles.box} key={item.id}>
             <Image
+              priority={true}
               src={item.image || notFound}
               alt={`Screenshot ${item.id}`}
               fill

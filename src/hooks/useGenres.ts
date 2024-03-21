@@ -8,7 +8,7 @@ export function useGenres() {
     error,
   } = useQuery({
     queryKey: ["genres"],
-    queryFn: fetchGenres,
+    queryFn: () => fetchGenres({ page: 1, pageSize: 20 }),
   });
 
   return { isLoading, genres, error };
