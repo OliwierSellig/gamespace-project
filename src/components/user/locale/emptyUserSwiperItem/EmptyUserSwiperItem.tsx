@@ -5,18 +5,23 @@ import styles from "./emptyUserSwiperItem.module.scss";
 
 type EmptyUserSwiperItemProps = {
   additionalStyle?: object;
+  text?: string;
 };
 
 function EmptyUserSwiperItem({
   additionalStyle = {},
+  text = "Add Games",
 }: EmptyUserSwiperItemProps) {
   return (
-    <UserBoxLayout padding={{ top: 0, bottom: 0, left: 0, right: 0 }}>
+    <UserBoxLayout
+      additionalStyles={{ height: "100%" }}
+      padding={{ top: 0, bottom: 0, left: 0, right: 0 }}
+    >
       <div style={additionalStyle} className={styles.container}>
-        <Link href="/search" aria-label="Add Games" className={styles.btn}>
+        <Link href="/search" aria-label={text} className={styles.btn}>
           <HiMiniPlus />
         </Link>
-        <p className={styles.text}>Add Games</p>
+        <p className={styles.text}>{text}</p>
       </div>
     </UserBoxLayout>
   );
