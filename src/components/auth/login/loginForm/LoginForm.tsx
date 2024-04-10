@@ -6,10 +6,12 @@ import FormInput from "../../../global/formInput/FormInput";
 import ForgotPasswordButton from "../forgotPasswordButton/ForgotPasswordButton";
 import LoginInputs from "../loginInputs/LoginInputs";
 import styles from "./loginForm.module.scss";
+import { validationSchema } from "./validationSchema";
 
 function LoginForm() {
   const formik = useFormik({
     initialValues: { username: "", password: "" },
+    validationSchema: validationSchema,
     onSubmit: () => {},
   });
   return (

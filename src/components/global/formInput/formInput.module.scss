@@ -1,4 +1,4 @@
-.contaier {
+.container {
   position: relative;
   width: 100%;
 }
@@ -22,8 +22,8 @@
 
 .error {
   position: absolute;
-  right: 5%;
-  bottom: -5%;
+  right: 1.6rem;
+  bottom: -30%;
   font-size: 1.4rem;
   color: var(--color-crimson-200);
 }
