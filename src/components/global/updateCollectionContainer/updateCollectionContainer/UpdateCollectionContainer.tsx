@@ -2,8 +2,8 @@ import {
   CollectionItemType,
   SingleGameItem,
 } from "../../../../utils/types/types";
+import ReturnButton from "../../returnButton/ReturnButton";
 import CollectionsPropertiesBox from "../collectionPropertiesBox/CollectionsPropertiesBox";
-import ReturnButton from "../returnButton/ReturnButton";
 import styles from "./updateCollectionContainer.module.scss";
 
 type UpdateCollectionContainerProps = {

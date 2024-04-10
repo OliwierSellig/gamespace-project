@@ -1,0 +1,27 @@
+.contaier {
+  position: relative;
+}
+
+.input {
+  background-color: var(--color-dark-100);
+  border-radius: var(--border-radius-small);
+  padding: 1.6rem;
+  font-size: 1.8rem;
+  color: var(--color-light-200);
+  border: 2px solid var(--color-dark-100);
+
+  &::placeholder {
+    color: var(--color-dark-700);
+  }
+  &__error {
+    border-color: var(--color-crimson-200);
+  }
+}
+
+.error {
+  position: absolute;
+  right: 5%;
+  bottom: -5%;
+  font-size: 1.4rem;
+  color: var(--color-crimson-200);
+}
