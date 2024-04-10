@@ -15,7 +15,7 @@ function AccountCta({ type = "register" }: AccountCtaProps) {
           dest: "signup",
         };
   return (
-    <div className={styles.container}>
+    <div>
       <span className={styles.text}>{data.sub} </span>
       <Link className={styles.link} href={data.dest}>
         {data.main}
