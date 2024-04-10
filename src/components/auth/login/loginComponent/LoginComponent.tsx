@@ -8,7 +8,7 @@ function LoginComponent() {
     <AuthContainer>
       <AuthHeading main="Welcome to Gamespace!" sub="Sign in" />
       {/* <LoginForm /> */}
-      <AccountCta />
+      <AccountCta type="login" />
     </AuthContainer>
   );
 }
