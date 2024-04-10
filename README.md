@@ -14,6 +14,10 @@
 
 GameSpace is an online game collection that's all about helping users discover their favorite games and consolidating their gaming information in one convenient account. On the website, users can look for specific games using a custom search or handy filters. They can also include games in their personal libraries, wishlists, or collections and even share their thoughts through reviews. To stay updated with the latest game releases, the site taps into the RAWG Database API. It's your go-to place for all things gaming!
 
+#### Watch the explanation video below 👇
+
+[![Watch the video](https://jhlemuenelichgebawrp.supabase.co/storage/v1/object/public/project_screenshots/gamespace-5-lg.webp)](https://www.youtube.com/watch?v=Hk0uu52DLQc&embeds_referring_euri=https%3A%2F%2Foliwiersellig.dev%2F&source_ve_path=Mjg2NjMsMjg2NjMsMjg2NjY&feature=emb_logo)
+
 <br />
 
 ### ⚙ Project's Techstack
