@@ -1,5 +1,7 @@
+import SingupComponent from "../../../components/auth/signup/signupComponent/SingupComponent";
+
 function page() {
-  return <div></div>;
+  return <SingupComponent />;
 }
 
 export default page;
