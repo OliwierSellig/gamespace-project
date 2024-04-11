@@ -22,7 +22,9 @@ function LoginForm() {
           <Field name="password" component={FormInput} placeholder="Password" />
         </LoginInputs>
         <ForgotPasswordButton />
-        <Button>Login</Button>
+        <Button style={{ name: "opacity", shade: "white" }} borderRadius="md">
+          Login
+        </Button>
       </form>
     </FormikProvider>
   );

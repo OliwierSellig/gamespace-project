@@ -1,5 +1,7 @@
+import PasswordRecoveryComponent from "../../../components/auth/password-recovery/passwordRecoveryComponent/PasswordRecoveryComponent";
+
 function page() {
-  return <div></div>;
+  return <PasswordRecoveryComponent />;
 }
 
 export default page;

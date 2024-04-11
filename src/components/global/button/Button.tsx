@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import styles from "./button.module.scss";
 
 type ButtonProps = {
+  type?: "button" | "submit" | "reset";
   children: ReactNode;
   handleClick?: () => void;
   borderRadius?: "none" | "sm" | "md" | "lg";
@@ -25,6 +26,7 @@ type ButtonProps = {
 };
 
 function Button({
+  type = "button",
   children,
   handleClick,
   href,
@@ -77,6 +79,7 @@ function Button({
 
   return (
     <button
+      type={type}
       disabled={disabled}
       style={styleList}
       onClick={handleClick}

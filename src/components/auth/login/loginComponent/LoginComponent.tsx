@@ -1,14 +1,12 @@
-import AccountCta from "../../locale/accountCta/AccountCta";
 import AuthContainer from "../../locale/authContainer/AuthContainer";
 import AuthHeading from "../../locale/authHeading/AuthHeading";
 import LoginForm from "../loginForm/LoginForm";
 
 function LoginComponent() {
   return (
-    <AuthContainer>
+    <AuthContainer ctaType="register">
       <AuthHeading main="Welcome to Gamespace!" sub="Sign in" />
       <LoginForm />
-      <AccountCta type="login" />
     </AuthContainer>
   );
 }
