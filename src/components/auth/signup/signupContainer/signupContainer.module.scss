@@ -6,5 +6,14 @@
   margin-bottom: 3.2rem;
   & > div:first-child {
     width: 100%;
+    & > div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  & > nav {
+    align-self: center;
+    margin-bottom: 2.4rem;
   }
 }

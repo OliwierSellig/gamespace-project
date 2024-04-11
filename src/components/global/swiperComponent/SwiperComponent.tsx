@@ -26,9 +26,15 @@ type SwiperProps = {
     }[];
   };
   onInit?: (swiper) => void;
+  externalSlide?: number;
 };
 
-function SwiperComponent({ children, props, onInit }: SwiperProps) {
+function SwiperComponent({
+  children,
+  props,
+  onInit,
+  externalSlide,
+}: SwiperProps) {
   const breakpointsObj = {};
   if (props.breakpoints)
     props.breakpoints.forEach((breakpoint) => {
@@ -57,6 +63,7 @@ function SwiperComponent({ children, props, onInit }: SwiperProps) {
         navigation={Boolean(props.default.navigation)}
         pagination={Boolean(props.default.pagination)}
         loop={Boolean(props.default.loop)}
+        externalSlide={externalSlide}
       />
     </Swiper>
   );
@@ -66,17 +73,24 @@ type SwiperNavigationProps = {
   navigation: boolean;
   pagination: boolean;
   loop: boolean;
+  externalSlide: number;
 };
 
 function SwiperNavigation({
   navigation,
   pagination,
   loop,
+  externalSlide,
 }: SwiperNavigationProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const swiper = useSwiper();
   const paginationLength =
     swiper.slides.length - swiper.slidesPerViewDynamic() + 1;
+
+  useEffect(() => {
+    if (!externalSlide && externalSlide !== 0) return;
+    swiper.slideTo(externalSlide);
+  });
 
   useEffect(() => {
     const handleSlideChange = () => {
