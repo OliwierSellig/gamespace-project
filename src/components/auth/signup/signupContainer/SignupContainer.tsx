@@ -1,7 +1,7 @@
 "use client";
 
 import { FormikProvider, useFormik } from "formik";
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "../../../global/button/Button";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
 import AvatarInputs from "../avatarInputs/AvatarInputs";
@@ -14,18 +14,30 @@ import styles from "./signupContainer.module.scss";
 import { validationSchema } from "./validationSchema";
 
 function SignupContainer() {
-  const formik = useFormik({
+  type initialValues = {
+    username: string;
+    email: string;
+    password: string;
+    passwordConfirm: string;
+    avatar: File | null;
+    background: File | null;
+    gamespaceName: string;
+  };
+
+  const formik = useFormik<initialValues>({
     initialValues: {
       username: "",
       email: "",
       password: "",
       passwordConfirm: "",
-      avatar: "",
-      background: "",
+      avatar: null,
+      background: null,
       gamespaceName: "",
     },
     validationSchema: validationSchema,
-    onSubmit: () => {},
+    onSubmit: (values) => {
+      console.log(values);
+    },
   });
 
   const [currentTab, setCurrentTab] = useState<number>(0);
@@ -34,35 +46,45 @@ function SignupContainer() {
 
   const isLastPage = currentTab === swiperItems.length - 1;
 
-  function setGamespaceName(name: string) {
-    formik.setFieldValue("gamespaceName", name);
+  function setFormValue(
+    value:
+      | { type: "gamespaceName"; content: string }
+      | { type: "avatar" | "background"; content: File },
+  ) {
+    formik.setFieldValue(value.type, value.content);
+  }
+
+  function handleKeyPress(e: React.KeyboardEvent<HTMLFormElement>) {
+    if (e.key === "Enter" && !isLastPage) {
+      e.preventDefault();
+    }
   }
 
   function getIsButtonEnabled(stage: number) {
-    // const enableFirstStage = Boolean(
-    //   formik.values.username &&
-    //     formik.values.email &&
-    //     !formik.errors.username &&
-    //     !formik.errors.email,
-    // );
+    const enableFirstStage = Boolean(
+      formik.values.username &&
+        formik.values.email &&
+        !formik.errors.username &&
+        !formik.errors.email,
+    );
 
-    // const enableSecondStage = Boolean(
-    //   formik.values.password &&
-    //     formik.values.passwordConfirm &&
-    //     !formik.errors.password &&
-    //     !formik.errors.passwordConfirm,
-    // );
+    const enableSecondStage = Boolean(
+      formik.values.password &&
+        formik.values.passwordConfirm &&
+        !formik.errors.password &&
+        !formik.errors.passwordConfirm,
+    );
 
     switch (stage) {
       case 0:
-        // return enableFirstStage;
-        return true;
+        return enableFirstStage;
+      // return true;
       case 1:
-        // return enableSecondStage;
-        return true;
+        return enableSecondStage;
+      // return true;
       case 2:
-        // return enableFirstStage && enableSecondStage;
-        return true;
+        return enableFirstStage && enableSecondStage;
+      // return true;
       case 3:
         return formik.isValid;
       default:
@@ -71,7 +93,7 @@ function SignupContainer() {
   }
 
   function handleSubmitButtonClick() {
-    if (isLastPage) console.log(formik.initialValues);
+    if (isLastPage) return;
     else {
       setCurrentTab((prev) => prev + 1);
     }
@@ -79,7 +101,11 @@ function SignupContainer() {
 
   return (
     <FormikProvider value={formik}>
-      <form onSubmit={formik.handleSubmit} className={styles.form}>
+      <form
+        onKeyDown={handleKeyPress}
+        onSubmit={formik.handleSubmit}
+        className={styles.form}
+      >
         <SwiperComponent
           allowSwipeNext={getIsButtonEnabled(currentTab)}
           setExtSlide={(num) => setCurrentTab(num)}
@@ -89,7 +115,7 @@ function SignupContainer() {
           {swiperItems.map((Item, i) => (
             <SignupSwiperContainer key={i}>
               <Item
-                setName={setGamespaceName}
+                setFormValue={setFormValue}
                 skipStep={() => setCurrentTab((prev) => prev + 1)}
               />
             </SignupSwiperContainer>
@@ -102,7 +128,7 @@ function SignupContainer() {
           getIsButtonEnabled={getIsButtonEnabled}
         />
         <Button
-          type="button"
+          type={isLastPage ? "submit" : "button"}
           style={{ name: "opacity", shade: "white" }}
           borderRadius="md"
           disabled={!getIsButtonEnabled(currentTab)}

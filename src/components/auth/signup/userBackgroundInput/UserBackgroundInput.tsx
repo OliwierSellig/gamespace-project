@@ -3,10 +3,23 @@ import { HiOutlineGlobeEuropeAfrica } from "react-icons/hi2";
 import FileInput from "../../../global/fileInput/FileInput";
 import styles from "./userBackgroundInput.module.scss";
 
-function UserBackgroundInput() {
+type UserBackgroundInputProps = {
+  setBackground: (background: File) => void;
+};
+
+function UserBackgroundInput({ setBackground }: UserBackgroundInputProps) {
   return (
     <label className={styles.container}>
-      <Field name="background" component={FileInput} />
+      <Field
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          const file =
+            event.currentTarget.files && event.currentTarget.files[0];
+          console.log(event);
+          setBackground(file);
+        }}
+        name="background"
+        component={FileInput}
+      />
       <div className={styles.box}>
         <HiOutlineGlobeEuropeAfrica />
       </div>

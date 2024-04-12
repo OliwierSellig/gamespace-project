@@ -7,7 +7,7 @@ type SkipStepButtonProps = {
 
 function SkipStepButton({ handleClick }: SkipStepButtonProps) {
   return (
-    <button className={styles.btn} onClick={handleClick}>
+    <button type="button" className={styles.btn} onClick={handleClick}>
       <span className={styles.text}>Skip this step</span>
       <HiMiniChevronRight />
     </button>
