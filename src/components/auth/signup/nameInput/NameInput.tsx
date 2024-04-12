@@ -1,8 +1,13 @@
 import { Field } from "formik";
 import FormInput from "../../../global/formInput/FormInput";
+import RandomUserName from "../randomUserName/RandomUserName";
 import styles from "./nameInput.module.scss";
 
-function NameInput() {
+type NameInputProps = {
+  setName: (name: string) => void;
+};
+
+function NameInput({ setName }: NameInputProps) {
   return (
     <div className={styles.container}>
       <label className={styles.label} htmlFor="">
@@ -13,6 +18,7 @@ function NameInput() {
         component={FormInput}
         placeholder="GameSpace Name"
       />
+      <RandomUserName setName={setName} />
     </div>
   );
 }

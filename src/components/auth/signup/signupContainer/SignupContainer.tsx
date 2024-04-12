@@ -34,28 +34,35 @@ function SignupContainer() {
 
   const isLastPage = currentTab === swiperItems.length - 1;
 
-  function getIsButtonEnabled(stage: number) {
-    const enableFirstStage = Boolean(
-      formik.values.username &&
-        formik.values.email &&
-        !formik.errors.username &&
-        !formik.errors.email,
-    );
+  function setGamespaceName(name: string) {
+    formik.setFieldValue("gamespaceName", name);
+  }
 
-    const enableSecondStage = Boolean(
-      formik.values.password &&
-        formik.values.passwordConfirm &&
-        !formik.errors.password &&
-        !formik.errors.passwordConfirm,
-    );
+  function getIsButtonEnabled(stage: number) {
+    // const enableFirstStage = Boolean(
+    //   formik.values.username &&
+    //     formik.values.email &&
+    //     !formik.errors.username &&
+    //     !formik.errors.email,
+    // );
+
+    // const enableSecondStage = Boolean(
+    //   formik.values.password &&
+    //     formik.values.passwordConfirm &&
+    //     !formik.errors.password &&
+    //     !formik.errors.passwordConfirm,
+    // );
 
     switch (stage) {
       case 0:
-        return enableFirstStage;
+        // return enableFirstStage;
+        return true;
       case 1:
-        return enableSecondStage;
+        // return enableSecondStage;
+        return true;
       case 2:
-        return enableFirstStage && enableSecondStage;
+        // return enableFirstStage && enableSecondStage;
+        return true;
       case 3:
         return formik.isValid;
       default:
@@ -81,7 +88,10 @@ function SignupContainer() {
         >
           {swiperItems.map((Item, i) => (
             <SignupSwiperContainer key={i}>
-              <Item skipStep={() => setCurrentTab((prev) => prev + 1)} />
+              <Item
+                setName={setGamespaceName}
+                skipStep={() => setCurrentTab((prev) => prev + 1)}
+              />
             </SignupSwiperContainer>
           ))}
         </SwiperComponent>
