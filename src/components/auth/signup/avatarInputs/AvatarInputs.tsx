@@ -3,7 +3,11 @@ import UserAvatarInput from "../userAvatarInput/UserAvatarInput";
 import UserBackgroundInput from "../userBackgroundInput/UserBackgroundInput";
 import styles from "./avatarInputs.module.scss";
 
-function AvatarInputs() {
+type AvatarInputsProps = {
+  skipStep: () => void;
+};
+
+function AvatarInputs({ skipStep }: AvatarInputsProps) {
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>How your account should look?</h2>
@@ -11,7 +15,7 @@ function AvatarInputs() {
         <UserAvatarInput />
         <UserBackgroundInput />
       </div>
-      <SkipStepButton />
+      <SkipStepButton handleClick={skipStep} />
     </div>
   );
 }

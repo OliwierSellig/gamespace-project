@@ -10,16 +10,22 @@
   border: 2px solid rgba(#ccc, 0.2);
   border-radius: 50%;
   box-shadow: 8px 0px 24px 0px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   transition: var(--transition-fast);
-
-  &:hover,
-  &:focus {
-    border-color: var(--color-light-200);
-  }
 
   &__active {
     border-color: var(--color-light-200);
     background-color: var(--color-light-200);
+  }
+
+  &__enabled {
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      border-color: var(--color-light-200);
+    }
+  }
+
+  &__disabled {
+    opacity: 0.4;
   }
 }
