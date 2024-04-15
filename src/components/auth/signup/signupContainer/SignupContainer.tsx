@@ -2,11 +2,11 @@
 
 import { FormikProvider, useFormik } from "formik";
 import React, { useState } from "react";
-import Button from "../../../global/button/Button";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
 import AvatarInputs from "../avatarInputs/AvatarInputs";
 import NameInput from "../nameInput/NameInput";
 import PasswordInputs from "../passwordInputs/PasswordInputs";
+import SignupFormButton from "../signupFormButton/SignupFormButton";
 import SignupPagination from "../signupPagination/SignupPagination";
 import SignupSwiperContainer from "../signupSwiperContainer/SignupSwiperContainer";
 import UserInputs from "../userInputs/UserInputs";
@@ -19,8 +19,6 @@ function SignupContainer() {
     email: string;
     password: string;
     passwordConfirm: string;
-    avatar: File | null;
-    background: File | null;
     gamespaceName: string;
   };
 
@@ -30,15 +28,16 @@ function SignupContainer() {
       email: "",
       password: "",
       passwordConfirm: "",
-      avatar: null,
-      background: null,
       gamespaceName: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      console.log({ avatar, background, ...values });
     },
   });
+
+  const [avatar, setAvatar] = useState<File | null>(null);
+  const [background, setBackground] = useState<File | null>(null);
 
   const [currentTab, setCurrentTab] = useState<number>(0);
 
@@ -46,17 +45,24 @@ function SignupContainer() {
 
   const isLastPage = currentTab === swiperItems.length - 1;
 
-  function setFormValue(
-    value:
-      | { type: "gamespaceName"; content: string }
-      | { type: "avatar" | "background"; content: File },
-  ) {
-    formik.setFieldValue(value.type, value.content);
-  }
-
   function handleKeyPress(e: React.KeyboardEvent<HTMLFormElement>) {
     if (e.key === "Enter" && !isLastPage) {
       e.preventDefault();
+    }
+  }
+
+  function setImage(type: "avatar" | "background", file: File) {
+    switch (type) {
+      case "avatar": {
+        setAvatar(file);
+        return;
+      }
+      case "background": {
+        setBackground(file);
+        return;
+      }
+      default:
+        return;
     }
   }
 
@@ -92,13 +98,6 @@ function SignupContainer() {
     }
   }
 
-  function handleSubmitButtonClick() {
-    if (isLastPage) return;
-    else {
-      setCurrentTab((prev) => prev + 1);
-    }
-  }
-
   return (
     <FormikProvider value={formik}>
       <form
@@ -115,8 +114,10 @@ function SignupContainer() {
           {swiperItems.map((Item, i) => (
             <SignupSwiperContainer key={i}>
               <Item
-                setFormValue={setFormValue}
+                avatar={avatar}
+                background={background}
                 skipStep={() => setCurrentTab((prev) => prev + 1)}
+                setImage={setImage}
               />
             </SignupSwiperContainer>
           ))}
@@ -127,15 +128,11 @@ function SignupContainer() {
           handleClick={(num) => setCurrentTab(num)}
           getIsButtonEnabled={getIsButtonEnabled}
         />
-        <Button
-          type={isLastPage ? "submit" : "button"}
-          style={{ name: "opacity", shade: "white" }}
-          borderRadius="md"
-          disabled={!getIsButtonEnabled(currentTab)}
-          handleClick={handleSubmitButtonClick}
-        >
-          {isLastPage ? "Create Account" : "Continue"}
-        </Button>
+        <SignupFormButton
+          setNextPage={() => setCurrentTab((prev) => prev + 1)}
+          isLastPage={isLastPage}
+          buttonDisabled={!getIsButtonEnabled(currentTab)}
+        />
       </form>
     </FormikProvider>
   );

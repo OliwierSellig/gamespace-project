@@ -28,7 +28,12 @@ function PasswordInput({ field, form, placeholder = "" }: PasswordInputProps) {
       {errorCondition && (
         <div className={styles.error}>{String(form.errors[field.name])}</div>
       )}
-      <button onClick={togglePasswordVisibility} className={styles.btn}>
+      <button
+        type="button"
+        aria-label="Toggle password visibility"
+        onClick={togglePasswordVisibility}
+        className={styles.btn}
+      >
         {isPasswordVisible ? <HiOutlineEye /> : <HiOutlineEyeSlash />}
       </button>
     </div>

@@ -3,15 +3,7 @@ import FormInput from "../../../global/formInput/FormInput";
 import RandomUserName from "../randomUserName/RandomUserName";
 import styles from "./nameInput.module.scss";
 
-type NameInputProps = {
-  setFormValue: (
-    value:
-      | { type: "gamespaceName"; content: string }
-      | { type: "avatar" | "background"; content: File },
-  ) => void;
-};
-
-function NameInput({ setFormValue }: NameInputProps) {
+function NameInput() {
   return (
     <div className={styles.container}>
       <label className={styles.label} htmlFor="">
@@ -22,11 +14,7 @@ function NameInput({ setFormValue }: NameInputProps) {
         component={FormInput}
         placeholder="GameSpace Name"
       />
-      <RandomUserName
-        setName={(name: string) =>
-          setFormValue({ type: "gamespaceName", content: name })
-        }
-      />
+      <RandomUserName />
     </div>
   );
 }
