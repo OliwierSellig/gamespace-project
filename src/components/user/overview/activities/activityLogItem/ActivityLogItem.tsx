@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Fragment } from "react";
 import { dateTransform } from "../../../../../utils/functions/functions";
 import { ActivityItem } from "../../../../../utils/types/types";
 import { useUser } from "../../../../../contexts/UserContext";
@@ -18,12 +19,10 @@ function ActivityLogItem({ activity }: ActivityLogItemProps) {
       <div className={styles.date}>{dateTransform(activity.date)}</div>
       <div className={styles.text}>
         {activityString.map((item, i) => (
-          <>
+          <Fragment key={i}>
             {i !== 0 && <span> </span>}
             {typeof item === "string" ? (
-              <span key={crypto.randomUUID()} className={styles.sub}>
-                {item}
-              </span>
+              <span className={styles.sub}>{item}</span>
             ) : (
               <Link
                 href={item.url}
@@ -33,7 +32,7 @@ function ActivityLogItem({ activity }: ActivityLogItemProps) {
                 {item.name}
               </Link>
             )}
-          </>
+          </Fragment>
         ))}
         {"."}
       </div>

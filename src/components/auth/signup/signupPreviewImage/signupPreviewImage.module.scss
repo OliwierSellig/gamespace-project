@@ -11,14 +11,22 @@
 
   &__avatar {
     border-radius: 50%;
-    width: 8.2rem;
+    width: 12.2rem;
     aspect-ratio: 1/1;
+
+    @media only screen and (max-width: 900px) {
+      width: 12.2rem;
+    }
   }
 
   &__background {
     border-radius: var(--border-radius-small);
-    height: 8.2rem;
+    height: 12.2rem;
     aspect-ratio: 16/9;
+
+    @media only screen and (max-width: 900px) {
+      height: 12.2rem;
+    }
   }
 
   & > svg {

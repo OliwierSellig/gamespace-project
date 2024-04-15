@@ -1,3 +1,6 @@
+import background from "../../../../../../public/img/user-background.jpg";
+import avatar from "../../../../../../public/img/user.webp";
+import WelcomePopup from "../../../settings/welcomePopup/WelcomePopup";
 import ActivitiesContainer from "../../activities/activitiesContainer/ActivitiesContainer";
 import FavouritesSwiper from "../../favourites/favouritesSwiper/FavouritesSwiper";
 import DataContainer from "../../gameData/dataContainer/DataContainer";
@@ -15,6 +18,11 @@ type UserOvervierwProps = {
 function UserOverview({ filterActivities }: UserOvervierwProps) {
   return (
     <>
+      {/* <WelcomePopup
+        avatar={avatar}
+        background={background}
+        name="SpiritedWorst10"
+      /> */}
       <HeroContainer />
       <OverviewSection heading="Favourite Games">
         <FavouritesSwiper />
