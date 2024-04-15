@@ -9,7 +9,7 @@ type SignupFormButtonProps = {
 function SignupFormButton({
   isLastPage,
   buttonDisabled,
-  setNextPage
+  setNextPage,
 }: SignupFormButtonProps) {
   if (isLastPage)
     return (
@@ -25,7 +25,7 @@ function SignupFormButton({
 
   return (
     <Button
-    handleClick={setNextPage}
+      handleClick={setNextPage}
       type="button"
       style={{ name: "opacity", shade: "white" }}
       borderRadius="md"

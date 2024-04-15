@@ -60,7 +60,8 @@
     &.shade__blue {
       &:hover,
       &:focus {
-        box-shadow: inset -16rem 0 0 0 var(--color-blue-300),
+        box-shadow:
+          inset -16rem 0 0 0 var(--color-blue-300),
           inset 8em 0 0 0 var(--color-blue-300);
         border: 1px solid var(--color-blue-300);
       }
@@ -267,5 +268,36 @@
 
   &__lg {
     font-size: 2rem;
+  }
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.loading {
+  position: relative;
+  color: transparent;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 60%;
+    aspect-ratio: 1/1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid transparent;
+    border-top-color: var(--color-light-100);
+    border-radius: 50%;
+    animation: button-loading-spinner 1.2s ease-in-out infinite;
   }
 }

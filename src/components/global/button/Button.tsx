@@ -23,6 +23,7 @@ type ButtonProps = {
   additionalStyle?: object;
   additionalClass?: string[];
   disabled?: boolean;
+  isLoading?: boolean;
 };
 
 function Button({
@@ -43,6 +44,7 @@ function Button({
   additionalStyle = {},
   additionalClass = [],
   disabled = false,
+  isLoading,
 }: ButtonProps) {
   const styleList = {
     gap: `${gap}px`,
@@ -56,13 +58,13 @@ function Button({
     styles[`style__${style.name}`]
   } ${styles[`transition__${transition}`]} ${
     styles[`transition__${transition}`]
-  } ${styles[`shade__${style.shade}`]} ${disabled ? styles.disabled : ""}  ${
+  } ${styles[`shade__${style.shade}`]} ${disabled || isLoading ? styles.disabled : ""}  ${
     styles[`fontSize__${fontSize}`]
   } ${
     positionSelf?.type
       ? styles[`${positionSelf.type}__${positionSelf.pos}`]
       : ""
-  } ${additionalClass.join(" ")}`;
+  } ${additionalClass.join(" ")} ${isLoading ? styles.loading : ""}`;
 
   if (href?.url)
     return (
