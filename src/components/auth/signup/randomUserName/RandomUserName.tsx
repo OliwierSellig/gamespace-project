@@ -24,7 +24,11 @@ function RandomUserName() {
             </li>
           ))}
         </ul>
-        <button type="button" className={styles.refresh}>
+        <button
+          aria-label="Generate new usernames"
+          type="button"
+          className={styles.refresh}
+        >
           <IoMdRefresh />
         </button>
       </div>

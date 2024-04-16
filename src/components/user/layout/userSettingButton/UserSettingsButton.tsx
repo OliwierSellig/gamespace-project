@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
-import OpenWelcomeMessage from "../../settings/openWelcomeMessage/OpenWelcomeMessage";
 import styles from "./userSettingButton.module.scss";
 
 function UserSettingsButton() {
@@ -36,7 +35,6 @@ function UserSettingsButton() {
       </button>
       {isOpen && (
         <nav className={styles.nav}>
-          <OpenWelcomeMessage />
           <button>Settings</button>
           <button>Logout</button>
         </nav>

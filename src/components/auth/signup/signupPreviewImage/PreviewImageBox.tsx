@@ -5,14 +5,14 @@ import {
   HiOutlinePencilSquare,
   HiOutlineUser,
 } from "react-icons/hi2";
-import styles from "./signupPreviewImage.module.scss";
+import styles from "./previewImageBox.module.scss";
 
 type SingupPreviewImageProps = {
   file: File;
   type: "avatar" | "background";
 };
 
-function SignupPreviewImage({ file, type }: SingupPreviewImageProps) {
+function PreviewImageBox({ file, type }: SingupPreviewImageProps) {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
   useEffect(() => {
     if (file) {
@@ -43,4 +43,4 @@ function SignupPreviewImage({ file, type }: SingupPreviewImageProps) {
   );
 }
 
-export default SignupPreviewImage;
+export default PreviewImageBox;

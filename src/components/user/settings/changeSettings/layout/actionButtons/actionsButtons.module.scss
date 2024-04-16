@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6.4rem;
+}
+
+.btn {
+  font-size: 1.6rem;
+  font-weight: 500;
+  border-radius: var(--border-radius-smallest);
+  color: var(--color-light-500);
+  cursor: pointer;
+  transition: var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    color: var(--color-light-200);
+  }
+}

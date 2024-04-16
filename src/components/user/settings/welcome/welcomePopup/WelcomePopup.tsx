@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { HiOutlineUser } from "react-icons/hi2";
 import notFound from "../../../../../public/img/not-found.png";
-import Button from "../../../global/button/Button";
+import Button from "../../../../global/button/Button";
 import WelcomeList from "../welcomeList/WelcomeList";
 import styles from "./welcomePopup.module.scss";
 

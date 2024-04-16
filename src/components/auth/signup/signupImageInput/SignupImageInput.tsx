@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import SignupPreviewImage from "../signupPreviewImage/SignupPreviewImage";
+import PreviewImageBox from "../signupPreviewImage/PreviewImageBox";
 import styles from "./signupImageInput.module.scss";
 
 type SingupImageInputProps = {
@@ -27,7 +27,7 @@ function SignupImageInput({
         accept="image/jpg, image/png, image/webp, image/jpeg"
         id={type}
       />
-      <SignupPreviewImage file={file} type={type} />
+      <PreviewImageBox file={file} type={type} />
       <span className={styles.text}>{children}</span>
     </label>
   );
