@@ -1,6 +1,5 @@
 .container {
   position: relative;
-  margin-bottom: 1.4rem;
   color: var(--color-light-300);
   background-color: var(--color-dark-100);
   border: 2px solid rgba(#ccc, 0.2);
@@ -8,25 +7,31 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition: var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-100);
+    color: var(--color-dark-200);
+    border-color: var(--color-light-100);
+  }
 
   &__avatar {
     border-radius: 50%;
-    width: 12.2rem;
     aspect-ratio: 1/1;
-
-    @media only screen and (max-width: 900px) {
-      width: 12.2rem;
-    }
   }
 
   &__background {
     border-radius: var(--border-radius-small);
-    height: 12.2rem;
     aspect-ratio: 16/9;
+  }
 
-    @media only screen and (max-width: 900px) {
-      height: 12.2rem;
-    }
+  &__lg {
+    height: 12.2rem;
+  }
+
+  &__sm {
+    height: 9.2rem;
   }
 
   & > svg {

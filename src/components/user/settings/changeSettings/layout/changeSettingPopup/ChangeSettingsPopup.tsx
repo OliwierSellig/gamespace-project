@@ -1,3 +1,5 @@
+"use client";
+
 import ActionButtons from "../actionButtons/ActionButtons";
 import ChangeSettingsHeader from "../changeSettingsHeader/ChangeSettingsHeader";
 import ChangeSettingsSwiper from "../changeSettingsSwiper/ChangeSettingsSwiper";

@@ -1,5 +1,3 @@
-"use client";
-
 import PageNav from "../../../../../global/pageNav/PageNav";
 import styles from "./changeSetttingsHeader.module.scss";
 

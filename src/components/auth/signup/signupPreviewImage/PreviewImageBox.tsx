@@ -5,17 +5,23 @@ import {
   HiOutlinePencilSquare,
   HiOutlineUser,
 } from "react-icons/hi2";
+import notFound from "../../../../../public/img/not-found.png";
 import styles from "./previewImageBox.module.scss";
 
 type SingupPreviewImageProps = {
-  file: File;
-  type: "avatar" | "background";
+  file: File | string;
+  type?: "avatar" | "background";
+  size?: "lg" | "sm";
 };
 
-function PreviewImageBox({ file, type }: SingupPreviewImageProps) {
+function PreviewImageBox({
+  file,
+  type = "avatar",
+  size = "lg",
+}: SingupPreviewImageProps) {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
   useEffect(() => {
-    if (file) {
+    if (file && typeof file !== "string") {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -24,7 +30,9 @@ function PreviewImageBox({ file, type }: SingupPreviewImageProps) {
     }
   }, [file]);
   return (
-    <div className={`${styles.container} ${styles[`container__${type}`]}`}>
+    <div
+      className={`${styles.container} ${styles[`container__${type}`]} ${styles[`container__${size}`]}`}
+    >
       {!preview &&
         (type === "avatar" ? (
           <HiOutlineUser />
@@ -36,7 +44,12 @@ function PreviewImageBox({ file, type }: SingupPreviewImageProps) {
           <div className={styles.edit}>
             <HiOutlinePencilSquare />
           </div>
-          <Image fill sizes="10vw" src={preview as string} alt="" />
+          <Image
+            fill
+            sizes="10vw"
+            src={(preview as string) || notFound}
+            alt=""
+          />
         </div>
       )}
     </div>

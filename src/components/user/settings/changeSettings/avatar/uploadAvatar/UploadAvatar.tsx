@@ -1,17 +1,18 @@
-import { HiOutlinePencilSquare, HiOutlineUser } from "react-icons/hi2";
+import { HiOutlinePencilSquare } from "react-icons/hi2";
+import PreviewImageBox from "../../../../../auth/signup/signupPreviewImage/PreviewImageBox";
 import styles from "./uploadAvatar.module.scss";
 
 function UploadAvatar() {
   return (
     <div className={styles.container}>
       <label className={styles.label__image} htmlFor="avatar">
-        <HiOutlineUser />
+        <PreviewImageBox size="sm" file="" />
       </label>
-      <label className={styles.label__button} htmlFor="avatar">
+      <label className={styles.label__btn} htmlFor="avatar">
         <span>Upload New</span>
         <HiOutlinePencilSquare />
       </label>
-      <input id="avatar" type="file" />
+      <input className={styles.input} id="avatar" type="file" />
     </div>
   );
 }
