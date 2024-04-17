@@ -6,20 +6,20 @@ import { ChildrenProp } from "../utils/types/types";
 const UserSettingsContext = createContext<ContextType | undefined>(undefined);
 
 type ContextType = {
-  avatar: File | null | string;
-  setNewAvatar: (avatar: File | null | string) => void;
-  background: File | null | string;
-  setNewBackground: (background: File | null | string) => void;
+  avatar: File | null;
+  setNewAvatar: (avatar: File | null) => void;
+  background: File | null;
+  setNewBackground: (background: File | null) => void;
 };
 function UserSettingsProvider({ children }: ChildrenProp) {
-  const [avatar, setAvatar] = useState<File | null | string>(null);
-  const [background, setBackground] = useState<File | null | string>(null);
+  const [avatar, setAvatar] = useState<File | null>(null);
+  const [background, setBackground] = useState<File | null>(null);
 
-  function setNewAvatar(avatar: File | null | string) {
+  function setNewAvatar(avatar: File | null) {
     setAvatar(avatar);
   }
 
-  function setNewBackground(background: File | null | string) {
+  function setNewBackground(background: File | null) {
     setBackground(background);
   }
 
