@@ -1,6 +1,7 @@
 import { Field, FormikProvider, useFormik } from "formik";
 import { validationSchema } from "../../../../../auth/signup/signupContainer/validationSchema";
 import FormInput from "../../../../../global/formInput/FormInput";
+import ChangeSettingsSwiperItem from "../../layout/changeSettingsSwiperItem/ChangeSettingsSwiperItem";
 import GenerateNewName from "../generateNewName/GenerateNewName";
 import styles from "./updateNameContainer.module.scss";
 
@@ -25,14 +26,16 @@ function UpdateNameContainer() {
 
   return (
     <FormikProvider value={formik}>
-      <div className={styles.container}>
-        <Field
-          name="gamespaceName"
-          component={FormInput}
-          placeholder="New Name"
-        />
-        <GenerateNewName setName={setGameSpaceName} />
-      </div>
+      <ChangeSettingsSwiperItem>
+        <div className={styles.container}>
+          <Field
+            name="gamespaceName"
+            component={FormInput}
+            placeholder="New Name"
+          />
+          <GenerateNewName setName={setGameSpaceName} />
+        </div>
+      </ChangeSettingsSwiperItem>
     </FormikProvider>
   );
 }

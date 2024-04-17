@@ -1,8 +1,6 @@
 .btn {
   position: relative;
-  width: 7.2rem;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
+
   border: 2px solid rgba(#ccc, 0.2);
   cursor: pointer;
   transition: var(--transition-fast);
@@ -47,5 +45,22 @@
     width: 3.2rem;
     height: 3.2rem;
     transition: var(--transition-fast);
+  }
+
+  &__avatar {
+    width: 7.2rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+  }
+
+  &__background {
+    height: 10.2rem;
+    aspect-ratio: 16/9;
+    border-radius: var(--border-radius-smallest);
+
+    & > svg {
+      width: 4.2rem;
+      height: 4.2rem;
+    }
   }
 }

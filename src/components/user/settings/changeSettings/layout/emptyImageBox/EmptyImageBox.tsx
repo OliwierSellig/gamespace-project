@@ -1,15 +1,23 @@
 import { ChangeEvent } from "react";
 import { HiMiniPlus } from "react-icons/hi2";
-import styles from "./setAvatarBox.module.scss";
+import styles from "./emptyImageBox.module.scss";
 
-type SetAvatarBoxProps = {
+type EmptyImageBoxProps = {
   id: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  type?: "avatar" | "background";
 };
 
-function SetAvatarBox({ id, handleChange }: SetAvatarBoxProps) {
+function EmptyImageBox({
+  id,
+  handleChange,
+  type = "avatar",
+}: EmptyImageBoxProps) {
   return (
-    <label htmlFor={id} className={styles.container}>
+    <label
+      htmlFor={id}
+      className={`${styles.container} ${styles[`container__${type}`]}`}
+    >
       <input
         type="file"
         onChange={(e) => {
@@ -23,4 +31,4 @@ function SetAvatarBox({ id, handleChange }: SetAvatarBoxProps) {
   );
 }
 
-export default SetAvatarBox;
+export default EmptyImageBox;

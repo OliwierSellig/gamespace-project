@@ -1,0 +1,29 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(#fff, 0.15);
+  border-radius: var(--border-radius-smallest);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-size: 1.8rem;
+  padding: 1.6rem 3.2rem;
+  font-weight: 500;
+  align-self: center;
+  margin-bottom: 5.2rem;
+
+  & > svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--color-dark-200);
+    background-color: var(--color-light-100);
+  }
+}
+
+.input {
+  display: none;
+}

@@ -1,10 +1,10 @@
+import PreviousImagesHeading from "../../layout/previousImagesHeading/PreviousImagesHeading";
 import PreviousAvatarsList from "../previousAvatarsList/PreviousAvatarsList";
-import styles from "./previousAvatars.module.scss";
 
 function PreviousAvatars() {
   return (
     <div>
-      <p className={styles.heading}>Or, choose from your past pictures</p>
+      <PreviousImagesHeading />
       <PreviousAvatarsList />
     </div>
   );
