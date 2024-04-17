@@ -27,4 +27,8 @@
 
   z-index: 3000;
   overflow: hidden;
+
+  & > div {
+    width: 100%;
+  }
 }

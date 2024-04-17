@@ -27,7 +27,7 @@ type SwiperProps = {
   };
   onInit?: (swiper) => void;
   externalSlide?: number;
-  setExtSlide: (num: number) => void;
+  setExtSlide?: (num: number) => void;
   allowSwipeNext?: boolean;
 };
 
