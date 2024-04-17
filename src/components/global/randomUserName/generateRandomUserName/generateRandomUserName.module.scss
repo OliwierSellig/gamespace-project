@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr max-content;
+  gap: 2.4rem;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}

@@ -1,0 +1,16 @@
+.btn {
+  padding: 1.2rem 1.6rem;
+  border: 2px solid rgba(#ccc, 0.2);
+  border-radius: 5px;
+  background-color: var(--color-dark-100);
+  color: var(--color-light-300);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-size: 1.6rem;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-light-100);
+    color: var(--color-dark-200);
+  }
+}
