@@ -8,12 +8,15 @@
   justify-content: center;
   overflow: hidden;
   transition: var(--transition-fast);
+  cursor: pointer;
 
-  &:hover,
-  &:focus {
-    background-color: var(--color-light-100);
-    color: var(--color-dark-200);
-    border-color: var(--color-light-100);
+  &__empty {
+    &:hover,
+    &:focus {
+      background-color: var(--color-light-100);
+      color: var(--color-dark-200);
+      border-color: var(--color-light-100);
+    }
   }
 
   &__avatar {

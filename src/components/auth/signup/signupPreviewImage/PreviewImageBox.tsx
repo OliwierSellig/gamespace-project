@@ -29,9 +29,10 @@ function PreviewImageBox({
       };
     }
   }, [file]);
+
   return (
     <div
-      className={`${styles.container} ${styles[`container__${type}`]} ${styles[`container__${size}`]}`}
+      className={`${styles.container} ${!preview ? styles.container__empty : ""} ${styles[`container__${type}`]} ${styles[`container__${size}`]}`}
     >
       {!preview &&
         (type === "avatar" ? (
@@ -39,7 +40,7 @@ function PreviewImageBox({
         ) : (
           <HiOutlineGlobeEuropeAfrica />
         ))}
-      {preview && (
+      {(preview || typeof file === "string") && (
         <div className={styles.box}>
           <div className={styles.edit}>
             <HiOutlinePencilSquare />

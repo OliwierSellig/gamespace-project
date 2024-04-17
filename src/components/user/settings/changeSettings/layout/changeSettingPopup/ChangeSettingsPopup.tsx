@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { UserSettingsProvider } from "../../../../../../contexts/UserSettingsContext";
 import ActionButtons from "../actionButtons/ActionButtons";
 import ChangeSettingsHeader from "../changeSettingsHeader/ChangeSettingsHeader";
 import ChangeSettingsSwiper from "../changeSettingsSwiper/ChangeSettingsSwiper";
@@ -13,16 +14,21 @@ function ChangeSettingsPopup() {
   }
 
   return (
-    <div className={styles.background}>
-      <div className={styles.container}>
-        <ChangeSettingsHeader currentSlide={currentSlide} setSlide={setSlide} />
-        <ChangeSettingsSwiper
-          currentSlide={currentSlide}
-          setSlide={setCurrentSlide}
-        />
-        <ActionButtons />
+    <UserSettingsProvider>
+      <div className={styles.background}>
+        <div className={styles.container}>
+          <ChangeSettingsHeader
+            currentSlide={currentSlide}
+            setSlide={setSlide}
+          />
+          <ChangeSettingsSwiper
+            currentSlide={currentSlide}
+            setSlide={setCurrentSlide}
+          />
+          <ActionButtons />
+        </div>
       </div>
-    </div>
+    </UserSettingsProvider>
   );
 }
 

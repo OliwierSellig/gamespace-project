@@ -18,9 +18,8 @@ function SignupImageInput({
   return (
     <label htmlFor={type} className={styles.container}>
       <input
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          const file =
-            event.currentTarget.files && event.currentTarget.files[0];
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          const file = e.currentTarget.files && e.currentTarget.files[0];
           handleInputChange(file);
         }}
         type="file"
