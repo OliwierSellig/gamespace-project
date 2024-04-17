@@ -4,8 +4,8 @@ import UpdateBackgroundContainer from "../../background/updateBackgroundContaine
 import UpdateNameContainer from "../../name/updateNameContainer/UpdateNameContainer";
 
 const items = [
-  ChangeAvatarContainer,
   UpdateNameContainer,
+  ChangeAvatarContainer,
   UpdateBackgroundContainer,
 ];
 

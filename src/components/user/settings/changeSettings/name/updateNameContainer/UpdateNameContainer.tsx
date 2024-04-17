@@ -1,18 +1,18 @@
 import { Field, FormikProvider, useFormik } from "formik";
-import { validationSchema } from "../../../../../auth/signup/signupContainer/validationSchema";
 import FormInput from "../../../../../global/formInput/FormInput";
 import ChangeSettingsSwiperItem from "../../layout/changeSettingsSwiperItem/ChangeSettingsSwiperItem";
 import GenerateNewName from "../generateNewName/GenerateNewName";
 import styles from "./updateNameContainer.module.scss";
+import { validationSchema } from "./validationSchema";
 
 type initialValues = {
-  gamespaceName: string;
+  newName: string;
 };
 
 function UpdateNameContainer() {
   const formik = useFormik<initialValues>({
     initialValues: {
-      gamespaceName: "",
+      newName: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -20,20 +20,16 @@ function UpdateNameContainer() {
     },
   });
 
-  function setGameSpaceName(name: string) {
-    formik.setFieldValue("gamespaceName", name);
+  function setNewName(name: string) {
+    formik.setFieldValue("newName", name);
   }
 
   return (
     <FormikProvider value={formik}>
       <ChangeSettingsSwiperItem>
         <div className={styles.container}>
-          <Field
-            name="gamespaceName"
-            component={FormInput}
-            placeholder="New Name"
-          />
-          <GenerateNewName setName={setGameSpaceName} />
+          <Field name="newName" component={FormInput} placeholder="New Name" />
+          <GenerateNewName setName={setNewName} />
         </div>
       </ChangeSettingsSwiperItem>
     </FormikProvider>
