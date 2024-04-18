@@ -3,10 +3,12 @@ import Button from "../../../../../global/button/Button";
 import styles from "./actionsButtons.module.scss";
 
 function ActionButtons() {
-  const { saveChanges } = useUserSettings();
+  const { saveChanges, leaveUserSettings } = useUserSettings();
   return (
     <nav className={styles.container}>
-      <button className={styles.btn}>Cancel</button>
+      <button onClick={leaveUserSettings} className={styles.btn}>
+        Cancel
+      </button>
       <Button
         borderRadius="sm"
         fontSize="sm"

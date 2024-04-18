@@ -2,9 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+import { useUser } from "../../../../contexts/UserContext";
 import styles from "./userSettingButton.module.scss";
 
 function UserSettingsButton() {
+  const { setSettings } = useUser();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const selectorRef = useRef<HTMLDivElement>(null);
 
@@ -25,21 +27,23 @@ function UserSettingsButton() {
     };
   }, []);
   return (
-    <div ref={selectorRef} className={styles.container}>
-      <button
-        onClick={() => setIsOpen(true)}
-        className={styles.btn}
-        aria-label="See settings"
-      >
-        <HiOutlineAdjustmentsHorizontal />
-      </button>
-      {isOpen && (
-        <nav className={styles.nav}>
-          <button>Settings</button>
-          <button>Logout</button>
-        </nav>
-      )}
-    </div>
+    <>
+      <div ref={selectorRef} className={styles.container}>
+        <button
+          onClick={() => setIsOpen(true)}
+          className={styles.btn}
+          aria-label="See settings"
+        >
+          <HiOutlineAdjustmentsHorizontal />
+        </button>
+        {isOpen && (
+          <nav className={styles.nav}>
+            <button onClick={() => setSettings(true)}>User Settings</button>
+            <button>Logout</button>
+          </nav>
+        )}
+      </div>
+    </>
   );
 }
 

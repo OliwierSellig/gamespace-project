@@ -1,4 +1,3 @@
-import ChangeSettingsPopup from "../../../settings/changeSettings/layout/changeSettingPopup/ChangeSettingsPopup";
 import ActivitiesContainer from "../../activities/activitiesContainer/ActivitiesContainer";
 import FavouritesSwiper from "../../favourites/favouritesSwiper/FavouritesSwiper";
 import DataContainer from "../../gameData/dataContainer/DataContainer";
@@ -16,7 +15,6 @@ type UserOvervierwProps = {
 function UserOverview({ filterActivities }: UserOvervierwProps) {
   return (
     <>
-      <ChangeSettingsPopup />
       <HeroContainer />
       <OverviewSection heading="Favourite Games">
         <FavouritesSwiper />

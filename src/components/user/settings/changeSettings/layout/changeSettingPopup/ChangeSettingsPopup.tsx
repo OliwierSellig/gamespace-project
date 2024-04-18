@@ -1,36 +1,22 @@
-"use client";
-
-import { useState } from "react";
-import { UserSettingsProvider } from "../../../../../../contexts/UserSettingsContext";
-import ActionButtons from "../actionButtons/ActionButtons";
-import ChangeSettingsHeader from "../changeSettingsHeader/ChangeSettingsHeader";
-import ChangeSettingsSwiper from "../changeSettingsSwiper/ChangeSettingsSwiper";
-import UnsavedChanges from "../unsavedChanges/UnsavedChanges";
+import { useRef } from "react";
+import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import ChangeSettingsContainer from "../changeSettingsContainer/ChangeSettingsContainer";
 import styles from "./changeSettingPopup.module.scss";
 
 function ChangeSettingsPopup() {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
-  function setSlide(num: number) {
-    setCurrentSlide(num);
-  }
-
+  const backgroundRef = useRef<HTMLDivElement>(null);
+  const { leaveUserSettings } = useUserSettings();
   return (
-    <UserSettingsProvider>
-      <div className={styles.background}>
-        <div className={styles.container}>
-          <ChangeSettingsHeader
-            currentSlide={currentSlide}
-            setSlide={setSlide}
-          />
-          <ChangeSettingsSwiper
-            currentSlide={currentSlide}
-            setSlide={setCurrentSlide}
-          />
-          <ActionButtons />
-          <UnsavedChanges />
-        </div>
-      </div>
-    </UserSettingsProvider>
+    <div
+      ref={backgroundRef}
+      onClick={(e) => {
+        if (backgroundRef.current && e.target === backgroundRef.current)
+          leaveUserSettings();
+      }}
+      className={styles.background}
+    >
+      <ChangeSettingsContainer />
+    </div>
   );
 }
 

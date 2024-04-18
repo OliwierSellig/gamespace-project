@@ -24,6 +24,7 @@ type ContextType = {
   devList: { item: string; amount: number }[];
   recentAddedGames: LibraryItemType[];
   favouritesList: LibraryItemType[];
+  setSettings: (isOpen: boolean) => void;
   checkInLibrary: (id: number) => LibraryItemType;
   addToLibrary: (game: LibraryItemType) => void;
   addGameFromRanking: (id: number) => Promise<void>;
@@ -93,6 +94,7 @@ type stateProps = {
   collections: CollectionItemType[];
   initialRender: boolean;
   activities: ActivityItem[];
+  areSettingsOpen: boolean;
 };
 
 const enum REDUCER_ACTION_TYPE {
@@ -102,6 +104,8 @@ const enum REDUCER_ACTION_TYPE {
   SET_COLLECTIONS,
   SET_ACTIVITIES,
   SET_INITIAL_RENDER,
+  SET_SETTINGS_OPEN,
+  SET_SETTINGS_CLOSE,
 }
 
 type ReducerAction =
@@ -113,7 +117,12 @@ type ReducerAction =
   | { type: REDUCER_ACTION_TYPE.SET_REVIEWS; payload: ReviewType[] }
   | { type: REDUCER_ACTION_TYPE.SET_COLLECTIONS; payload: CollectionItemType[] }
   | { type: REDUCER_ACTION_TYPE.SET_ACTIVITIES; payload: ActivityItem[] }
-  | { type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER };
+  | {
+      type:
+        | REDUCER_ACTION_TYPE.SET_INITIAL_RENDER
+        | REDUCER_ACTION_TYPE.SET_SETTINGS_CLOSE
+        | REDUCER_ACTION_TYPE.SET_SETTINGS_OPEN;
+    };
 
 // ----------------------------------------------------------------
 
@@ -126,6 +135,7 @@ const initialState: stateProps = {
   collections: [],
   activities: [],
   initialRender: true,
+  areSettingsOpen: false,
 };
 
 function reducer(state: stateProps, action: ReducerAction): stateProps {
@@ -142,6 +152,11 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
       return { ...state, activities: action.payload };
     case REDUCER_ACTION_TYPE.SET_INITIAL_RENDER:
       return { ...state, initialRender: false };
+    case REDUCER_ACTION_TYPE.SET_SETTINGS_OPEN:
+      return { ...state, areSettingsOpen: true };
+    case REDUCER_ACTION_TYPE.SET_SETTINGS_CLOSE:
+      return { ...state, areSettingsOpen: false };
+
     default:
       throw new Error("Undefined reducer action");
   }
@@ -856,6 +871,13 @@ function UserProvider({ children }: ChildrenProp) {
   // ---------------------------------------------
 
   // ------- Other -------------
+  function setSettings(isOpen: boolean) {
+    dispatch({
+      type: isOpen
+        ? REDUCER_ACTION_TYPE.SET_SETTINGS_OPEN
+        : REDUCER_ACTION_TYPE.SET_SETTINGS_CLOSE,
+    });
+  }
 
   function sortGames(
     list:
@@ -997,6 +1019,7 @@ function UserProvider({ children }: ChildrenProp) {
         devList,
         recentAddedGames,
         favouritesList,
+        setSettings,
         checkInLibrary,
         addToLibrary,
         addGameFromRanking,

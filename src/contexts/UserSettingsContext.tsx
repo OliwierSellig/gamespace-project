@@ -5,6 +5,7 @@ import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 import * as yup from "yup";
 import { ChildrenProp } from "../utils/types/types";
+import { useUser } from "./UserContext";
 
 const UserSettingsContext = createContext<ContextType | undefined>(undefined);
 
@@ -18,7 +19,7 @@ type ContextType = {
   saveChanges: () => void;
   unsavedPopup: boolean;
   closeUnsavedPopup: () => void;
-  leaveUserSettings: (leaveFn: () => void) => void;
+  leaveUserSettings: () => void;
 };
 
 type initialValues = {
@@ -33,6 +34,7 @@ export const validationSchema = yup.object().shape({
 });
 
 function UserSettingsProvider({ children }: ChildrenProp) {
+  const { setSettings } = useUser();
   const [unsavedPopup, setUnsavedPopup] = useState<boolean>(false);
   const [avatar, setAvatar] = useState<File | null>(null);
   const [background, setBackground] = useState<File | null>(null);
@@ -60,14 +62,14 @@ function UserSettingsProvider({ children }: ChildrenProp) {
 
   function saveChanges() {
     toast.success("Profile updated successfully");
-    console.log({ avatar, background, gamespaceName: formik.values.newName });
+    setSettings(false);
   }
 
-  function leaveUserSettings(leaveFn: () => void) {
+  function leaveUserSettings() {
     if (avatar || background || formik.values.newName) {
       setUnsavedPopup(true);
     } else {
-      leaveFn();
+      setSettings(false);
     }
   }
 

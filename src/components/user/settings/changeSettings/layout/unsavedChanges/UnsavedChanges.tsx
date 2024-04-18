@@ -1,9 +1,11 @@
 import { HiMiniXMark } from "react-icons/hi2";
+import { useUser } from "../../../../../../contexts/UserContext";
 import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
 import Button from "../../../../../global/button/Button";
 import styles from "./unsavedChanges.module.scss";
 
 function UnsavedChanges() {
+  const { setSettings } = useUser();
   const { closeUnsavedPopup, unsavedPopup } = useUserSettings();
   if (!unsavedPopup) return null;
   return (
@@ -31,8 +33,7 @@ function UnsavedChanges() {
           style={{ name: "opacity", shade: "red" }}
           borderRadius="sm"
           handleClick={() => {
-            console.log("Unsaved changes lost!");
-            closeUnsavedPopup();
+            setSettings(false);
           }}
         >
           Discard
