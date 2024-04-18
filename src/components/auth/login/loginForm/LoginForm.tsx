@@ -10,7 +10,7 @@ import { validationSchema } from "./validationSchema";
 
 function LoginForm() {
   const formik = useFormik({
-    initialValues: { username: "", password: "" },
+    initialValues: { email: "", password: "" },
     validationSchema: validationSchema,
     onSubmit: () => {},
   });
@@ -18,7 +18,7 @@ function LoginForm() {
     <FormikProvider value={formik}>
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <LoginInputs>
-          <Field name="username" component={FormInput} placeholder="Username" />
+          <Field name="email" component={FormInput} placeholder="Email" />
           <Field name="password" component={FormInput} placeholder="Password" />
         </LoginInputs>
         <ForgotPasswordButton />
