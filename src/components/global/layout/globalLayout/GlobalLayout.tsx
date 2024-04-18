@@ -1,6 +1,6 @@
 import { ChildrenProp } from "../../../../utils/types/types";
 import Footer from "../footer/Footer";
-import Header from "../header/Header";
+import Header from "../header/header/Header";
 import styles from "./globalLayout.module.scss";
 
 function GlobalLayout({ children }: ChildrenProp) {

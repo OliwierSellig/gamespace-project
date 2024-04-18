@@ -1,16 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaRegUser } from "react-icons/fa";
 import {
   HiBars3,
   HiOutlineCog6Tooth,
   HiOutlineMagnifyingGlass,
 } from "react-icons/hi2";
-import user from "../../../../../public/img/user.webp";
-import Logo from "../../logo/Logo";
+import Logo from "../../../logo/Logo";
+import GoToUserProfile from "../goToUserProfile/GoToUserProfile";
+import HeaderLink from "../headerLink/HeaderLink";
 import styles from "./header.module.scss";
 
 type HeaderProps = {
@@ -80,33 +79,19 @@ function Header({ isFixed = true }: HeaderProps) {
         </div>
       </nav>
       <nav className={styles.navlinks__right}>
-        <Link className={styles.icon} href="/search" aria-label="Go to search">
+        <HeaderLink href="/search" label="Go to search">
           <HiOutlineMagnifyingGlass />
-        </Link>
-        <Link
-          className={styles.user}
-          href="/user/overview"
-          aria-label="Go to user profile"
-        >
-          <Image fill src={user} alt="User Avatar" sizes="46px" />
-          <div className={styles.user__box}>
-            <FaRegUser />
-          </div>
-        </Link>
-        <Link
-          className={`${styles.icon} ${styles.icon__settings}`}
-          aria-label="Go to setting"
-          href="/"
-        >
+        </HeaderLink>
+        <GoToUserProfile />
+        <HeaderLink href="/" label="Go to settings">
           <HiOutlineCog6Tooth />
-        </Link>
-        <button
-          className={`${styles.icon} ${styles.icon__menu}`}
-          onClick={() => setIsMobileNavOpen(true)}
-          aria-label="Open mobile nav"
+        </HeaderLink>
+        <HeaderLink
+          label="Open Mobile Navigation"
+          handleClick={() => setIsMobileNavOpen(true)}
         >
           <HiBars3 />
-        </button>
+        </HeaderLink>
       </nav>
       {isMobileNavOpen && (
         <nav
