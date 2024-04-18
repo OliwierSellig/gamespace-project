@@ -5,6 +5,7 @@ import { UserSettingsProvider } from "../../../../../../contexts/UserSettingsCon
 import ActionButtons from "../actionButtons/ActionButtons";
 import ChangeSettingsHeader from "../changeSettingsHeader/ChangeSettingsHeader";
 import ChangeSettingsSwiper from "../changeSettingsSwiper/ChangeSettingsSwiper";
+import UnsavedChanges from "../unsavedChanges/UnsavedChanges";
 import styles from "./changeSettingPopup.module.scss";
 
 function ChangeSettingsPopup() {
@@ -26,6 +27,7 @@ function ChangeSettingsPopup() {
             setSlide={setCurrentSlide}
           />
           <ActionButtons />
+          <UnsavedChanges />
         </div>
       </div>
     </UserSettingsProvider>

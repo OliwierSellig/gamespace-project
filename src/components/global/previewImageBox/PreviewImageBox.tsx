@@ -5,10 +5,10 @@ import {
   HiOutlinePencilSquare,
   HiOutlineUser,
 } from "react-icons/hi2";
-import notFound from "../../../../../public/img/not-found.png";
+import notFound from "../../../../public/img/not-found.png";
 import styles from "./previewImageBox.module.scss";
 
-type SingupPreviewImageProps = {
+type PreviewImageBoxProps = {
   file: File | string;
   type?: "avatar" | "background";
   size?: "lg" | "sm";
@@ -18,7 +18,7 @@ function PreviewImageBox({
   file,
   type = "avatar",
   size = "lg",
-}: SingupPreviewImageProps) {
+}: PreviewImageBoxProps) {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
   useEffect(() => {
     if (file && typeof file !== "string") {

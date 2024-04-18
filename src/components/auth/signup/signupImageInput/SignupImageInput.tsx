@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import PreviewImageBox from "../signupPreviewImage/PreviewImageBox";
+import PreviewImageBox from "../../../global/previewImageBox/PreviewImageBox";
 import styles from "./signupImageInput.module.scss";
 
 type SingupImageInputProps = {
