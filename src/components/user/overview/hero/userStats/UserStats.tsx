@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import { useUser } from "../../../../../contexts/UserContext";
 import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 import UserStatsItem from "../userStatsItem/UserStatsItem";
@@ -18,15 +19,14 @@ function UserStats() {
     <UserBoxLayout padding={{ top: 3.2, left: 4.8, right: 4.8, bottom: 3.2 }}>
       <ul className={styles.container}>
         {userStatsItems.map((item, i) => (
-          <>
+          <Fragment key={i}>
             {i !== 0 && <li className={styles.line} />}
             <UserStatsItem
-              key={item.name}
               name={item.name}
               count={item.count}
               color={item.color}
             />
-          </>
+          </Fragment>
         ))}
       </ul>
     </UserBoxLayout>

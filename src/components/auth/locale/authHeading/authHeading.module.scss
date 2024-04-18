@@ -1,0 +1,18 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  letter-spacing: 0.4px;
+  gap: 1.6rem;
+  margin-bottom: 4.2rem;
+
+  &__main {
+    font-size: 3rem;
+  }
+
+  &__sub {
+    font-size: 2rem;
+    color: var(--color-light-300);
+  }
+}

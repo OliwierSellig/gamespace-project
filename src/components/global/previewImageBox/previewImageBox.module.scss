@@ -1,0 +1,81 @@
+.container {
+  position: relative;
+  color: var(--color-light-300);
+  background-color: var(--color-dark-100);
+  border: 2px solid rgba(#ccc, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: var(--transition-fast);
+  cursor: pointer;
+
+  &__empty {
+    &:hover,
+    &:focus {
+      background-color: var(--color-light-100);
+      color: var(--color-dark-200);
+      border-color: var(--color-light-100);
+    }
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+  }
+
+  &__background {
+    border-radius: var(--border-radius-small);
+    aspect-ratio: 16/9;
+  }
+
+  &__lg {
+    height: 12.2rem;
+  }
+
+  &__sm {
+    height: 9.2rem;
+  }
+
+  & > svg {
+    width: 4.2rem;
+    height: auto;
+  }
+}
+
+.box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  & img {
+    object-fit: cover;
+  }
+}
+.edit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#181818, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  opacity: 0;
+  z-index: 20;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+
+    & svg {
+      transform: translateY(0);
+    }
+  }
+
+  & svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    transition: var(--transition-fast);
+    transform: translateY(5px);
+  }
+}

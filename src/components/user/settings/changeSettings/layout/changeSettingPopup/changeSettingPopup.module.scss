@@ -1,0 +1,15 @@
+@import "../../../../../../scss/animations.scss";
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+    rgba(21, 21, 21, 0.5),
+    rgba(21, 21, 21, 0.5)
+  );
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  animation: fadeIn 0.4s;
+}

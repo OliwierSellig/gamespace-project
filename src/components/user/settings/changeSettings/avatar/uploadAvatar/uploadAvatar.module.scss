@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+  margin-bottom: 4.8rem;
+}
+
+.label {
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.6rem 3.2rem;
+    background-color: rgba(#121212, 0.8);
+    border: 2px solid rgba(#ccc, 0.2);
+    border-radius: var(--border-radius-smallest);
+    color: var(--color-light-200);
+    cursor: pointer;
+    user-select: none;
+    transition: var(--transition-fast);
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      background-color: var(--color-light-100);
+      color: var(--color-dark-200);
+      border-color: var(--color-light-100);
+    }
+
+    & > span {
+      font-size: 1.6rem;
+    }
+
+    & > svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
+.input {
+  position: fixed;
+  top: -2000rem;
+  right: -2000rem;
+  opacity: 0;
+}

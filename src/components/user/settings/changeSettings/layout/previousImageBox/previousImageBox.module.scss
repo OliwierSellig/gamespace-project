@@ -1,0 +1,66 @@
+.btn {
+  position: relative;
+
+  border: 2px solid rgba(#ccc, 0.2);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#151515, 0.7);
+    transition: var(--transition-fast);
+    opacity: 0;
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      opacity: 1;
+    }
+
+    & > svg {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
+
+  & > img {
+    object-fit: cover;
+  }
+
+  & > svg {
+    position: absolute;
+    z-index: 50;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    color: var(--color-light-300);
+    opacity: 0;
+    width: 3.2rem;
+    height: 3.2rem;
+    transition: var(--transition-fast);
+  }
+
+  &__avatar {
+    width: 7.2rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+  }
+
+  &__background {
+    height: 10.2rem;
+    aspect-ratio: 16/9;
+    border-radius: var(--border-radius-smallest);
+
+    & > svg {
+      width: 4.2rem;
+      height: 4.2rem;
+    }
+  }
+}

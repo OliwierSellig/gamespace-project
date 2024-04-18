@@ -26,9 +26,19 @@ type SwiperProps = {
     }[];
   };
   onInit?: (swiper) => void;
+  externalSlide?: number;
+  setExtSlide?: (num: number) => void;
+  allowSwipeNext?: boolean;
 };
 
-function SwiperComponent({ children, props, onInit }: SwiperProps) {
+function SwiperComponent({
+  children,
+  props,
+  onInit,
+  externalSlide,
+  setExtSlide,
+  allowSwipeNext = true,
+}: SwiperProps) {
   const breakpointsObj = {};
   if (props.breakpoints)
     props.breakpoints.forEach((breakpoint) => {
@@ -41,6 +51,7 @@ function SwiperComponent({ children, props, onInit }: SwiperProps) {
   const childArray = React.Children.toArray(children);
   return (
     <Swiper
+      allowSlideNext={allowSwipeNext}
       keyboard={{ enabled: Boolean(props.default.keyboard) }}
       onSwiper={(swiper) => onInit?.(swiper)}
       className={styles.swiper}
@@ -57,6 +68,9 @@ function SwiperComponent({ children, props, onInit }: SwiperProps) {
         navigation={Boolean(props.default.navigation)}
         pagination={Boolean(props.default.pagination)}
         loop={Boolean(props.default.loop)}
+        externalSlide={externalSlide}
+        setExtSlide={setExtSlide}
+        allowSwipeNext={allowSwipeNext}
       />
     </Swiper>
   );
@@ -66,17 +80,47 @@ type SwiperNavigationProps = {
   navigation: boolean;
   pagination: boolean;
   loop: boolean;
+  externalSlide: number;
+  setExtSlide: (num: number) => void;
+  allowSwipeNext: boolean;
 };
 
 function SwiperNavigation({
   navigation,
   pagination,
   loop,
+  externalSlide,
+  setExtSlide,
+  allowSwipeNext,
 }: SwiperNavigationProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const swiper = useSwiper();
   const paginationLength =
     swiper.slides.length - swiper.slidesPerViewDynamic() + 1;
+
+  useEffect(() => {
+    if (!externalSlide && externalSlide !== 0) return;
+    if (!swiper.destroyed) {
+      swiper.allowSlideNext = true;
+      swiper.slideTo(externalSlide);
+      swiper.allowSlideNext = allowSwipeNext;
+    }
+  }, [externalSlide, swiper, allowSwipeNext]);
+
+  useEffect(() => {
+    function handleSlideChange() {
+      setExtSlide(swiper.activeIndex);
+    }
+    if (!externalSlide && externalSlide !== 0) return;
+
+    if (swiper) {
+      swiper.on("slideChange", () => handleSlideChange());
+    }
+
+    return () => {
+      swiper.off("slideChange", () => handleSlideChange);
+    };
+  }, [setExtSlide, swiper, externalSlide]);
 
   useEffect(() => {
     const handleSlideChange = () => {

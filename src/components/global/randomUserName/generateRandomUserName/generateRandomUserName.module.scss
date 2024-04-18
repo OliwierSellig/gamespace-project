@@ -1,0 +1,52 @@
+.container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr max-content;
+  gap: 2.4rem;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.wrapper {
+  height: 4.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.loader {
+  width: 6rem;
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(circle closest-side, #b3b3b3 90%, #181818);
+  background:
+    var(--_g) 0% 50%,
+    var(--_g) 50% 50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 100%;
+  animation: l7 1.4s infinite linear;
+}
+@keyframes l7 {
+  33% {
+    background-size:
+      calc(100% / 3) 0%,
+      calc(100% / 3) 100%,
+      calc(100% / 3) 100%;
+  }
+  50% {
+    background-size:
+      calc(100% / 3) 100%,
+      calc(100% / 3) 0%,
+      calc(100% / 3) 100%;
+  }
+  66% {
+    background-size:
+      calc(100% / 3) 100%,
+      calc(100% / 3) 100%,
+      calc(100% / 3) 0%;
+  }
+}

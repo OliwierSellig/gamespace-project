@@ -1,0 +1,26 @@
+.container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6.4rem;
+  padding: 0 3.2rem 3.2rem;
+  z-index: 300;
+}
+
+.btn {
+  font-size: 1.6rem;
+  font-weight: 500;
+  border-radius: var(--border-radius-smallest);
+  color: var(--color-light-500);
+  cursor: pointer;
+  transition: var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    color: var(--color-light-200);
+  }
+}

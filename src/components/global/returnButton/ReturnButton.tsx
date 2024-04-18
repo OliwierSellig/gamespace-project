@@ -2,11 +2,11 @@ import Link from "next/link";
 import { HiMiniXMark } from "react-icons/hi2";
 import styles from "./returnButton.module.scss";
 
-type ReturnButtonProps = { href: string };
+type ReturnButtonProps = { href: string; label?: string };
 
-function ReturnButton({ href }: ReturnButtonProps) {
+function ReturnButton({ href, label = "Go Back" }: ReturnButtonProps) {
   return (
-    <Link href={href} className={styles.btn}>
+    <Link aria-label={label} href={href} className={styles.btn}>
       <HiMiniXMark />
     </Link>
   );

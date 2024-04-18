@@ -71,7 +71,19 @@
 @keyframes fadeBottomModal {
   0% {
     opacity: 0;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -45%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes fadeLeftModal {
+  0% {
+    opacity: 0;
+    transform: translate(-52%, -50%);
   }
 
   100% {
