@@ -40,5 +40,8 @@
 }
 
 .input {
-  display: none;
+  position: fixed;
+  top: -2000rem;
+  left: -2000rem;
+  opacity: 0;
 }

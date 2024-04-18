@@ -17,7 +17,9 @@ function EmptyImageBox({
     <label
       htmlFor={id}
       className={`${styles.container} ${styles[`container__${type}`]}`}
+      aria-label={`Upload user ${type}`}
     >
+      <HiMiniPlus />
       <input
         type="file"
         onChange={(e) => {
@@ -26,7 +28,6 @@ function EmptyImageBox({
         className={styles.input}
         id={id}
       />
-      <HiMiniPlus />
     </label>
   );
 }

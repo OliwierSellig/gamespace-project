@@ -13,13 +13,13 @@ function UploadNewBackground({ id }: UploadNewBackgroundProps) {
       <label htmlFor={id} className={styles.label}>
         <span>Upload New</span>
         <HiOutlineArrowUpOnSquareStack />
+        <input
+          id={id}
+          onChange={(e) => setNewBackground(e.currentTarget.files[0])}
+          type="file"
+          className={styles.input}
+        />
       </label>
-      <input
-        id={id}
-        onChange={(e) => setNewBackground(e.currentTarget.files[0])}
-        type="file"
-        className={styles.input}
-      />
     </>
   );
 }

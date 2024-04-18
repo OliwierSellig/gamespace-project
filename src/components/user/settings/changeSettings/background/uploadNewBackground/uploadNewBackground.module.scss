@@ -18,12 +18,16 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     color: var(--color-dark-200);
     background-color: var(--color-light-100);
   }
 }
 
 .input {
-  display: none;
+  position: fixed;
+  top: -2000rem;
+  right: -2000rem;
+  opacity: 0;
 }

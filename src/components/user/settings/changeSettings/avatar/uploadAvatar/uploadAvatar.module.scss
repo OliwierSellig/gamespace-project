@@ -20,7 +20,8 @@
     transition: var(--transition-fast);
 
     &:hover,
-    &:focus {
+    &:focus,
+    &:focus-within {
       background-color: var(--color-light-100);
       color: var(--color-dark-200);
       border-color: var(--color-light-100);
@@ -38,5 +39,8 @@
 }
 
 .input {
-  display: none;
+  position: fixed;
+  top: -2000rem;
+  right: -2000rem;
+  opacity: 0;
 }

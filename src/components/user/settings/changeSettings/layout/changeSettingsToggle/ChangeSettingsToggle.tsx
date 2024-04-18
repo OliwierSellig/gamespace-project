@@ -9,7 +9,7 @@ function ChangeSettingsToggle() {
 
   const { areSettingsOpen } = state;
 
-  if (!areSettingsOpen) return null;
+  if (areSettingsOpen) return null;
   return (
     <UserSettingsProvider>
       <ChangeSettingsPopup />
