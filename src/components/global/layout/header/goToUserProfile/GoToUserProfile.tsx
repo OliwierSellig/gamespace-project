@@ -2,15 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiOutlineUser } from "react-icons/hi2";
 import user from "../../../../../../public/img/user.webp";
+import { useAuth } from "../../../../../contexts/AuthContext";
 import HeaderLink from "../headerLink/HeaderLink";
 import styles from "./goToUserProfile.module.scss";
 
-const isLogged = true;
-
 function GoToUserProfile() {
-  if (isLogged)
+  const { isUserLoggedIn } = useAuth();
+  if (!isUserLoggedIn)
     return (
-      <HeaderLink label="Go to user overview" href="/login">
+      <HeaderLink label="Go to login" href="/login">
         <HiOutlineUser />
       </HeaderLink>
     );
@@ -18,7 +18,7 @@ function GoToUserProfile() {
     <Link
       className={styles.link}
       href="/user/overview"
-      aria-label="Go to login"
+      aria-label="Go to user overview"
     >
       <Image fill src={user} alt="User Avatar" sizes="46px" />
       <div className={styles.link__box}>

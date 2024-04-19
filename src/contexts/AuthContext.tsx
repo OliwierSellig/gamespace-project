@@ -9,26 +9,23 @@ const AuthContext = createContext<ContextType | undefined>(undefined);
 
 type ContextType = {
   currentUser: object | null;
-  userLoggedIn: boolean;
-  loading: boolean;
+  isUserLoggedIn: boolean;
+  isLoading: boolean;
 };
 function AuthProvider({ children }: ChildrenProp) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  console.log(currentUser);
-  console.log(userLoggedIn);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function initializeUser(user: object) {
     if (user) {
       setCurrentUser({ ...user });
-      setUserLoggedIn(true);
+      setIsUserLoggedIn(true);
     } else {
       setCurrentUser(null);
-      setUserLoggedIn(false);
+      setIsUserLoggedIn(false);
     }
-    setLoading(false);
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -41,8 +38,8 @@ function AuthProvider({ children }: ChildrenProp) {
     <AuthContext.Provider
       value={{
         currentUser,
-        userLoggedIn,
-        loading,
+        isUserLoggedIn,
+        isLoading,
       }}
     >
       {children}

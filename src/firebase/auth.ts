@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { auth, firestore, storage } from "./firebase";
@@ -56,4 +56,8 @@ export async function CreateUser(props: {
   });
 
   return filledDoc;
+}
+
+export async function userLogout() {
+  await signOut(auth);
 }

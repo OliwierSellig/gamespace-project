@@ -44,7 +44,7 @@
   animation: fadeIn 0.2s;
   z-index: 50;
 
-  & > button {
+  &__btn {
     font-size: 1.4rem;
     transition: var(--transition-fast);
     padding: 1.2rem 2rem;

@@ -25,6 +25,7 @@ type ContextType = {
   recentAddedGames: LibraryItemType[];
   favouritesList: LibraryItemType[];
   setSettings: (isOpen: boolean) => void;
+  setLoggingOut: (loggintOut: boolean) => void;
   checkInLibrary: (id: number) => LibraryItemType;
   addToLibrary: (game: LibraryItemType) => void;
   addGameFromRanking: (id: number) => Promise<void>;
@@ -95,6 +96,7 @@ type stateProps = {
   initialRender: boolean;
   activities: ActivityItem[];
   areSettingsOpen: boolean;
+  isLogginOut: boolean;
 };
 
 const enum REDUCER_ACTION_TYPE {
@@ -106,6 +108,8 @@ const enum REDUCER_ACTION_TYPE {
   SET_INITIAL_RENDER,
   SET_SETTINGS_OPEN,
   SET_SETTINGS_CLOSE,
+  SET_LOGGING_OPEN,
+  SET_LOGGING_CLOSE,
 }
 
 type ReducerAction =
@@ -121,7 +125,9 @@ type ReducerAction =
       type:
         | REDUCER_ACTION_TYPE.SET_INITIAL_RENDER
         | REDUCER_ACTION_TYPE.SET_SETTINGS_CLOSE
-        | REDUCER_ACTION_TYPE.SET_SETTINGS_OPEN;
+        | REDUCER_ACTION_TYPE.SET_SETTINGS_OPEN
+        | REDUCER_ACTION_TYPE.SET_LOGGING_CLOSE
+        | REDUCER_ACTION_TYPE.SET_LOGGING_OPEN;
     };
 
 // ----------------------------------------------------------------
@@ -136,6 +142,7 @@ const initialState: stateProps = {
   activities: [],
   initialRender: true,
   areSettingsOpen: false,
+  isLogginOut: false,
 };
 
 function reducer(state: stateProps, action: ReducerAction): stateProps {
@@ -156,6 +163,10 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
       return { ...state, areSettingsOpen: true };
     case REDUCER_ACTION_TYPE.SET_SETTINGS_CLOSE:
       return { ...state, areSettingsOpen: false };
+    case REDUCER_ACTION_TYPE.SET_LOGGING_OPEN:
+      return { ...state, isLogginOut: true };
+    case REDUCER_ACTION_TYPE.SET_LOGGING_CLOSE:
+      return { ...state, isLogginOut: false };
 
     default:
       throw new Error("Undefined reducer action");
@@ -879,6 +890,14 @@ function UserProvider({ children }: ChildrenProp) {
     });
   }
 
+  function setLoggingOut(loggingOut: boolean) {
+    dispatch({
+      type: loggingOut
+        ? REDUCER_ACTION_TYPE.SET_LOGGING_OPEN
+        : REDUCER_ACTION_TYPE.SET_LOGGING_CLOSE,
+    });
+  }
+
   function sortGames(
     list:
       | { type: "library" }
@@ -1020,6 +1039,7 @@ function UserProvider({ children }: ChildrenProp) {
         recentAddedGames,
         favouritesList,
         setSettings,
+        setLoggingOut,
         checkInLibrary,
         addToLibrary,
         addGameFromRanking,
