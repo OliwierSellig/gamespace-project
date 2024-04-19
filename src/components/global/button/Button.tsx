@@ -69,7 +69,7 @@ function Button({
   if (href?.url)
     return (
       <Link
-        tabIndex={disabled ? -1 : 0}
+        tabIndex={disabled || isLoading ? -1 : 0}
         style={styleList}
         className={classList}
         href={href.url}
@@ -82,7 +82,7 @@ function Button({
   return (
     <button
       type={type}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       style={styleList}
       onClick={handleClick}
       className={classList}

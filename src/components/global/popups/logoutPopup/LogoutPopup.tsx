@@ -20,7 +20,7 @@ function LogoutPopup() {
         }}
         handleClick={async () => {
           await userLogout();
-          toast.success("User successfully logged out");
+          toast.success("Logged out successfully");
         }}
       >
         Are you sure, you want to log out? If so, you will be moved back to

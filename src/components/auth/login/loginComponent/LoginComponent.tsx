@@ -1,3 +1,5 @@
+"use client";
+
 import AuthContainer from "../../locale/authContainer/AuthContainer";
 import AuthHeading from "../../locale/authHeading/AuthHeading";
 import LoginForm from "../loginForm/LoginForm";
