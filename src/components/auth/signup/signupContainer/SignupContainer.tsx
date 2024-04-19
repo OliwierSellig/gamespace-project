@@ -2,7 +2,7 @@
 
 import { FormikProvider, useFormik } from "formik";
 import React, { useState } from "react";
-import { CreateInitialUser } from "../../../../firebase/auth";
+import { CreateUser } from "../../../../firebase/auth";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
 import AvatarInputs from "../avatarInputs/AvatarInputs";
 import NameInput from "../nameInput/NameInput";
@@ -30,8 +30,14 @@ function SignupContainer() {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const res = await CreateInitialUser(values.email, values.password);
-      const user = res.user;
+      const res = await CreateUser({
+        email: values.email,
+        password: values.password,
+        gamespaceName: values.gamespaceName,
+        avatar: avatar,
+        background: background,
+      });
+      const user = res;
       console.log(user);
     },
   });

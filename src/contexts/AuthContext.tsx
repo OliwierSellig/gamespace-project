@@ -17,6 +17,9 @@ function AuthProvider({ children }: ChildrenProp) {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  console.log(currentUser);
+  console.log(userLoggedIn);
+
   async function initializeUser(user: object) {
     if (user) {
       setCurrentUser({ ...user });
