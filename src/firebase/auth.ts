@@ -3,8 +3,16 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import * as Yup from "yup";
 import { auth, firestore, storage } from "./firebase";
 
 export async function CreateInitialUser(email: string, password: string) {
@@ -79,5 +87,56 @@ export async function userLogin(credentials: {
     return false;
   } catch (error) {
     return true;
+  }
+}
+
+// export async function validateEmail(email: string) {
+//   try {
+//     const q = query(
+//       collection(firestore, "users"),
+//       where("email", "==", email),
+//     );
+//     const querySnapshot = await getDocs(q);
+//     if (!querySnapshot.empty) {
+//       return "Email is already taken";
+//     }
+//     return "";
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+export async function validateEmail(
+  email: string,
+  loadingFn: (isLoading: boolean) => void,
+) {
+  try {
+    loadingFn(true);
+    await new Promise((resolve) => {
+      setTimeout(resolve, 200);
+    });
+
+    const schema = Yup.string()
+      .email("Invalid email address")
+      .required("Email is required");
+
+    await schema.validate(email);
+
+    const q = query(
+      collection(firestore, "users"),
+      where("email", "==", email),
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      return "Email is already taken";
+    }
+
+    return "";
+  } catch (error) {
+    return error.message;
+  } finally {
+    loadingFn(false);
   }
 }

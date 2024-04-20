@@ -2,7 +2,7 @@
 
 import { FormikProvider, useFormik } from "formik";
 import React, { useState } from "react";
-import { CreateUser } from "../../../../firebase/auth";
+import { CreateUser, validateEmail } from "../../../../firebase/auth";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
 import AvatarInputs from "../avatarInputs/AvatarInputs";
 import NameInput from "../nameInput/NameInput";
@@ -14,6 +14,7 @@ import styles from "./signupContainer.module.scss";
 import { validationSchema } from "./validationSchema";
 
 function SignupContainer() {
+  const [loadingEmail, setLoadingEmail] = useState<boolean>(false);
   type initialValues = {
     email: string;
     password: string;
@@ -28,17 +29,16 @@ function SignupContainer() {
       passwordConfirm: "",
       gamespaceName: "",
     },
+
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const res = await CreateUser({
+      await CreateUser({
         email: values.email,
         password: values.password,
         gamespaceName: values.gamespaceName,
         avatar: avatar,
         background: background,
       });
-      const user = res;
-      console.log(user);
     },
   });
 
@@ -55,6 +55,10 @@ function SignupContainer() {
     if (e.key === "Enter" && !isLastPage) {
       e.preventDefault();
     }
+  }
+
+  function setEmailLoading(isLoading: boolean) {
+    setLoadingEmail(isLoading);
   }
 
   function setImage(type: "avatar" | "background", file: File) {
@@ -114,6 +118,16 @@ function SignupContainer() {
                 background={background}
                 skipStep={() => setCurrentTab((prev) => prev + 1)}
                 setImage={setImage}
+                loadingEmail={loadingEmail}
+                validateEmail={async (
+                  value: string,
+                  changeLoadingState: boolean,
+                ) =>
+                  await validateEmail(
+                    value,
+                    changeLoadingState ? setEmailLoading : () => {},
+                  )
+                }
               />
             </SignupSwiperContainer>
           ))}
@@ -127,7 +141,7 @@ function SignupContainer() {
         <SignupFormButton
           setNextPage={() => setCurrentTab((prev) => prev + 1)}
           isLastPage={isLastPage}
-          buttonDisabled={!getIsButtonEnabled(currentTab)}
+          buttonDisabled={!getIsButtonEnabled(currentTab) || loadingEmail}
         />
       </form>
     </FormikProvider>

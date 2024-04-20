@@ -1,5 +1,4 @@
 import { Field, FormikProvider, useFormik } from "formik";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import { userLogin } from "../../../../firebase/auth";
 import Button from "../../../global/button/Button";
@@ -10,12 +9,10 @@ import styles from "./loginForm.module.scss";
 import { validationSchema } from "./validationSchema";
 
 function LoginForm() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      setIsLoading(true);
       const error = await userLogin({
         email: values.email,
         password: values.password,
@@ -26,7 +23,6 @@ function LoginForm() {
       } else {
         toast.success("Logged in successfully");
       }
-      setIsLoading(false);
     },
   });
   const buttonDisabled = Boolean(
@@ -44,7 +40,7 @@ function LoginForm() {
         </LoginInputs>
         <ForgotPasswordButton />
         <Button
-          isLoading={isLoading}
+          isLoading={formik.isSubmitting}
           type="submit"
           style={{ name: "opacity", shade: "white" }}
           disabled={buttonDisabled}
