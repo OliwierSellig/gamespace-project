@@ -1,29 +1,4 @@
-.photo {
-  position: relative;
-  width: 14rem;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  border: 3px solid var(--color-light-200);
-  overflow: hidden;
-
-  img {
-    object-fit: cover;
-  }
-}
-
 .text {
   display: flex;
   flex-direction: column;
-}
-
-.name {
-  font-size: 2.6rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.since {
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--color-light-500);
 }

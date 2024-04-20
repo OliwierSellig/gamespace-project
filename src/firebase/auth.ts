@@ -60,14 +60,13 @@ export async function CreateUser(props: {
   }
 
   const docRef = doc(col, user.uid);
-  const filledDoc = await setDoc(docRef, {
+  await setDoc(docRef, {
     email: props.email,
     gamespaceName: props.gamespaceName,
     avatar: url.avatar,
     background: url.background,
+    createdAt: user.metadata.creationTime,
   });
-
-  return filledDoc;
 }
 
 export async function userLogout() {
@@ -89,22 +88,6 @@ export async function userLogin(credentials: {
     return true;
   }
 }
-
-// export async function validateEmail(email: string) {
-//   try {
-//     const q = query(
-//       collection(firestore, "users"),
-//       where("email", "==", email),
-//     );
-//     const querySnapshot = await getDocs(q);
-//     if (!querySnapshot.empty) {
-//       return "Email is already taken";
-//     }
-//     return "";
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 
 export async function validateEmail(
   email: string,

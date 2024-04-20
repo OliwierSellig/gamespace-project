@@ -8,7 +8,7 @@ import { auth } from "../firebase/firebase";
 const AuthContext = createContext<ContextType | undefined>(undefined);
 
 type ContextType = {
-  currentUser: object | null;
+  currentUser: { uid: string } | null;
   isUserLoggedIn: boolean;
   isLoading: boolean;
 };
