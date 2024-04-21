@@ -20,7 +20,7 @@ function PreviousAvatarsList() {
 
   return (
     <ul className={styles.list}>
-      {previousImages.map((image, i) => (
+      {previousImages.slice(0, maxLength).map((image, i) => (
         <li key={i}>
           <PreviousImageBox
             handleClick={(image) => setNewAvatar(image)}

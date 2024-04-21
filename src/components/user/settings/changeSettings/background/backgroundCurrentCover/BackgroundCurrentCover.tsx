@@ -22,7 +22,12 @@ function BackgroundCurrentCover({ image }: BackgroundCurrentCoverProps) {
   }, [image]);
 
   return (
-    <Image src={preview || defaultBackground} alt="User Background" fill />
+    <Image
+      sizes="(max-width: 720px) 95vw, 80rem"
+      src={preview || defaultBackground}
+      alt="User Background"
+      fill
+    />
   );
 }
 

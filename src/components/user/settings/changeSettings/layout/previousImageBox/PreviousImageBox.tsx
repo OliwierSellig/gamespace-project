@@ -14,6 +14,7 @@ function PreviousImageBox({
   type = "avatar",
   handleClick,
 }: PreviousImageBoxProps) {
+  const boxSizes = type === "avatar" ? "7.2rem" : "20rem";
 
   return (
     <button
@@ -22,7 +23,12 @@ function PreviousImageBox({
       onClick={() => handleClick(image)}
     >
       <HiOutlineArrowUpCircle />
-      <Image src={image || notFound} alt={`Previous ${type}`} fill />
+      <Image
+        sizes={boxSizes}
+        src={image || notFound}
+        alt={`Previous ${type}`}
+        fill
+      />
     </button>
   );
 }
