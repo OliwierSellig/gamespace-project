@@ -6,6 +6,7 @@ import styles from "./changeSettingPopup.module.scss";
 function ChangeSettingsPopup() {
   const backgroundRef = useRef<HTMLDivElement>(null);
   const { leaveUserSettings } = useUserSettings();
+
   return (
     <div
       ref={backgroundRef}

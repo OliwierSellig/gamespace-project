@@ -10,10 +10,10 @@ import { useUser } from "./UserContext";
 const UserSettingsContext = createContext<ContextType | undefined>(undefined);
 
 type ContextType = {
-  avatar: File | null;
-  setNewAvatar: (avatar: File | null) => void;
-  background: File | null;
-  setNewBackground: (background: File | null) => void;
+  avatar: File | string | null;
+  setNewAvatar: (avatar: File | string | null) => void;
+  background: File | string | null;
+  setNewBackground: (background: File | string | null) => void;
   newName: string;
   setNewName: (nme: string) => void;
   saveChanges: () => void;
@@ -36,8 +36,8 @@ export const validationSchema = yup.object().shape({
 function UserSettingsProvider({ children }: ChildrenProp) {
   const { setSettings } = useUser();
   const [unsavedPopup, setUnsavedPopup] = useState<boolean>(false);
-  const [avatar, setAvatar] = useState<File | null>(null);
-  const [background, setBackground] = useState<File | null>(null);
+  const [avatar, setAvatar] = useState<File | string | null>(null);
+  const [background, setBackground] = useState<File | string | null>(null);
   const formik = useFormik<initialValues>({
     initialValues: {
       newName: "",
@@ -52,11 +52,10 @@ function UserSettingsProvider({ children }: ChildrenProp) {
     formik.setFieldValue("newName", name);
   }
 
-  function setNewAvatar(avatar: File | null) {
+  function setNewAvatar(avatar: File | string | null) {
     setAvatar(avatar);
   }
-
-  function setNewBackground(background: File | null) {
+  function setNewBackground(background: File | string | null) {
     setBackground(background);
   }
 

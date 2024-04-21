@@ -11,9 +11,10 @@ import {
   setDoc,
   where,
 } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import * as Yup from "yup";
-import { auth, firestore, storage } from "./firebase";
+import { auth, firestore } from "./firebase";
+import { setNewImage } from "./userData";
+import { urlToName } from "./utils";
 
 export async function CreateInitialUser(email: string, password: string) {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -35,37 +36,23 @@ export async function CreateUser(props: {
 
   const col = collection(firestore, "users");
 
-  const url = { avatar: "", background: "" };
-
-  if (props.avatar) {
-    const backgroundRef = ref(
-      storage,
-      `backgrounds/${user.uid}-${Math.ceil(Math.random() * 1000)}`,
-    );
-
-    await uploadBytes(backgroundRef, props.background);
-
-    url.background = await getDownloadURL(backgroundRef);
-
-    if (props.avatar) {
-      const avatarRef = ref(
-        storage,
-        `avatars/${user.uid}-${Math.ceil(Math.random() * 1000)}`,
-      );
-
-      await uploadBytes(avatarRef, props.avatar);
-
-      url.avatar = await getDownloadURL(avatarRef);
-    }
-  }
-
   const docRef = doc(col, user.uid);
+
+  const backgroudnURL = props.background
+    ? await setNewImage(user.uid, "background", props.background, true)
+    : "";
+  const avatarURL = props.avatar
+    ? await setNewImage(user.uid, "avatar", props.avatar, true)
+    : "";
+
   await setDoc(docRef, {
     email: props.email,
     gamespaceName: props.gamespaceName,
-    avatar: url.avatar,
-    background: url.background,
+    avatar: avatarURL,
+    background: backgroudnURL,
     createdAt: user.metadata.creationTime,
+    recentAvatars: [urlToName({ type: "avatar", url: avatarURL })],
+    recentBackgrounds: [urlToName({ type: "background", url: backgroudnURL })],
   });
 }
 

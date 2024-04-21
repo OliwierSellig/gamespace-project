@@ -1,9 +1,26 @@
+import { useState } from "react";
+import { useAuth } from "../../../../../../contexts/AuthContext";
 import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { updateUserInfo } from "../../../../../../firebase/userData";
 import Button from "../../../../../global/button/Button";
 import styles from "./actionsButtons.module.scss";
 
 function ActionButtons() {
-  const { saveChanges, leaveUserSettings } = useUserSettings();
+  const { currentUser } = useAuth();
+  const { saveChanges, leaveUserSettings, background, avatar, newName } =
+    useUserSettings();
+  const [isSavingChanges, setIsSavingChanges] = useState<boolean>(false);
+
+  async function handleSave() {
+    await updateUserInfo(
+      currentUser.uid,
+      { avatar, background, name: newName },
+      (isLoading: boolean) => setIsSavingChanges(isLoading),
+    );
+
+    saveChanges();
+  }
+
   return (
     <nav className={styles.container}>
       <button onClick={leaveUserSettings} className={styles.btn}>
@@ -14,7 +31,8 @@ function ActionButtons() {
         fontSize="sm"
         sizeX="lg"
         style={{ name: "opacity", shade: "white" }}
-        handleClick={saveChanges}
+        handleClick={handleSave}
+        disabled={isSavingChanges}
       >
         Save Changes
       </Button>
