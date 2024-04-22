@@ -11,7 +11,7 @@ async function Home() {
   const trending = await fetchGames({
     dates: {
       fromDay: 1,
-      fromMonth: 9,
+      fromMonth: 1,
       fromYear: currentDate.getFullYear() - 1,
       toDay: currentDate.getDate(),
       toMonth: currentDate.getMonth() + 1,
