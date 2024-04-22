@@ -8,9 +8,9 @@ import styles from "./goToUserProfile.module.scss";
 const isLogged = true;
 
 function GoToUserProfile() {
-  if (isLogged)
+  if (!isLogged)
     return (
-      <HeaderLink label="Go to user overview" href="/login">
+      <HeaderLink label="Go to login" href="/login">
         <HiOutlineUser />
       </HeaderLink>
     );
@@ -18,7 +18,7 @@ function GoToUserProfile() {
     <Link
       className={styles.link}
       href="/user/overview"
-      aria-label="Go to login"
+      aria-label="Go to user overview"
     >
       <Image fill src={user} alt="User Avatar" sizes="46px" />
       <div className={styles.link__box}>
