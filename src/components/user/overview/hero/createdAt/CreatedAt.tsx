@@ -1,17 +1,16 @@
 "use client";
 
 import { dateTransform } from "../../../../../utils/functions/functions";
-import { useUserData } from "../../../../../hooks/useUserData";
-import { useAuth } from "../../../../../contexts/AuthContext";
+import { useFirebaseUser } from "../../../../../contexts/FirebaseUserContext";
 import styles from "./createdAt.module.scss";
 
 function CreatedAt() {
-  const { currentUser } = useAuth();
-  const { data } = useUserData(currentUser.uid, "createdAt");
+  const { state } = useFirebaseUser();
+  const createdAt = state.profileSettings.createdAt;
   return (
     <p
       className={styles.since}
-    >{`On GameSpace since ${dateTransform(data)}`}</p>
+    >{`On GameSpace since ${dateTransform(createdAt)}`}</p>
   );
 }
 

@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { userLogin } from "../../../../firebase/auth";
 import Button from "../../../global/button/Button";
 import FormInput from "../../../global/formInput/FormInput";
+import PasswordInput from "../../../global/passwordInput/PasswordInput";
 import ForgotPasswordButton from "../forgotPasswordButton/ForgotPasswordButton";
 import LoginInputs from "../loginInputs/LoginInputs";
 import styles from "./loginForm.module.scss";
@@ -36,7 +37,11 @@ function LoginForm() {
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <LoginInputs>
           <Field name="email" component={FormInput} placeholder="Email" />
-          <Field name="password" component={FormInput} placeholder="Password" />
+          <Field
+            name="password"
+            component={PasswordInput}
+            placeholder="Password"
+          />
         </LoginInputs>
         <ForgotPasswordButton />
         <Button

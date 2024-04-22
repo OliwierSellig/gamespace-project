@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 import { ChildrenProp } from "../utils/types/types";
-import { AuthProvider } from "../contexts/AuthContext";
+import { FirebaseUserProvider } from "../contexts/FirebaseUserContext";
 
 function Providers({ children }: ChildrenProp) {
   const [queryClient] = useState(
@@ -19,7 +19,7 @@ function Providers({ children }: ChildrenProp) {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
-      <AuthProvider>{children}</AuthProvider>
+      <FirebaseUserProvider>{children}</FirebaseUserProvider>
     </QueryClientProvider>
   );
 }

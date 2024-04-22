@@ -3,18 +3,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, query, setDoc, where } from "firebase/firestore";
 import * as Yup from "yup";
 import { auth, firestore } from "./firebase";
 import { setNewImage } from "./userData";
-import { urlToName } from "./utils";
+import { getUserDocRef, urlToName } from "./utils";
 
 export async function CreateInitialUser(email: string, password: string) {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -34,9 +27,7 @@ export async function CreateUser(props: {
   );
   const user = res.user;
 
-  const col = collection(firestore, "users");
-
-  const docRef = doc(col, user.uid);
+  const docRef = getUserDocRef(user.uid);
 
   const backgroudnURL = props.background
     ? await setNewImage(user.uid, "background", props.background, true)
@@ -54,6 +45,14 @@ export async function CreateUser(props: {
     recentAvatars: [urlToName({ type: "avatar", url: avatarURL })],
     recentBackgrounds: [urlToName({ type: "background", url: backgroudnURL })],
   });
+
+  return {
+    name: props.gamespaceName,
+    avatar: avatarURL,
+    background: backgroudnURL,
+    createdAt: user.metadata.creationTime,
+    id: user.uid,
+  };
 }
 
 export async function userLogout() {

@@ -6,18 +6,18 @@ import { ChildrenProp } from "../../utils/types/types";
 import GameBackgroundLayout from "../../components/global/gameBackgroundLayout/GameBackgroundLayout";
 import LoaderWindow from "../../components/global/loading/loaderWindow/LoaderWindow";
 import backgroundImage from "../../../public/img/user-background.jpg";
-import { useAuth } from "../../contexts/AuthContext";
+import { useFirebaseUser } from "../../contexts/FirebaseUserContext";
 
 function Layout({ children }: ChildrenProp) {
-  const { isUserLoggedIn, isLoading } = useAuth();
+  const { isLoggedIn, isLoading } = useFirebaseUser();
   const router = useRouter();
   useEffect(() => {
-    if (isUserLoggedIn) router.push("/user/overview");
-  }, [isUserLoggedIn, router]);
+    if (isLoggedIn) router.push("/user/overview");
+  }, [isLoggedIn, router]);
 
   if (isLoading) return <LoaderWindow />;
 
-  if (isUserLoggedIn) return null;
+  if (isLoggedIn) return null;
   return (
     <GameBackgroundLayout image={backgroundImage}>
       {children}

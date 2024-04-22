@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
-import { useUserData } from "../../../../hooks/useUserData";
 import bg from "../../../../../public/img/user-background.jpg";
-import { useAuth } from "../../../../contexts/AuthContext";
+import { useFirebaseUser } from "../../../../contexts/FirebaseUserContext";
 import GameBackgroundLayout from "../../../global/gameBackgroundLayout/GameBackgroundLayout";
 
 type UserLayoutProps = {
@@ -9,11 +8,9 @@ type UserLayoutProps = {
 };
 
 function UserLayout({ children }: UserLayoutProps) {
-  const { currentUser } = useAuth();
-  const { data } = useUserData(currentUser.uid, "background");
-  const background = data;
+  const { state } = useFirebaseUser();
   return (
-    <GameBackgroundLayout image={background || bg}>
+    <GameBackgroundLayout image={state.profileSettings.background || bg}>
       <>{children}</>
     </GameBackgroundLayout>
   );

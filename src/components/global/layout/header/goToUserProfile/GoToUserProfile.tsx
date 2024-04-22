@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiOutlineUser } from "react-icons/hi2";
 import user from "../../../../../../public/img/user.webp";
-import { useAuth } from "../../../../../contexts/AuthContext";
+import { useFirebaseUser } from "../../../../../contexts/FirebaseUserContext";
 import HeaderLink from "../headerLink/HeaderLink";
 import styles from "./goToUserProfile.module.scss";
 
 function GoToUserProfile() {
-  const { isUserLoggedIn } = useAuth();
-  if (!isUserLoggedIn)
+  const { isLoggedIn } = useFirebaseUser();
+  if (!isLoggedIn)
     return (
       <HeaderLink label="Go to login" href="/login">
         <HiOutlineUser />

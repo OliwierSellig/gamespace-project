@@ -1,14 +1,13 @@
 "use client";
 
-import { useUserData } from "../../../../../hooks/useUserData";
-import { useAuth } from "../../../../../contexts/AuthContext";
+import { useFirebaseUser } from "../../../../../contexts/FirebaseUserContext";
 import styles from "./userName.module.scss";
 
 function UserName() {
-  const { currentUser } = useAuth();
-  const { data } = useUserData(currentUser.uid, "name");
+  const { state } = useFirebaseUser();
+  const name = state.profileSettings.name;
 
-  return <p className={styles.name}>{data || "John Sanderson"}</p>;
+  return <p className={styles.name}>{name || "Undefined User"}</p>;
 }
 
 export default UserName;

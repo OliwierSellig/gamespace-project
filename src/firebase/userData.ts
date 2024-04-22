@@ -1,5 +1,6 @@
 import { updateDoc } from "firebase/firestore";
 import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+import { FirestoreUser } from "../utils/types/firebase";
 import { storage } from "./firebase";
 import {
   findUserDoc,
@@ -245,6 +246,22 @@ export async function listUserRecentImagsAsUrl(props: {
     return imageUrls;
   } catch (error) {
     console.error("Error fetching image URLs:", error);
+    return null;
+  }
+}
+
+export async function getFullUserData(id: string) {
+  try {
+    const userDoc = await findUserDoc(id);
+
+    if (userDoc.exists) {
+      return userDoc.data() as FirestoreUser;
+    } else {
+      console.error("User document not found");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching user document:", error);
     return null;
   }
 }

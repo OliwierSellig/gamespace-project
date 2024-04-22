@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { useAuth } from "../../../../../../contexts/AuthContext";
+import { useFirebaseUser } from "../../../../../../contexts/FirebaseUserContext";
 import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
 import { updateUserInfo } from "../../../../../../firebase/userData";
 import Button from "../../../../../global/button/Button";
 import styles from "./actionsButtons.module.scss";
 
 function ActionButtons() {
-  const { currentUser } = useAuth();
+  const { state } = useFirebaseUser();
   const { saveChanges, leaveUserSettings, background, avatar, newName } =
     useUserSettings();
   const [isSavingChanges, setIsSavingChanges] = useState<boolean>(false);
 
   async function handleSave() {
     await updateUserInfo(
-      currentUser.uid,
+      state.id,
       { avatar, background, name: newName },
       (isLoading: boolean) => setIsSavingChanges(isLoading),
     );

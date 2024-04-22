@@ -1,17 +1,17 @@
 import { useMediaQuery } from "react-responsive";
 import { usePreviousImages } from "../../../../../../hooks/usePreviousImages";
-import { useAuth } from "../../../../../../contexts/AuthContext";
+import { useFirebaseUser } from "../../../../../../contexts/FirebaseUserContext";
 import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
 import EmptyImageBox from "../../layout/emptyImageBox/EmptyImageBox";
 import PreviousImageBox from "../../layout/previousImageBox/PreviousImageBox";
 import styles from "./previousAvatarsList.module.scss";
 
 function PreviousAvatarsList() {
-  const { currentUser } = useAuth();
+  const { state } = useFirebaseUser();
   const { setNewAvatar } = useUserSettings();
   const isBigScreen = useMediaQuery({ query: "(min-width: 480px)" });
   const { previousImages } = usePreviousImages({
-    id: currentUser.uid,
+    id: state.id,
     type: "avatar",
   });
   const maxLength = isBigScreen ? 6 : 4;
