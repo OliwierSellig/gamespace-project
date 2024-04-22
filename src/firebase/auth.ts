@@ -46,6 +46,8 @@ export async function CreateUser(props: {
     recentBackgrounds: [urlToName({ type: "background", url: backgroudnURL })],
   });
 
+  localStorage.setItem("isNewUser", "true");
+
   return {
     name: props.gamespaceName,
     avatar: avatarURL,

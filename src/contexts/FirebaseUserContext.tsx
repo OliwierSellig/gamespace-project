@@ -92,9 +92,6 @@ function FirebaseUserProvider({ children }: ChildrenProp) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  console.log(state);
-  console.log(isLoggedIn);
-
   function setUserProfile(profileData: {
     name?: string;
     avatar?: string;

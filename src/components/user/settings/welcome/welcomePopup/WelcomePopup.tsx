@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { HiOutlineUser } from "react-icons/hi2";
-import notFound from "../../../../../public/img/not-found.png";
+import notFound from "../../../../../../public/img/not-found.png";
 import Button from "../../../../global/button/Button";
 import WelcomeList from "../welcomeList/WelcomeList";
 import styles from "./welcomePopup.module.scss";
@@ -9,12 +9,14 @@ type WelcomePopupProps = {
   background: string;
   avatar: string;
   name: string;
+  handleClose: () => void;
 };
 
 function WelcomePopup({
   background,
   avatar,
   name = "Undefined User",
+  handleClose,
 }: WelcomePopupProps) {
   return (
     <div className={styles.background}>
@@ -33,10 +35,14 @@ function WelcomePopup({
         <p className={styles.name}>{name}</p>
         <p className={styles.text}>
           We are thrilled that you decided to join our community! Now you can
-          interact withh all your favourite games in seconds.
+          interact with all your favourite games in seconds.
         </p>
         <WelcomeList />
-        <Button style={{ name: "scale", shade: "dark" }} borderRadius="sm">
+        <Button
+          handleClick={handleClose}
+          style={{ name: "scale", shade: "dark" }}
+          borderRadius="sm"
+        >
           Start Exploring
         </Button>
       </div>
