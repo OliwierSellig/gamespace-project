@@ -17,49 +17,12 @@ export async function removeImageFromStorage(props: {
   imageName: string;
 }) {
   const imageRef = ref(storage, `${props.type}s/${props.imageName}`);
-  console.log(imageRef);
   try {
     await deleteObject(imageRef);
   } catch (error) {
     console.error("Error deleting image:", error);
   }
 }
-
-// export async function getImageObjectFromStorage(props: {
-//   type: "avatar" | "background";
-//   propType: "url" | "name";
-//   propContent: string;
-// }) {
-//   const folderRef = ref(storage, `${props.type}s/`);
-
-//   try {
-//     const items = await listAll(folderRef);
-
-//     for (const item of items.items) {
-//       if (props.propType === "url") {
-//         const imageUrl = await getDownloadURL(item);
-//         if (imageUrl === props.propContent) {
-//           return {
-//             name: item.name,
-//             url: imageUrl,
-//           };
-//         }
-//       } else {
-//         if (item.name === props.propContent) {
-//           const imageUrl = await getDownloadURL(item);
-//           return {
-//             name: item.name,
-//             url: imageUrl,
-//           };
-//         }
-//       }
-//     }
-//     return null;
-//   } catch (error) {
-//     console.error("Error finding image:", error);
-//     return null;
-//   }
-// }
 
 export function urlToName(props: {
   type: "avatar" | "background";
@@ -75,9 +38,3 @@ export function urlToName(props: {
     return null;
   }
 }
-
-// https://firebasestorage.googleapis.com/v0/b/gamespace-project.appspot.com/o/avatars%2F5SWJppg1zcPChR57n4KvAgCsdQZ2-16?alt=media&token=09ba228b-0593-480c-87af-c85cc5a1938b
-
-// https://firebasestorage.googleapis.com/v0/b/gamespace-project.appspot.com/o/avatars%2F5SWJppg1zcPChR57n4KvAgCsdQZ2-633?alt=media&token=0c3c926e-8404-4ec9-b511-a9c058cd1c64
-
-// https://firebasestorage.googleapis.com/v0/b/gamespace-project.appspot.com/o/backgrounds%2F5SWJppg1zcPChR57n4KvAgCsdQZ2-616?alt=media&token=f7898078-8807-4df7-b97f-b21d3ea5c585

@@ -6,19 +6,25 @@ import Button from "../../../../../global/button/Button";
 import styles from "./actionsButtons.module.scss";
 
 function ActionButtons() {
-  const { state } = useFirebaseUser();
+  const { state, setUserProfile } = useFirebaseUser();
   const { saveChanges, leaveUserSettings, background, avatar, newName } =
     useUserSettings();
   const [isSavingChanges, setIsSavingChanges] = useState<boolean>(false);
 
   async function handleSave() {
-    await updateUserInfo(
-      state.id,
-      { avatar, background, name: newName },
-      (isLoading: boolean) => setIsSavingChanges(isLoading),
-    );
-
+    setIsSavingChanges(true);
+    const updatedDoc = await updateUserInfo(state.id, {
+      avatar,
+      background,
+      name: newName,
+    });
+    setUserProfile({
+      name: updatedDoc.gamespaceName,
+      recentAvatars: updatedDoc.recentAvatars,
+      recentBackgrounds: updatedDoc.recentBackgrounds,
+    });
     saveChanges();
+    setIsSavingChanges(false);
   }
 
   return (
@@ -33,6 +39,7 @@ function ActionButtons() {
         style={{ name: "opacity", shade: "white" }}
         handleClick={handleSave}
         disabled={isSavingChanges}
+        isLoading={isSavingChanges}
       >
         Save Changes
       </Button>

@@ -20,14 +20,13 @@ type ContextType = {
   isLoading: boolean;
   setUserProfile: (profileData: {
     name?: string;
-    avatar?: string;
-    background?: string;
-    createdAt: string;
+    recentAvatars?: string[];
+    recentBackgrounds?: string[];
   }) => void;
   setRegisterUserData: (props: {
     name: string;
-    avatar: string;
-    background: string;
+    recentBackgrounds: string[];
+    recentAvatars: string[];
     createdAt: string;
     id: string;
   }) => void;
@@ -36,8 +35,8 @@ type ContextType = {
 type stateProps = {
   profileSettings: {
     name: string;
-    avatar: string;
-    background: string;
+    recentAvatars: string[];
+    recentBackgrounds: string[];
     createdAt: string;
   };
   id: string;
@@ -54,8 +53,8 @@ type ReducerAction =
       type: REDUCER_ACTION_TYPE.SET_USER_PROFILE;
       payload: {
         name: string;
-        avatar: string;
-        background: string;
+        recentAvatars: string[];
+        recentBackgrounds: string[];
         createdAt: string;
       };
     }
@@ -63,7 +62,12 @@ type ReducerAction =
   | { type: REDUCER_ACTION_TYPE.RESET_STATE };
 
 const initialState: stateProps = {
-  profileSettings: { name: "", createdAt: "", avatar: "", background: "" },
+  profileSettings: {
+    name: "",
+    createdAt: "",
+    recentAvatars: [],
+    recentBackgrounds: [],
+  },
   id: null,
 };
 
@@ -94,17 +98,21 @@ function FirebaseUserProvider({ children }: ChildrenProp) {
 
   function setUserProfile(profileData: {
     name?: string;
-    avatar?: string;
-    background?: string;
-    createdAt?: string;
+    recentAvatars?: string[];
+    recentBackgrounds?: string[];
   }) {
     const name = profileData.name || state.profileSettings.name;
-    const avatar = profileData.avatar || state.profileSettings.avatar;
-    const background =
-      profileData.background || state.profileSettings.background;
-    const createdAt = profileData.createdAt || state.profileSettings.createdAt;
+    const recentAvatars =
+      profileData.recentAvatars || state.profileSettings.recentAvatars;
+    const recentBackgrounds =
+      profileData.recentBackgrounds || state.profileSettings.recentBackgrounds;
 
-    const updatedUserProfile = { name, avatar, background, createdAt };
+    const updatedUserProfile = {
+      name,
+      recentAvatars,
+      recentBackgrounds,
+      createdAt: state.profileSettings.createdAt,
+    };
 
     dispatch({
       type: REDUCER_ACTION_TYPE.SET_USER_PROFILE,
@@ -120,8 +128,8 @@ function FirebaseUserProvider({ children }: ChildrenProp) {
           type: REDUCER_ACTION_TYPE.SET_USER_PROFILE,
           payload: {
             name: userData.gamespaceName,
-            avatar: userData.avatar,
-            background: userData.background,
+            recentAvatars: userData.recentAvatars,
+            recentBackgrounds: userData.recentBackgrounds,
             createdAt: userData.createdAt,
           },
         });
@@ -137,8 +145,8 @@ function FirebaseUserProvider({ children }: ChildrenProp) {
 
   async function setRegisterUserData(props: {
     name: string;
-    avatar: string;
-    background: string;
+    recentAvatars: string[];
+    recentBackgrounds: string[];
     createdAt: string;
     id: string;
   }) {
@@ -146,8 +154,8 @@ function FirebaseUserProvider({ children }: ChildrenProp) {
       type: REDUCER_ACTION_TYPE.SET_USER_PROFILE,
       payload: {
         name: props.name,
-        avatar: props.avatar,
-        background: props.background,
+        recentAvatars: props.recentAvatars,
+        recentBackgrounds: props.recentBackgrounds,
         createdAt: props.createdAt,
       },
     });

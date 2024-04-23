@@ -9,8 +9,9 @@ type UserLayoutProps = {
 
 function UserLayout({ children }: UserLayoutProps) {
   const { state } = useFirebaseUser();
+  const background = state.profileSettings.recentBackgrounds.at(0);
   return (
-    <GameBackgroundLayout image={state.profileSettings.background || bg}>
+    <GameBackgroundLayout image={background || bg}>
       <>{children}</>
     </GameBackgroundLayout>
   );

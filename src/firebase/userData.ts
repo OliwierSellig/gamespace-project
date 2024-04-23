@@ -1,5 +1,5 @@
 import { updateDoc } from "firebase/firestore";
-import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { FirestoreUser } from "../utils/types/firebase";
 import { storage } from "./firebase";
 import {
@@ -9,13 +9,13 @@ import {
   urlToName,
 } from "./utils";
 
-export async function getUserBackground(id: string): Promise<string | null> {
+export async function getUserBackgrounds(id: string): Promise<string | null> {
   try {
     const docSnapshot = await findUserDoc(id);
 
     if (docSnapshot.exists) {
-      const backgroundUrl = docSnapshot.data().background;
-      return backgroundUrl;
+      const backgrounds = docSnapshot.data().recentBackgrounds;
+      return backgrounds;
     } else {
       return null;
     }
@@ -25,13 +25,13 @@ export async function getUserBackground(id: string): Promise<string | null> {
   }
 }
 
-export async function getUserAvatar(id: string): Promise<string | null> {
+export async function getUserAvatars(id: string): Promise<string | null> {
   try {
     const docSnapshot = await findUserDoc(id);
 
     if (docSnapshot.exists) {
-      const avatar = docSnapshot.data().avatar;
-      return avatar;
+      const avatars = docSnapshot.data().recentAvatars;
+      return avatars;
     } else {
       return null;
     }
@@ -57,95 +57,45 @@ export async function getUserName(id: string): Promise<string | null> {
   }
 }
 
-export async function getUserCreatedAt(id: string): Promise<string | null> {
-  try {
-    const docSnapshot = await findUserDoc(id);
-
-    if (docSnapshot.exists) {
-      const createdAt = docSnapshot.data().createdAt;
-      return createdAt;
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.error("Error getting user creation date:", error);
-    return null;
-  }
-}
-
 export async function updateUserInfo(
   id: string,
   data: { avatar: File | string; background: File | string; name: string },
-  setLoading: (isLoading: boolean) => void,
 ) {
   try {
-    setLoading(true);
-
-    const newAvatarURL = data.avatar
+    const newAvatarList = data.avatar
       ? typeof data.avatar === "string"
-        ? data.avatar
+        ? await updateRecentImagesList({
+            type: "avatar",
+            imageURL: data.avatar,
+            id,
+          })
         : await setNewImage(id, "avatar", data.avatar)
-      : "";
-    const newBackgrounURL = data.background
+      : null;
+
+    const newBackgroundList = data.background
       ? typeof data.background === "string"
-        ? data.background
+        ? await updateRecentImagesList({
+            type: "background",
+            imageURL: data.background,
+            id,
+          })
         : await setNewImage(id, "background", data.background)
-      : "";
-
-    if (data.avatar && typeof data.avatar === "string") {
-      updateRecentImagesList({
-        type: "avatar",
-        imageName: urlToName({ type: "avatar", url: data.avatar }),
-        id,
-      });
-    }
-
-    if (data.background && typeof data.background === "string") {
-      updateRecentImagesList({
-        type: "background",
-        imageName: urlToName({ type: "background", url: data.background }),
-        id,
-      });
-    }
+      : null;
 
     const docRef = getUserDocRef(id);
 
     const document = await findUserDoc(id);
 
-    await updateDoc(docRef, {
-      background: newBackgrounURL || document.data().background,
-      avatar: newAvatarURL || document.data().avatar,
+    const updatedDocObject = {
+      recentAvatars: newAvatarList || document.data().recentAvatars,
+      recentBackgrounds: newBackgroundList || document.data().recentBackgrounds,
       gamespaceName: data.name || document.data().gamespaceName,
-    });
+    };
 
-    return newBackgrounURL;
+    await updateDoc(docRef, updatedDocObject);
+    return updatedDocObject;
   } catch (error) {
     console.error("Error updating user info:", error);
-  } finally {
-    setLoading(false);
-  }
-}
-
-type Avatar = { url: string; name: string };
-
-export async function getUserAvatars(id: string): Promise<Avatar[]> {
-  const avatarsRef = ref(storage, "avatars");
-  const userAvatars: Avatar[] = [];
-
-  try {
-    const listResult = await listAll(avatarsRef);
-    await Promise.all(
-      listResult.items.map(async (itemRef) => {
-        const avatarUserId = itemRef.name.split("-").at(0);
-        if (avatarUserId === id) {
-          const url = await getDownloadURL(itemRef);
-          userAvatars.push({ url, name: itemRef.name });
-        }
-      }),
-    );
-    return userAvatars;
-  } catch (error) {
-    console.error("Error fetching avatars:", error);
     return null;
   }
 }
@@ -157,44 +107,32 @@ export async function setNewImage(
   creatingUser?: boolean,
 ) {
   try {
-    if (!file) return "";
+    if (!file) return null;
 
     const newName = `${id}-${Math.ceil(Math.random() * 1000)}`;
 
     const imageRef = ref(storage, `${type}s/${newName}`);
 
-    if (!creatingUser) updateRecentImagesList({ type, imageName: newName, id });
-
     await uploadBytes(imageRef, file);
 
-    return await getDownloadURL(imageRef);
+    const newURL = await getDownloadURL(imageRef);
+
+    const imageList = !creatingUser
+      ? updateRecentImagesList({ type, imageURL: newURL, id })
+      : [newURL];
+
+    return imageList;
   } catch (error) {
-    return "";
+    return null;
   }
-}
-
-export async function setPreviousImage(props: {
-  type: "background" | "avatar";
-  url: string;
-  id: string;
-}) {
-  updateRecentImagesList({
-    type: props.type,
-    imageName: urlToName({ type: props.type, url: props.url }),
-    id: props.id,
-  });
-
-  return props.url;
 }
 
 export async function updateRecentImagesList(props: {
   type: "avatar" | "background";
-  imageName: string;
+  imageURL: string;
   id: string;
 }) {
   const maxLength = props.type === "avatar" ? 6 : 3;
-  const targetImage = ref(storage, `${props.type}s/${props.imageName}`);
-
   const docSnapshot = await findUserDoc(props.id);
 
   const docRef = getUserDocRef(props.id);
@@ -204,8 +142,8 @@ export async function updateRecentImagesList(props: {
       props.type === "avatar" ? "recentAvatars" : "recentBackgrounds"
     ];
 
-  const filteredArray = recentImageList.includes(targetImage.name)
-    ? recentImageList.filter((avatar) => avatar !== targetImage.name)
+  const filteredArray = recentImageList.includes(props.imageURL)
+    ? recentImageList.filter((avatar) => avatar !== props.imageURL)
     : recentImageList.length >= maxLength
       ? recentImageList.slice(0, -1)
       : recentImageList;
@@ -213,10 +151,10 @@ export async function updateRecentImagesList(props: {
   if (recentImageList.length >= maxLength)
     removeImageFromStorage({
       type: props.type,
-      imageName: recentImageList.at(-1),
+      imageName: urlToName({ type: props.type, url: recentImageList.at(-1) }),
     });
 
-  const newArray = [props.imageName, ...filteredArray];
+  const newArray = [props.imageURL, ...filteredArray];
 
   const updatedDocObject =
     props.type === "avatar"
@@ -224,30 +162,8 @@ export async function updateRecentImagesList(props: {
       : { recentBackgrounds: newArray };
 
   await updateDoc(docRef, updatedDocObject);
-}
 
-export async function listUserRecentImagsAsUrl(props: {
-  type: "avatar" | "background";
-  id: string;
-}) {
-  try {
-    const docSnapshot = await findUserDoc(props.id);
-    const imagesList: string[] =
-      docSnapshot.data()[
-        props.type === "avatar" ? "recentAvatars" : "recentBackgrounds"
-      ];
-    const imageUrls: string[] = [];
-
-    for (const name of imagesList) {
-      const imageRef = ref(storage, `${props.type}s/${name}`);
-      const url = await getDownloadURL(imageRef);
-      imageUrls.push(url);
-    }
-    return imageUrls;
-  } catch (error) {
-    console.error("Error fetching image URLs:", error);
-    return null;
-  }
+  return newArray;
 }
 
 export async function getFullUserData(id: string) {

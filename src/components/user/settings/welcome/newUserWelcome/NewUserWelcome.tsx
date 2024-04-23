@@ -7,6 +7,8 @@ import WelcomePopup from "../welcomePopup/WelcomePopup";
 function NewUserWelcome() {
   const { state } = useFirebaseUser();
   const [showWelcomePopup, setShowWelcomePopup] = useState<boolean>(false);
+  const avatar = state.profileSettings.recentAvatars.at(0);
+  const background = state.profileSettings.recentBackgrounds.at(0);
 
   useEffect(() => {
     const isNewUser = localStorage.getItem("isNewUser");
@@ -20,8 +22,8 @@ function NewUserWelcome() {
 
   return (
     <WelcomePopup
-      background={state.profileSettings.background}
-      avatar={state.profileSettings.avatar}
+      background={background}
+      avatar={avatar}
       name={state.profileSettings.name}
       handleClose={() => setShowWelcomePopup(false)}
     />

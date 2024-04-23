@@ -1,5 +1,4 @@
 import { useMediaQuery } from "react-responsive";
-import { usePreviousImages } from "../../../../../../hooks/usePreviousImages";
 import { useFirebaseUser } from "../../../../../../contexts/FirebaseUserContext";
 import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
 import EmptyImageBox from "../../layout/emptyImageBox/EmptyImageBox";
@@ -10,10 +9,7 @@ function PreviousAvatarsList() {
   const { state } = useFirebaseUser();
   const { setNewAvatar } = useUserSettings();
   const isBigScreen = useMediaQuery({ query: "(min-width: 480px)" });
-  const { previousImages } = usePreviousImages({
-    id: state.id,
-    type: "avatar",
-  });
+  const previousImages = state.profileSettings.recentAvatars;
   const maxLength = isBigScreen ? 6 : 4;
   const emptySlotsCount = Math.max(0, maxLength - previousImages?.length || 0);
   if (!previousImages) return null;

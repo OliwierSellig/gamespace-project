@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRef } from "react";
 import { HiOutlineUser } from "react-icons/hi2";
 import notFound from "../../../../../../public/img/not-found.png";
 import Button from "../../../../global/button/Button";
@@ -18,15 +19,29 @@ function WelcomePopup({
   name = "Undefined User",
   handleClose,
 }: WelcomePopupProps) {
+  const backgroundRef = useRef<HTMLDivElement>(null);
   return (
-    <div className={styles.background}>
+    <div
+      onClick={(e) => {
+        if (backgroundRef.current && e.target === backgroundRef.current) {
+          handleClose();
+        }
+      }}
+      className={styles.background}
+      ref={backgroundRef}
+    >
       <div className={styles.container}>
         <div className={styles.cover}>
-          <Image src={background || notFound} alt="User Background" fill />
+          <Image
+            src={background || notFound}
+            sizes="(max-width: 720px) 95vw, 80rem"
+            alt="User Background"
+            fill
+          />
         </div>
         <div className={styles.avatar}>
           {avatar ? (
-            <Image src={avatar} alt="User Avatar" fill />
+            <Image src={avatar} alt="User Avatar" sizes="11.6rem" fill />
           ) : (
             <HiOutlineUser />
           )}

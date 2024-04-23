@@ -7,7 +7,7 @@ import { collection, getDocs, query, setDoc, where } from "firebase/firestore";
 import * as Yup from "yup";
 import { auth, firestore } from "./firebase";
 import { setNewImage } from "./userData";
-import { getUserDocRef, urlToName } from "./utils";
+import { getUserDocRef } from "./utils";
 
 export async function CreateInitialUser(email: string, password: string) {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -20,6 +20,8 @@ export async function CreateUser(props: {
   avatar: File | null;
   background: File | null;
 }) {
+  localStorage.setItem("isNewUser", "true");
+
   const res = await createUserWithEmailAndPassword(
     auth,
     props.email,
@@ -29,29 +31,25 @@ export async function CreateUser(props: {
 
   const docRef = getUserDocRef(user.uid);
 
-  const backgroudnURL = props.background
+  const backgroundList = props.background
     ? await setNewImage(user.uid, "background", props.background, true)
-    : "";
-  const avatarURL = props.avatar
+    : [];
+  const avatarList = props.avatar
     ? await setNewImage(user.uid, "avatar", props.avatar, true)
-    : "";
+    : [];
 
   await setDoc(docRef, {
     email: props.email,
     gamespaceName: props.gamespaceName,
-    avatar: avatarURL,
-    background: backgroudnURL,
     createdAt: user.metadata.creationTime,
-    recentAvatars: [urlToName({ type: "avatar", url: avatarURL })],
-    recentBackgrounds: [urlToName({ type: "background", url: backgroudnURL })],
+    recentAvatars: avatarList,
+    recentBackgrounds: backgroundList,
   });
-
-  localStorage.setItem("isNewUser", "true");
 
   return {
     name: props.gamespaceName,
-    avatar: avatarURL,
-    background: backgroudnURL,
+    recentAvatars: avatarList,
+    recentBackgrounds: backgroundList,
     createdAt: user.metadata.creationTime,
     id: user.uid,
   };

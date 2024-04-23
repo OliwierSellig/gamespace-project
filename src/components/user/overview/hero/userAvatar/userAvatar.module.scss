@@ -5,8 +5,17 @@
   border-radius: 50%;
   border: 2px solid rgba(#ccc, 0.2);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light-300);
 
-  img {
+  & > svg {
+    width: 5.2rem;
+    height: 5.2rem;
+  }
+
+  & > img {
     object-fit: cover;
   }
 }
