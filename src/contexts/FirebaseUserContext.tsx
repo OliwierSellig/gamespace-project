@@ -16,6 +16,8 @@ const FirebaseUserContext = createContext<ContextType | undefined>(undefined);
 
 type ContextType = {
   state: stateProps;
+  currentAvatar: string;
+  currentBackground: string;
   isLoggedIn: boolean;
   isLoading: boolean;
   setUserProfile: (profileData: {
@@ -95,6 +97,8 @@ function FirebaseUserProvider({ children }: ChildrenProp) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const currentAvatar = state.profileSettings.recentAvatars.at(0);
+  const currentBackground = state.profileSettings.recentBackgrounds.at(0);
 
   function setUserProfile(profileData: {
     name?: string;
@@ -173,6 +177,8 @@ function FirebaseUserProvider({ children }: ChildrenProp) {
     <FirebaseUserContext.Provider
       value={{
         state,
+        currentAvatar,
+        currentBackground,
         isLoggedIn,
         isLoading,
         setUserProfile,
