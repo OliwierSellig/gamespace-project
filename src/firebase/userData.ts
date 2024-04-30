@@ -1,6 +1,7 @@
 import { updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { FirestoreUser } from "../utils/types/firebase";
+import { getFirestoreActivities } from "./activities";
 import { storage } from "./firebase";
 import { getFirestoreLibrary } from "./library";
 import {
@@ -9,6 +10,7 @@ import {
   removeImageFromStorage,
   urlToName,
 } from "./utils";
+import { getFirestoreWishlist } from "./wishlist";
 
 export async function getUserBackgrounds(id: string): Promise<string | null> {
   try {
@@ -171,9 +173,16 @@ export async function getFullUserData(id: string) {
   try {
     const userDoc = await findUserDoc(id);
     const library = await getFirestoreLibrary(id);
+    const wishlist = await getFirestoreWishlist(id);
+    const activities = await getFirestoreActivities(id);
 
     if (userDoc.exists) {
-      return { profileSettings: userDoc.data(), library } as FirestoreUser;
+      return {
+        profileSettings: userDoc.data(),
+        library,
+        wishlist,
+        activities,
+      } as FirestoreUser;
     } else {
       console.error("User document not found");
       return null;

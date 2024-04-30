@@ -20,6 +20,7 @@ import {
   ReviewType,
 } from "../utils/types/types";
 import { fetchGameByID } from "../lib/games";
+import { addActivitiesToUserFirestore } from "../firebase/activities";
 import { auth } from "../firebase/firebase";
 import {
   addGameToUserFirestore,
@@ -331,6 +332,14 @@ function UserProvider({ children }: ChildrenProp) {
         dispatch({
           type: REDUCER_ACTION_TYPE.SET_LIBRARY,
           payload: userData.library,
+        });
+        dispatch({
+          type: REDUCER_ACTION_TYPE.SET_WISHLIST,
+          payload: userData.wishlist,
+        });
+        dispatch({
+          type: REDUCER_ACTION_TYPE.SET_ACTIVITIES,
+          payload: userData.activities,
         });
         setIsLoggedIn(true);
       }
@@ -806,7 +815,8 @@ function UserProvider({ children }: ChildrenProp) {
 
   // ------- Manipulating Activities -------------
 
-  function addActivity(newActivities: ActivityItem[]) {
+  async function addActivity(newActivities: ActivityItem[]) {
+    await addActivitiesToUserFirestore({ id, activities: newActivities });
     const newList = [...activities, ...newActivities];
     dispatch({ type: REDUCER_ACTION_TYPE.SET_ACTIVITIES, payload: newList });
   }

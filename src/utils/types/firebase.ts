@@ -1,4 +1,4 @@
-import { LibraryItemType } from "./types";
+import { ActivityItem, BasicItemType, LibraryItemType } from "./types";
 
 export type FirestoreUser = {
   profileSettings: {
@@ -8,4 +8,6 @@ export type FirestoreUser = {
     recentBackgrounds: string[];
   };
   library: LibraryItemType[];
+  wishlist: BasicItemType[];
+  activities: ActivityItem[];
 };
