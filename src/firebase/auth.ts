@@ -1,9 +1,11 @@
 import {
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import { collection, getDocs, query, setDoc, where } from "firebase/firestore";
+import toast from "react-hot-toast";
 import * as Yup from "yup";
 import { auth, firestore } from "./firebase";
 import { setNewImage } from "./userData";
@@ -107,5 +109,14 @@ export async function validateEmail(
     return error.message;
   } finally {
     loadingFn(false);
+  }
+}
+
+export async function sentResetPasswordEmail(email: string) {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    toast.success("Reset link sent successfully, please check your email.");
+  } catch (err) {
+    toast.error("Please, write a valid email address");
   }
 }
