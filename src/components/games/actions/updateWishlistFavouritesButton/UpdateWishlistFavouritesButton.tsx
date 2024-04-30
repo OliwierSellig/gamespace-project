@@ -3,6 +3,7 @@
 import { HiOutlineBookmark, HiOutlineBookmarkSlash } from "react-icons/hi2";
 import { IoHeartDislikeOutline, IoHeartOutline } from "react-icons/io5";
 import { SingleGameItem } from "../../../../utils/types/types";
+// import { useFirebaseUser } from "../../../../contexts/FirebaseUserContext";
 import { useUser } from "../../../../contexts/UserContext";
 import Button from "../../../global/button/Button";
 import styles from "./updateWishlistFavouritesButton.module.scss";
@@ -22,6 +23,8 @@ function UpdateWishlistFavouritesButton({
     checkInLibrary,
     updateFavourite,
   } = useUser();
+
+  // const {updateFavourite, checkInLibrary, checkIsFavourite} = useFirebaseUser();
 
   function handleClick() {
     if (checkInLibrary(game.id)) {

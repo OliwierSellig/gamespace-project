@@ -38,3 +38,34 @@ export function urlToName(props: {
     return null;
   }
 }
+
+export function getUserCollectionRef(props: {
+  collection: "library" | "wishlist" | " reviews" | "collections" | "activites";
+  id: string;
+}) {
+  return collection(firestore, "users", props.id, props.collection);
+}
+
+export function getSingleUserGameRef(props: {
+  userID: string;
+  gameID: string;
+}) {
+  const gamesRef = getUserCollectionRef({
+    collection: "library",
+    id: props.userID,
+  });
+
+  return doc(gamesRef, props.gameID);
+}
+
+export function getSingleWishlistGameRef(props: {
+  userID: string;
+  gameID: string;
+}) {
+  const gamesRef = getUserCollectionRef({
+    collection: "wishlist",
+    id: props.userID,
+  });
+
+  return doc(gamesRef, props.gameID);
+}

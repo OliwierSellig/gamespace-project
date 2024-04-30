@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import toast from "react-hot-toast";
 import { rankList } from "../utils/functions/functions";
 import {
@@ -13,6 +20,17 @@ import {
   ReviewType,
 } from "../utils/types/types";
 import { fetchGameByID } from "../lib/games";
+import { auth } from "../firebase/firebase";
+import {
+  addGameToUserFirestore,
+  removeGameFromUserFirestore,
+  toggleFavouriteFirebase,
+} from "../firebase/library";
+import { getFullUserData } from "../firebase/userData";
+import {
+  addGameToUserFirestoreWishlist,
+  removeGameFromUserFirestoreWishlist,
+} from "../firebase/wishlist";
 
 const UserContext = createContext<ContextType | undefined>(undefined);
 
@@ -20,19 +38,35 @@ const UserContext = createContext<ContextType | undefined>(undefined);
 
 type ContextType = {
   state: stateProps;
+  isLoggedIn: boolean;
+  isLoading: boolean;
+  currentAvatar: string;
+  currentBackground: string;
   genreList: { item: string; amount: number }[];
   devList: { item: string; amount: number }[];
   recentAddedGames: LibraryItemType[];
   favouritesList: LibraryItemType[];
+  setUserProfile: (profileData: {
+    name?: string;
+    recentAvatars?: string[];
+    recentBackgrounds?: string[];
+  }) => void;
+  setRegisterUserData: (props: {
+    name: string;
+    recentBackgrounds: string[];
+    recentAvatars: string[];
+    createdAt: string;
+    id: string;
+  }) => void;
   setSettings: (isOpen: boolean) => void;
   setLoggingOut: (loggintOut: boolean) => void;
   checkInLibrary: (id: number) => LibraryItemType;
-  addToLibrary: (game: LibraryItemType) => void;
+  addToLibrary: (game: LibraryItemType) => Promise<void>;
   addGameFromRanking: (id: number) => Promise<void>;
-  removeFromLibrary: (id: number) => void;
+  removeFromLibrary: (id: number) => Promise<void>;
   checkInWishlist: (id: number) => BasicItemType;
-  addToWishlist: (game: BasicItemType) => void;
-  removeFromWishlist: (id: number) => void;
+  addToWishlist: (game: BasicItemType) => Promise<void>;
+  removeFromWishlist: (id: number) => Promise<void>;
   updateReviews: (newReview: ReviewType) => void;
   findInReviews: (id: number) => ReviewType;
   removeFromReviews: (id: number) => void;
@@ -61,7 +95,7 @@ type ContextType = {
     year: number;
     games: LibraryItemType[];
   }[];
-  updateFavourite: (id: number, action: "add" | "remove") => void;
+  updateFavourite: (id: number, action: "add" | "remove") => Promise<void>;
   checkIsFavourite: (id: number) => boolean;
   sortGames: (
     list:
@@ -89,17 +123,25 @@ type ContextType = {
 // ---------- Setting Types for Reducer && State ---------------------------
 
 type stateProps = {
+  profileSettings: {
+    name: string;
+    recentAvatars: string[];
+    recentBackgrounds: string[];
+    createdAt: string;
+  };
+  id: string;
   library: LibraryItemType[];
   wishlist: BasicItemType[];
   reviews: ReviewType[];
   collections: CollectionItemType[];
-  initialRender: boolean;
   activities: ActivityItem[];
   areSettingsOpen: boolean;
   isLogginOut: boolean;
 };
 
 const enum REDUCER_ACTION_TYPE {
+  SET_USER_PROFILE,
+  SET_ID,
   SET_LIBRARY,
   SET_WISHLIST,
   SET_REVIEWS,
@@ -110,9 +152,20 @@ const enum REDUCER_ACTION_TYPE {
   SET_SETTINGS_CLOSE,
   SET_LOGGING_OPEN,
   SET_LOGGING_CLOSE,
+  RESET_STATE,
 }
 
 type ReducerAction =
+  | {
+      type: REDUCER_ACTION_TYPE.SET_USER_PROFILE;
+      payload: {
+        name: string;
+        recentAvatars: string[];
+        recentBackgrounds: string[];
+        createdAt: string;
+      };
+    }
+  | { type: REDUCER_ACTION_TYPE.SET_ID; payload: string }
   | {
       type: REDUCER_ACTION_TYPE.SET_LIBRARY;
       payload: LibraryItemType[];
@@ -127,7 +180,8 @@ type ReducerAction =
         | REDUCER_ACTION_TYPE.SET_SETTINGS_CLOSE
         | REDUCER_ACTION_TYPE.SET_SETTINGS_OPEN
         | REDUCER_ACTION_TYPE.SET_LOGGING_CLOSE
-        | REDUCER_ACTION_TYPE.SET_LOGGING_OPEN;
+        | REDUCER_ACTION_TYPE.SET_LOGGING_OPEN
+        | REDUCER_ACTION_TYPE.RESET_STATE;
     };
 
 // ----------------------------------------------------------------
@@ -135,18 +189,34 @@ type ReducerAction =
 // ---------- Setting Initial Values for Reducer && State ---------------------------
 
 const initialState: stateProps = {
+  profileSettings: {
+    name: "",
+    createdAt: "",
+    recentAvatars: [],
+    recentBackgrounds: [],
+  },
+  id: null,
   library: [],
   wishlist: [],
   reviews: [],
   collections: [],
   activities: [],
-  initialRender: true,
   areSettingsOpen: false,
   isLogginOut: false,
 };
 
 function reducer(state: stateProps, action: ReducerAction): stateProps {
   switch (action.type) {
+    case REDUCER_ACTION_TYPE.SET_USER_PROFILE:
+      return {
+        ...state,
+        profileSettings: action.payload,
+      };
+    case REDUCER_ACTION_TYPE.SET_ID:
+      return {
+        ...state,
+        id: action.payload,
+      };
     case REDUCER_ACTION_TYPE.SET_LIBRARY:
       return { ...state, library: action.payload };
     case REDUCER_ACTION_TYPE.SET_WISHLIST:
@@ -157,8 +227,6 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
       return { ...state, collections: action.payload };
     case REDUCER_ACTION_TYPE.SET_ACTIVITIES:
       return { ...state, activities: action.payload };
-    case REDUCER_ACTION_TYPE.SET_INITIAL_RENDER:
-      return { ...state, initialRender: false };
     case REDUCER_ACTION_TYPE.SET_SETTINGS_OPEN:
       return { ...state, areSettingsOpen: true };
     case REDUCER_ACTION_TYPE.SET_SETTINGS_CLOSE:
@@ -167,6 +235,8 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
       return { ...state, isLogginOut: true };
     case REDUCER_ACTION_TYPE.SET_LOGGING_CLOSE:
       return { ...state, isLogginOut: false };
+    case REDUCER_ACTION_TYPE.RESET_STATE:
+      return { ...initialState };
 
     default:
       throw new Error("Undefined reducer action");
@@ -177,9 +247,21 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
 
 function UserProvider({ children }: ChildrenProp) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const { library, wishlist, reviews, collections, activities, initialRender } =
-    state;
+  const {
+    profileSettings,
+    id,
+    library,
+    wishlist,
+    reviews,
+    collections,
+    activities,
+  } = state;
+
+  const currentAvatar = profileSettings.recentAvatars.at(0);
+  const currentBackground = profileSettings.recentBackgrounds.at(0);
 
   const devList = rankList(
     library
@@ -203,68 +285,78 @@ function UserProvider({ children }: ChildrenProp) {
 
   const favouritesList = library.filter((game) => game.isFavourite);
 
-  // ---------- Getting Data From Local Storage ---------------------------
+  // -------------------------------------------------------------------------------
 
-  useEffect(() => {
-    if (localStorage.getItem("library"))
-      dispatch({
-        type: REDUCER_ACTION_TYPE.SET_LIBRARY,
-        payload: JSON.parse(localStorage.getItem("library") || ""),
-      });
-    if (localStorage.getItem("wishlist"))
-      dispatch({
-        type: REDUCER_ACTION_TYPE.SET_WISHLIST,
-        payload: JSON.parse(localStorage.getItem("wishlist") || ""),
-      });
-    if (localStorage.getItem("reviews"))
-      dispatch({
-        type: REDUCER_ACTION_TYPE.SET_REVIEWS,
-        payload: JSON.parse(localStorage.getItem("reviews") || ""),
-      });
-    if (localStorage.getItem("collections"))
-      dispatch({
-        type: REDUCER_ACTION_TYPE.SET_COLLECTIONS,
-        payload: JSON.parse(localStorage.getItem("collections") || ""),
-      });
-    if (localStorage.getItem("activities"))
-      dispatch({
-        type: REDUCER_ACTION_TYPE.SET_ACTIVITIES,
-        payload: JSON.parse(localStorage.getItem("activities") || ""),
-      });
+  function setUserProfile(profileData: {
+    name?: string;
+    recentAvatars?: string[];
+    recentBackgrounds?: string[];
+  }) {
+    const name = profileData.name || state.profileSettings.name;
+    const recentAvatars =
+      profileData.recentAvatars || state.profileSettings.recentAvatars;
+    const recentBackgrounds =
+      profileData.recentBackgrounds || state.profileSettings.recentBackgrounds;
 
-    dispatch({ type: REDUCER_ACTION_TYPE.SET_INITIAL_RENDER });
-  }, []);
+    const updatedUserProfile = {
+      name,
+      recentAvatars,
+      recentBackgrounds,
+      createdAt: state.profileSettings.createdAt,
+    };
 
-  // --------------------------------------------
+    dispatch({
+      type: REDUCER_ACTION_TYPE.SET_USER_PROFILE,
+      payload: updatedUserProfile,
+    });
+  }
 
-  // ---------- Saving Data To Local Storage ---------------------------
+  console.log(state);
 
-  useEffect(() => {
-    if (!initialRender)
-      localStorage.setItem("library", JSON.stringify(library));
-  }, [library, initialRender]);
+  async function initialRender(user: { uid: string }) {
+    if (user) {
+      const userData = await getFullUserData(user.uid);
+      if (userData) {
+        dispatch({
+          type: REDUCER_ACTION_TYPE.SET_USER_PROFILE,
+          payload: {
+            name: userData.gamespaceName,
+            recentAvatars: userData.recentAvatars,
+            recentBackgrounds: userData.recentBackgrounds,
+            createdAt: userData.createdAt,
+          },
+        });
+        dispatch({ type: REDUCER_ACTION_TYPE.SET_ID, payload: user.uid });
+        setIsLoggedIn(true);
+      }
+    } else {
+      dispatch({ type: REDUCER_ACTION_TYPE.RESET_STATE });
+      setIsLoggedIn(false);
+    }
+    setIsLoading(false);
+  }
 
-  useEffect(() => {
-    if (!initialRender)
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist, initialRender]);
+  function setRegisterUserData(props: {
+    name: string;
+    recentAvatars: string[];
+    recentBackgrounds: string[];
+    createdAt: string;
+    id: string;
+  }) {
+    dispatch({
+      type: REDUCER_ACTION_TYPE.SET_USER_PROFILE,
+      payload: {
+        name: props.name,
+        recentAvatars: props.recentAvatars,
+        recentBackgrounds: props.recentBackgrounds,
+        createdAt: props.createdAt,
+      },
+    });
+    dispatch({ type: REDUCER_ACTION_TYPE.SET_ID, payload: props.id });
+    setIsLoggedIn(true);
+  }
 
-  useEffect(() => {
-    if (!initialRender)
-      localStorage.setItem("reviews", JSON.stringify(reviews));
-  }, [reviews, initialRender]);
-
-  useEffect(() => {
-    if (!initialRender)
-      localStorage.setItem("collections", JSON.stringify(collections));
-  }, [collections, initialRender]);
-
-  useEffect(() => {
-    if (!initialRender)
-      localStorage.setItem("activities", JSON.stringify(activities));
-  }, [activities, initialRender]);
-
-  // --------------------------------------------
+  // -------------------------------------------------------------------------------
 
   // ------ Manipulating Library Data -----------
 
@@ -272,13 +364,14 @@ function UserProvider({ children }: ChildrenProp) {
     return library.find((game) => game.id === id);
   }
 
-  function addToLibrary(game: LibraryItemType) {
+  async function addToLibrary(game: LibraryItemType) {
     if (checkInLibrary(game.id)) {
       toast.error("You already have this game in library");
       return;
     }
     const newList = [...library, game];
     if (checkInWishlist(game.id)) removeFromWishlist(game.id);
+    await addGameToUserFirestore({ id, game });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_LIBRARY, payload: newList });
     const activitiesList: ActivityItem[] = checkInWishlist(game.id)
       ? [
@@ -329,13 +422,17 @@ function UserProvider({ children }: ChildrenProp) {
     });
   }
 
-  function removeFromLibrary(id: number) {
+  async function removeFromLibrary(id: number) {
     const targetGame = checkInLibrary(id);
     if (!targetGame) {
       toast.error("You don't have this game in your library");
       return;
     }
     const newList = library.filter((game) => game.id !== id);
+    await removeGameFromUserFirestore({
+      userID: state.id,
+      gameID: id.toString(),
+    });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_LIBRARY, payload: newList });
     const activitiesList: ActivityItem[] = checkIsFavourite(id)
       ? [
@@ -376,12 +473,13 @@ function UserProvider({ children }: ChildrenProp) {
     return wishlist.find((game) => game.id === id);
   }
 
-  function addToWishlist(game: BasicItemType) {
+  async function addToWishlist(game: BasicItemType) {
     if (checkInWishlist(game.id)) {
       toast.error("You already have this game in wishlist");
       return;
     }
     const newList = [...wishlist, game];
+    await addGameToUserFirestoreWishlist({ id, game });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_WISHLIST, payload: newList });
     addActivity([
       {
@@ -395,7 +493,7 @@ function UserProvider({ children }: ChildrenProp) {
     toast.success("Successfully added game to wishlist");
   }
 
-  function removeFromWishlist(id: number) {
+  async function removeFromWishlist(id: number) {
     const targetGame = checkInWishlist(id);
 
     if (!targetGame) {
@@ -404,6 +502,10 @@ function UserProvider({ children }: ChildrenProp) {
       return;
     }
     const newList = wishlist.filter((game) => game.id !== id);
+    await removeGameFromUserFirestoreWishlist({
+      gameID: id.toString(),
+      userID: state.id,
+    });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_WISHLIST, payload: newList });
     addActivity([
       {
@@ -421,7 +523,7 @@ function UserProvider({ children }: ChildrenProp) {
 
   // ------- Manipulating Favourites -----------
 
-  function updateFavourite(id: number, action: "add" | "remove") {
+  async function updateFavourite(id: number, action: "add" | "remove") {
     const targetGame = checkInLibrary(id);
     if (!targetGame) {
       toast.error("Couldn't add game to favourites");
@@ -430,6 +532,11 @@ function UserProvider({ children }: ChildrenProp) {
     const updatedGame = { ...targetGame, isFavourite: action === "add" };
     const filteredList = library.filter((game) => game.id !== id);
     const newList = [...filteredList, updatedGame];
+    await toggleFavouriteFirebase({
+      userID: state.id,
+      gameID: id.toString(),
+      isFavourite: action === "add",
+    });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_LIBRARY, payload: newList });
     addActivity([
       {
@@ -1030,10 +1137,24 @@ function UserProvider({ children }: ChildrenProp) {
 
   // ---------------------------------------------
 
+  // --------- Initialize User ----------------------
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, initialRender);
+
+    return unsubscribe;
+  }, []);
+
+  // ---------------------------------------------
+
   return (
     <UserContext.Provider
       value={{
         state,
+        isLoading,
+        isLoggedIn,
+        currentAvatar,
+        currentBackground,
         genreList,
         devList,
         recentAddedGames,
@@ -1064,6 +1185,8 @@ function UserProvider({ children }: ChildrenProp) {
         filterLibraryBy,
         transformActivityIntoString,
         filterActivities,
+        setRegisterUserData,
+        setUserProfile,
       }}
     >
       {children}

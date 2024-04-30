@@ -6,10 +6,10 @@ import { ChildrenProp } from "../../utils/types/types";
 import GameBackgroundLayout from "../../components/global/gameBackgroundLayout/GameBackgroundLayout";
 import LoaderWindow from "../../components/global/loading/loaderWindow/LoaderWindow";
 import backgroundImage from "../../../public/img/user-background.jpg";
-import { useFirebaseUser } from "../../contexts/FirebaseUserContext";
+import { useUser } from "../../contexts/UserContext";
 
 function Layout({ children }: ChildrenProp) {
-  const { isLoggedIn, isLoading } = useFirebaseUser();
+  const { isLoggedIn, isLoading } = useUser();
   const router = useRouter();
   useEffect(() => {
     if (isLoggedIn) router.push("/user/overview");

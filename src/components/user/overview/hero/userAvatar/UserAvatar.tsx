@@ -2,16 +2,15 @@
 
 import Image from "next/image";
 import { HiOutlineUser } from "react-icons/hi2";
-import { useFirebaseUser } from "../../../../../contexts/FirebaseUserContext";
+import { useUser } from "../../../../../contexts/UserContext";
 import styles from "./userAvatar.module.scss";
 
 function UserAvatar() {
-  const { state } = useFirebaseUser();
-  const avatar = state.profileSettings.recentAvatars.at(0);
+  const { currentAvatar } = useUser();
   return (
     <div className={styles.photo}>
-      {avatar ? (
-        <Image src={avatar} alt="User Avatar" sizes="14rem" fill />
+      {currentAvatar ? (
+        <Image src={currentAvatar} alt="User Avatar" sizes="14rem" fill />
       ) : (
         <HiOutlineUser />
       )}

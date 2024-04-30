@@ -1,3 +1,4 @@
+import { color } from "framer-motion";
 import Link from "next/link";
 import { ReactNode } from "react";
 import styles from "./button.module.scss";
@@ -49,6 +50,7 @@ function Button({
   const styleList = {
     gap: `${gap}px`,
     fontWeight: `${fontWeight}`,
+    color: isLoading ? "transparent" : "",
     ...additionalStyle,
   };
 

@@ -1,11 +1,11 @@
 "use client";
 
 import { dateTransform } from "../../../../../utils/functions/functions";
-import { useFirebaseUser } from "../../../../../contexts/FirebaseUserContext";
+import { useUser } from "../../../../../contexts/UserContext";
 import styles from "./createdAt.module.scss";
 
 function CreatedAt() {
-  const { state } = useFirebaseUser();
+  const { state } = useUser();
   const createdAt = state.profileSettings.createdAt;
   return (
     <p

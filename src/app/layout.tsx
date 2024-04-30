@@ -3,7 +3,6 @@ import { Toaster } from "react-hot-toast";
 import { poppins } from "../utils/other/fonts";
 import Providers from "../lib/QueryProvider";
 import GlobalLayout from "../components/global/layout/globalLayout/GlobalLayout";
-import { UserProvider } from "../contexts/UserContext";
 import "../scss/general.scss";
 
 export const metadata = {
@@ -23,9 +22,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={poppins.className}>
         <Providers>
-          <UserProvider>
-            <GlobalLayout>{children}</GlobalLayout>
-          </UserProvider>
+          <GlobalLayout>{children}</GlobalLayout>
         </Providers>
         <Toaster
           position="top-center"

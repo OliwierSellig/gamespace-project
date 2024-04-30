@@ -6,12 +6,12 @@ import {
   HiOutlineUserPlus,
 } from "react-icons/hi2";
 import user from "../../../../../../public/img/user.webp";
-import { useFirebaseUser } from "../../../../../contexts/FirebaseUserContext";
+import { useUser } from "../../../../../contexts/UserContext";
 import HeaderLink from "../headerLink/HeaderLink";
 import styles from "./goToUserProfile.module.scss";
 
 function GoToUserProfile() {
-  const { isLoggedIn, currentAvatar } = useFirebaseUser();
+  const { isLoggedIn, currentAvatar } = useUser();
 
   if (!isLoggedIn)
     return (

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { HiOutlineMinusCircle, HiOutlinePlusCircle } from "react-icons/hi2";
 import { SingleGameItem } from "../../../../utils/types/types";
 import { useUser } from "../../../../contexts/UserContext";
@@ -10,15 +11,18 @@ type UpdateLibraryButtonProps = {
 };
 
 function UpdateLibraryButton({ game }: UpdateLibraryButtonProps) {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { addToLibrary, removeFromLibrary, checkInLibrary } = useUser();
 
   return (
     <Button
-      handleClick={() => {
+      isLoading={isLoading}
+      handleClick={async () => {
+        setIsLoading(true);
         if (checkInLibrary(game.id)) {
-          removeFromLibrary(game.id);
+          await removeFromLibrary(game.id);
         } else {
-          addToLibrary({
+          await addToLibrary({
             name: game.name,
             slug: game.slug,
             cover: game.background_image,
@@ -33,6 +37,7 @@ function UpdateLibraryButton({ game }: UpdateLibraryButtonProps) {
             rating: game.rating,
           });
         }
+        setIsLoading(false);
       }}
       additionalStyle={{ minWidth: "30rem" }}
       style={{ name: "scale", shade: "dark" }}

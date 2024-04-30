@@ -1,12 +1,12 @@
 import { useMediaQuery } from "react-responsive";
-import { useFirebaseUser } from "../../../../../../contexts/FirebaseUserContext";
+import { useUser } from "../../../../../../contexts/UserContext";
 import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
 import EmptyImageBox from "../../layout/emptyImageBox/EmptyImageBox";
 import PreviousImageBox from "../../layout/previousImageBox/PreviousImageBox";
 import styles from "./previousAvatarsList.module.scss";
 
 function PreviousAvatarsList() {
-  const { state } = useFirebaseUser();
+  const { state } = useUser();
   const { setNewAvatar } = useUserSettings();
   const isBigScreen = useMediaQuery({ query: "(min-width: 480px)" });
   const previousImages = state.profileSettings.recentAvatars;

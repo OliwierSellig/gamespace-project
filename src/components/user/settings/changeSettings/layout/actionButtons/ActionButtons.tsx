@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useFirebaseUser } from "../../../../../../contexts/FirebaseUserContext";
+import { useUser } from "../../../../../../contexts/UserContext";
 import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
 import { updateUserInfo } from "../../../../../../firebase/userData";
 import Button from "../../../../../global/button/Button";
 import styles from "./actionsButtons.module.scss";
 
 function ActionButtons() {
-  const { state, setUserProfile } = useFirebaseUser();
+  const { state, setUserProfile } = useUser();
   const { saveChanges, leaveUserSettings, background, avatar, newName } =
     useUserSettings();
   const [isSavingChanges, setIsSavingChanges] = useState<boolean>(false);

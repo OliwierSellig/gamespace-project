@@ -2,7 +2,7 @@
 
 import { FormikProvider, useFormik } from "formik";
 import React, { useState } from "react";
-import { useFirebaseUser } from "../../../../contexts/FirebaseUserContext";
+import { useUser } from "../../../../contexts/UserContext";
 import { CreateUser, validateEmail } from "../../../../firebase/auth";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
 import AvatarInputs from "../avatarInputs/AvatarInputs";
@@ -15,7 +15,7 @@ import styles from "./signupContainer.module.scss";
 import { validationSchema } from "./validationSchema";
 
 function SignupContainer() {
-  const { setRegisterUserData } = useFirebaseUser();
+  const { setRegisterUserData } = useUser();
   const [loadingEmail, setLoadingEmail] = useState<boolean>(false);
   type initialValues = {
     email: string;
