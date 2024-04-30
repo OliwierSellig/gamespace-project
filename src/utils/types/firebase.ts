@@ -1,6 +1,11 @@
+import { LibraryItemType } from "./types";
+
 export type FirestoreUser = {
-  gamespaceName: string;
-  createdAt: string;
-  recentAvatars: string[];
-  recentBackgrounds: string[];
+  profileSettings: {
+    gamespaceName: string;
+    createdAt: string;
+    recentAvatars: string[];
+    recentBackgrounds: string[];
+  };
+  library: LibraryItemType[];
 };

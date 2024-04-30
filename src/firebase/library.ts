@@ -11,7 +11,7 @@ export async function getFirestoreLibrary(id: string) {
       return doc.data();
     });
 
-    return gamesArray;
+    return gamesArray as LibraryItemType[];
   } catch (error) {
     console.error("Error getting library:", error);
     return [];

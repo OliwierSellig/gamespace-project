@@ -316,17 +316,22 @@ function UserProvider({ children }: ChildrenProp) {
   async function initialRender(user: { uid: string }) {
     if (user) {
       const userData = await getFullUserData(user.uid);
+      console.log(userData);
       if (userData) {
         dispatch({
           type: REDUCER_ACTION_TYPE.SET_USER_PROFILE,
           payload: {
-            name: userData.gamespaceName,
-            recentAvatars: userData.recentAvatars,
-            recentBackgrounds: userData.recentBackgrounds,
-            createdAt: userData.createdAt,
+            name: userData.profileSettings.gamespaceName,
+            recentAvatars: userData.profileSettings.recentAvatars,
+            recentBackgrounds: userData.profileSettings.recentBackgrounds,
+            createdAt: userData.profileSettings.createdAt,
           },
         });
         dispatch({ type: REDUCER_ACTION_TYPE.SET_ID, payload: user.uid });
+        dispatch({
+          type: REDUCER_ACTION_TYPE.SET_LIBRARY,
+          payload: userData.library,
+        });
         setIsLoggedIn(true);
       }
     } else {

@@ -2,6 +2,7 @@ import { updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { FirestoreUser } from "../utils/types/firebase";
 import { storage } from "./firebase";
+import { getFirestoreLibrary } from "./library";
 import {
   findUserDoc,
   getUserDocRef,
@@ -169,9 +170,10 @@ export async function updateRecentImagesList(props: {
 export async function getFullUserData(id: string) {
   try {
     const userDoc = await findUserDoc(id);
+    const library = await getFirestoreLibrary(id);
 
     if (userDoc.exists) {
-      return userDoc.data() as FirestoreUser;
+      return { profileSettings: userDoc.data(), library } as FirestoreUser;
     } else {
       console.error("User document not found");
       return null;
