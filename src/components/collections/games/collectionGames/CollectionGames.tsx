@@ -31,8 +31,8 @@ function CollectionGames({
       action: {
         actionLabel: "Remove from this collection",
         actionIcon: HiMiniBookmarkSlash,
-        handleClick: () =>
-          updateCollection({ type: "removeGame", game }, collectionID),
+        handleClick: async () =>
+          await updateCollection({ type: "removeGame", game }, collectionID),
       },
     };
   });

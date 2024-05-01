@@ -2,6 +2,7 @@ import { updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { FirestoreUser } from "../utils/types/firebase";
 import { getFirestoreActivities } from "./activities";
+import { getFirestoreCollections } from "./collections";
 import { storage } from "./firebase";
 import { getFirestoreLibrary } from "./library";
 import { getFirestoreReviews } from "./reviews";
@@ -177,8 +178,7 @@ export async function getFullUserData(id: string) {
     const wishlist = await getFirestoreWishlist(id);
     const activities = await getFirestoreActivities(id);
     const reviews = await getFirestoreReviews(id);
-
-    console.log(reviews);
+    const collections = await getFirestoreCollections(id);
 
     if (userDoc.exists) {
       return {
@@ -187,6 +187,7 @@ export async function getFullUserData(id: string) {
         wishlist,
         activities,
         reviews,
+        collections,
       } as FirestoreUser;
     } else {
       console.error("User document not found");

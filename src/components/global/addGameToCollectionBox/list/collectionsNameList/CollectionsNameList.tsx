@@ -20,9 +20,12 @@ function CollectionsNameList({ query, game }: CollectionsNameListProps) {
       .includes(query.trim().replaceAll(" ", "-").toLowerCase()),
   );
 
-  function toggleGameInCollection(game: BasicItemType, collectionID: number) {
+  async function toggleGameInCollection(
+    game: BasicItemType,
+    collectionID: number,
+  ) {
     const inCollection = checkGameInCollection(game.id, collectionID);
-    updateCollection(
+    await updateCollection(
       { type: inCollection ? "removeGame" : "addGame", game },
       collectionID,
     );
@@ -47,7 +50,9 @@ function CollectionsNameList({ query, game }: CollectionsNameListProps) {
     <ul className={styles.list}>
       {filteredList.map((collection, i) => (
         <CollectionsNameListItem
-          handleClick={() => toggleGameInCollection(game, collection.id)}
+          handleClick={async () =>
+            await toggleGameInCollection(game, collection.id)
+          }
           key={i}
           isActive={checkGameInCollection(game.id, collection.id)}
         >

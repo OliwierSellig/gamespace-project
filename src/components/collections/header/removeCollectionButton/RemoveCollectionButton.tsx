@@ -25,8 +25,8 @@ function RemoveCollectionButton({ id }: RemoveCollectionButtonProps) {
       </Modal.Open>
       <Modal.Window locked={false} name={`Remove collection ${id}`}>
         <ConfirmationPopup
-          handleClick={() => {
-            removeFromCollections(id);
+          handleClick={async () => {
+            await removeFromCollections(id);
             router.push("/user/collections");
           }}
         >

@@ -21,6 +21,10 @@ import {
 } from "../utils/types/types";
 import { fetchGameByID } from "../lib/games";
 import { addActivitiesToUserFirestore } from "../firebase/activities";
+import {
+  removeFireStoreCollection,
+  updateFirestoreCollection,
+} from "../firebase/collections";
 import { auth } from "../firebase/firebase";
 import {
   addGameToUserFirestore,
@@ -76,8 +80,8 @@ type ContextType = {
   findInReviews: (id: number) => ReviewType;
   removeFromReviews: (id: number) => Promise<void>;
   sortReviews: (sortBy: string) => ReviewType[];
-  addToCollections: (newCollection: CollectionPropsType) => number;
-  removeFromCollections: (id: number) => void;
+  addToCollections: (newCollection: CollectionPropsType) => Promise<number>;
+  removeFromCollections: (id: number) => Promise<void>;
   findCollection: (id: number) => CollectionItemType;
   updateCollection: (
     action:
@@ -93,7 +97,7 @@ type ContextType = {
           game: BasicItemType;
         },
     collectionID: number,
-  ) => void;
+  ) => Promise<void>;
   checkGameInCollection: (gameID: number, collectionID: number) => boolean;
   getLatestReviews: () => ReviewType[];
   getCommonYearList: () => {
@@ -343,6 +347,10 @@ function UserProvider({ children }: ChildrenProp) {
         dispatch({
           type: REDUCER_ACTION_TYPE.SET_REVIEWS,
           payload: userData.reviews,
+        });
+        dispatch({
+          type: REDUCER_ACTION_TYPE.SET_COLLECTIONS,
+          payload: userData.collections,
         });
         dispatch({
           type: REDUCER_ACTION_TYPE.SET_ACTIVITIES,
@@ -674,13 +682,18 @@ function UserProvider({ children }: ChildrenProp) {
     return collections.find((collection) => collection.id === id);
   }
 
-  function addToCollections(newCollection: CollectionPropsType) {
+  async function addToCollections(newCollection: CollectionPropsType) {
     const randomID = Math.ceil(Math.random() * 10000);
     if (findCollection(randomID)) {
       toast.error("Collection with that ID already exists.");
       return;
     }
-    const newList = [...collections, { ...newCollection, id: randomID }];
+    const newCollectionObj = { ...newCollection, id: randomID };
+    const newList = [...collections, newCollectionObj];
+    await updateFirestoreCollection({
+      userID: id,
+      newCollection: newCollectionObj,
+    });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_COLLECTIONS, payload: newList });
     addActivity([
       {
@@ -695,7 +708,7 @@ function UserProvider({ children }: ChildrenProp) {
     return randomID;
   }
 
-  function removeFromCollections(id: number) {
+  async function removeFromCollections(id: number) {
     const targetCollection = findCollection(id);
 
     if (!targetCollection) {
@@ -705,6 +718,10 @@ function UserProvider({ children }: ChildrenProp) {
     const filteredList = collections.filter(
       (collection) => collection.id !== id,
     );
+    await removeFireStoreCollection({
+      userID: state.id,
+      collectionID: id.toString(),
+    });
     dispatch({
       type: REDUCER_ACTION_TYPE.SET_COLLECTIONS,
       payload: filteredList,
@@ -718,10 +735,10 @@ function UserProvider({ children }: ChildrenProp) {
         },
       },
     ]);
-    toast.success("Collection removed succesfully");
+    toast.success("Collection removed successfully");
   }
 
-  function updateCollection(
+  async function updateCollection(
     action:
       | {
           type: "updateDetails";
@@ -812,6 +829,11 @@ function UserProvider({ children }: ChildrenProp) {
     const updatedCollection = setUpdatedCollection();
 
     const newList = [...filteredCollections, updatedCollection];
+
+    await updateFirestoreCollection({
+      userID: id,
+      newCollection: updatedCollection,
+    });
 
     dispatch({ type: REDUCER_ACTION_TYPE.SET_COLLECTIONS, payload: newList });
     toast.success("Collection modified successfully");

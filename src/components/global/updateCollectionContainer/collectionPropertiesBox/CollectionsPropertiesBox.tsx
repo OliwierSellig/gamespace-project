@@ -19,7 +19,8 @@ type CollectionsPropertiesBoxProps = {
 };
 
 function CollectionsPropertiesBox({ action }: CollectionsPropertiesBoxProps) {
-  const { addToCollections, updateCollection } = useUser();
+  const { addToCollections, updateCollection, state } = useUser();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [title, setTitle] = useState<string>(
     action.type === "update" ? action.currentCollection.title : "",
   );
@@ -27,26 +28,32 @@ function CollectionsPropertiesBox({ action }: CollectionsPropertiesBoxProps) {
     action.type === "update" ? action.currentCollection.description : "",
   );
   const router = useRouter();
+  const username = state.profileSettings.name;
 
-  function handleSubmit() {
-    if (action.type === "update") {
-      updateCollection(
-        { type: "updateDetails", content: { title, description } },
-        action.currentCollection.id,
-      );
-      router.push(`/collections/${action.currentCollection.id}`);
-    } else {
-      const id = addToCollections({
-        title: title,
-        description: description,
-        author: "John Sanderson",
-        creationDate: new Date(),
-        games:
-          action.game && action.game.id
-            ? [SingleGameItemToBasicItemType(action.game)]
-            : [],
-      });
-      router.push(`/collections/${id.toString()}`);
+  async function handleSubmit() {
+    setIsLoading(true);
+    try {
+      if (action.type === "update") {
+        await updateCollection(
+          { type: "updateDetails", content: { title, description } },
+          action.currentCollection.id,
+        );
+        router.push(`/collections/${action.currentCollection.id}`);
+      } else {
+        const id = await addToCollections({
+          title: title,
+          description: description,
+          author: username,
+          creationDate: new Date(),
+          games:
+            action.game && action.game.id
+              ? [SingleGameItemToBasicItemType(action.game)]
+              : [],
+        });
+        router.push(`/collections/${id.toString()}`);
+      }
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -78,6 +85,7 @@ function CollectionsPropertiesBox({ action }: CollectionsPropertiesBoxProps) {
       />
 
       <Button
+        isLoading={isLoading}
         disabled={!title}
         additionalStyle={{ width: "100%" }}
         style={{ name: "opacity", shade: "white" }}
