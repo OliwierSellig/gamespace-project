@@ -20,7 +20,7 @@ function FavouriteDevItem({
   return (
     <Link
       key={slug}
-      href={`/searcg?developers=${slug}`}
+      href={`/search?developers=${slug}`}
       className={styles.item}
     >
       <div className={styles.logo}>

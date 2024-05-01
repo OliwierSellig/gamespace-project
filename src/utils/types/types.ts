@@ -326,7 +326,7 @@ export type CollectionItemType = CollectionPropsType & { id: number };
 export type ActionType = {
   actionLabel: string;
   actionIcon: IconType;
-  handleClick: () => void;
+  handleClick: () => Promise<void>;
 };
 
 export type PaddingType = {

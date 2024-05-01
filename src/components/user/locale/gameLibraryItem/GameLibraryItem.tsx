@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { IconType } from "react-icons";
 import { HiMiniArrowRight, HiMiniBookmarkSlash } from "react-icons/hi2";
 import { getImageSizes } from "../../../../utils/functions/functions";
@@ -14,7 +15,7 @@ type GameLibraryProps = {
   id: number;
   cover: string;
   action?: {
-    handleClick: () => void;
+    handleClick: () => Promise<void>;
     actionLabel: string;
     actionIcon: IconType;
   };
@@ -27,20 +28,32 @@ function GameLibraryItem({
   cover,
   imageSizes,
   action = {
-    handleClick: () => {},
+    handleClick: async () => {},
     actionLabel: "Remove game from Library",
     actionIcon: HiMiniBookmarkSlash,
   },
 }: GameLibraryProps) {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const sizes = getImageSizes(imageSizes);
 
+  async function handleClick() {
+    setIsLoading(true);
+    try {
+      await action.handleClick();
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${styles[`container__${isLoading ? "loading" : "active"}`]}`}
+    >
       <Image src={cover || notFound} alt="" fill sizes={sizes} />
       <p className={styles.name}>{name || "Undefined Game"}</p>
       <div className={styles.btns}>
         <button
-          onClick={action.handleClick}
+          onClick={handleClick}
           aria-label={action.actionLabel}
           className={`${styles.btn} ${styles.btn__action}`}
         >
@@ -54,6 +67,7 @@ function GameLibraryItem({
           <HiMiniArrowRight />
         </Link>
       </div>
+      {isLoading && <div className={styles.loading} />}
     </div>
   );
 }

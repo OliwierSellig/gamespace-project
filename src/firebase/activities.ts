@@ -63,7 +63,7 @@ async function refreshActivities(props: { days: number; id: string }) {
       }),
   );
   activitiesSnapshot.docs.forEach(async (document) => {
-    if (!recentActivites.includes(document)) {
+    if (!recentActivites.map((d) => d.id).includes(document.id)) {
       const docRef = doc(activitiesRef, document.id);
       await deleteDoc(docRef);
     }
