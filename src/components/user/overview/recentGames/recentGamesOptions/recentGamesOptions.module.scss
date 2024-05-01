@@ -51,6 +51,16 @@
   z-index: 50;
 }
 
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
 .option {
   font-size: 1.4rem;
   color: var(--color-dark-200);
@@ -62,5 +72,27 @@
   &:hover,
   &:focus {
     background-color: var(--color-light-200);
+  }
+
+  &__loading {
+    position: relative;
+    background-color: var(--color-light-200);
+    color: transparent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 40%;
+      aspect-ratio: 1/1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      border: 2px solid transparent;
+      border-top-color: var(--color-dark-200);
+      border-radius: 50%;
+      animation: button-loading-spinner 1.2s ease-in-out infinite;
+    }
   }
 }

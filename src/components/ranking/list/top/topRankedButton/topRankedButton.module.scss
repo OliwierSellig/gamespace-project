@@ -1,3 +1,5 @@
+@import "../../../../../scss/animations.scss";
+
 .btn {
   padding: 2.8rem 1.2rem;
   width: 50%;
@@ -33,6 +35,31 @@
     &:hover,
     &:focus {
       box-shadow: inset 0 -4.25em 0 0 var(--color-blue-300);
+    }
+  }
+
+  &__loading {
+    position: relative;
+    color: transparent;
+
+    & > svg:last-child {
+      opacity: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 35%;
+      aspect-ratio: 1/1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      border: 2px solid transparent;
+      border-top-color: var(--color-light-100);
+      border-radius: 50%;
+      animation: buttonLoadingSpinner 1.2s ease-in-out infinite;
     }
   }
 }

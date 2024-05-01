@@ -91,3 +91,13 @@
     transform: translate(-50%, -50%);
   }
 }
+
+@keyframes buttonLoadingSpinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
