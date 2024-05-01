@@ -48,9 +48,11 @@ export default function RootLayout({ children }) {
               fontSize: "1.6rem",
               fontFamily: poppins.style.fontFamily,
               padding: "1.6rem 3.6rem",
+              width: "max-content",
+              maxWidth: "100%",
               backgroundColor: "var(--color-dark-300)",
               color: "var(--color-light-100)",
-              boxShadow: "0rem 0.8rem 2.4rem 0rem rgba(0, 0, 0, 0.3);",
+              boxShadow: "0rem 0.8rem 2.4rem 0rem rgba(0, 0, 0, 0.3)",
             },
           }}
         />

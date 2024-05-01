@@ -14,7 +14,7 @@ function SearchComponent({ params }: SearchComponentProps) {
   const page = parseInt(params["page"]) || 1;
   const dev = parseInt(params["dev"]);
   const genre = parseInt(params["genre"]);
-  const platform = parseInt(params["platforms"]);
+  const platform = parseInt(params["platform"]);
   const order = params["order"];
   const { query } = useSearch();
 

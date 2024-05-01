@@ -138,7 +138,6 @@ canvas {
 html {
   font-size: 62.5%;
   overflow-x: clip;
-  scrollbar-gutter: stable;
 
   @media only screen and (max-width: 1200px) {
     font-size: 56.25%;
@@ -188,6 +187,7 @@ body {
 
 .modal {
   overflow: clip;
+  scrollbar-gutter: stable;
 }
 
 // ---

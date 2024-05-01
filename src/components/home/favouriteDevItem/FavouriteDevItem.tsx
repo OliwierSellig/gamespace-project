@@ -3,26 +3,22 @@ import Link from "next/link";
 import styles from "./favouriteDevItem.module.scss";
 
 type FavouriteDevItemProps = {
-  slug: string;
   name: string;
   logo: string;
   gameSeries: string[];
   video: string;
+  id: number;
 };
 
 function FavouriteDevItem({
   name,
-  slug,
   gameSeries,
   logo,
   video,
+  id,
 }: FavouriteDevItemProps) {
   return (
-    <Link
-      key={slug}
-      href={`/search?developers=${slug}`}
-      className={styles.item}
-    >
+    <Link href={`/search?dev=${id}`} className={styles.item}>
       <div className={styles.logo}>
         <div className={styles.logo__icon}>
           <Image src={logo} alt={name} fill />
