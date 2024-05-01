@@ -23,6 +23,7 @@ function UpdateWishlistFavouritesButton({
     checkIsFavourite,
     checkInLibrary,
     updateFavourite,
+    isLoggedIn,
   } = useUser();
 
   async function handleClick() {
@@ -50,6 +51,7 @@ function UpdateWishlistFavouritesButton({
 
   return (
     <Button
+      href={{ url: !isLoggedIn ? "/login" : null }}
       handleClick={handleClick}
       isLoading={isLoading}
       transition="medium"

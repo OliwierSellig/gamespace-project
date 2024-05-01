@@ -12,33 +12,37 @@ type UpdateLibraryButtonProps = {
 
 function UpdateLibraryButton({ game }: UpdateLibraryButtonProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { addToLibrary, removeFromLibrary, checkInLibrary } = useUser();
+  const { addToLibrary, removeFromLibrary, checkInLibrary, isLoggedIn } =
+    useUser();
+
+  async function handleClick() {
+    setIsLoading(true);
+    if (checkInLibrary(game.id)) {
+      await removeFromLibrary(game.id);
+    } else {
+      await addToLibrary({
+        name: game.name,
+        slug: game.slug,
+        cover: game.background_image,
+        id: game.id,
+        developers: game.developers,
+        genres: game.genres,
+        platforms: game.platforms,
+        released: game.released,
+        added: game.added,
+        addedToLibraryDate: new Date(),
+        isFavourite: false,
+        rating: game.rating,
+      });
+    }
+    setIsLoading(false);
+  }
 
   return (
     <Button
+      href={{ url: !isLoggedIn ? "/login" : null }}
       isLoading={isLoading}
-      handleClick={async () => {
-        setIsLoading(true);
-        if (checkInLibrary(game.id)) {
-          await removeFromLibrary(game.id);
-        } else {
-          await addToLibrary({
-            name: game.name,
-            slug: game.slug,
-            cover: game.background_image,
-            id: game.id,
-            developers: game.developers,
-            genres: game.genres,
-            platforms: game.platforms,
-            released: game.released,
-            added: game.added,
-            addedToLibraryDate: new Date(),
-            isFavourite: false,
-            rating: game.rating,
-          });
-        }
-        setIsLoading(false);
-      }}
+      handleClick={handleClick}
       additionalStyle={{ minWidth: "30rem" }}
       style={{ name: "scale", shade: "dark" }}
     >

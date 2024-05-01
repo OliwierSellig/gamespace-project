@@ -9,7 +9,8 @@ function UpdateGameStateButton({
   gameId,
   type = "default",
 }: UpdateGameStateButtonProps) {
-  const { checkInLibrary, removeFromLibrary, addGameFromRanking } = useUser();
+  const { checkInLibrary, removeFromLibrary, addGameFromRanking, isLoggedIn } =
+    useUser();
 
   const buttonTextContent = checkInLibrary(gameId) ? (
     <>
@@ -40,6 +41,7 @@ function UpdateGameStateButton({
 
   return (
     <Button
+      href={{ url: !isLoggedIn ? "/login" : null }}
       transition="medium"
       additionalStyle={{ minWidth: "20rem" }}
       style={{ name: "fill", shade: "blue" }}
