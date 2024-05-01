@@ -40,7 +40,7 @@ export function urlToName(props: {
 }
 
 export function getUserCollectionRef(props: {
-  collection: "library" | "wishlist" | " reviews" | "collections" | "activites";
+  collection: "library" | "wishlist" | "reviews" | "collections" | "activites";
   id: string;
 }) {
   return collection(firestore, "users", props.id, props.collection);
@@ -68,4 +68,16 @@ export function getSingleWishlistGameRef(props: {
   });
 
   return doc(gamesRef, props.gameID);
+}
+
+export function getSingleUserRef(props: {
+  collection: "library" | "wishlist" | "reviews" | "collections" | "activites";
+  userID: string;
+  documentID: string;
+}) {
+  const colRef = getUserCollectionRef({
+    collection: props.collection,
+    id: props.userID,
+  });
+  return doc(colRef, props.documentID);
 }

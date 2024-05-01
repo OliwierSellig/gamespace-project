@@ -28,7 +28,6 @@ function RangeBar({
         value={(currentRating * 10).toFixed(1)}
         onChange={(e) => {
           if (!e.target.value) return;
-          console.log(parseFloat(e.target.value) / 10);
           setCurrentRating(parseFloat(e.target.value) / 10);
         }}
         className={styles.input}

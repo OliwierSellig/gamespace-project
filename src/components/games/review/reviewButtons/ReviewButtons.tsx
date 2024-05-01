@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { SingleGameItem } from "../../../../utils/types/types";
 import { useUser } from "../../../../contexts/UserContext";
 import Button from "../../../global/button/Button";
@@ -18,8 +19,10 @@ function ReviewButtons({
   reviewText,
   rating,
 }: ReviewButtonsProps) {
-  const { updateReviews } = useUser();
+  const { state, updateReviews } = useUser();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  const username = state.profileSettings.name;
   return (
     <div className={styles.container}>
       <Button
@@ -28,26 +31,35 @@ function ReviewButtons({
         sizeX="xl"
         sizeY="lg"
         disabled={!rating}
+        isLoading={isLoading}
         borderRadius="sm"
-        handleClick={() => {
-          updateReviews({
-            game: {
-              name: game.name,
-              id: game.id,
-              cover: game.background_image,
-            },
-            author: "John Sanderson",
-            editDate: new Date(),
-            rating: rating,
-            content: reviewText,
-          });
-          router.push(`/games/${game.id}`);
+        handleClick={async () => {
+          setIsLoading(true);
+          try {
+            await updateReviews({
+              game: {
+                name: game.name,
+                id: game.id,
+                cover: game.background_image,
+              },
+              author: username,
+              editDate: new Date(),
+              rating: rating,
+              content: reviewText,
+            });
+          } finally {
+            setIsLoading(false);
+            router.push(`/games/${game.id}`);
+          }
         }}
       >
         {alreadyReviewed ? "Update Review" : "Publish Review"}
       </Button>
       {alreadyReviewed && (
-        <OpenDeleteReviewConfirmation id={game.id}>
+        <OpenDeleteReviewConfirmation
+          handleClick={() => router.push(`/games/${game.id}`)}
+          id={game.id}
+        >
           <Button
             borderRadius="sm"
             style={{ name: "opacity", shade: "red" }}

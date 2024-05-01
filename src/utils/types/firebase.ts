@@ -1,4 +1,9 @@
-import { ActivityItem, BasicItemType, LibraryItemType } from "./types";
+import {
+  ActivityItem,
+  BasicItemType,
+  LibraryItemType,
+  ReviewType,
+} from "./types";
 
 export type FirestoreUser = {
   profileSettings: {
@@ -10,4 +15,5 @@ export type FirestoreUser = {
   library: LibraryItemType[];
   wishlist: BasicItemType[];
   activities: ActivityItem[];
+  reviews: ReviewType[];
 };

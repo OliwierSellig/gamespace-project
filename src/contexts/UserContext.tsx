@@ -27,6 +27,10 @@ import {
   removeGameFromUserFirestore,
   toggleFavouriteFirebase,
 } from "../firebase/library";
+import {
+  removeReviewFromUserFirestore,
+  updateReviewUserFirestore,
+} from "../firebase/reviews";
 import { getFullUserData } from "../firebase/userData";
 import {
   addGameToUserFirestoreWishlist,
@@ -68,9 +72,9 @@ type ContextType = {
   checkInWishlist: (id: number) => BasicItemType;
   addToWishlist: (game: BasicItemType) => Promise<void>;
   removeFromWishlist: (id: number) => Promise<void>;
-  updateReviews: (newReview: ReviewType) => void;
+  updateReviews: (newReview: ReviewType) => Promise<void>;
   findInReviews: (id: number) => ReviewType;
-  removeFromReviews: (id: number) => void;
+  removeFromReviews: (id: number) => Promise<void>;
   sortReviews: (sortBy: string) => ReviewType[];
   addToCollections: (newCollection: CollectionPropsType) => number;
   removeFromCollections: (id: number) => void;
@@ -317,7 +321,6 @@ function UserProvider({ children }: ChildrenProp) {
   async function initialRender(user: { uid: string }) {
     if (user) {
       const userData = await getFullUserData(user.uid);
-      console.log(userData);
       if (userData) {
         dispatch({
           type: REDUCER_ACTION_TYPE.SET_USER_PROFILE,
@@ -336,6 +339,10 @@ function UserProvider({ children }: ChildrenProp) {
         dispatch({
           type: REDUCER_ACTION_TYPE.SET_WISHLIST,
           payload: userData.wishlist,
+        });
+        dispatch({
+          type: REDUCER_ACTION_TYPE.SET_REVIEWS,
+          payload: userData.reviews,
         });
         dispatch({
           type: REDUCER_ACTION_TYPE.SET_ACTIVITIES,
@@ -584,12 +591,13 @@ function UserProvider({ children }: ChildrenProp) {
     return reviews.find((review) => review.game.id === id);
   }
 
-  function updateReviews(newReview: ReviewType) {
+  async function updateReviews(newReview: ReviewType) {
     const inReviews = Boolean(findInReviews(newReview.game.id));
     const filteredList = inReviews
       ? reviews.filter((review) => review.game.id !== newReview.game.id)
       : [...reviews];
     const newList = [...filteredList, newReview];
+    await updateReviewUserFirestore({ userID: id, newReview });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_REVIEWS, payload: newList });
     addActivity([
       {
@@ -603,10 +611,14 @@ function UserProvider({ children }: ChildrenProp) {
     toast.success("Successfully updated reviews");
   }
 
-  function removeFromReviews(id: number) {
+  async function removeFromReviews(id: number) {
     const targetReview = findInReviews(id);
     if (!targetReview) return;
     const filteredList = reviews.filter((review) => review.game.id !== id);
+    await removeReviewFromUserFirestore({
+      userID: state.id,
+      reviewID: id.toString(),
+    });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_REVIEWS, payload: filteredList });
     addActivity([
       {
