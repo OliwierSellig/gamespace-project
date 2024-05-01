@@ -249,12 +249,26 @@ export function setPage(
 
 // ------- Transforms an image url string to file  -----------
 
-export async function urlToFile(url: string) {
-  const response = await fetch(url);
-  const blob = await response.blob();
-  const filename = url.substring(url.lastIndexOf("/") + 1);
+// export async function urlToFile(url: string) {
+//   const response = await fetch(url);
+//   const blob = await response.blob();
+//   const filename = url.substring(url.lastIndexOf("/") + 1);
 
-  const file = new File([blob], filename, { type: blob.type });
+//   const file = new File([blob], filename, { type: blob.type });
 
-  return file;
+//   return file;
+// }
+
+// ------- Check whether the differance in dates in bigger or than the given day amount  -----------
+
+export function calculateDayDifferance(props: {
+  dayDiff: number;
+  date1: Date;
+  date2: Date;
+}) {
+  const timeDiff = Math.abs(props.date1.getTime() - props.date2.getTime());
+
+  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+  return diffDays > props.dayDiff;
 }

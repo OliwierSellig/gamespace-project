@@ -1,4 +1,5 @@
-import { doc, getDocs, setDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
+import { calculateDayDifferance } from "../utils/functions/functions";
 import { ActivityItem } from "../utils/types/types";
 import { getUserCollectionRef } from "./utils";
 
@@ -13,17 +14,14 @@ function getSingleActivityRef(props: { userID: string; activityID: string }) {
 
 export async function getFirestoreActivities(id: string) {
   try {
-    const activitiesRef = getUserCollectionRef({ id, collection: "activites" });
-    const activitiesSnapshot = await getDocs(activitiesRef);
+    const recentActivites = await refreshActivities({ id, days: 30 });
 
-    const activitiesArray = activitiesSnapshot.docs.map((doc) => {
+    const activitiesArray = recentActivites.map((document) => {
       return {
-        action: doc.data().action,
-        date: new Date(doc.data().date.seconds * 1000),
+        action: document.data().action,
+        date: new Date(document.data().date.seconds * 1000),
       };
     });
-
-    console.log(activitiesArray);
 
     return activitiesArray as ActivityItem[];
   } catch (error) {
@@ -48,4 +46,28 @@ export async function addActivitiesToUserFirestore(props: {
   } catch (error) {
     console.error("Error adding activity:", error);
   }
+}
+
+async function refreshActivities(props: { days: number; id: string }) {
+  const activitiesRef = getUserCollectionRef({
+    id: props.id,
+    collection: "activites",
+  });
+  const activitiesSnapshot = await getDocs(activitiesRef);
+  const recentActivites = activitiesSnapshot.docs.filter(
+    (document) =>
+      !calculateDayDifferance({
+        dayDiff: props.days,
+        date1: new Date(document.data().date.seconds * 1000),
+        date2: new Date(),
+      }),
+  );
+  activitiesSnapshot.docs.forEach(async (document) => {
+    if (!recentActivites.includes(document)) {
+      const docRef = doc(activitiesRef, document.id);
+      await deleteDoc(docRef);
+    }
+  });
+
+  return recentActivites;
 }
