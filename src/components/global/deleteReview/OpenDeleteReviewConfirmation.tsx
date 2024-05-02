@@ -8,7 +8,7 @@ import ConfirmationPopup from "../popups/confirmationPupup/ConfirmationPopup";
 type OpenDeleteReviewConfirmationProps = {
   children: ReactNode;
   id: number;
-  handleClick: () => void;
+  handleClick?: () => void;
 };
 
 function OpenDeleteReviewConfirmation({

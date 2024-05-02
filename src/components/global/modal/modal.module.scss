@@ -9,7 +9,6 @@
   height: 100vh;
 
   &__blurred {
-    backdrop-filter: blur(5px);
     animation: fadeIn 0.2s;
     background-image: linear-gradient(
       rgba(21, 21, 21, 0.5),
