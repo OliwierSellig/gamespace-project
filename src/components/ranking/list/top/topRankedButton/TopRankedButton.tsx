@@ -17,7 +17,7 @@ function TopRankedButton({
   style = "white",
 }: TopRankedButtonProps) {
   const { isLoggedIn } = useUser();
-  const className = `${styles.btn} ${styles[`btn__${style}`]} ${isLoading ? styles.btn__loading : ""}`;
+  const className = `${styles.btn} ${styles[`btn__${style}`]} ${isLoading ? `loadingSpinner loadingSpinner__sizeSm ${styles.btn__loading}` : ""}`;
   if (!isLoggedIn && style === "blue")
     return (
       <Link href="/login" className={className}>

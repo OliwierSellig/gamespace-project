@@ -65,7 +65,7 @@ function Button({
     positionSelf?.type
       ? styles[`${positionSelf.type}__${positionSelf.pos}`]
       : ""
-  } ${additionalClass.join(" ")} ${isLoading ? styles.loading : ""}`;
+  } ${additionalClass.join(" ")} ${isLoading ? `loadingSpinner ${styles.loading}` : ""}`;
 
   if (href?.url)
     return (

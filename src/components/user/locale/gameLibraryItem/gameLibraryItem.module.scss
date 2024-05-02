@@ -1,5 +1,3 @@
-@import "../../../../scss/animations.scss";
-
 .container {
   position: relative;
   border-radius: var(--border-radius-smallest);
@@ -136,29 +134,5 @@
 
   to {
     transform: rotate(1turn);
-  }
-}
-
-.loading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  &::after {
-    content: "";
-    position: absolute;
-    height: 16%;
-    aspect-ratio: 1/1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    border: 4px solid transparent;
-    border-top-color: var(--color-light-100);
-    border-radius: 50%;
-    animation: button-loading-spinner 1.2s ease-in-out infinite;
   }
 }

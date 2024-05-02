@@ -28,7 +28,7 @@ function CollectionsNameListItem({
     <li>
       <button
         onClick={handleButtonClick}
-        className={`${styles.btn} ${isActive ? styles.btn__active : ""} ${isLoading ? styles.btn__loading : ""}`}
+        className={`${styles.btn} ${isActive ? styles.btn__active : ""} ${isLoading ? `loadingSpinner loadingSpinner__thickSm loadingSpinner__sizeSm loadingSpinner__dark ${styles.btn__loading}` : ""}`}
       >
         <span className={styles.btn__name}>{children}</span>
         <HiOutlineCheckCircle />

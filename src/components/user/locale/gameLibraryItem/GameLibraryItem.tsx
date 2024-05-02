@@ -67,7 +67,9 @@ function GameLibraryItem({
           <HiMiniArrowRight />
         </Link>
       </div>
-      {isLoading && <div className={styles.loading} />}
+      {isLoading && (
+        <div className="loadingSpinner loadingSpinner__card loadingSpinner__thickLg" />
+      )}
     </div>
   );
 }

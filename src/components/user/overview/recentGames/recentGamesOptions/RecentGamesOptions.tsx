@@ -65,7 +65,7 @@ function RecentGamesOptions({ game }: RecentGamesOptionsProps) {
                 setIsLoading(false);
               }
             }}
-            className={`${styles.option} ${isLoading ? styles.option__loading : ""}`}
+            className={`${styles.option} ${isLoading ? `loadingSpinner loadingSpinner__thickSm loadingSpinner__sizeSm loadingSpinner__dark ${styles.option__loading}` : ""}`}
           >
             Remove from library
           </button>

@@ -27,7 +27,7 @@ function EmptyUserList({
           url:
             button.navigateTo === "searchGames"
               ? "/search"
-              : "/collections/create",
+              : "/user/create-collection",
         }}
       >
         {button.text}
