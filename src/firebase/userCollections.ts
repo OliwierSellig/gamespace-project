@@ -114,7 +114,7 @@ export async function getUserCollectionsFromFirestore(props: {
   }
 }
 
-export async function updateDocumentInCollections(props: {
+export async function updateDocumentsInCollections(props: {
   collectionType: FirestoreCollectionType;
   userID: string;
   documentData:

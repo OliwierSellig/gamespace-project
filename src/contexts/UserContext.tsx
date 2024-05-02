@@ -30,7 +30,7 @@ import {
   toggleFavouriteFirebase,
 } from "../firebase/library";
 import { removeReviewFromUserFirestore } from "../firebase/reviews";
-import { updateDocumentInCollections } from "../firebase/userCollections";
+import { updateDocumentsInCollections } from "../firebase/userCollections";
 import { getFullUserData } from "../firebase/userData";
 import { removeGameFromUserFirestoreWishlist } from "../firebase/wishlist";
 
@@ -393,7 +393,7 @@ function UserProvider({ children }: ChildrenProp) {
     }
     const newList = [...library, game];
     if (checkInWishlist(game.id)) removeFromWishlist(game.id);
-    await updateDocumentInCollections({
+    await updateDocumentsInCollections({
       collectionType: "library",
       userID: id,
       documentData: [game],
@@ -505,7 +505,7 @@ function UserProvider({ children }: ChildrenProp) {
       return;
     }
     const newList = [...wishlist, game];
-    await updateDocumentInCollections({
+    await updateDocumentsInCollections({
       collectionType: "wishlist",
       userID: id,
       documentData: [game],
@@ -606,7 +606,7 @@ function UserProvider({ children }: ChildrenProp) {
       ? reviews.filter((review) => review.game.id !== newReview.game.id)
       : [...reviews];
     const newList = [...filteredList, newReview];
-    await updateDocumentInCollections({
+    await updateDocumentsInCollections({
       collectionType: "reviews",
       userID: id,
       documentData: [newReview],
@@ -695,7 +695,7 @@ function UserProvider({ children }: ChildrenProp) {
     }
     const newCollectionObj = { ...newCollection, id: randomID };
     const newList = [...collections, newCollectionObj];
-    await updateDocumentInCollections({
+    await updateDocumentsInCollections({
       collectionType: "collections",
       userID: id,
       documentData: [newCollectionObj],
@@ -856,7 +856,7 @@ function UserProvider({ children }: ChildrenProp) {
   // ------- Manipulating Activities -------------
 
   async function addActivity(newActivities: ActivityItem[]) {
-    await updateDocumentInCollections({
+    await updateDocumentsInCollections({
       collectionType: "activities",
       userID: id,
       documentData: newActivities,
