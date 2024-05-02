@@ -1,6 +1,6 @@
 import { LibraryItemType } from "../../../../../utils/types/types";
+import EmptyUserList from "../../../../global/emptyUserList/EmptyUserList";
 import Pagination from "../../../../global/pagination/Pagination";
-import EmptyUserList from "../../../locale/emptyUserList/EmptyUserList";
 import FilteredGamesItem from "../filteredGamesItem/FilteredGamesItem";
 import styles from "./filteredGamesLibraryList.module.scss";
 

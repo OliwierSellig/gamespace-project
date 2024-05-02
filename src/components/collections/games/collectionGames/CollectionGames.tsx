@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import { useUser } from "../../../../contexts/UserContext";
-import EmptyUserList from "../../../user/locale/emptyUserList/EmptyUserList";
+import EmptyUserList from "../../../global/emptyUserList/EmptyUserList";
 import CollectionGamesList from "../collectionGamesList/CollectionGamesList";
 import CollectionGamesNav from "../collectionGamesNav/CollectionGamesNav";
 

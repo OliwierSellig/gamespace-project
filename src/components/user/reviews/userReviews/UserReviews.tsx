@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useUser } from "../../../../contexts/UserContext";
-import EmptyUserList from "../../locale/emptyUserList/EmptyUserList";
+import EmptyUserList from "../../../global/emptyUserList/EmptyUserList";
 import ReviewsList from "../reviewsList/ReviewsList";
 import ReviewsNavigation from "../reviewsNavigation/ReviewsNavigation";
 

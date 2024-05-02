@@ -4,7 +4,7 @@ import { useState } from "react";
 import { filterList } from "../../../../../utils/data/user";
 import { changeToUrlSlug } from "../../../../../utils/functions/functions";
 import { useUser } from "../../../../../contexts/UserContext";
-import EmptyUserList from "../../../locale/emptyUserList/EmptyUserList";
+import EmptyUserList from "../../../../global/emptyUserList/EmptyUserList";
 import AllGamesLibraryList from "../../allGames/allGamesLibrary/AllGamesLibrary";
 import FilteredGamesLibrary from "../../filteredGames/filteredGamesLibrary/FilteredGamesLibrary";
 import LibraryNavigation from "../libraryNavigation/LibraryNavigation";
