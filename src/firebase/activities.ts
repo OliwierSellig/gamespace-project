@@ -4,37 +4,8 @@ import {
   deleteDoc,
   doc,
   getDocs,
-  setDoc,
 } from "firebase/firestore";
 import { calculateDayDifferance } from "../utils/functions/functions";
-import { ActivityItem } from "../utils/types/types";
-import { getUserCollectionRef } from "./utils";
-
-function getSingleActivityRef(props: { userID: string; activityID: string }) {
-  const activitesRef = getUserCollectionRef({
-    collection: "activities",
-    id: props.userID,
-  });
-
-  return doc(activitesRef, props.activityID);
-}
-
-export async function addActivitiesToUserFirestore(props: {
-  id: string;
-  activities: ActivityItem[];
-}) {
-  try {
-    props.activities.forEach(async (activity) => {
-      const singleActivityRef = getSingleActivityRef({
-        userID: props.id,
-        activityID: crypto.randomUUID(),
-      });
-      await setDoc(singleActivityRef, activity);
-    });
-  } catch (error) {
-    console.error("Error adding activity:", error);
-  }
-}
 
 export async function refreshActivities(props: {
   days: number;

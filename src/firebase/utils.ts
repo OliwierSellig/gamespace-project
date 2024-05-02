@@ -1,5 +1,6 @@
 import { collection, doc, getDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
+import { FirestoreCollectionType } from "../utils/types/firebase";
 import { firestore, storage } from "./firebase";
 
 export function getUserDocRef(id: string) {
@@ -70,8 +71,8 @@ export function getSingleWishlistGameRef(props: {
   return doc(gamesRef, props.gameID);
 }
 
-export function getSingleUserRef(props: {
-  collection: "library" | "wishlist" | "reviews" | "collections" | "activities";
+export function getSingleDocumentRef(props: {
+  collection: FirestoreCollectionType;
   userID: string;
   documentID: string;
 }) {

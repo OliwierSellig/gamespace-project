@@ -1,13 +1,13 @@
 import { deleteDoc, setDoc } from "firebase/firestore";
 import { CollectionItemType } from "../utils/types/types";
-import { getSingleUserRef } from "./utils";
+import { getSingleDocumentRef } from "./utils";
 
 export async function updateFirestoreCollection(props: {
   userID: string;
   newCollection: CollectionItemType;
 }) {
   try {
-    const reviewRef = getSingleUserRef({
+    const reviewRef = getSingleDocumentRef({
       collection: "collections",
       userID: props.userID,
       documentID: props.newCollection.id.toString(),
@@ -24,7 +24,7 @@ export async function removeFireStoreCollection(props: {
   collectionID: string;
 }) {
   try {
-    const collectionRef = getSingleUserRef({
+    const collectionRef = getSingleDocumentRef({
       collection: "collections",
       userID: props.userID,
       documentID: props.collectionID,

@@ -2,6 +2,7 @@ import {
   DocumentData,
   QueryDocumentSnapshot,
   getDocs,
+  setDoc,
 } from "firebase/firestore";
 import { FirestoreCollectionType } from "../utils/types/firebase";
 import {
@@ -12,7 +13,11 @@ import {
   ReviewType,
 } from "../utils/types/types";
 import { refreshActivities } from "./activities";
-import { getUserCollectionRef, setTimestampSecondsToDate } from "./utils";
+import {
+  getSingleDocumentRef,
+  getUserCollectionRef,
+  setTimestampSecondsToDate,
+} from "./utils";
 
 export async function getUserCollectionsFromFirestore(props: {
   userID: string;
@@ -106,5 +111,55 @@ export async function getUserCollectionsFromFirestore(props: {
     console.error(`Error getting collections:`, error);
 
     return null;
+  }
+}
+
+export async function updateDocumentInCollections(props: {
+  collectionType: FirestoreCollectionType;
+  userID: string;
+  documentData:
+    | LibraryItemType[]
+    | BasicItemType[]
+    | ReviewType[]
+    | CollectionItemType[]
+    | ActivityItem[];
+}) {
+  try {
+    const documentObjects = props.documentData.map(
+      (
+        data:
+          | LibraryItemType
+          | BasicItemType
+          | ReviewType
+          | CollectionItemType
+          | ActivityItem,
+      ) => {
+        return {
+          data,
+          id: ("id" in data
+            ? data.id
+            : "game" in data
+              ? data.game.id
+              : crypto.randomUUID()
+          ).toString(),
+        };
+      },
+    );
+
+    Promise.all(
+      documentObjects.map(
+        async (obj) =>
+          await setDoc(
+            getSingleDocumentRef({
+              userID: props.userID,
+              collection: props.collectionType,
+              documentID: obj.id,
+            }),
+            obj.data,
+          ),
+      ),
+    );
+  } catch (error) {
+    console.error("Error updating document:", error);
   }
 }

@@ -20,26 +20,19 @@ import {
   ReviewType,
 } from "../utils/types/types";
 import { fetchGameByID } from "../lib/games";
-import { addActivitiesToUserFirestore } from "../firebase/activities";
 import {
   removeFireStoreCollection,
   updateFirestoreCollection,
 } from "../firebase/collections";
 import { auth } from "../firebase/firebase";
 import {
-  addGameToUserFirestore,
   removeGameFromUserFirestore,
   toggleFavouriteFirebase,
 } from "../firebase/library";
-import {
-  removeReviewFromUserFirestore,
-  updateReviewUserFirestore,
-} from "../firebase/reviews";
+import { removeReviewFromUserFirestore } from "../firebase/reviews";
+import { updateDocumentInCollections } from "../firebase/userCollections";
 import { getFullUserData } from "../firebase/userData";
-import {
-  addGameToUserFirestoreWishlist,
-  removeGameFromUserFirestoreWishlist,
-} from "../firebase/wishlist";
+import { removeGameFromUserFirestoreWishlist } from "../firebase/wishlist";
 
 const UserContext = createContext<ContextType | undefined>(undefined);
 
@@ -400,7 +393,11 @@ function UserProvider({ children }: ChildrenProp) {
     }
     const newList = [...library, game];
     if (checkInWishlist(game.id)) removeFromWishlist(game.id);
-    await addGameToUserFirestore({ id, game });
+    await updateDocumentInCollections({
+      collectionType: "library",
+      userID: id,
+      documentData: [game],
+    });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_LIBRARY, payload: newList });
     const activitiesList: ActivityItem[] = checkInWishlist(game.id)
       ? [
@@ -508,7 +505,11 @@ function UserProvider({ children }: ChildrenProp) {
       return;
     }
     const newList = [...wishlist, game];
-    await addGameToUserFirestoreWishlist({ id, game });
+    await updateDocumentInCollections({
+      collectionType: "wishlist",
+      userID: id,
+      documentData: [game],
+    });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_WISHLIST, payload: newList });
     addActivity([
       {
@@ -605,7 +606,11 @@ function UserProvider({ children }: ChildrenProp) {
       ? reviews.filter((review) => review.game.id !== newReview.game.id)
       : [...reviews];
     const newList = [...filteredList, newReview];
-    await updateReviewUserFirestore({ userID: id, newReview });
+    await updateDocumentInCollections({
+      collectionType: "reviews",
+      userID: id,
+      documentData: [newReview],
+    });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_REVIEWS, payload: newList });
     addActivity([
       {
@@ -690,9 +695,10 @@ function UserProvider({ children }: ChildrenProp) {
     }
     const newCollectionObj = { ...newCollection, id: randomID };
     const newList = [...collections, newCollectionObj];
-    await updateFirestoreCollection({
+    await updateDocumentInCollections({
+      collectionType: "collections",
       userID: id,
-      newCollection: newCollectionObj,
+      documentData: [newCollectionObj],
     });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_COLLECTIONS, payload: newList });
     addActivity([
@@ -850,7 +856,11 @@ function UserProvider({ children }: ChildrenProp) {
   // ------- Manipulating Activities -------------
 
   async function addActivity(newActivities: ActivityItem[]) {
-    await addActivitiesToUserFirestore({ id, activities: newActivities });
+    await updateDocumentInCollections({
+      collectionType: "activities",
+      userID: id,
+      documentData: newActivities,
+    });
     const newList = [...activities, ...newActivities];
     dispatch({ type: REDUCER_ACTION_TYPE.SET_ACTIVITIES, payload: newList });
   }

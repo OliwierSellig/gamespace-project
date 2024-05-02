@@ -1,22 +1,5 @@
-import { deleteDoc, setDoc, updateDoc } from "firebase/firestore";
-import { LibraryItemType } from "../utils/types/types";
+import { deleteDoc, updateDoc } from "firebase/firestore";
 import { getSingleUserGameRef } from "./utils";
-
-export async function addGameToUserFirestore(props: {
-  id: string;
-  game: LibraryItemType;
-}) {
-  try {
-    const singleGameRef = getSingleUserGameRef({
-      userID: props.id,
-      gameID: props.game.id.toString(),
-    });
-
-    await setDoc(singleGameRef, props.game);
-  } catch (error) {
-    console.error("Error adding game:", error);
-  }
-}
 
 export async function removeGameFromUserFirestore(props: {
   userID: string;
