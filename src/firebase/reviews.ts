@@ -1,24 +1,6 @@
-import { deleteDoc, getDocs, setDoc } from "firebase/firestore";
+import { deleteDoc, setDoc } from "firebase/firestore";
 import { ReviewType } from "../utils/types/types";
-import { getSingleUserRef, getUserCollectionRef } from "./utils";
-
-export async function getFirestoreReviews(id: string) {
-  try {
-    const reviewsRef = getUserCollectionRef({ id, collection: "reviews" });
-    const reviewsSnapshot = await getDocs(reviewsRef);
-
-    const reviewsArray = reviewsSnapshot.docs.map((doc) => {
-      return {
-        ...doc.data(),
-        editDate: new Date(doc.data().editDate.seconds * 1000),
-      };
-    });
-    return reviewsArray as ReviewType[];
-  } catch (error) {
-    console.error("Error getting reviews:", error);
-    return [];
-  }
-}
+import { getSingleUserRef } from "./utils";
 
 export async function updateReviewUserFirestore(props: {
   userID: string;

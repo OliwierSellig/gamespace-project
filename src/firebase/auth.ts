@@ -11,10 +11,6 @@ import { auth, firestore } from "./firebase";
 import { setNewImage } from "./userData";
 import { getUserDocRef } from "./utils";
 
-export async function CreateInitialUser(email: string, password: string) {
-  return createUserWithEmailAndPassword(auth, email, password);
-}
-
 export async function CreateUser(props: {
   email: string;
   password: string;

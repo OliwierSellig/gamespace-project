@@ -40,7 +40,7 @@ export function urlToName(props: {
 }
 
 export function getUserCollectionRef(props: {
-  collection: "library" | "wishlist" | "reviews" | "collections" | "activites";
+  collection: "library" | "wishlist" | "reviews" | "collections" | "activities";
   id: string;
 }) {
   return collection(firestore, "users", props.id, props.collection);
@@ -71,7 +71,7 @@ export function getSingleWishlistGameRef(props: {
 }
 
 export function getSingleUserRef(props: {
-  collection: "library" | "wishlist" | "reviews" | "collections" | "activites";
+  collection: "library" | "wishlist" | "reviews" | "collections" | "activities";
   userID: string;
   documentID: string;
 }) {
@@ -80,4 +80,11 @@ export function getSingleUserRef(props: {
     id: props.userID,
   });
   return doc(colRef, props.documentID);
+}
+
+export function setTimestampSecondsToDate(timestamp: {
+  seconds: number;
+  nanoseconds: number;
+}) {
+  return new Date(timestamp.seconds * 1000);
 }

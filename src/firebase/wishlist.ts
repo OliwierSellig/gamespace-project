@@ -1,23 +1,6 @@
-import { deleteDoc, getDocs, setDoc } from "firebase/firestore";
+import { deleteDoc, setDoc } from "firebase/firestore";
 import { BasicItemType } from "../utils/types/types";
-import { getSingleWishlistGameRef, getUserCollectionRef } from "./utils";
-
-export async function getFirestoreWishlist(id: string) {
-  try {
-    const wishlistRef = getUserCollectionRef({ id, collection: "wishlist" });
-    const wishlistSnapshot = await getDocs(wishlistRef);
-
-    const wishlistArray = wishlistSnapshot.docs.map((doc) => {
-      return doc.data();
-    });
-
-    return wishlistArray;
-  } catch (error) {
-    console.error("Error getting wishlist:", error);
-
-    return [];
-  }
-}
+import { getSingleWishlistGameRef } from "./utils";
 
 export async function addGameToUserFirestoreWishlist(props: {
   id: string;

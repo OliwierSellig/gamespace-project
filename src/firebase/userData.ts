@@ -1,18 +1,14 @@
 import { updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { FirestoreUser } from "../utils/types/firebase";
-import { getFirestoreActivities } from "./activities";
-import { getFirestoreCollections } from "./collections";
 import { storage } from "./firebase";
-import { getFirestoreLibrary } from "./library";
-import { getFirestoreReviews } from "./reviews";
+import { getUserCollectionsFromFirestore } from "./userCollections";
 import {
   findUserDoc,
   getUserDocRef,
   removeImageFromStorage,
   urlToName,
 } from "./utils";
-import { getFirestoreWishlist } from "./wishlist";
 
 export async function getUserBackgrounds(id: string): Promise<string | null> {
   try {
@@ -174,20 +170,29 @@ export async function updateRecentImagesList(props: {
 export async function getFullUserData(id: string) {
   try {
     const userDoc = await findUserDoc(id);
-    const library = await getFirestoreLibrary(id);
-    const wishlist = await getFirestoreWishlist(id);
-    const activities = await getFirestoreActivities(id);
-    const reviews = await getFirestoreReviews(id);
-    const collections = await getFirestoreCollections(id);
+    const collections = await getUserCollectionsFromFirestore({
+      userID: id,
+      collections: [
+        "library",
+        "wishlist",
+        "reviews",
+        "collections",
+        "activities",
+      ],
+    });
+
+    const collectionsObj = collections || {
+      library: [],
+      wishlist: [],
+      reviews: [],
+      collections: [],
+      activities: [],
+    };
 
     if (userDoc.exists) {
       return {
         profileSettings: userDoc.data(),
-        library,
-        wishlist,
-        activities,
-        reviews,
-        collections,
+        ...collectionsObj,
       } as FirestoreUser;
     } else {
       console.error("User document not found");

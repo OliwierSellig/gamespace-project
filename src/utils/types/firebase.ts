@@ -19,3 +19,10 @@ export type FirestoreUser = {
   reviews: ReviewType[];
   collections: CollectionItemType[];
 };
+
+export type FirestoreCollectionType =
+  | "library"
+  | "wishlist"
+  | "reviews"
+  | "collections"
+  | "activities";

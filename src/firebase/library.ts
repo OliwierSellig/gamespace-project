@@ -1,22 +1,6 @@
-import { deleteDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { deleteDoc, setDoc, updateDoc } from "firebase/firestore";
 import { LibraryItemType } from "../utils/types/types";
-import { getSingleUserGameRef, getUserCollectionRef } from "./utils";
-
-export async function getFirestoreLibrary(id: string) {
-  try {
-    const gamesRef = getUserCollectionRef({ id, collection: "library" });
-    const gamesSnapshot = await getDocs(gamesRef);
-
-    const gamesArray = gamesSnapshot.docs.map((doc) => {
-      return doc.data();
-    });
-
-    return gamesArray as LibraryItemType[];
-  } catch (error) {
-    console.error("Error getting library:", error);
-    return [];
-  }
-}
+import { getSingleUserGameRef } from "./utils";
 
 export async function addGameToUserFirestore(props: {
   id: string;

@@ -1,27 +1,6 @@
-import { deleteDoc, getDocs, setDoc } from "firebase/firestore";
+import { deleteDoc, setDoc } from "firebase/firestore";
 import { CollectionItemType } from "../utils/types/types";
-import { getSingleUserRef, getUserCollectionRef } from "./utils";
-
-export async function getFirestoreCollections(id: string) {
-  try {
-    const collectionsRef = getUserCollectionRef({
-      id,
-      collection: "collections",
-    });
-    const collectionsSnapshot = await getDocs(collectionsRef);
-
-    const collectionsArray = collectionsSnapshot.docs.map((doc) => {
-      return {
-        ...doc.data(),
-        creationDate: new Date(doc.data().creationDate.seconds * 1000),
-      };
-    });
-    return collectionsArray as CollectionItemType[];
-  } catch (error) {
-    console.error("Error getting collections:", error);
-    return [];
-  }
-}
+import { getSingleUserRef } from "./utils";
 
 export async function updateFirestoreCollection(props: {
   userID: string;

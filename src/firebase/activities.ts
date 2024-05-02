@@ -1,34 +1,22 @@
-import { deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
+import {
+  CollectionReference,
+  DocumentData,
+  deleteDoc,
+  doc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore";
 import { calculateDayDifferance } from "../utils/functions/functions";
 import { ActivityItem } from "../utils/types/types";
 import { getUserCollectionRef } from "./utils";
 
 function getSingleActivityRef(props: { userID: string; activityID: string }) {
   const activitesRef = getUserCollectionRef({
-    collection: "activites",
+    collection: "activities",
     id: props.userID,
   });
 
   return doc(activitesRef, props.activityID);
-}
-
-export async function getFirestoreActivities(id: string) {
-  try {
-    const recentActivites = await refreshActivities({ id, days: 30 });
-
-    const activitiesArray = recentActivites.map((document) => {
-      return {
-        action: document.data().action,
-        date: new Date(document.data().date.seconds * 1000),
-      };
-    });
-
-    return activitiesArray as ActivityItem[];
-  } catch (error) {
-    console.error("Error getting wishlist:", error);
-
-    return [];
-  }
 }
 
 export async function addActivitiesToUserFirestore(props: {
@@ -48,12 +36,13 @@ export async function addActivitiesToUserFirestore(props: {
   }
 }
 
-async function refreshActivities(props: { days: number; id: string }) {
-  const activitiesRef = getUserCollectionRef({
-    id: props.id,
-    collection: "activites",
-  });
-  const activitiesSnapshot = await getDocs(activitiesRef);
+export async function refreshActivities(props: {
+  days: number;
+  id: string;
+  collectionRef: CollectionReference<DocumentData, DocumentData>;
+}) {
+  const activitiesSnapshot = await getDocs(props.collectionRef);
+
   const recentActivites = activitiesSnapshot.docs.filter(
     (document) =>
       !calculateDayDifferance({
@@ -64,7 +53,7 @@ async function refreshActivities(props: { days: number; id: string }) {
   );
   activitiesSnapshot.docs.forEach(async (document) => {
     if (!recentActivites.map((d) => d.id).includes(document.id)) {
-      const docRef = doc(activitiesRef, document.id);
+      const docRef = doc(props.collectionRef, document.id);
       await deleteDoc(docRef);
     }
   });
