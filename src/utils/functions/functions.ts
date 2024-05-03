@@ -247,18 +247,6 @@ export function setPage(
   router.push(`${pathname}${query}`);
 }
 
-// ------- Transforms an image url string to file  -----------
-
-// export async function urlToFile(url: string) {
-//   const response = await fetch(url);
-//   const blob = await response.blob();
-//   const filename = url.substring(url.lastIndexOf("/") + 1);
-
-//   const file = new File([blob], filename, { type: blob.type });
-
-//   return file;
-// }
-
 // ------- Check whether the differance in dates in bigger or than the given day amount  -----------
 
 export function calculateDayDifferance(props: {
