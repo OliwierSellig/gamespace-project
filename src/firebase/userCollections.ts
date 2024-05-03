@@ -1,6 +1,7 @@
 import {
   DocumentData,
   QueryDocumentSnapshot,
+  deleteDoc,
   getDocs,
   setDoc,
 } from "firebase/firestore";
@@ -114,7 +115,7 @@ export async function getUserCollectionsFromFirestore(props: {
   }
 }
 
-export async function updateDocumentsInCollections(props: {
+export async function updateDocumentsInFirestoreCollections(props: {
   collectionType: FirestoreCollectionType;
   userID: string;
   documentData:
@@ -160,6 +161,30 @@ export async function updateDocumentsInCollections(props: {
       ),
     );
   } catch (error) {
-    console.error("Error updating document:", error);
+    console.error(
+      `Error updating documents in ${props.collectionType}:`,
+      error,
+    );
+  }
+}
+
+export async function removeDocumentFromFirestoreCollection(props: {
+  collectionType: FirestoreCollectionType;
+  userID: string;
+  documentID: string;
+}) {
+  try {
+    const singleDocRef = getSingleDocumentRef({
+      userID: props.userID,
+      collection: props.collectionType,
+      documentID: props.documentID,
+    });
+
+    await deleteDoc(singleDocRef);
+  } catch (error) {
+    console.error(
+      `Error removing document from ${props.collectionType}:`,
+      error,
+    );
   }
 }
