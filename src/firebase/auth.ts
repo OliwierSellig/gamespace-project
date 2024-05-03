@@ -11,6 +11,8 @@ import { auth, firestore } from "./firebase";
 import { setNewImage } from "./userData";
 import { getUserDocRef } from "./utils";
 
+// ---------- Creating a user document in 'users' firestore collection --------------
+
 export async function CreateUser(props: {
   email: string;
   password: string;
@@ -53,9 +55,9 @@ export async function CreateUser(props: {
   };
 }
 
-export async function userLogout() {
-  await signOut(auth);
-}
+// ----------------------------------------------------------------------------------
+
+// ------------------------- Logging in User ----------------------------------------
 
 export async function userLogin(credentials: {
   email: string;
@@ -72,6 +74,18 @@ export async function userLogin(credentials: {
     return true;
   }
 }
+
+// ----------------------------------------------------------------------------------
+
+// ------------------------- Logging out User ----------------------------------------
+
+export async function userLogout() {
+  await signOut(auth);
+}
+
+// ----------------------------------------------------------------------------------
+
+// ----------- Validating user email with firebase requirements ---------------------
 
 export async function validateEmail(
   email: string,
@@ -108,6 +122,10 @@ export async function validateEmail(
   }
 }
 
+// ----------------------------------------------------------------------------------
+
+// ----------- Sending a reset password message to a given email --------------------
+
 export async function sentResetPasswordEmail(email: string) {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -116,3 +134,5 @@ export async function sentResetPasswordEmail(email: string) {
     toast.error("Please, write a valid email address");
   }
 }
+
+// ----------------------------------------------------------------------------------

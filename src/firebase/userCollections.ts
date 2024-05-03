@@ -1,10 +1,13 @@
 import {
+  CollectionReference,
   DocumentData,
   QueryDocumentSnapshot,
   deleteDoc,
+  doc,
   getDocs,
   setDoc,
 } from "firebase/firestore";
+import { calculateDayDifferance } from "../utils/functions/functions";
 import { FirestoreCollectionType } from "../utils/types/firebase";
 import {
   ActivityItem,
@@ -13,14 +16,13 @@ import {
   LibraryItemType,
   ReviewType,
 } from "../utils/types/types";
-import { refreshActivities } from "./activities";
 import {
   getSingleDocumentRef,
   getUserCollectionRef,
   setTimestampSecondsToDate,
 } from "./utils";
 
-// -------------- Getting a list of docuemnts in given collections -------------------------
+// -------------- Getting a list of docuemnts in given collections ------------------
 
 export async function getUserCollectionsFromFirestore(props: {
   userID: string;
@@ -122,9 +124,9 @@ export async function getUserCollectionsFromFirestore(props: {
   }
 }
 
-// ---------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 
-// -------------- Updating a list of given docuemnts in Firestore -------------------------
+// -------------- Updating a list of given docuemnts in Firestore -------------------
 
 export async function updateDocumentsInFirestoreCollections(props: {
   collectionType: FirestoreCollectionType;
@@ -179,9 +181,9 @@ export async function updateDocumentsInFirestoreCollections(props: {
   }
 }
 
-// ---------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 
-// -------------- Removing given docuemnt from Firestore -------------------------
+// ---------------- Removing given docuemnt from Firestore --------------------------
 
 export async function removeDocumentFromFirestoreCollection(props: {
   collectionType: FirestoreCollectionType;
@@ -204,4 +206,33 @@ export async function removeDocumentFromFirestoreCollection(props: {
   }
 }
 
-// ---------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
+
+// ------------------ Refreshing User Activities ------------------------------------
+
+async function refreshActivities(props: {
+  days: number;
+  id: string;
+  collectionRef: CollectionReference<DocumentData, DocumentData>;
+}) {
+  const activitiesSnapshot = await getDocs(props.collectionRef);
+
+  const recentActivites = activitiesSnapshot.docs.filter(
+    (document) =>
+      !calculateDayDifferance({
+        dayDiff: props.days,
+        date1: new Date(document.data().date.seconds * 1000),
+        date2: new Date(),
+      }),
+  );
+  activitiesSnapshot.docs.forEach(async (document) => {
+    if (!recentActivites.map((d) => d.id).includes(document.id)) {
+      const docRef = doc(props.collectionRef, document.id);
+      await deleteDoc(docRef);
+    }
+  });
+
+  return recentActivites;
+}
+
+// -----------------------------------------------------------------------------------

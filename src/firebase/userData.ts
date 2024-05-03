@@ -1,62 +1,57 @@
 import { updateDoc } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from "firebase/storage";
 import { FirestoreUser } from "../utils/types/firebase";
 import { storage } from "./firebase";
 import { getUserCollectionsFromFirestore } from "./userCollections";
-import {
-  findUserDoc,
-  getUserDocRef,
-  removeImageFromStorage,
-  urlToName,
-} from "./utils";
+import { findUserDoc, getUserDocRef, urlToName } from "./utils";
 
-export async function getUserBackgrounds(id: string): Promise<string | null> {
+// --------------------------- Getting full user data -------------------------------
+
+export async function getFullUserData(id: string) {
   try {
-    const docSnapshot = await findUserDoc(id);
+    const userDoc = await findUserDoc(id);
+    const collections = await getUserCollectionsFromFirestore({
+      userID: id,
+      collections: [
+        "library",
+        "wishlist",
+        "reviews",
+        "collections",
+        "activities",
+      ],
+    });
 
-    if (docSnapshot.exists) {
-      const backgrounds = docSnapshot.data().recentBackgrounds;
-      return backgrounds;
+    const collectionsObj = collections || {
+      library: [],
+      wishlist: [],
+      reviews: [],
+      collections: [],
+      activities: [],
+    };
+
+    if (userDoc.exists) {
+      return {
+        profileSettings: userDoc.data(),
+        ...collectionsObj,
+      } as FirestoreUser;
     } else {
+      console.error("User document not found");
       return null;
     }
   } catch (error) {
-    console.error("Error getting user background image:", error);
+    console.error("Error fetching user document:", error);
     return null;
   }
 }
 
-export async function getUserAvatars(id: string): Promise<string | null> {
-  try {
-    const docSnapshot = await findUserDoc(id);
+// ----------------------------------------------------------------------------------
 
-    if (docSnapshot.exists) {
-      const avatars = docSnapshot.data().recentAvatars;
-      return avatars;
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.error("Error getting user avatar:", error);
-    return null;
-  }
-}
-
-export async function getUserName(id: string): Promise<string | null> {
-  try {
-    const docSnapshot = await findUserDoc(id);
-
-    if (docSnapshot.exists) {
-      const name = docSnapshot.data().gamespaceName;
-      return name;
-    } else {
-      return null;
-    }
-  } catch (error) {
-    console.error("Error getting user GamespaceName:", error);
-    return null;
-  }
-}
+// ------------------------- Updating user profile info -----------------------------
 
 export async function updateUserInfo(
   id: string,
@@ -101,6 +96,10 @@ export async function updateUserInfo(
   }
 }
 
+// ----------------------------------------------------------------------------------
+
+// ----------------------- Setting new image of given type --------------------------
+
 export async function setNewImage(
   id: string,
   type: "avatar" | "background",
@@ -127,6 +126,10 @@ export async function setNewImage(
     return null;
   }
 }
+
+// ----------------------------------------------------------------------------------
+
+// ---------------------- Udpating recent images list--------------------------------
 
 export async function updateRecentImagesList(props: {
   type: "avatar" | "background";
@@ -167,39 +170,20 @@ export async function updateRecentImagesList(props: {
   return newArray;
 }
 
-export async function getFullUserData(id: string) {
+// ----------------------------------------------------------------------------------
+
+// --------------------- Removing given image from storage---------------------------
+
+export async function removeImageFromStorage(props: {
+  type: "avatar" | "background";
+  imageName: string;
+}) {
+  const imageRef = ref(storage, `${props.type}s/${props.imageName}`);
   try {
-    const userDoc = await findUserDoc(id);
-    const collections = await getUserCollectionsFromFirestore({
-      userID: id,
-      collections: [
-        "library",
-        "wishlist",
-        "reviews",
-        "collections",
-        "activities",
-      ],
-    });
-
-    const collectionsObj = collections || {
-      library: [],
-      wishlist: [],
-      reviews: [],
-      collections: [],
-      activities: [],
-    };
-
-    if (userDoc.exists) {
-      return {
-        profileSettings: userDoc.data(),
-        ...collectionsObj,
-      } as FirestoreUser;
-    } else {
-      console.error("User document not found");
-      return null;
-    }
+    await deleteObject(imageRef);
   } catch (error) {
-    console.error("Error fetching user document:", error);
-    return null;
+    console.error("Error deleting image:", error);
   }
 }
+
+// ----------------------------------------------------------------------------------
