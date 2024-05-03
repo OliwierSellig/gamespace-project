@@ -20,9 +20,7 @@ import {
   ReviewType,
 } from "../utils/types/types";
 import { fetchGameByID } from "../lib/games";
-import { updateFirestoreCollection } from "../firebase/collections";
 import { auth } from "../firebase/firebase";
-import { toggleFavouriteFirebase } from "../firebase/library";
 import {
   removeDocumentFromFirestoreCollection,
   updateDocumentsInFirestoreCollections,
@@ -559,10 +557,10 @@ function UserProvider({ children }: ChildrenProp) {
     const updatedGame = { ...targetGame, isFavourite: action === "add" };
     const filteredList = library.filter((game) => game.id !== id);
     const newList = [...filteredList, updatedGame];
-    await toggleFavouriteFirebase({
+    await updateDocumentsInFirestoreCollections({
       userID: state.id,
-      gameID: id.toString(),
-      isFavourite: action === "add",
+      collectionType: "library",
+      documentData: [updatedGame],
     });
     dispatch({ type: REDUCER_ACTION_TYPE.SET_LIBRARY, payload: newList });
     addActivity([
@@ -835,9 +833,10 @@ function UserProvider({ children }: ChildrenProp) {
 
     const newList = [...filteredCollections, updatedCollection];
 
-    await updateFirestoreCollection({
+    await updateDocumentsInFirestoreCollections({
       userID: id,
-      newCollection: updatedCollection,
+      collectionType: "collections",
+      documentData: [updatedCollection],
     });
 
     dispatch({ type: REDUCER_ACTION_TYPE.SET_COLLECTIONS, payload: newList });

@@ -20,26 +20,35 @@ import {
   setTimestampSecondsToDate,
 } from "./utils";
 
+// -------------- Getting a list of docuemnts in given collections -------------------------
+
 export async function getUserCollectionsFromFirestore(props: {
   userID: string;
   collections: FirestoreCollectionType[];
 }) {
+  type ReturnType =
+    | BasicItemType
+    | LibraryItemType
+    | ReviewType
+    | CollectionItemType
+    | ActivityItem;
+
   function getDocumentToClient(props: {
     doc: QueryDocumentSnapshot<DocumentData, DocumentData>;
     collectionType: FirestoreCollectionType;
-  }) {
+  }): ReturnType {
     switch (props.collectionType) {
       case "wishlist":
         return props.doc.data() as BasicItemType;
+
+      case "library":
+        return props.doc.data() as LibraryItemType;
 
       case "reviews":
         return {
           ...props.doc.data(),
           editDate: setTimestampSecondsToDate(props.doc.data().editDate),
         } as ReviewType;
-
-      case "library":
-        return props.doc.data() as LibraryItemType;
 
       case "collections":
         return {
@@ -84,8 +93,6 @@ export async function getUserCollectionsFromFirestore(props: {
       }),
     );
 
-    console.log(collectionSnapshotsDocs);
-
     const documentsObj = {
       library: [],
       wishlist: [],
@@ -114,6 +121,10 @@ export async function getUserCollectionsFromFirestore(props: {
     return null;
   }
 }
+
+// ---------------------------------------------------------------------------------
+
+// -------------- Updating a list of given docuemnts in Firestore -------------------------
 
 export async function updateDocumentsInFirestoreCollections(props: {
   collectionType: FirestoreCollectionType;
@@ -147,7 +158,7 @@ export async function updateDocumentsInFirestoreCollections(props: {
       },
     );
 
-    Promise.all(
+    await Promise.all(
       documentObjects.map(
         async (obj) =>
           await setDoc(
@@ -167,6 +178,10 @@ export async function updateDocumentsInFirestoreCollections(props: {
     );
   }
 }
+
+// ---------------------------------------------------------------------------------
+
+// -------------- Removing given docuemnt from Firestore -------------------------
 
 export async function removeDocumentFromFirestoreCollection(props: {
   collectionType: FirestoreCollectionType;
@@ -188,3 +203,5 @@ export async function removeDocumentFromFirestoreCollection(props: {
     );
   }
 }
+
+// ---------------------------------------------------------------------------------
