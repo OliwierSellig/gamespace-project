@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useUser } from "../../../../../../contexts/UserContext";
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUser } from "../../../../../../contexts/userContext/UserContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import { updateUserInfo } from "../../../../../../firebase/userData";
 import Button from "../../../../../global/button/Button";
 import styles from "./actionsButtons.module.scss";

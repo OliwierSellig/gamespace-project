@@ -1,4 +1,4 @@
-import { RankingProvider } from "../../contexts/RankingContext";
+import { RankingProvider } from "../../contexts/rankingContext/RankingContext";
 
 export const metadata = {
   title: "Ranking",

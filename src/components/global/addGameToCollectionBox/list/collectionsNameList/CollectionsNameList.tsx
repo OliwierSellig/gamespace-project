@@ -1,6 +1,6 @@
 import { BasicItemType } from "../../../../../utils/types/types";
-import { useUser } from "../../../../../contexts/UserContext";
 import { useCollections } from "../../../../../contexts/collectionsContext/CollectionsContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import CollectionsNameListItem from "../item/CollectionsNameListItem";
 import styles from "./collectionsNameList.module.scss";
 

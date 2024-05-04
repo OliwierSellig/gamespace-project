@@ -2,7 +2,7 @@
 
 import { FormikProvider, useFormik } from "formik";
 import React, { useState } from "react";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import { CreateUser, validateEmail } from "../../../../firebase/auth";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
 import AvatarInputs from "../avatarInputs/AvatarInputs";

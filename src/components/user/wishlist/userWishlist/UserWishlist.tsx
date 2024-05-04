@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import { sortGames } from "../../../../utils/functions/functions";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import { useWishlist } from "../../../../contexts/wishlistContext/WishlistContext";
 import EmptyUserList from "../../../global/emptyUserList/EmptyUserList";
 import WishlistGamesList from "../wishlistGamesList/WishlistGamesList";

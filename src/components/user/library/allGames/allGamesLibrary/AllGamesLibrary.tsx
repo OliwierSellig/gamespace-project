@@ -1,7 +1,7 @@
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import { sortGames } from "../../../../../utils/functions/functions";
-import { useUser } from "../../../../../contexts/UserContext";
 import { useLibrary } from "../../../../../contexts/libraryContext/LibraryContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import AllGamesLibraryList from "../allGamesLibraryList/AllGamesLibraryList";
 
 type AllGamesLibraryProps = {

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { HiOutlineFolderPlus } from "react-icons/hi2";
 import { SingleGameItemToBasicItemType } from "../../../../utils/functions/functions";
 import { SingleGameItem } from "../../../../utils/types/types";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import CollectionsBox from "../../../global/addGameToCollectionBox/CollectionsBox";
 import styles from "./saveToCollectionButton.module.scss";
 

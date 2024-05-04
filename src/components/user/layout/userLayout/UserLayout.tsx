@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import bg from "../../../../../public/img/user-background.jpg";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import GameBackgroundLayout from "../../../global/gameBackgroundLayout/GameBackgroundLayout";
 
 type UserLayoutProps = {

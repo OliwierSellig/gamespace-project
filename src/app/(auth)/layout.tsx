@@ -6,7 +6,7 @@ import { ChildrenProp } from "../../utils/types/types";
 import GameBackgroundLayout from "../../components/global/gameBackgroundLayout/GameBackgroundLayout";
 import LoaderWindow from "../../components/global/loading/loaderWindow/LoaderWindow";
 import backgroundImage from "../../../public/img/user-background.jpg";
-import { useUser } from "../../contexts/UserContext";
+import { useUser } from "../../contexts/userContext/UserContext";
 
 function Layout({ children }: ChildrenProp) {
   const { isLoggedIn, isLoading } = useUser();

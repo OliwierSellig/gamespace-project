@@ -1,5 +1,5 @@
 import { HiOutlinePencilSquare } from "react-icons/hi2";
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import PreviewImageBox from "../../../../../global/previewImageBox/PreviewImageBox";
 import styles from "./uploadAvatar.module.scss";
 

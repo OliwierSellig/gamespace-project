@@ -7,8 +7,8 @@ import {
   CollectionItemType,
   SingleGameItem,
 } from "../../../../utils/types/types";
-import { useUser } from "../../../../contexts/UserContext";
 import { useCollections } from "../../../../contexts/collectionsContext/CollectionsContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import Button from "../../button/Button";
 import UserInput from "../../userInput/UserInput";
 import styles from "./collectionPropertiesBox.module.scss";

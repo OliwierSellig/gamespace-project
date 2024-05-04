@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { ChildrenProp } from "../../utils/types/types";
 import LoaderWindow from "../../components/global/loading/loaderWindow/LoaderWindow";
 import UserLayout from "../../components/user/layout/userLayout/UserLayout";
-import { useUser } from "../../contexts/UserContext";
+import { useUser } from "../../contexts/userContext/UserContext";
 
 function Layout({ children }: ChildrenProp) {
   const { isLoggedIn, isLoading } = useUser();

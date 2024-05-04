@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import ChangeSettingsContainer from "../changeSettingsContainer/ChangeSettingsContainer";
 import styles from "./changeSettingPopup.module.scss";
 

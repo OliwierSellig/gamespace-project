@@ -7,26 +7,34 @@ import {
   removeDocumentFromFirestoreCollection,
   updateDocumentsInFirestoreCollections,
 } from "../../firebase/userCollections";
-import { useUser } from "../UserContext";
 import { useActivities } from "../activitiesContext/ActivitiesContext";
+import { useUser } from "../userContext/UserContext";
+
+// ------------------------- Creating Context ---------------------------------------
 
 const WishlistContext = createContext<ContextType | undefined>(undefined);
+
+// ------------------------- Setting Context Type -----------------------------------
 
 type ContextType = {
   checkInWishlist: (id: number) => BasicItemType;
   addToWishlist: (game: BasicItemType) => Promise<void>;
   removeFromWishlist: (id: number) => Promise<void>;
 };
+// ------------------------- Creating a Provider ------------------------------------
+
 function WishlistProvider({ children }: ChildrenProp) {
   const { state, setCollection } = useUser();
   const { wishlist, id } = state;
   const { addActivity } = useActivities();
 
-  // ------- Manipulating Wishlist Data ---------
+  // ------------------------------ Get Functions -----------------------------------
 
   function checkInWishlist(id: number) {
     return wishlist.find((game) => game.id === id);
   }
+
+  // ------------------------ Wishlist Manipulations -------------------------------
 
   async function addToWishlist(game: BasicItemType) {
     if (checkInWishlist(game.id)) {
@@ -78,8 +86,6 @@ function WishlistProvider({ children }: ChildrenProp) {
     ]);
     toast.success("Successfully removed game from wishlist");
   }
-
-  // --------------------------------------------
 
   return (
     <WishlistContext.Provider

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { HiOutlineUser } from "react-icons/hi2";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import styles from "./userAvatar.module.scss";
 
 function UserAvatar() {

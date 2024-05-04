@@ -7,10 +7,14 @@ import {
   removeDocumentFromFirestoreCollection,
   updateDocumentsInFirestoreCollections,
 } from "../../firebase/userCollections";
-import { useUser } from "../UserContext";
 import { useActivities } from "../activitiesContext/ActivitiesContext";
+import { useUser } from "../userContext/UserContext";
+
+// ------------------------- Creating Context ---------------------------------------
 
 const ReviewsContext = createContext<ContextType | undefined>(undefined);
+
+// ------------------------- Setting Context Type -----------------------------------
 
 type ContextType = {
   updateReviews: (newReview: ReviewType) => Promise<void>;
@@ -19,16 +23,55 @@ type ContextType = {
   sortReviews: (sortBy: string) => ReviewType[];
   getLatestReviews: () => ReviewType[];
 };
+
+// ------------------------- Creating a Provider ------------------------------------
+
 function ReviewsProvider({ children }: ChildrenProp) {
   const { state, setCollection } = useUser();
   const { id, reviews } = state;
   const { addActivity } = useActivities();
 
-  // ------- Manipulating Reviews ----------------
+  // ------------------------------ Get Functions -----------------------------------
 
   function findInReviews(id: number) {
     return reviews.find((review) => review.game.id === id);
   }
+
+  function sortReviews(sortBy: string) {
+    const sortList = [...reviews];
+
+    switch (sortBy) {
+      case "relevance":
+        return sortList.sort(
+          (a, b) =>
+            new Date(b.editDate).getTime() - new Date(a.editDate).getTime(),
+        );
+      case "rating":
+        return sortList.sort((a, b) => b.rating - a.rating);
+      case "game-title":
+        return sortList.sort((a, b) => {
+          if (a.game.name < b.game.name) {
+            return -1;
+          }
+          if (a.game.name > b.game.name) {
+            return 1;
+          }
+        });
+      default:
+        return sortList;
+    }
+  }
+
+  function getLatestReviews() {
+    return [...reviews]
+      .sort(
+        (a, b) =>
+          new Date(b.editDate).getTime() - new Date(a.editDate).getTime(),
+      )
+      .slice(0, 2);
+  }
+
+  // ------------------------- Reviews Manipulations --------------------------------
 
   async function updateReviews(newReview: ReviewType) {
     const inReviews = Boolean(findInReviews(newReview.game.id));
@@ -75,42 +118,6 @@ function ReviewsProvider({ children }: ChildrenProp) {
     ]);
     toast.success("Successfully removed game from reviews");
   }
-
-  function sortReviews(sortBy: string) {
-    const sortList = [...reviews];
-
-    switch (sortBy) {
-      case "relevance":
-        return sortList.sort(
-          (a, b) =>
-            new Date(b.editDate).getTime() - new Date(a.editDate).getTime(),
-        );
-      case "rating":
-        return sortList.sort((a, b) => b.rating - a.rating);
-      case "game-title":
-        return sortList.sort((a, b) => {
-          if (a.game.name < b.game.name) {
-            return -1;
-          }
-          if (a.game.name > b.game.name) {
-            return 1;
-          }
-        });
-      default:
-        return sortList;
-    }
-  }
-
-  function getLatestReviews() {
-    return [...reviews]
-      .sort(
-        (a, b) =>
-          new Date(b.editDate).getTime() - new Date(a.editDate).getTime(),
-      )
-      .slice(0, 2);
-  }
-
-  // ---------------------------------------------
 
   return (
     <ReviewsContext.Provider

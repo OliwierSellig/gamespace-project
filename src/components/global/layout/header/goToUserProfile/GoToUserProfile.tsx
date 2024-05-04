@@ -5,7 +5,7 @@ import {
   HiOutlineUser,
   HiOutlineUserPlus,
 } from "react-icons/hi2";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import HeaderLink from "../headerLink/HeaderLink";
 import styles from "./goToUserProfile.module.scss";
 

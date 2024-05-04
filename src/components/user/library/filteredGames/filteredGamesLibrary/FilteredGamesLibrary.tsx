@@ -1,4 +1,4 @@
-import { useUser } from "../../../../../contexts/UserContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import FilteredGamesLibraryList from "../filteredGamesLibraryList/FilteredGamesLibraryList";
 
 type FilteredGamesLibraryProps = {

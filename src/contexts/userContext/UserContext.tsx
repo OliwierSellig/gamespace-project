@@ -15,9 +15,9 @@ import {
   CollectionItemType,
   LibraryItemType,
   ReviewType,
-} from "../utils/types/types";
-import { auth } from "../firebase/firebase";
-import { getFullUserData } from "../firebase/userData";
+} from "../../utils/types/types";
+import { auth } from "../../firebase/firebase";
+import { getFullUserData } from "../../firebase/userData";
 
 const UserContext = createContext<ContextType | undefined>(undefined);
 
@@ -66,7 +66,7 @@ type ContextType = {
   ) => void;
 };
 
-// ----------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 
 // ---------- Setting Types for Reducer && State ---------------------------
 
@@ -122,7 +122,7 @@ type ReducerAction =
         | REDUCER_ACTION_TYPE.RESET_STATE;
     };
 
-// ----------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 
 // ---------- Setting Initial Values for Reducer && State ---------------------------
 
@@ -171,7 +171,7 @@ function reducer(state: stateProps, action: ReducerAction): stateProps {
   }
 }
 
-// ----------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 
 function UserProvider({ children }: ChildrenProp) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -183,7 +183,7 @@ function UserProvider({ children }: ChildrenProp) {
   const currentAvatar = profileSettings.recentAvatars.at(0);
   const currentBackground = profileSettings.recentBackgrounds.at(0);
 
-  // -------------------------------------------------------------------------------
+  // ------------------------------ Setup Functions -----------------------------------
 
   function setUserProfile(profileData: {
     name?: string;
@@ -208,8 +208,6 @@ function UserProvider({ children }: ChildrenProp) {
       payload: updatedUserProfile,
     });
   }
-
-  console.log(state);
 
   async function initialRender(user: { uid: string }) {
     if (user) {
@@ -274,8 +272,6 @@ function UserProvider({ children }: ChildrenProp) {
     setIsLoggedIn(true);
   }
 
-  // -------------------------------------------------------------------------------
-
   function setCollection(
     collection:
       | { type: "library"; value: LibraryItemType[] }
@@ -320,10 +316,6 @@ function UserProvider({ children }: ChildrenProp) {
 
     if (dispatchObj) dispatch(dispatchObj);
   }
-
-  // ------- Other -------------
-
-  // ---------------------------------------------
 
   // --------- Initialize User ----------------------
 

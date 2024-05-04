@@ -1,7 +1,7 @@
 "use client";
 
-import { useUser } from "../../../../../../contexts/UserContext";
-import { UserSettingsProvider } from "../../../../../../contexts/UserSettingsContext";
+import { useUser } from "../../../../../../contexts/userContext/UserContext";
+import { UserSettingsProvider } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import ChangeSettingsPopup from "../changeSettingPopup/ChangeSettingsPopup";
 
 function ChangeSettingsToggle() {

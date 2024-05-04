@@ -1,5 +1,5 @@
 import { HiMiniXMark } from "react-icons/hi2";
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import styles from "./closeSettingsButton.module.scss";
 
 function CloseSettingsButton() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { dateTransform } from "../../../../../utils/functions/functions";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import styles from "./createdAt.module.scss";
 
 function CreatedAt() {

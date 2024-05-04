@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { filterList } from "../../../../../utils/data/user";
 import { changeToUrlSlug } from "../../../../../utils/functions/functions";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import EmptyUserList from "../../../../global/emptyUserList/EmptyUserList";
 import AllGamesLibraryList from "../../allGames/allGamesLibrary/AllGamesLibrary";
 import FilteredGamesLibrary from "../../filteredGames/filteredGamesLibrary/FilteredGamesLibrary";

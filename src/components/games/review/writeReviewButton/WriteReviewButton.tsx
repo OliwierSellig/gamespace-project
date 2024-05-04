@@ -2,7 +2,7 @@
 
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { SingleGameItem } from "../../../../utils/types/types";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import Button from "../../../global/button/Button";
 
 type WriteReviewButtonProps = {

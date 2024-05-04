@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { ReactNode, useEffect } from "react";
 import CollectionViewLayout from "../../../components/collections/layout/collectionViewLayout/CollectionViewLayout";
 import LoaderWindow from "../../../components/global/loading/loaderWindow/LoaderWindow";
-import { useUser } from "../../../contexts/UserContext";
+import { useUser } from "../../../contexts/userContext/UserContext";
 
 function Layout({
   params,

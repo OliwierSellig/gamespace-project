@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
-import { useUser } from "../../../../../../contexts/UserContext";
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUser } from "../../../../../../contexts/userContext/UserContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import EmptyImageBox from "../../layout/emptyImageBox/EmptyImageBox";
 import PreviousImageBox from "../../layout/previousImageBox/PreviousImageBox";
 import styles from "./previousBackgroundsList.module.scss";

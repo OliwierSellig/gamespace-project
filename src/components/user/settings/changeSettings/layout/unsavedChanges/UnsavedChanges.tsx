@@ -1,6 +1,6 @@
 import { HiMiniXMark } from "react-icons/hi2";
-import { useUser } from "../../../../../../contexts/UserContext";
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUser } from "../../../../../../contexts/userContext/UserContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import Button from "../../../../../global/button/Button";
 import styles from "./unsavedChanges.module.scss";
 

@@ -4,8 +4,8 @@ import { FormikProvider, useFormik } from "formik";
 import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 import * as yup from "yup";
-import { ChildrenProp } from "../utils/types/types";
-import { useUserModalStates } from "./userModalStatesContext/UserModalStatesContext";
+import { ChildrenProp } from "../../utils/types/types";
+import { useUserModalStates } from "../userModalStatesContext/UserModalStatesContext";
 
 const UserSettingsContext = createContext<ContextType | undefined>(undefined);
 

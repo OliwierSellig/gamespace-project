@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import EmptyUserList from "../../../global/emptyUserList/EmptyUserList";
 import CollectionsList from "../list/collectionList/CollectionsList";
 import CollectionsNavigation from "../navigation/collectionNavigation/CollectionsNavigation";

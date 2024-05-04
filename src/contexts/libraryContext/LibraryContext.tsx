@@ -13,11 +13,15 @@ import {
   removeDocumentFromFirestoreCollection,
   updateDocumentsInFirestoreCollections,
 } from "../../firebase/userCollections";
-import { useUser } from "../UserContext";
 import { useActivities } from "../activitiesContext/ActivitiesContext";
+import { useUser } from "../userContext/UserContext";
 import { useWishlist } from "../wishlistContext/WishlistContext";
 
+// ------------------------- Creating Context ---------------------------------------
+
 const LibraryContext = createContext<ContextType | undefined>(undefined);
+
+// ------------------------- Setting Context Type -----------------------------------
 
 type ContextType = {
   getFavourites: () => LibraryItemType[];
@@ -41,11 +45,16 @@ type ContextType = {
   updateFavourite: (id: number, action: "add" | "remove") => Promise<void>;
   checkIsFavourite: (id: number) => boolean;
 };
+
+// ------------------------- Creating a Provider ------------------------------------
+
 function LibraryProvider({ children }: ChildrenProp) {
   const { state, setCollection } = useUser();
   const { id, library } = state;
   const { removeFromWishlist, checkInWishlist } = useWishlist();
   const { addActivity } = useActivities();
+
+  // ------------------------------ Get Functions -----------------------------------
 
   function getFilteredList(type: "developers" | "genres" = "developers") {
     return rankList(
@@ -69,11 +78,112 @@ function LibraryProvider({ children }: ChildrenProp) {
     return library.filter((game) => game.isFavourite);
   }
 
-  // ------ Manipulating Library Data -----------
+  function getCommonYearList() {
+    const uniqueList = [
+      ...new Set(library.map((game) => new Date(game.released).getFullYear())),
+    ];
+    const topList = uniqueList.map((year) => {
+      return {
+        year,
+        games: library.filter(
+          (game) => new Date(game.released).getFullYear() === year,
+        ),
+      };
+    });
+    return topList.sort((a, b) => b.year - a.year);
+  }
+
+  function filterLibraryBy(type: string) {
+    switch (type) {
+      case "year-of-release": {
+        const uniqueList = [
+          ...new Set(
+            library.map((game) =>
+              new Date(game.released).getFullYear().toString(),
+            ),
+          ),
+        ];
+
+        const topList = uniqueList.map((year) => {
+          return {
+            name: year,
+            games: library.filter(
+              (game) =>
+                new Date(game.released).getFullYear() === parseInt(year),
+            ),
+          };
+        });
+
+        return topList.sort((a, b) => parseInt(b.name) - parseInt(a.name));
+      }
+      case "developer": {
+        const uniqueList = [
+          ...new Set(
+            library
+              .filter((game) => game.developers && game.developers.length > 0)
+              .map((game) => game.developers.at(0).name),
+          ),
+        ];
+        const topList = uniqueList.map((developer) => {
+          return {
+            name: developer,
+            games: library.filter(
+              (game) => game.developers?.at(0)?.name === developer,
+            ),
+          };
+        });
+
+        return topList;
+      }
+      case "genre": {
+        const uniqueList = [
+          ...new Set(
+            library
+              .filter((game) => game.genres && game.genres.length > 0)
+              .map((game) => game.genres.at(0).name),
+          ),
+        ];
+
+        const topList = uniqueList.map((genre) => {
+          return {
+            name: genre,
+            games: library.filter((game) => game.genres?.at(0)?.name === genre),
+          };
+        });
+        return topList;
+      }
+      case "platform": {
+        const uniqueList = [
+          ...new Set(
+            library
+              .filter((game) => game.platforms && game.platforms.length > 0)
+              .map((game) => game.platforms.at(0).platform.name),
+          ),
+        ];
+
+        const topList = uniqueList.map((platform) => {
+          return {
+            name: platform,
+            games: library.filter((game) =>
+              game.platforms
+                .map((platform) => platform.platform.name)
+                .includes(platform),
+            ),
+          };
+        });
+
+        return topList;
+      }
+      default:
+        return [];
+    }
+  }
 
   function checkInLibrary(id: number) {
     return library.find((game) => game.id === id);
   }
+
+  // ------------------------- Library Manipulations --------------------------------
 
   async function addToLibrary(game: LibraryItemType) {
     if (checkInLibrary(game.id)) {
@@ -181,110 +291,7 @@ function LibraryProvider({ children }: ChildrenProp) {
     toast.success("Successfully removed game from library");
   }
 
-  function filterLibraryBy(type: string) {
-    switch (type) {
-      case "year-of-release": {
-        const uniqueList = [
-          ...new Set(
-            library.map((game) =>
-              new Date(game.released).getFullYear().toString(),
-            ),
-          ),
-        ];
-
-        const topList = uniqueList.map((year) => {
-          return {
-            name: year,
-            games: library.filter(
-              (game) =>
-                new Date(game.released).getFullYear() === parseInt(year),
-            ),
-          };
-        });
-
-        return topList.sort((a, b) => parseInt(b.name) - parseInt(a.name));
-      }
-      case "developer": {
-        const uniqueList = [
-          ...new Set(
-            library
-              .filter((game) => game.developers && game.developers.length > 0)
-              .map((game) => game.developers.at(0).name),
-          ),
-        ];
-        const topList = uniqueList.map((developer) => {
-          return {
-            name: developer,
-            games: library.filter(
-              (game) => game.developers?.at(0)?.name === developer,
-            ),
-          };
-        });
-
-        return topList;
-      }
-      case "genre": {
-        const uniqueList = [
-          ...new Set(
-            library
-              .filter((game) => game.genres && game.genres.length > 0)
-              .map((game) => game.genres.at(0).name),
-          ),
-        ];
-
-        const topList = uniqueList.map((genre) => {
-          return {
-            name: genre,
-            games: library.filter((game) => game.genres?.at(0)?.name === genre),
-          };
-        });
-        return topList;
-      }
-      case "platform": {
-        const uniqueList = [
-          ...new Set(
-            library
-              .filter((game) => game.platforms && game.platforms.length > 0)
-              .map((game) => game.platforms.at(0).platform.name),
-          ),
-        ];
-
-        const topList = uniqueList.map((platform) => {
-          return {
-            name: platform,
-            games: library.filter((game) =>
-              game.platforms
-                .map((platform) => platform.platform.name)
-                .includes(platform),
-            ),
-          };
-        });
-
-        return topList;
-      }
-      default:
-        return [];
-    }
-  }
-
-  function getCommonYearList() {
-    const uniqueList = [
-      ...new Set(library.map((game) => new Date(game.released).getFullYear())),
-    ];
-    const topList = uniqueList.map((year) => {
-      return {
-        year,
-        games: library.filter(
-          (game) => new Date(game.released).getFullYear() === year,
-        ),
-      };
-    });
-    return topList.sort((a, b) => b.year - a.year);
-  }
-
-  // --------------------------------------------
-
-  // ------- Manipulating Favourites -----------
+  // ------------------------- Favourites Manipulation --------------------------------
 
   async function updateFavourite(id: number, action: "add" | "remove") {
     const targetGame = checkInLibrary(id);

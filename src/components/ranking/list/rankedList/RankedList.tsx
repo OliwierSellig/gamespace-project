@@ -1,7 +1,7 @@
 "use client";
 
 import { useGames } from "../../../../hooks/useGames";
-import { useRanking } from "../../../../contexts/RankingContext";
+import { useRanking } from "../../../../contexts/rankingContext/RankingContext";
 import LoaderWindow from "../../../global/loading/loaderWindow/LoaderWindow";
 import RankingError from "../rankingError/RankingError";
 import RowList from "../rows/rowList/RowList";

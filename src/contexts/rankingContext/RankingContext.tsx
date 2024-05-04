@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useContext, useReducer } from "react";
-import { currentDate } from "../utils/data/global";
-import { getMonthSig, getYearList } from "../utils/functions/functions";
-import { ChildrenProp, FetchedGameItem } from "../utils/types/types";
+import { currentDate } from "../../utils/data/global";
+import { getMonthSig, getYearList } from "../../utils/functions/functions";
+import { ChildrenProp, FetchedGameItem } from "../../utils/types/types";
 
 const RankingContext = createContext<ContextType | undefined>(undefined);
 

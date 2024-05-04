@@ -3,9 +3,13 @@
 import { createContext, useContext } from "react";
 import { ActivityItem, ChildrenProp } from "../../utils/types/types";
 import { updateDocumentsInFirestoreCollections } from "../../firebase/userCollections";
-import { useUser } from "../UserContext";
+import { useUser } from "../userContext/UserContext";
+
+// ------------------------- Creating Context ---------------------------------------
 
 const ActivitiesContext = createContext<ContextType | undefined>(undefined);
+
+// ------------------------- Setting Context Type -----------------------------------
 
 type ContextType = {
   addActivity: (newActivities: ActivityItem[]) => Promise<void>;
@@ -18,21 +22,13 @@ type ContextType = {
   )[];
   filterActivities: (filter: string) => ActivityItem[];
 };
+// ------------------------- Creating a Provider ------------------------------------
+
 function ActivitiesProvider({ children }: ChildrenProp) {
   const { state, setCollection } = useUser();
   const { id, activities } = state;
 
-  // ------- Manipulating Activities -------------
-
-  async function addActivity(newActivities: ActivityItem[]) {
-    await updateDocumentsInFirestoreCollections({
-      collectionType: "activities",
-      userID: id,
-      documentData: newActivities,
-    });
-    const newList = [...activities, ...newActivities];
-    setCollection({ type: "activities", value: newList });
-  }
+  // ------------------------------ Get Functions -----------------------------------
 
   function transformActivityIntoString(activity: ActivityItem) {
     switch (activity.action.type) {
@@ -212,6 +208,18 @@ function ActivitiesProvider({ children }: ChildrenProp) {
     );
 
     return sortedList;
+  }
+
+  // ------------------------- Reviews Manipulations --------------------------------
+
+  async function addActivity(newActivities: ActivityItem[]) {
+    await updateDocumentsInFirestoreCollections({
+      collectionType: "activities",
+      userID: id,
+      documentData: newActivities,
+    });
+    const newList = [...activities, ...newActivities];
+    setCollection({ type: "activities", value: newList });
   }
 
   // ---------------------------------------------

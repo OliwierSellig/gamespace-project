@@ -12,10 +12,14 @@ import {
   removeDocumentFromFirestoreCollection,
   updateDocumentsInFirestoreCollections,
 } from "../../firebase/userCollections";
-import { useUser } from "../UserContext";
 import { useActivities } from "../activitiesContext/ActivitiesContext";
+import { useUser } from "../userContext/UserContext";
+
+// ------------------------- Creating Context ---------------------------------------
 
 const CollectionsContext = createContext<ContextType | undefined>(undefined);
+
+// ------------------------- Setting Context Type -----------------------------------
 
 type ContextType = {
   addToCollections: (newCollection: CollectionPropsType) => Promise<number>;
@@ -38,16 +42,27 @@ type ContextType = {
   ) => Promise<void>;
   checkGameInCollection: (gameID: number, collectionID: number) => boolean;
 };
+
+// ------------------------- Creating a Provider ------------------------------------
+
 function CollectionsProvider({ children }: ChildrenProp) {
   const { state, setCollection } = useUser();
   const { id, collections } = state;
   const { addActivity } = useActivities();
 
-  // ------- Manipulating Collections -----------
+  // ------------------------------ Get Functions -----------------------------------
 
   function findCollection(id: number) {
     return collections.find((collection) => collection.id === id);
   }
+
+  function checkGameInCollection(gameID: number, collectionID: number) {
+    const targetCollection = findCollection(collectionID);
+    if (!targetCollection) return false;
+    return Boolean(targetCollection.games.find((game) => game.id === gameID));
+  }
+
+  // ------------------------ Collections Manipulations ------------------------------
 
   async function addToCollections(newCollection: CollectionPropsType) {
     const randomID = Math.ceil(Math.random() * 10000);
@@ -205,14 +220,6 @@ function CollectionsProvider({ children }: ChildrenProp) {
     setCollection({ type: "collections", value: newList });
     toast.success("Collection modified successfully");
   }
-
-  function checkGameInCollection(gameID: number, collectionID: number) {
-    const targetCollection = findCollection(collectionID);
-    if (!targetCollection) return false;
-    return Boolean(targetCollection.games.find((game) => game.id === gameID));
-  }
-
-  // ---------------------------------------------
 
   return (
     <CollectionsContext.Provider

@@ -1,7 +1,7 @@
 "use client";
 
 import { useGames } from "../../../hooks/useGames";
-import { useSearch } from "../../../contexts/SearchContex";
+import { useSearch } from "../../../contexts/searchContext/SearchContex";
 import LoaderWindow from "../../global/loading/loaderWindow/LoaderWindow";
 import NoGamesFound from "../noGamesFound/NoGamesFound";
 import SearchList from "../searchList/SearchList";
