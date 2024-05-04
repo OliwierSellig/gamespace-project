@@ -1,15 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineFolderPlus } from "react-icons/hi2";
 import { SingleGameItemToBasicItemType } from "../../../../utils/functions/functions";
 import { SingleGameItem } from "../../../../utils/types/types";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import CollectionsBox from "../../../global/addGameToCollectionBox/CollectionsBox";
 import styles from "./saveToCollectionButton.module.scss";
 
 type SaveToCollectionButtonProps = { game: SingleGameItem };
 
 function SaveToCollectionButton({ game }: SaveToCollectionButtonProps) {
+  const { isLoggedIn } = useUser();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const selectorRef = useRef<HTMLDivElement>(null);
@@ -27,6 +30,14 @@ function SaveToCollectionButton({ game }: SaveToCollectionButtonProps) {
     return () =>
       removeEventListener("mouseup", (e: MouseEvent) => clickOutside(e));
   }, []);
+
+  if (!isLoggedIn)
+    return (
+      <Link href="/login" className={styles.open}>
+        <span>Save to Collection</span>
+        <HiOutlineFolderPlus />
+      </Link>
+    );
 
   return (
     <div className={styles.container} ref={selectorRef}>

@@ -1,12 +1,14 @@
 import { BasicItemType } from "../../../../../utils/types/types";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useCollections } from "../../../../../contexts/collectionsContext/CollectionsContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import CollectionsNameListItem from "../item/CollectionsNameListItem";
 import styles from "./collectionsNameList.module.scss";
 
 type CollectionsNameListProps = { query: string; game: BasicItemType };
 
 function CollectionsNameList({ query, game }: CollectionsNameListProps) {
-  const { state, checkGameInCollection, updateCollection } = useUser();
+  const { state } = useUser();
+  const { checkGameInCollection, updateCollection } = useCollections();
   const { collections } = state;
   const sortedCollection = [...collections].sort(
     (a, b) =>
@@ -20,9 +22,12 @@ function CollectionsNameList({ query, game }: CollectionsNameListProps) {
       .includes(query.trim().replaceAll(" ", "-").toLowerCase()),
   );
 
-  function toggleGameInCollection(game: BasicItemType, collectionID: number) {
+  async function toggleGameInCollection(
+    game: BasicItemType,
+    collectionID: number,
+  ) {
     const inCollection = checkGameInCollection(game.id, collectionID);
-    updateCollection(
+    await updateCollection(
       { type: inCollection ? "removeGame" : "addGame", game },
       collectionID,
     );
@@ -47,7 +52,9 @@ function CollectionsNameList({ query, game }: CollectionsNameListProps) {
     <ul className={styles.list}>
       {filteredList.map((collection, i) => (
         <CollectionsNameListItem
-          handleClick={() => toggleGameInCollection(game, collection.id)}
+          handleClick={async () =>
+            await toggleGameInCollection(game, collection.id)
+          }
           key={i}
           isActive={checkGameInCollection(game.id, collection.id)}
         >

@@ -1,17 +1,22 @@
 "use client";
 
 import { ReactNode } from "react";
-import { useUser } from "../../../contexts/UserContext";
+import { useReviews } from "../../../contexts/reviewsContext/ReviewsContext";
 import Modal from "../modal/Modal";
 import ConfirmationPopup from "../popups/confirmationPupup/ConfirmationPopup";
 
-type OpenDeleteReviewConfirmationProps = { children: ReactNode; id: number };
+type OpenDeleteReviewConfirmationProps = {
+  children: ReactNode;
+  id: number;
+  handleClick?: () => void;
+};
 
 function OpenDeleteReviewConfirmation({
   children,
+  handleClick,
   id,
 }: OpenDeleteReviewConfirmationProps) {
-  const { removeFromReviews } = useUser();
+  const { removeFromReviews } = useReviews();
 
   return (
     <Modal>
@@ -22,7 +27,12 @@ function OpenDeleteReviewConfirmation({
         locked={false}
         name={`Delete review of game ${id} confirmation`}
       >
-        <ConfirmationPopup handleClick={() => removeFromReviews(id)}>
+        <ConfirmationPopup
+          handleClick={async () => {
+            await removeFromReviews(id);
+            handleClick?.();
+          }}
+        >
           Are you sure you want to delete this review, this action cannot be
           undone
         </ConfirmationPopup>

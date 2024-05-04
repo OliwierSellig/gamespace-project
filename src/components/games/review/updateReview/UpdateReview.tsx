@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SingleGameItem } from "../../../../utils/types/types";
-import { useUser } from "../../../../contexts/UserContext";
+import { useReviews } from "../../../../contexts/reviewsContext/ReviewsContext";
 import UserInput from "../../../global/userInput/UserInput";
 import CommonRatingList from "../commonRatingList/CommonRatingList";
 import RangeBar from "../rangeBar/RangeBar";
@@ -14,7 +14,7 @@ type UpdateReviewProps = {
 };
 
 function UpdateReview({ game }: UpdateReviewProps) {
-  const { findInReviews } = useUser();
+  const { findInReviews } = useReviews();
   const gameReview = findInReviews(game.id);
   const [currentRating, setCurrentRating] = useState<number>(
     gameReview?.rating || 0,

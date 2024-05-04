@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 import UserStatsItem from "../userStatsItem/UserStatsItem";
 import styles from "./userStats.module.scss";

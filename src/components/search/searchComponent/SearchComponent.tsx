@@ -1,7 +1,7 @@
 "use client";
 
 import { useGames } from "../../../hooks/useGames";
-import { useSearch } from "../../../contexts/SearchContex";
+import { useSearch } from "../../../contexts/searchContext/SearchContex";
 import LoaderWindow from "../../global/loading/loaderWindow/LoaderWindow";
 import NoGamesFound from "../noGamesFound/NoGamesFound";
 import SearchList from "../searchList/SearchList";
@@ -14,7 +14,7 @@ function SearchComponent({ params }: SearchComponentProps) {
   const page = parseInt(params["page"]) || 1;
   const dev = parseInt(params["dev"]);
   const genre = parseInt(params["genre"]);
-  const platform = parseInt(params["platforms"]);
+  const platform = parseInt(params["platform"]);
   const order = params["order"];
   const { query } = useSearch();
 

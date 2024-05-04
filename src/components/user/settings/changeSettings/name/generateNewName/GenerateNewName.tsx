@@ -1,4 +1,4 @@
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import GenerateRandomUserName from "../../../../../global/randomUserName/generateRandomUserName/GenerateRandomUserName";
 import styles from "./generateNewName.module.scss";
 

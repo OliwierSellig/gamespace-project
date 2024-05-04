@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import notFound from "../../../../../public/img/not-found.png";
-import { useUser } from "../../../../contexts/UserContext";
+import { useCollections } from "../../../../contexts/collectionsContext/CollectionsContext";
 import GameBackgroundLayout from "../../../global/gameBackgroundLayout/GameBackgroundLayout";
 import PageNotFound from "../../../global/pageNotFound/PageNotFound";
 
@@ -12,7 +12,7 @@ type CollectionViewLayoutProps = {
 };
 
 function CollectionViewLayout({ id, children }: CollectionViewLayoutProps) {
-  const { findCollection } = useUser();
+  const { findCollection } = useCollections();
   const collection = findCollection(parseInt(id));
   if (!collection) return <PageNotFound />;
   return (

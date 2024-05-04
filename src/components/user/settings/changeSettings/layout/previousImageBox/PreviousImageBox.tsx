@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { HiOutlineArrowUpCircle } from "react-icons/hi2";
-import { urlToFile } from "../../../../../../utils/functions/functions";
 import notFound from "../../../../../../../public/img/not-found.png";
 import styles from "./previousImageBox.module.scss";
 
 type PreviousImageBoxProps = {
   image: string;
   type?: "avatar" | "background";
-  handleClick: (file: File) => void;
+  handleClick: (image: string) => void;
 };
 
 function PreviousImageBox({
@@ -15,21 +14,21 @@ function PreviousImageBox({
   type = "avatar",
   handleClick,
 }: PreviousImageBoxProps) {
-  async function setNewValue() {
-    const file = await urlToFile(image || notFound.src);
-    handleClick(file);
-  }
+  const boxSizes = type === "avatar" ? "7.2rem" : "20rem";
 
   return (
     <button
       className={`${styles.btn} ${styles[`btn__${type}`]}`}
       aria-label={`Set previous ${type}`}
-      onClick={() => {
-        setNewValue();
-      }}
+      onClick={() => handleClick(image)}
     >
       <HiOutlineArrowUpCircle />
-      <Image src={image || notFound} alt={`Previous ${type}`} fill />
+      <Image
+        sizes={boxSizes}
+        src={image || notFound}
+        alt={`Previous ${type}`}
+        fill
+      />
     </button>
   );
 }

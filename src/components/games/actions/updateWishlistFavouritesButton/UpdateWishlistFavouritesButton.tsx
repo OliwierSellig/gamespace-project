@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { HiOutlineBookmark, HiOutlineBookmarkSlash } from "react-icons/hi2";
 import { IoHeartDislikeOutline, IoHeartOutline } from "react-icons/io5";
 import { SingleGameItem } from "../../../../utils/types/types";
-import { useUser } from "../../../../contexts/UserContext";
+import { useLibrary } from "../../../../contexts/libraryContext/LibraryContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
+import { useWishlist } from "../../../../contexts/wishlistContext/WishlistContext";
 import Button from "../../../global/button/Button";
 import styles from "./updateWishlistFavouritesButton.module.scss";
 
@@ -14,22 +17,22 @@ type UpdateWishlistFavouritesButtonProps = {
 function UpdateWishlistFavouritesButton({
   game,
 }: UpdateWishlistFavouritesButtonProps) {
-  const {
-    addToWishlist,
-    removeFromWishlist,
-    checkInWishlist,
-    checkIsFavourite,
-    checkInLibrary,
-    updateFavourite,
-  } = useUser();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { isLoggedIn } = useUser();
+  const { updateFavourite, checkIsFavourite, checkInLibrary } = useLibrary();
+  const { addToWishlist, removeFromWishlist, checkInWishlist } = useWishlist();
 
-  function handleClick() {
+  async function handleClick() {
+    setIsLoading(true);
     if (checkInLibrary(game.id)) {
-      updateFavourite(game.id, checkIsFavourite(game.id) ? "remove" : "add");
+      await updateFavourite(
+        game.id,
+        checkIsFavourite(game.id) ? "remove" : "add",
+      );
     } else if (checkInWishlist(game.id)) {
-      removeFromWishlist(game.id);
+      await removeFromWishlist(game.id);
     } else {
-      addToWishlist({
+      await addToWishlist({
         name: game.name,
         slug: game.slug,
         cover: game.background_image,
@@ -39,11 +42,14 @@ function UpdateWishlistFavouritesButton({
         rating: game.rating,
       });
     }
+    setIsLoading(false);
   }
 
   return (
     <Button
+      href={{ url: !isLoggedIn ? "/login" : null }}
       handleClick={handleClick}
+      isLoading={isLoading}
       transition="medium"
       style={{ name: "fill", shade: "white" }}
       additionalStyle={{

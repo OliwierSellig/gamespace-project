@@ -1,4 +1,4 @@
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import BackgroundCurrentCover from "../backgroundCurrentCover/BackgroundCurrentCover";
 import PreviousBackgrounds from "../previousBackgrounds/PreviousBackgrounds";
 import UploadNewBackground from "../uploadNewBackground/UploadNewBackground";

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
+import EmptyUserList from "../../../global/emptyUserList/EmptyUserList";
 import CollectionsList from "../list/collectionList/CollectionsList";
-import EmptyCollections from "../list/emptyCollections/EmptyCollections";
 import CollectionsNavigation from "../navigation/collectionNavigation/CollectionsNavigation";
 
 type UserCollectionsProps = {
@@ -37,9 +37,14 @@ function UserCollections({ page, resultsPerPage = 6 }: UserCollectionsProps) {
 
   if (!collections || !collections.length)
     return (
-      <EmptyCollections>
+      <EmptyUserList
+        button={{
+          text: "Start a new Collection",
+          navigateTo: "createCollection",
+        }}
+      >
         It seems you haven&apos;t created any collections yet.
-      </EmptyCollections>
+      </EmptyUserList>
     );
 
   return (

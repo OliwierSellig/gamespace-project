@@ -1,9 +1,32 @@
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useState } from "react";
+import { useUser } from "../../../../../../contexts/userContext/UserContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
+import { updateUserInfo } from "../../../../../../firebase/userData";
 import Button from "../../../../../global/button/Button";
 import styles from "./actionsButtons.module.scss";
 
 function ActionButtons() {
-  const { saveChanges, leaveUserSettings } = useUserSettings();
+  const { state, setUserProfile } = useUser();
+  const { saveChanges, leaveUserSettings, background, avatar, newName } =
+    useUserSettings();
+  const [isSavingChanges, setIsSavingChanges] = useState<boolean>(false);
+
+  async function handleSave() {
+    setIsSavingChanges(true);
+    const updatedDoc = await updateUserInfo(state.id, {
+      avatar,
+      background,
+      name: newName,
+    });
+    setUserProfile({
+      name: updatedDoc.gamespaceName,
+      recentAvatars: updatedDoc.recentAvatars,
+      recentBackgrounds: updatedDoc.recentBackgrounds,
+    });
+    saveChanges();
+    setIsSavingChanges(false);
+  }
+
   return (
     <nav className={styles.container}>
       <button onClick={leaveUserSettings} className={styles.btn}>
@@ -14,7 +37,9 @@ function ActionButtons() {
         fontSize="sm"
         sizeX="lg"
         style={{ name: "opacity", shade: "white" }}
-        handleClick={saveChanges}
+        handleClick={handleSave}
+        disabled={isSavingChanges}
+        isLoading={isSavingChanges}
       >
         Save Changes
       </Button>

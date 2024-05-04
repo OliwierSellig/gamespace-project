@@ -1,15 +1,13 @@
 "use client";
 
-import { useUser } from "../../../../../../contexts/UserContext";
-import { UserSettingsProvider } from "../../../../../../contexts/UserSettingsContext";
+import { useUserModalStates } from "../../../../../../contexts/userModalStatesContext/UserModalStatesContext";
+import { UserSettingsProvider } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import ChangeSettingsPopup from "../changeSettingPopup/ChangeSettingsPopup";
 
 function ChangeSettingsToggle() {
-  const { state } = useUser();
+  const { inSettingsView } = useUserModalStates();
 
-  const { areSettingsOpen } = state;
-
-  if (!areSettingsOpen) return null;
+  if (!inSettingsView) return null;
   return (
     <UserSettingsProvider>
       <ChangeSettingsPopup />

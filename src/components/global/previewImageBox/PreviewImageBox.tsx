@@ -30,6 +30,9 @@ function PreviewImageBox({
     }
   }, [file]);
 
+  const imageSource: string =
+    (typeof file === "string" ? file : (preview as string)) || notFound;
+
   return (
     <div
       className={`${styles.container} ${!preview ? styles.container__empty : ""} ${styles[`container__${type}`]} ${styles[`container__${size}`]}`}
@@ -45,12 +48,7 @@ function PreviewImageBox({
           <div className={styles.edit}>
             <HiOutlinePencilSquare />
           </div>
-          <Image
-            fill
-            sizes="10vw"
-            src={(preview as string) || notFound}
-            alt=""
-          />
+          <Image fill sizes="10vw" src={imageSource} alt="" />
         </div>
       )}
     </div>

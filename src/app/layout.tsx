@@ -3,7 +3,6 @@ import { Toaster } from "react-hot-toast";
 import { poppins } from "../utils/other/fonts";
 import Providers from "../lib/QueryProvider";
 import GlobalLayout from "../components/global/layout/globalLayout/GlobalLayout";
-import { UserProvider } from "../contexts/UserContext";
 import "../scss/general.scss";
 
 export const metadata = {
@@ -23,9 +22,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={poppins.className}>
         <Providers>
-          <UserProvider>
-            <GlobalLayout>{children}</GlobalLayout>
-          </UserProvider>
+          <GlobalLayout>{children}</GlobalLayout>
         </Providers>
         <Toaster
           position="top-center"
@@ -51,9 +48,11 @@ export default function RootLayout({ children }) {
               fontSize: "1.6rem",
               fontFamily: poppins.style.fontFamily,
               padding: "1.6rem 3.6rem",
+              width: "max-content",
+              maxWidth: "100%",
               backgroundColor: "var(--color-dark-300)",
               color: "var(--color-light-100)",
-              boxShadow: "0rem 0.8rem 2.4rem 0rem rgba(0, 0, 0, 0.3);",
+              boxShadow: "0rem 0.8rem 2.4rem 0rem rgba(0, 0, 0, 0.3)",
             },
           }}
         />

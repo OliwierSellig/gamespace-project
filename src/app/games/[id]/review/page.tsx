@@ -4,8 +4,8 @@ export const metadata = {
   title: " - Review",
 };
 
-function page({ params }: { params: { id: string } }) {
+function Page({ params }: { params: { id: string } }) {
   return <GameReview id={params.id} />;
 }
 
-export default page;
+export default Page;

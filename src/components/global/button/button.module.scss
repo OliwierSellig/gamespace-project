@@ -271,33 +271,4 @@
   }
 }
 
-@keyframes button-loading-spinner {
-  from {
-    transform: rotate(0turn);
-  }
 
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-.loading {
-  position: relative;
-  color: transparent;
-
-  &::after {
-    content: "";
-    position: absolute;
-    height: 60%;
-    aspect-ratio: 1/1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    border: 3px solid transparent;
-    border-top-color: var(--color-light-100);
-    border-radius: 50%;
-    animation: button-loading-spinner 1.2s ease-in-out infinite;
-  }
-}

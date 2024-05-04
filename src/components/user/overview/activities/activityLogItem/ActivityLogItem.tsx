@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { dateTransform } from "../../../../../utils/functions/functions";
 import { ActivityItem } from "../../../../../utils/types/types";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useActivities } from "../../../../../contexts/activitiesContext/ActivitiesContext";
 import styles from "./activityLogItem.module.scss";
 
 type ActivityLogItemProps = {
@@ -12,7 +12,7 @@ type ActivityLogItemProps = {
 };
 
 function ActivityLogItem({ activity }: ActivityLogItemProps) {
-  const { transformActivityIntoString } = useUser();
+  const { transformActivityIntoString } = useActivities();
   const activityString = transformActivityIntoString(activity);
   return (
     <li className={styles.container}>

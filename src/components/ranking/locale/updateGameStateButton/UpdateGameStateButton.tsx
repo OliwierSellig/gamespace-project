@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
-import { useUser } from "../../../../contexts/UserContext";
+import { useLibrary } from "../../../../contexts/libraryContext/LibraryContext";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import Button from "../../../global/button/Button";
 import TopRankedButton from "../../list/top/topRankedButton/TopRankedButton";
 
@@ -9,7 +11,10 @@ function UpdateGameStateButton({
   gameId,
   type = "default",
 }: UpdateGameStateButtonProps) {
-  const { checkInLibrary, removeFromLibrary, addGameFromRanking } = useUser();
+  const { isLoggedIn } = useUser();
+  const { checkInLibrary, removeFromLibrary, addGameFromRanking } =
+    useLibrary();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const buttonTextContent = checkInLibrary(gameId) ? (
     <>
@@ -23,23 +28,34 @@ function UpdateGameStateButton({
     </>
   );
 
-  function updateGameState() {
-    if (checkInLibrary(gameId)) {
-      removeFromLibrary(gameId);
-    } else {
-      addGameFromRanking(gameId);
+  async function updateGameState() {
+    setIsLoading(true);
+    try {
+      if (checkInLibrary(gameId)) {
+        await removeFromLibrary(gameId);
+      } else {
+        await addGameFromRanking(gameId);
+      }
+    } finally {
+      setIsLoading(false);
     }
   }
 
   if (type === "default")
     return (
-      <TopRankedButton style="blue" handleClick={updateGameState}>
+      <TopRankedButton
+        isLoading={isLoading}
+        style="blue"
+        handleClick={updateGameState}
+      >
         {buttonTextContent}
       </TopRankedButton>
     );
 
   return (
     <Button
+      isLoading={isLoading}
+      href={{ url: !isLoggedIn ? "/login" : null }}
       transition="medium"
       additionalStyle={{ minWidth: "20rem" }}
       style={{ name: "fill", shade: "blue" }}

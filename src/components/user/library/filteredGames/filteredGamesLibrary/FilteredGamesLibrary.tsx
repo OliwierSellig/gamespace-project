@@ -1,4 +1,4 @@
-import { useUser } from "../../../../../contexts/UserContext";
+import { useLibrary } from "../../../../../contexts/libraryContext/LibraryContext";
 import FilteredGamesLibraryList from "../filteredGamesLibraryList/FilteredGamesLibraryList";
 
 type FilteredGamesLibraryProps = {
@@ -14,7 +14,7 @@ function FilteredGamesLibrary({
   resultsPerPage = 4,
   filterBy,
 }: FilteredGamesLibraryProps) {
-  const { filterLibraryBy } = useUser();
+  const { filterLibraryBy } = useLibrary();
   const list = filterLibraryBy(filterBy);
   const filteredList = list.filter((item) =>
     item.name

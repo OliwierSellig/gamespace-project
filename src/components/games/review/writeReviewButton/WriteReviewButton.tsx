@@ -2,6 +2,7 @@
 
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { SingleGameItem } from "../../../../utils/types/types";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import Button from "../../../global/button/Button";
 
 type WriteReviewButtonProps = {
@@ -9,9 +10,10 @@ type WriteReviewButtonProps = {
 };
 
 function WriteReviewButton({ game }: WriteReviewButtonProps) {
+  const { isLoggedIn } = useUser();
   return (
     <Button
-      href={{ url: `/games/${game.id}/review` }}
+      href={{ url: !isLoggedIn ? "/login" : `/games/${game.id}/review` }}
       positionSelf={{ type: "align", pos: "center" }}
       sizeX="xl"
       sizeY="md"

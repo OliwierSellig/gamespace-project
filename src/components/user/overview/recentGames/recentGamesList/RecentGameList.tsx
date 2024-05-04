@@ -1,18 +1,18 @@
 "use client";
 
-import { useUser } from "../../../../../contexts/UserContext";
+import { useLibrary } from "../../../../../contexts/libraryContext/LibraryContext";
 import EmptyRecentGamesList from "../emptyRecentGames/EmptyRecentGamesList";
 import RecentGameItem from "../recentGameItem/RecentGameItem";
 import styles from "./recentGameList.module.scss";
 
 function RecentGameList() {
-  const { recentAddedGames } = useUser();
-
-  if (!recentAddedGames.length) return <EmptyRecentGamesList />;
+  const { getRecentAddedGames } = useLibrary();
+  const recentGames = getRecentAddedGames();
+  if (!recentGames.length) return <EmptyRecentGamesList />;
 
   return (
     <ul className={styles.container}>
-      {recentAddedGames.map((game) => (
+      {recentGames.map((game) => (
         <RecentGameItem key={game.id} game={game} />
       ))}
     </ul>

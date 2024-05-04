@@ -1,6 +1,6 @@
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
 import { LibraryItemType } from "../../../../../utils/types/types";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useLibrary } from "../../../../../contexts/libraryContext/LibraryContext";
 import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
 import EmptyUserSwiperItem from "../../../locale/emptyUserSwiperItem/EmptyUserSwiperItem";
 import GameLibraryItem from "../../../locale/gameLibraryItem/GameLibraryItem";
@@ -10,7 +10,7 @@ type FilteredGamesSwiperProps = {
 };
 
 function FilteredGamesSwiper({ list }: FilteredGamesSwiperProps) {
-  const { removeFromLibrary } = useUser();
+  const { removeFromLibrary } = useLibrary();
   const emptySlotsCount = Math.max(0, 3 - list.length);
 
   return (

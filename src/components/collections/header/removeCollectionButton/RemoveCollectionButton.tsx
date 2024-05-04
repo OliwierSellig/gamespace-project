@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import { useUser } from "../../../../contexts/UserContext";
+import { useCollections } from "../../../../contexts/collectionsContext/CollectionsContext";
 import Modal from "../../../global/modal/Modal";
 import ConfirmationPopup from "../../../global/popups/confirmationPupup/ConfirmationPopup";
 import CollectionNavButton from "../collectionNavButton/CollectionNavButtonLayout";
@@ -9,7 +9,7 @@ type RemoveCollectionButtonProps = {
 };
 
 function RemoveCollectionButton({ id }: RemoveCollectionButtonProps) {
-  const { removeFromCollections } = useUser();
+  const { removeFromCollections } = useCollections();
   const router = useRouter();
 
   return (
@@ -25,8 +25,8 @@ function RemoveCollectionButton({ id }: RemoveCollectionButtonProps) {
       </Modal.Open>
       <Modal.Window locked={false} name={`Remove collection ${id}`}>
         <ConfirmationPopup
-          handleClick={() => {
-            removeFromCollections(id);
+          handleClick={async () => {
+            await removeFromCollections(id);
             router.push("/user/collections");
           }}
         >

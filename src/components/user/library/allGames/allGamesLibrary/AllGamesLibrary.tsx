@@ -1,5 +1,7 @@
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
-import { useUser } from "../../../../../contexts/UserContext";
+import { sortGames } from "../../../../../utils/functions/functions";
+import { useLibrary } from "../../../../../contexts/libraryContext/LibraryContext";
+import { useUser } from "../../../../../contexts/userContext/UserContext";
 import AllGamesLibraryList from "../allGamesLibraryList/AllGamesLibraryList";
 
 type AllGamesLibraryProps = {
@@ -15,8 +17,9 @@ function AllGamesLibrary({
   resultsPerPage = 12,
   query,
 }: AllGamesLibraryProps) {
-  const { removeFromLibrary, sortGames } = useUser();
-  const sorted = sortGames({ type: "library" }, orderBy);
+  const { state } = useUser();
+  const { removeFromLibrary } = useLibrary();
+  const sorted = sortGames(state.library, orderBy);
   const games = sorted.map((game) => {
     return {
       ...game,

@@ -2,10 +2,11 @@
 
 import { FormikProvider, useFormik } from "formik";
 import React, { useState } from "react";
+import { useUser } from "../../../../contexts/userContext/UserContext";
+import { CreateUser, validateEmail } from "../../../../firebase/auth";
 import SwiperComponent from "../../../global/swiperComponent/SwiperComponent";
 import AvatarInputs from "../avatarInputs/AvatarInputs";
 import NameInput from "../nameInput/NameInput";
-import PasswordInputs from "../passwordInputs/PasswordInputs";
 import SignupFormButton from "../signupFormButton/SignupFormButton";
 import SignupPagination from "../signupPagination/SignupPagination";
 import SignupSwiperContainer from "../signupSwiperContainer/SignupSwiperContainer";
@@ -14,8 +15,9 @@ import styles from "./signupContainer.module.scss";
 import { validationSchema } from "./validationSchema";
 
 function SignupContainer() {
+  const { setRegisterUserData } = useUser();
+  const [loadingEmail, setLoadingEmail] = useState<boolean>(false);
   type initialValues = {
-    username: string;
     email: string;
     password: string;
     passwordConfirm: string;
@@ -24,15 +26,22 @@ function SignupContainer() {
 
   const formik = useFormik<initialValues>({
     initialValues: {
-      username: "",
       email: "",
       password: "",
       passwordConfirm: "",
       gamespaceName: "",
     },
+
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log({ avatar, background, ...values });
+    onSubmit: async (values) => {
+      const user = await CreateUser({
+        email: values.email,
+        password: values.password,
+        gamespaceName: values.gamespaceName,
+        avatar: avatar,
+        background: background,
+      });
+      setRegisterUserData(user);
     },
   });
 
@@ -41,7 +50,7 @@ function SignupContainer() {
 
   const [currentTab, setCurrentTab] = useState<number>(0);
 
-  const swiperItems = [UserInputs, PasswordInputs, AvatarInputs, NameInput];
+  const swiperItems = [UserInputs, AvatarInputs, NameInput];
 
   const isLastPage = currentTab === swiperItems.length - 1;
 
@@ -49,6 +58,10 @@ function SignupContainer() {
     if (e.key === "Enter" && !isLastPage) {
       e.preventDefault();
     }
+  }
+
+  function setEmailLoading(isLoading: boolean) {
+    setLoadingEmail(isLoading);
   }
 
   function setImage(type: "avatar" | "background", file: File) {
@@ -67,31 +80,21 @@ function SignupContainer() {
   }
 
   function getIsButtonEnabled(stage: number) {
-    const enableFirstStage = Boolean(
-      formik.values.username &&
-        formik.values.email &&
-        !formik.errors.username &&
-        !formik.errors.email,
-    );
-
-    const enableSecondStage = Boolean(
-      formik.values.password &&
+    const enableUserStage = Boolean(
+      formik.values.email &&
+        formik.values.password &&
         formik.values.passwordConfirm &&
+        !formik.errors.email &&
         !formik.errors.password &&
         !formik.errors.passwordConfirm,
     );
 
     switch (stage) {
       case 0:
-        return enableFirstStage;
-      // return true;
+        return enableUserStage;
       case 1:
-        return enableSecondStage;
-      // return true;
+        return enableUserStage;
       case 2:
-        return enableFirstStage && enableSecondStage;
-      // return true;
-      case 3:
         return formik.isValid;
       default:
         return false;
@@ -118,6 +121,16 @@ function SignupContainer() {
                 background={background}
                 skipStep={() => setCurrentTab((prev) => prev + 1)}
                 setImage={setImage}
+                loadingEmail={loadingEmail}
+                validateEmail={async (
+                  value: string,
+                  changeLoadingState: boolean,
+                ) =>
+                  await validateEmail(
+                    value,
+                    changeLoadingState ? setEmailLoading : () => {},
+                  )
+                }
               />
             </SignupSwiperContainer>
           ))}
@@ -129,9 +142,10 @@ function SignupContainer() {
           getIsButtonEnabled={getIsButtonEnabled}
         />
         <SignupFormButton
+          isLoading={formik.isSubmitting}
           setNextPage={() => setCurrentTab((prev) => prev + 1)}
           isLastPage={isLastPage}
-          buttonDisabled={!getIsButtonEnabled(currentTab)}
+          buttonDisabled={!getIsButtonEnabled(currentTab) || loadingEmail}
         />
       </form>
     </FormikProvider>

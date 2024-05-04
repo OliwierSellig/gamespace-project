@@ -11,7 +11,7 @@ type PlatformsHomeItemProps = {
 function PlatformsHomeItem({ id, name, Icon }: PlatformsHomeItemProps) {
   return (
     <Link
-      href={`/search?platforms=${id}`}
+      href={`/search?platform=${id}`}
       className={styles.item}
       aria-label={`Search ${name}`}
     >

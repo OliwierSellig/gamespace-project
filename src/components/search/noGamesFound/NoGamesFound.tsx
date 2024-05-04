@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import { useSearch } from "../../../contexts/SearchContex";
+import { useSearch } from "../../../contexts/searchContext/SearchContex";
 import styles from "./noGamesFound.module.scss";
 
 function NoGamesFound() {

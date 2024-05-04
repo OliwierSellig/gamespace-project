@@ -2,13 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUserModalStates } from "../../../../contexts/userModalStatesContext/UserModalStatesContext";
 import styles from "./userSettingButton.module.scss";
 
 function UserSettingsButton() {
-  const { setSettings } = useUser();
+  const { setSettingsView, setLoggingOut } = useUserModalStates();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const selectorRef = useRef<HTMLDivElement>(null);
+
+  const buttons = [
+    { name: "User Settings", onClick: () => setSettingsView(true) },
+    { name: "Logout", onClick: () => setLoggingOut(true) },
+  ];
 
   useEffect(() => {
     function clickOutside(e: MouseEvent) {
@@ -38,8 +43,15 @@ function UserSettingsButton() {
         </button>
         {isOpen && (
           <nav className={styles.nav}>
-            <button onClick={() => setSettings(true)}>User Settings</button>
-            <button>Logout</button>
+            {buttons.map((button, i) => (
+              <button
+                key={i}
+                onClick={button.onClick}
+                className={styles.nav__btn}
+              >
+                {button.name}
+              </button>
+            ))}
           </nav>
         )}
       </div>

@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
-import { useUser } from "../../../../contexts/UserContext";
-import EmptyUserList from "../../locale/emptyUserList/EmptyUserList";
+import { sortGames } from "../../../../utils/functions/functions";
+import { useUser } from "../../../../contexts/userContext/UserContext";
+import { useWishlist } from "../../../../contexts/wishlistContext/WishlistContext";
+import EmptyUserList from "../../../global/emptyUserList/EmptyUserList";
 import WishlistGamesList from "../wishlistGamesList/WishlistGamesList";
 import WishlistNavigation from "../wishlistNavigation/WishlistNavigation";
 
@@ -19,8 +21,9 @@ function UserWishlist({
   resultsPerPage = 12,
 }: UserWishlistProps) {
   const [query, setQuery] = useState<string>("");
-  const { sortGames, removeFromWishlist } = useUser();
-  const games = sortGames({ type: "wishlist" }, orderBy).map((game) => {
+  const { state } = useUser();
+  const { removeFromWishlist } = useWishlist();
+  const games = sortGames(state.wishlist, orderBy).map((game) => {
     return {
       ...game,
       action: {

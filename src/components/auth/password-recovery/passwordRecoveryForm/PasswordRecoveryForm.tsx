@@ -1,6 +1,7 @@
 "use client";
 
 import { Field, FormikProvider, useFormik } from "formik";
+import { sentResetPasswordEmail } from "../../../../firebase/auth";
 import Button from "../../../global/button/Button";
 import FormInput from "../../../global/formInput/FormInput";
 import styles from "./passwordRecoveryForm.module.scss";
@@ -10,7 +11,10 @@ function PasswordRecoveryForm() {
   const formik = useFormik({
     initialValues: { email: "" },
     validationSchema: validationSchema,
-    onSubmit: () => {},
+    onSubmit: async (values) => {
+      await sentResetPasswordEmail(values.email);
+      formik.resetForm();
+    },
   });
   return (
     <FormikProvider value={formik}>
@@ -25,6 +29,7 @@ function PasswordRecoveryForm() {
           placeholder="Email"
         />
         <Button
+          isLoading={formik.isSubmitting}
           type="submit"
           style={{ name: "opacity", shade: "white" }}
           borderRadius="md"

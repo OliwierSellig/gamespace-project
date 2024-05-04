@@ -1,11 +1,12 @@
 import { useRef } from "react";
-import { useUserSettings } from "../../../../../../contexts/UserSettingsContext";
+import { useUserSettings } from "../../../../../../contexts/userSettingsContext/UserSettingsContext";
 import ChangeSettingsContainer from "../changeSettingsContainer/ChangeSettingsContainer";
 import styles from "./changeSettingPopup.module.scss";
 
 function ChangeSettingsPopup() {
   const backgroundRef = useRef<HTMLDivElement>(null);
   const { leaveUserSettings } = useUserSettings();
+
   return (
     <div
       ref={backgroundRef}

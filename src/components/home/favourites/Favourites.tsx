@@ -11,11 +11,11 @@ function Favourites() {
         {devList.map((dev) => (
           <FavouriteDevItem
             name={dev.name}
-            slug={dev.slug}
             logo={dev.logo}
+            id={dev.id}
             gameSeries={dev.gameSeries}
             video={dev.video}
-            key={dev.slug}
+            key={dev.id}
           />
         ))}
       </nav>

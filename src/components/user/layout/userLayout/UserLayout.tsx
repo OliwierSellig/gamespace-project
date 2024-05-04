@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import bg from "../../../../../public/img/user-background.jpg";
+import { useUser } from "../../../../contexts/userContext/UserContext";
 import GameBackgroundLayout from "../../../global/gameBackgroundLayout/GameBackgroundLayout";
 
 type UserLayoutProps = {
@@ -7,7 +8,12 @@ type UserLayoutProps = {
 };
 
 function UserLayout({ children }: UserLayoutProps) {
-  return <GameBackgroundLayout image={bg}>{children}</GameBackgroundLayout>;
+  const { currentBackground } = useUser();
+  return (
+    <GameBackgroundLayout image={currentBackground || bg}>
+      <>{children}</>
+    </GameBackgroundLayout>
+  );
 }
 
 export default UserLayout;

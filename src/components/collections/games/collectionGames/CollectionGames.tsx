@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
-import { useUser } from "../../../../contexts/UserContext";
-import EmptyUserList from "../../../user/locale/emptyUserList/EmptyUserList";
+import { sortGames } from "../../../../utils/functions/functions";
+import { useCollections } from "../../../../contexts/collectionsContext/CollectionsContext";
+import EmptyUserList from "../../../global/emptyUserList/EmptyUserList";
 import CollectionGamesList from "../collectionGamesList/CollectionGamesList";
 import CollectionGamesNav from "../collectionGamesNav/CollectionGamesNav";
 
@@ -20,22 +21,21 @@ function CollectionGames({
   resultsPerPage = 12,
   collectionID,
 }: CollectionGamesProps) {
-  const { sortGames, updateCollection } = useUser();
+  const { updateCollection, findCollection } = useCollections();
   const [query, setQuery] = useState("");
-  const games = sortGames(
-    { type: "collections", id: collectionID },
-    orderBy,
-  ).map((game) => {
-    return {
-      ...game,
-      action: {
-        actionLabel: "Remove from this collection",
-        actionIcon: HiMiniBookmarkSlash,
-        handleClick: () =>
-          updateCollection({ type: "removeGame", game }, collectionID),
-      },
-    };
-  });
+  const games = sortGames(findCollection(collectionID).games, orderBy).map(
+    (game) => {
+      return {
+        ...game,
+        action: {
+          actionLabel: "Remove from this collection",
+          actionIcon: HiMiniBookmarkSlash,
+          handleClick: async () =>
+            await updateCollection({ type: "removeGame", game }, collectionID),
+        },
+      };
+    },
+  );
 
   const filteredGames = games.filter((game) =>
     game.name

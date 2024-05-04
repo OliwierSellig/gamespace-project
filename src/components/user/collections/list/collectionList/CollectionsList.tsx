@@ -1,7 +1,7 @@
 import { CollectionItemType } from "../../../../../utils/types/types";
+import EmptyUserList from "../../../../global/emptyUserList/EmptyUserList";
 import Pagination from "../../../../global/pagination/Pagination";
 import CollectionsCard from "../../card/collectionCard/CollectionsCard";
-import EmptyCollections from "../emptyCollections/EmptyCollections";
 import styles from "./collectionsList.module.scss";
 
 type CollectionsListProps = {
@@ -13,9 +13,14 @@ type CollectionsListProps = {
 function CollectionsList({ list, curPage, maxPage }: CollectionsListProps) {
   if (!list || !list.length)
     return (
-      <EmptyCollections>
+      <EmptyUserList
+        button={{
+          text: "Create a new Collection",
+          navigateTo: "createCollection",
+        }}
+      >
         You have no collections matching that query
-      </EmptyCollections>
+      </EmptyUserList>
     );
 
   return (

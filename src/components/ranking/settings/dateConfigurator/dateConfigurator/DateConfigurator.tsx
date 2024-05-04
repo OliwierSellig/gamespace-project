@@ -7,7 +7,7 @@ import {
   getMonthNumber,
   getMonthSig,
 } from "../../../../../utils/functions/functions";
-import { useRanking } from "../../../../../contexts/RankingContext";
+import { useRanking } from "../../../../../contexts/rankingContext/RankingContext";
 import SaveButton from "../../saveButton/SaveButton";
 import DateBox from "../dateBox/DateBox";
 import DateSetter from "../dateSetter/DateSetter";

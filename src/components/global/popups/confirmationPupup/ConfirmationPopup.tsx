@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import Button from "../../button/Button";
 import NoBlurPopup from "../noBlurPopup/NoBlurPopup";
 import styles from "./confirmationPopup.module.scss";
@@ -6,7 +6,7 @@ import styles from "./confirmationPopup.module.scss";
 type ConfirmationPopupProps = {
   children: ReactNode;
   actionButtonText?: string;
-  handleClick?: () => void;
+  handleClick?: () => Promise<void>;
   onCloseModal?: () => void;
 };
 
@@ -16,6 +16,7 @@ function ConfirmationPopup({
   handleClick,
   onCloseModal,
 }: ConfirmationPopupProps) {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   return (
     <NoBlurPopup handleClose={onCloseModal}>
       <div className={styles.container}>
@@ -31,9 +32,15 @@ function ConfirmationPopup({
             Cancel
           </Button>
           <Button
-            handleClick={() => {
-              handleClick?.();
-              onCloseModal();
+            isLoading={isLoading}
+            handleClick={async () => {
+              setIsLoading(true);
+              try {
+                await handleClick?.();
+                onCloseModal();
+              } finally {
+                setIsLoading(false);
+              }
             }}
             style={{ name: "opacity", shade: "red" }}
             sizeX="xl"

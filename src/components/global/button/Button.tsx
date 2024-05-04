@@ -49,6 +49,7 @@ function Button({
   const styleList = {
     gap: `${gap}px`,
     fontWeight: `${fontWeight}`,
+    color: isLoading ? "transparent" : "",
     ...additionalStyle,
   };
 
@@ -64,12 +65,12 @@ function Button({
     positionSelf?.type
       ? styles[`${positionSelf.type}__${positionSelf.pos}`]
       : ""
-  } ${additionalClass.join(" ")} ${isLoading ? styles.loading : ""}`;
+  } ${additionalClass.join(" ")} ${isLoading ? `loadingSpinner ${styles.loading}` : ""}`;
 
   if (href?.url)
     return (
       <Link
-        tabIndex={disabled ? -1 : 0}
+        tabIndex={disabled || isLoading ? -1 : 0}
         style={styleList}
         className={classList}
         href={href.url}
@@ -82,7 +83,7 @@ function Button({
   return (
     <button
       type={type}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       style={styleList}
       onClick={handleClick}
       className={classList}

@@ -1,6 +1,6 @@
 import SearchComponent from "../../components/search/searchComponent/SearchComponent";
 import SearchHeader from "../../components/search/searchHeader/SearchHeader";
-import { SearchProvider } from "../../contexts/SearchContex";
+import { SearchProvider } from "../../contexts/searchContext/SearchContex";
 
 export const metadata = {
   title: "Search Games",

@@ -67,7 +67,9 @@ function Window({ name, children, locked = true }: WindowProps) {
   const backgroundRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (locked && openName) document.documentElement.classList.add("modal");
+    if (locked && openName) {
+      document.documentElement.classList.add("modal");
+    }
 
     if (
       locked &&

@@ -1,15 +1,6 @@
 import * as yup from "yup";
 
 export const validationSchema = yup.object().shape({
-  username: yup
-    .string()
-    .required("This field is required")
-    .min(5, "Minimum 5 characters")
-    .max(30, "Maximum 30 characters"),
-  email: yup
-    .string()
-    .email("Invalid email format")
-    .required("This field is required"),
   password: yup
     .string()
     .matches(

@@ -1,12 +1,12 @@
 "use client";
 
-import { useUser } from "../../../../../contexts/UserContext";
+import { useReviews } from "../../../../../contexts/reviewsContext/ReviewsContext";
 import EmptyUserSwiperItem from "../../../locale/emptyUserSwiperItem/EmptyUserSwiperItem";
 import ReviewItem from "../../../locale/reviewItem/ReviewItem";
 import styles from "./reviewsRow.module.scss";
 
 function ReviewsRow() {
-  const { getLatestReviews } = useUser();
+  const { getLatestReviews } = useReviews();
   const emptySlotsCount = Math.max(0, 2 - getLatestReviews().length);
   return (
     <ul className={styles.container}>

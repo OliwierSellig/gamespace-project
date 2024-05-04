@@ -1,6 +1,7 @@
-import Image from "next/image";
-import userPhoto from "../../../../../../public/img/user.webp";
 import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
+import CreatedAt from "../createdAt/CreatedAt";
+import UserAvatar from "../userAvatar/UserAvatar";
+import UserName from "../userName/UserName";
 import styles from "./userBox.module.scss";
 
 function UserBox() {
@@ -14,12 +15,10 @@ function UserBox() {
         justifyContent: "center",
       }}
     >
-      <div className={styles.photo}>
-        <Image src={userPhoto} alt="User Photo" sizes="14rem" fill />
-      </div>
+      <UserAvatar />
       <div className={styles.text}>
-        <p className={styles.name}>John Sanderson</p>
-        <p className={styles.since}>On GameSpace since 24.06.2023</p>
+        <UserName />
+        <CreatedAt />
       </div>
     </UserBoxLayout>
   );

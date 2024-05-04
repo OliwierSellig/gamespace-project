@@ -247,14 +247,36 @@ export function setPage(
   router.push(`${pathname}${query}`);
 }
 
-// ------- Transforms an image url string to file  -----------
+// ------- Check whether the differance in dates in bigger or than the given day amount  -----------
 
-export async function urlToFile(url: string) {
-  const response = await fetch(url);
-  const blob = await response.blob();
-  const filename = url.substring(url.lastIndexOf("/") + 1);
+export function calculateDayDifferance(props: {
+  dayDiff: number;
+  date1: Date;
+  date2: Date;
+}) {
+  const timeDiff = Math.abs(props.date1.getTime() - props.date2.getTime());
 
-  const file = new File([blob], filename, { type: blob.type });
+  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-  return file;
+  return diffDays > props.dayDiff;
+}
+
+// ------- Sorting games of given list type by given condition  -----------
+
+export function sortGames(list: BasicItemType[], sortBy: string) {
+  const sortList = [...list];
+
+  switch (sortBy) {
+    case "popularity":
+      return sortList.sort((a, b) => b.added - a.added);
+    case "release-date":
+      return sortList.sort(
+        (a, b) =>
+          new Date(b.released).getTime() - new Date(a.released).getTime(),
+      );
+    case "rating":
+      return sortList.sort((a, b) => b.rating - a.rating);
+    default:
+      return sortList;
+  }
 }
