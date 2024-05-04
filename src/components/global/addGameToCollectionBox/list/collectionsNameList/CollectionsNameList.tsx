@@ -1,12 +1,14 @@
 import { BasicItemType } from "../../../../../utils/types/types";
 import { useUser } from "../../../../../contexts/UserContext";
+import { useCollections } from "../../../../../contexts/collectionsContext/CollectionsContext";
 import CollectionsNameListItem from "../item/CollectionsNameListItem";
 import styles from "./collectionsNameList.module.scss";
 
 type CollectionsNameListProps = { query: string; game: BasicItemType };
 
 function CollectionsNameList({ query, game }: CollectionsNameListProps) {
-  const { state, checkGameInCollection, updateCollection } = useUser();
+  const { state } = useUser();
+  const { checkGameInCollection, updateCollection } = useCollections();
   const { collections } = state;
   const sortedCollection = [...collections].sort(
     (a, b) =>

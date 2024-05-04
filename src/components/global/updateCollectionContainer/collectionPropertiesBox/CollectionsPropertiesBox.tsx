@@ -8,6 +8,7 @@ import {
   SingleGameItem,
 } from "../../../../utils/types/types";
 import { useUser } from "../../../../contexts/UserContext";
+import { useCollections } from "../../../../contexts/collectionsContext/CollectionsContext";
 import Button from "../../button/Button";
 import UserInput from "../../userInput/UserInput";
 import styles from "./collectionPropertiesBox.module.scss";
@@ -19,7 +20,8 @@ type CollectionsPropertiesBoxProps = {
 };
 
 function CollectionsPropertiesBox({ action }: CollectionsPropertiesBoxProps) {
-  const { addToCollections, updateCollection, state } = useUser();
+  const { state } = useUser();
+  const { addToCollections, updateCollection } = useCollections();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [title, setTitle] = useState<string>(
     action.type === "update" ? action.currentCollection.title : "",

@@ -2,6 +2,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SingleGameItem } from "../../../../utils/types/types";
 import { useUser } from "../../../../contexts/UserContext";
+import { useReviews } from "../../../../contexts/reviewsContext/ReviewsContext";
 import Button from "../../../global/button/Button";
 import OpenDeleteReviewConfirmation from "../../../global/deleteReview/OpenDeleteReviewConfirmation";
 import styles from "./reviewButtons.module.scss";
@@ -19,7 +20,8 @@ function ReviewButtons({
   reviewText,
   rating,
 }: ReviewButtonsProps) {
-  const { state, updateReviews } = useUser();
+  const { state } = useUser();
+  const { updateReviews } = useReviews();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const username = state.profileSettings.name;

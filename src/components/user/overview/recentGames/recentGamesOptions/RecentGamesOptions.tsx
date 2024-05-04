@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { HiEllipsisHorizontal } from "react-icons/hi2";
 import { BasicItemType } from "../../../../../utils/types/types";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useLibrary } from "../../../../../contexts/libraryContext/LibraryContext";
 import CollectionsBox from "../../../../global/addGameToCollectionBox/CollectionsBox";
 import styles from "./recentGamesOptions.module.scss";
 
@@ -11,7 +11,7 @@ type RecentGamesOptionsProps = {
 };
 
 function RecentGamesOptions({ game }: RecentGamesOptionsProps) {
-  const { removeFromLibrary } = useUser();
+  const { removeFromLibrary } = useLibrary();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [openCollections, setOpenCollections] = useState<boolean>(false);

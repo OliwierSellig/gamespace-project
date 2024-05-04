@@ -1,13 +1,14 @@
 "use client";
 
 import { HiMiniBookmarkSlash } from "react-icons/hi2";
-import { useUser } from "../../../../../contexts/UserContext";
+import { useLibrary } from "../../../../../contexts/libraryContext/LibraryContext";
 import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
 import EmptyUserSwiperItem from "../../../locale/emptyUserSwiperItem/EmptyUserSwiperItem";
 import GameLibraryItem from "../../../locale/gameLibraryItem/GameLibraryItem";
 
 function FavouritesSwiper() {
-  const { favouritesList, updateFavourite } = useUser();
+  const { getFavourites, updateFavourite } = useLibrary();
+  const favouritesList = getFavourites();
   const emptySlotsCount = Math.max(0, 3 - favouritesList.length);
 
   return (

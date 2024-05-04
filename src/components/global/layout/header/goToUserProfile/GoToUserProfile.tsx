@@ -5,7 +5,6 @@ import {
   HiOutlineUser,
   HiOutlineUserPlus,
 } from "react-icons/hi2";
-import user from "../../../../../../public/img/user.webp";
 import { useUser } from "../../../../../contexts/UserContext";
 import HeaderLink from "../headerLink/HeaderLink";
 import styles from "./goToUserProfile.module.scss";
@@ -27,12 +26,7 @@ function GoToUserProfile() {
       aria-label="Go to user overview"
     >
       {currentAvatar ? (
-        <Image
-          fill
-          src={currentAvatar || user}
-          alt="User Avatar"
-          sizes="46px"
-        />
+        <Image fill src={currentAvatar} alt="User Avatar" sizes="46px" />
       ) : (
         <HiOutlineArrowLeftOnRectangle />
       )}

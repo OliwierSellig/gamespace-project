@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useUser } from "../../../../contexts/UserContext";
+import { useReviews } from "../../../../contexts/reviewsContext/ReviewsContext";
 import EmptyUserList from "../../../global/emptyUserList/EmptyUserList";
 import ReviewsList from "../reviewsList/ReviewsList";
 import ReviewsNavigation from "../reviewsNavigation/ReviewsNavigation";
@@ -15,7 +15,7 @@ type UserReviewsProps = {
 function UserReviews({ orderBy, page, resultsPerPage = 6 }: UserReviewsProps) {
   const [query, setQuery] = useState("");
 
-  const { sortReviews } = useUser();
+  const { sortReviews } = useReviews();
 
   const filteredList = sortReviews(orderBy).filter((review) =>
     review.game.name

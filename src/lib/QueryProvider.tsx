@@ -5,6 +5,12 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 import { ChildrenProp } from "../utils/types/types";
 import { UserProvider } from "../contexts/UserContext";
+import { ActivitiesProvider } from "../contexts/activitiesContext/ActivitiesContext";
+import { CollectionsProvider } from "../contexts/collectionsContext/CollectionsContext";
+import { LibraryProvider } from "../contexts/libraryContext/LibraryContext";
+import { ReviewsProvider } from "../contexts/reviewsContext/ReviewsContext";
+import { UserModalStatesProvider } from "../contexts/userModalStatesContext/UserModalStatesContext";
+import { WishlistProvider } from "../contexts/wishlistContext/WishlistContext";
 
 function Providers({ children }: ChildrenProp) {
   const [queryClient] = useState(
@@ -19,7 +25,19 @@ function Providers({ children }: ChildrenProp) {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
-      <UserProvider>{children}</UserProvider>
+      <UserProvider>
+        <UserModalStatesProvider>
+          <ActivitiesProvider>
+            <WishlistProvider>
+              <LibraryProvider>
+                <ReviewsProvider>
+                  <CollectionsProvider>{children}</CollectionsProvider>
+                </ReviewsProvider>
+              </LibraryProvider>
+            </WishlistProvider>
+          </ActivitiesProvider>
+        </UserModalStatesProvider>
+      </UserProvider>
     </QueryClientProvider>
   );
 }

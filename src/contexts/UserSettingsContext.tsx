@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 import * as yup from "yup";
 import { ChildrenProp } from "../utils/types/types";
-import { useUser } from "./UserContext";
+import { useUserModalStates } from "./userModalStatesContext/UserModalStatesContext";
 
 const UserSettingsContext = createContext<ContextType | undefined>(undefined);
 
@@ -34,7 +34,7 @@ export const validationSchema = yup.object().shape({
 });
 
 function UserSettingsProvider({ children }: ChildrenProp) {
-  const { setSettings } = useUser();
+  const { setSettingsView } = useUserModalStates();
   const [unsavedPopup, setUnsavedPopup] = useState<boolean>(false);
   const [avatar, setAvatar] = useState<File | string | null>(null);
   const [background, setBackground] = useState<File | string | null>(null);
@@ -61,14 +61,14 @@ function UserSettingsProvider({ children }: ChildrenProp) {
 
   function saveChanges() {
     toast.success("Profile updated successfully");
-    setSettings(false);
+    setSettingsView(false);
   }
 
   function leaveUserSettings() {
     if (avatar || background || formik.values.newName) {
       setUnsavedPopup(true);
     } else {
-      setSettings(false);
+      setSettingsView(false);
     }
   }
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { HiOutlineMinusSm, HiOutlinePlusSm } from "react-icons/hi";
 import { useUser } from "../../../../contexts/UserContext";
+import { useLibrary } from "../../../../contexts/libraryContext/LibraryContext";
 import Button from "../../../global/button/Button";
 import TopRankedButton from "../../list/top/topRankedButton/TopRankedButton";
 
@@ -10,8 +11,9 @@ function UpdateGameStateButton({
   gameId,
   type = "default",
 }: UpdateGameStateButtonProps) {
-  const { checkInLibrary, removeFromLibrary, addGameFromRanking, isLoggedIn } =
-    useUser();
+  const { isLoggedIn } = useUser();
+  const { checkInLibrary, removeFromLibrary, addGameFromRanking } =
+    useLibrary();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const buttonTextContent = checkInLibrary(gameId) ? (

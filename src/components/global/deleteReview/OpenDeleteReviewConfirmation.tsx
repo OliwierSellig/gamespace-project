@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { useUser } from "../../../contexts/UserContext";
+import { useReviews } from "../../../contexts/reviewsContext/ReviewsContext";
 import Modal from "../modal/Modal";
 import ConfirmationPopup from "../popups/confirmationPupup/ConfirmationPopup";
 
@@ -16,7 +16,7 @@ function OpenDeleteReviewConfirmation({
   handleClick,
   id,
 }: OpenDeleteReviewConfirmationProps) {
-  const { removeFromReviews } = useUser();
+  const { removeFromReviews } = useReviews();
 
   return (
     <Modal>

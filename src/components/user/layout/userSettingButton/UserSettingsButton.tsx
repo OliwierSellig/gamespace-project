@@ -2,16 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
-import { useUser } from "../../../../contexts/UserContext";
+import { useUserModalStates } from "../../../../contexts/userModalStatesContext/UserModalStatesContext";
 import styles from "./userSettingButton.module.scss";
 
 function UserSettingsButton() {
-  const { setSettings, setLoggingOut } = useUser();
+  const { setSettingsView, setLoggingOut } = useUserModalStates();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const selectorRef = useRef<HTMLDivElement>(null);
 
   const buttons = [
-    { name: "User Settings", onClick: () => setSettings(true) },
+    { name: "User Settings", onClick: () => setSettingsView(true) },
     { name: "Logout", onClick: () => setLoggingOut(true) },
   ];
 

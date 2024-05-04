@@ -4,6 +4,7 @@ import { useState } from "react";
 import { HiOutlineMinusCircle, HiOutlinePlusCircle } from "react-icons/hi2";
 import { SingleGameItem } from "../../../../utils/types/types";
 import { useUser } from "../../../../contexts/UserContext";
+import { useLibrary } from "../../../../contexts/libraryContext/LibraryContext";
 import Button from "../../../global/button/Button";
 
 type UpdateLibraryButtonProps = {
@@ -12,8 +13,8 @@ type UpdateLibraryButtonProps = {
 
 function UpdateLibraryButton({ game }: UpdateLibraryButtonProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { addToLibrary, removeFromLibrary, checkInLibrary, isLoggedIn } =
-    useUser();
+  const { isLoggedIn } = useUser();
+  const { addToLibrary, removeFromLibrary, checkInLibrary } = useLibrary();
 
   async function handleClick() {
     setIsLoading(true);

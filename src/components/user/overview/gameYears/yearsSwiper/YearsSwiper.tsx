@@ -1,12 +1,12 @@
 "use client";
 
-import { useUser } from "../../../../../contexts/UserContext";
+import { useLibrary } from "../../../../../contexts/libraryContext/LibraryContext";
 import SwiperComponent from "../../../../global/swiperComponent/SwiperComponent";
 import EmptyUserSwiperItem from "../../../locale/emptyUserSwiperItem/EmptyUserSwiperItem";
 import YearsItem from "../yearsItem/YearsItem";
 
 function YearsSwiper() {
-  const { getCommonYearList } = useUser();
+  const { getCommonYearList } = useLibrary();
   const yearList = getCommonYearList();
   const emptySlotsCount = Math.max(0, 3 - yearList.length);
 

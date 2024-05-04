@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "../../../../contexts/UserContext";
+import { useCollections } from "../../../../contexts/collectionsContext/CollectionsContext";
 import CollectionGames from "../../games/collectionGames/CollectionGames";
 import CollectionInfo from "../../header/collectionInfo/CollectionInfo";
 import styles from "./collectionView.module.scss";
@@ -12,7 +12,7 @@ type CollectionViewProps = {
 };
 
 function CollectionView({ id, orderBy, page }: CollectionViewProps) {
-  const { findCollection } = useUser();
+  const { findCollection } = useCollections();
   const collection = findCollection(parseInt(id));
   return (
     <div className={styles.container}>

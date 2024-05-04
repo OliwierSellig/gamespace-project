@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "../../../../contexts/UserContext";
+import { useCollections } from "../../../../contexts/collectionsContext/CollectionsContext";
 import UpdateCollectionContainer from "../../../global/updateCollectionContainer/updateCollectionContainer/UpdateCollectionContainer";
 
 type UpdateCollectionProps = {
@@ -8,7 +8,7 @@ type UpdateCollectionProps = {
 };
 
 function UpdateCollection({ collectionId }: UpdateCollectionProps) {
-  const { findCollection } = useUser();
+  const { findCollection } = useCollections();
 
   const currentCollection = findCollection(parseInt(collectionId));
 

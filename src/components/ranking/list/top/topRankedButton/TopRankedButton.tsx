@@ -5,8 +5,8 @@ import styles from "./topRankedButton.module.scss";
 
 type TopRankedButtonProps = {
   children: ReactNode;
-  isLoading: boolean;
-  handleClick: () => Promise<void>;
+  isLoading?: boolean;
+  handleClick: () => Promise<void> | void;
   style?: "blue" | "white";
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "../../../../../contexts/UserContext";
+import { useActivities } from "../../../../../contexts/activitiesContext/ActivitiesContext";
 import UserBoxLayout from "../../../locale/userBoxLayout/userBoxLayout";
 import ActivitiesList from "../activitiesList/ActivitiesList";
 import FilterActivitiesOpen from "../filterActivitiesOpen/FilterActivitiesOpen";
@@ -10,7 +10,7 @@ type ActivitiesContainerProps = {
 };
 
 function ActivitiesContainer({ filterBy }: ActivitiesContainerProps) {
-  const { filterActivities } = useUser();
+  const { filterActivities } = useActivities();
 
   const activities = filterActivities(filterBy);
   return (

@@ -5,6 +5,8 @@ import { HiOutlineBookmark, HiOutlineBookmarkSlash } from "react-icons/hi2";
 import { IoHeartDislikeOutline, IoHeartOutline } from "react-icons/io5";
 import { SingleGameItem } from "../../../../utils/types/types";
 import { useUser } from "../../../../contexts/UserContext";
+import { useLibrary } from "../../../../contexts/libraryContext/LibraryContext";
+import { useWishlist } from "../../../../contexts/wishlistContext/WishlistContext";
 import Button from "../../../global/button/Button";
 import styles from "./updateWishlistFavouritesButton.module.scss";
 
@@ -16,15 +18,9 @@ function UpdateWishlistFavouritesButton({
   game,
 }: UpdateWishlistFavouritesButtonProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const {
-    addToWishlist,
-    removeFromWishlist,
-    checkInWishlist,
-    checkIsFavourite,
-    checkInLibrary,
-    updateFavourite,
-    isLoggedIn,
-  } = useUser();
+  const { isLoggedIn } = useUser();
+  const { updateFavourite, checkIsFavourite, checkInLibrary } = useLibrary();
+  const { addToWishlist, removeFromWishlist, checkInWishlist } = useWishlist();
 
   async function handleClick() {
     setIsLoading(true);

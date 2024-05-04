@@ -260,3 +260,23 @@ export function calculateDayDifferance(props: {
 
   return diffDays > props.dayDiff;
 }
+
+// ------- Sorting games of given list type by given condition  -----------
+
+export function sortGames(list: BasicItemType[], sortBy: string) {
+  const sortList = [...list];
+
+  switch (sortBy) {
+    case "popularity":
+      return sortList.sort((a, b) => b.added - a.added);
+    case "release-date":
+      return sortList.sort(
+        (a, b) =>
+          new Date(b.released).getTime() - new Date(a.released).getTime(),
+      );
+    case "rating":
+      return sortList.sort((a, b) => b.rating - a.rating);
+    default:
+      return sortList;
+  }
+}
