@@ -16,7 +16,7 @@ GameSpace is an online game collection that's all about helping users discover t
 
 #### Watch the explanation video below 👇
 
-[![Watch the video](https://jhlemuenelichgebawrp.supabase.co/storage/v1/object/public/project_screenshots/gamespace-5-lg.webp)](https://www.youtube.com/watch?v=Hk0uu52DLQc&embeds_referring_euri=https%3A%2F%2Foliwiersellig.dev%2F&source_ve_path=Mjg2NjMsMjg2NjMsMjg2NjY&feature=emb_logo)
+[![Watch the video](https://jhlemuenelichgebawrp.supabase.co/storage/v1/object/public/project_screenshots/gamespace-5-lg.webp)](https://www.youtube.com/embed/mVbuxQUXuq0?si=9xmZGOUT2qqBnsrJ)
 
 <br />
 
